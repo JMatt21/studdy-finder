@@ -7,7 +7,7 @@ router.route("/")
   .get(function (req, res) {
     db.Users.findAll({})
       .then(dbUser => {
-        res.json(dbUser);
+        res.json('tester');
       })
   })
   .post(function (req, res) {
