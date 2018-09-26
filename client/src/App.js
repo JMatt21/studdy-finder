@@ -1,8 +1,24 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import API from "./utils/API";
 
 class App extends Component {
+  state = {
+    text: "test"
+  }
+  componentDidMount() {
+    API.getTest()
+      .then(res => {
+        this.setState({ text: res.data })
+      })
+      .catch(err => console.log(err));
+    // API.postTest()
+    //   .then(res => {
+    //     this.setState({ text: res.data })
+    //   })
+    //   .catch(err => console.log(err));
+  }
   render() {
     return (
       <div className="App">
@@ -11,7 +27,7 @@ class App extends Component {
           <h1 className="App-title">Welcome to React</h1>
         </header>
         <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+          {this.state.text}
         </p>
       </div>
     );
