@@ -23,9 +23,9 @@ app.use(routes);
 app.use(logger('dev'));
 
 // Keeping Track of Users' Login Status
-// app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
-// app.use(passport.initialize());
-// app.use(passport.session());
+app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Start the API server
 
