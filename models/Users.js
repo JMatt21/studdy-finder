@@ -1,37 +1,43 @@
 module.exports = function (sequelize, DataTypes) {
   var Users = sequelize.define("Users", {
-    // Giving the Users a name of type string
-    User_name: {
+    name: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         len: [1, 100]
       }
     },
-    //for password
-    Password: {
+    password: {
       type: DataTypes.CHAR,
       allowNull: false,
       validate: {
         len: [1, 100]
       }
     },
-    //email
     email: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         len: [1, 150]
       }
+    },
+    beginnerSkills: {
+      type:DataTypes.ARRAY(DataTypes.STRING)
+    },
+    intermediateSkills: {
+      type:DataTypes.ARRAY(DataTypes.STRING)
+    },
+    advancedSkills: {
+      type:DataTypes.ARRAY(DataTypes.STRING)
     }
   });
-  // Users.associate = function (models) {
-  //   Users.hasMany(models.UsersHandles, {
-  //     onDelete: "CASCADE"
-  //   });
-  //   Users.hasMany(models.UsersFavoritedTweets, {
-  //     onDelete: "CASCADE"
-  //   });
-  // }
+  Users.associate = function (models) {
+    Users.hasMany(models.UserConversations, {
+      onDelete: "CASCADE"
+    });
+    Users.hasMany(models.Matches, {
+      onDelete: "CASCADE"
+    });
+  }
   return Users;
 };
