@@ -4,7 +4,7 @@ module.exports = function (sequelize, DataTypes) {
     Matches.associate = function (models) {
         Matches.belongsTo(models.Users, {});
         Matches.belongsTo(models.Users, {
-            as: "Match", foriegnKey: "UserMatchId"
+            as: "Match", foriegnKey: "MatchId"
         });
     };
 
