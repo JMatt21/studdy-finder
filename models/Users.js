@@ -21,6 +21,12 @@ module.exports = function (sequelize, DataTypes) {
         len: [1, 150]
       }
     },
+    image: {
+      type: DataTypes.STRING
+    },
+    location: {
+      type: DataTypes.STRING
+    },
     beginnerSkills: {
       type: DataTypes.STRING,
       get() {
