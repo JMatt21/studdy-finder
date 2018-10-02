@@ -1,10 +1,13 @@
 import axios from "axios";
 
 export default {
-  getTest: function () {
-    return axios.get("/api/test");
+  getUserInfo: function (id) {
+    return axios.get("/api/users/" + id);
   },
-  postTest: function () {
-    return axios.post("/api/test");
+  updateUser: function (newUserInfo, id) {
+    return axios.post("/api/users/" + id, newUserInfo);
+  },
+  newMessage: function(message) {
+    return axios.post("/api/message", message)
   }
 };
