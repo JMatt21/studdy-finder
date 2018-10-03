@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import './App.css';
 import Room from "./Room";
 import API from './utils/SocketAPI';
+import Container from "./components/container/index";
 
 class App extends Component {
 
@@ -27,17 +28,27 @@ class App extends Component {
     })
   }
 
+  // render() {
+  //   return (
+  //     <div className="App">
+  //       <p className="App-intro">
+  //         This is the timer value: {this.state.timestamp}
+  //       </p>
+  //       <input value={this.state.userId} placeholder="Set your user id" name="userId" onChange={this.handleInputChange} />
+  //       <Router>
+  //         <Route exact path="/room/:id" render={(props) =><Room {...props} userId={this.state.userId}/> }/>
+  //       </Router>
+  //     </div>
+
+
+
+// class App extends Component {
+
   render() {
     return (
-      <div className="App">
-        <p className="App-intro">
-          This is the timer value: {this.state.timestamp}
-        </p>
-        <input value={this.state.userId} placeholder="Set your user id" name="userId" onChange={this.handleInputChange} />
-        <Router>
-          <Route exact path="/room/:id" render={(props) =><Room {...props} userId={this.state.userId}/> }/>
-        </Router>
-      </div>
+
+      <Container />
+
     );
   }
 }
