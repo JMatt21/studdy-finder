@@ -34,35 +34,35 @@ router.route("/:id")
                         as: "Match"
                     }]
                 }]
-        })
-    }).then(dbUser => {
-        const { name, id, email, beginnerSkills, intermediateSkills, advancedSkills } = dbUser;
-        const matches = [];
-        const sentMessages = [];
-        const recievedMessages = [];
+        }).then(dbUser => {
+            const { name, id, email, beginnerSkills, intermediateSkills, advancedSkills } = dbUser;
+            const matches = [];
+            const sentMessages = [];
+            const recievedMessages = [];
 
-        dbUser.Matches.forEach(dbMatch => {
-            matches.push({ id: dbMatch.Match.id, name: dbMatch.Match.name });
+            dbUser.Matches.forEach(dbMatch => {
+                matches.push({ id: dbMatch.Match.id, name: dbMatch.Match.name });
 
-            if (dbMatch.Match.Messages.length > 0) {
-                dbMatch.Match.Messages.forEach(dbMessage => {
-                    recievedMessages.push({ message: dbMessage.message, id: dbMatch.Match.id });
-                });
-            }
-        });
-        dbUser.Messages.forEach(dbMessage => {
-            sentMessages.push({ message: dbMessage.message, RecipientId: dbMessage.RecipientId });
-        });
-        ret.json({
-            name: name,
-            id: id,
-            email: email,
-            beginnerSkills: beginnerSkills,
-            intermediateSkills: intermediateSkills,
-            advancedSkills: advancedSkills,
-            matches: matches,
-            sentMessages: sentMessages,
-            recievedMessages: recievedMessages
+                if (dbMatch.Match.Messages.length > 0) {
+                    dbMatch.Match.Messages.forEach(dbMessage => {
+                        recievedMessages.push({ message: dbMessage.message, id: dbMatch.Match.id });
+                    });
+                }
+            });
+            dbUser.Messages.forEach(dbMessage => {
+                sentMessages.push({ message: dbMessage.message, RecipientId: dbMessage.RecipientId });
+            });
+            ret.json({
+                name: name,
+                id: id,
+                email: email,
+                beginnerSkills: beginnerSkills,
+                intermediateSkills: intermediateSkills,
+                advancedSkills: advancedSkills,
+                matches: matches,
+                sentMessages: sentMessages,
+                recievedMessages: recievedMessages
+            })
         })
     })
     // To update user

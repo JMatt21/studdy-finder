@@ -1,34 +1,74 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import API from "./utils/API";
+import API from './utils/SocketAPI';
 
 class App extends Component {
+
   state = {
-    text: "test"
-  }
-  componentDidMount() {
-    API.getTest()
-      .then(res => {
-        this.setState({ text: res.data })
+    timestamp: 'no timestamp yet',
+    testCase: 'nothing',
+    text: '',
+    roomName: '',
+    returnText: [],
+    requests: 0
+  };
+
+  constructor(props) {
+    super(props);
+    API.subscribeToTimer((err, timestamp) => {
+      this.setState({
+        timestamp
       })
-      .catch(err => console.log(err));
-    // API.postTest()
-    //   .then(res => {
-    //     this.setState({ text: res.data })
-    //   })
-    //   .catch(err => console.log(err));
+    });
+  }
+
+  componentDidMount() {
+    API.getMessage(); // not sure why this works 
+  }
+  handleInputChange = ({ target }) => {
+    const { value, name } = target;
+    this.setState({
+      [name]: value
+    })
+  }
+
+  handleFormSubmission = event => {
+    event.preventDefault();
+    const { roomName, text } = this.state;
+    API.connectToRoom(text, roomName)
+  }
+
+  updateMessages(data) {
+    console.log(data);
+  }
+
+  joinRoom = event => {
+    event.preventDefault();
+    API.joinRoom(event.target.name);
   }
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
         <p className="App-intro">
-          {this.state.text}
+          This is the timer value: {this.state.timestamp}
         </p>
+        this is our test case: {this.state.testCase}
+        <br></br>
+        <p>number of requests: {this.state.requests}</p>
+        <form>
+          <input value={this.state.text} placeholder="message text" name="text" onChange={this.handleInputChange} />
+          <br />
+          <input value={this.state.roomName} placeholder="room name" name="roomName" onChange={this.handleInputChange} />
+          <br />
+          <button type="submit" onClick={this.handleFormSubmission}>submit</button>
+          <button onClick={this.joinRoom} name={this.state.roomName}>join {this.state.roomName}</button>
+          <br />
+          {/* {this.state.returnText.map(message => {
+            return <p>{message}</p>
+          })} */}
+
+        </form>
       </div>
     );
   }

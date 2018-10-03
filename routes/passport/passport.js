@@ -1,7 +1,7 @@
 // Requiring our models and passport as we've configured it
 const router = require("express").Router();
-var db = require("../models");
-var passport = require("../config/passport");
+var db = require("../../models");
+var passport = require("../../config/passport");
 
 
 // Using the passport.authenticate middleware with our local strategy.
@@ -51,4 +51,5 @@ router.get("/api/user_data", function (req, res) {
     }
 });
 
+module.exports = router;
 

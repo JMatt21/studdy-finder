@@ -5,6 +5,7 @@ module.exports = function (sequelize, DataTypes) {
         }
     });
     Messages.associate = function (models) {
+        Messages.belongsTo(models.Rooms, {});
         Messages.belongsTo(models.Users, {});
         Messages.belongsTo(models.Users, {
             as: "Recipient", foriegnKey: "RecipientId"
