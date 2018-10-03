@@ -8,7 +8,7 @@ module.exports = function (sequelize, DataTypes) {
         Messages.belongsTo(models.Rooms, {});
         Messages.belongsTo(models.Users, {});
         Messages.belongsTo(models.Users, {
-            as: "Recipient", foriegnKey: "RecipientId"
+            as: "Recipient", foreignKey: "RecipientId"
         });
     }
     return Messages;

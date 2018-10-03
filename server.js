@@ -37,7 +37,7 @@ io.on('connection', (client) => { //  the server is expecting some parameter(s)
     client.on('subscribeToTimer', (interval) => {
         console.log('client is subscribing to timer with interval ', interval);
         setInterval(() => { // this will emit to the client every 'interval' i.e. 1 second
-            client.emit('timer', new Date()); 
+            client.emit('timer', new Date());
         }, interval);
     });
 
@@ -46,11 +46,14 @@ io.on('connection', (client) => { //  the server is expecting some parameter(s)
         console.log(`client says ${message}`);
         client.emit('testCase', `suck a fart outta my ass in room ${client.xd}`); // it sends a message back
     });
-    
-    client.on('send message', (message, room) => {
-        // io.sockets.emit('newroom', [`${client.room} ${message}`]);
-        io.to(room).emit('returned message', [`${room} ${message}`]);
-        console.log('new message');
+
+    client.on('send message', (message, room, UserId) => {
+        db.Messages.create({ message: message, RoomId: room, UserId: UserId })
+            .then(dbMessage => {
+                io.to(room).emit('returned message', { message: dbMessage.message, UserId: dbMessage.UserId });
+                        // Whats emited here is a single object
+                console.log(`new message in room: ${dbMessage.RoomId}`);
+            })
     });
 
     client.on("disconnect", () => {
@@ -59,25 +62,37 @@ io.on('connection', (client) => { //  the server is expecting some parameter(s)
     })
 
     client.on("join room", room => {
-        console.log("user joined " + room);
-        client.join(room);
+        db.Rooms.findOne({
+            where: { id: room },
+            include: [{
+                model: db.Messages
+            }]
+        }).then(dbRoom => {
+            if (dbRoom) {
+                console.log("user joined " + dbRoom.id);
+                let ret = dbRoom.Messages.map(dbMessage => { 
+                    return { message: dbMessage.message, UserId: dbMessage.UserId }
+                })
+                client.emit('returned message', ret) // Whats emited here is an array of objects
+                client.join(room);
+            } else {
+                db.Rooms.create({ id: room })
+                    .then(dbRoom => {
+                        console.log("user created and joined " + dbRoom.id);
+                        client.join(room);
+                    })
+            }
+        });
+
+    })
+
+    client.on("leave room", room => {
+        console.log("user left " + room);
+        client.leave(room);
     })
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Start the API server
+// Start the Sequelize/Socket server
 
 db.sequelize.sync().then(function () {
     http.listen(PORT, function () {

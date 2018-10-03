@@ -13,20 +13,22 @@ export default {
         // in this case we have 2 strings
     },
 
-    connectToRoom: function (text, room) {
-        // socket.on('return message', (message) => cb(message)); // cb will get called
-        socket.emit('send message', text, room);
-        // socket.on('newroom', (message) => cb(message));
+    sendMessage: function (text, room, userId) {
+        socket.emit('send message', text, room, userId);
     },
 
-    getMessage: function () {
+    getMessage: function (cb) {
         socket.on('returned message', (text) => {
-            console.log(text)
+            cb(text);
           })
     },
 
     joinRoom: function(room) {
         socket.emit('join room', room);
+    },
+
+    leaveRoom: function(room) {
+        socket.emit('leave room', room);
     }
 
 }

@@ -83,4 +83,24 @@ router.route("/:id")
                 })
             });
     });
+// Matches with /api/users/rooms/:id
+router.route("/rooms/:id")
+    .get((req, res) => {
+        const UserId = req.params.id;
+        console.log(req.params.id);
+        db.Matches.findAll({
+            where: {
+                id: UserId
+            }
+        }).then(dbRooms => {
+            let socketRooms = dbRooms.map(room => {
+                if (room.UserId < room.MatchId) {
+                    return `${room.UserId}+${room.MatchId}`
+                } else {
+                    return `${room.MatchId}+${room.UserId}`
+                }
+            })
+            res.json(socketRooms)
+        })
+    });
 module.exports = router;
