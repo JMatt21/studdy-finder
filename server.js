@@ -1,37 +1,51 @@
-require("dotenv").config();
-const express = require("express");
-const bodyParser = require("body-parser");
-const routes = require("./routes");
-const app = express();
-var logger = require('morgan');
-var passport = require('./config/passport.js');
-var session = require("express-session");
-const PORT = process.env.PORT || 3001;
-const db = require('./models');
+var express = require("express");
+var app = express();
+var bodyParser = require("body-parser");
+var db = require("./models/index.js");
+let apiRoutes = require('./apiroutes.js');
+var server = require('http').createServer(app);
+var io = require('socket.io').listen(server);
 
-// Define middleware here
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-// Serve up static assets (usually on heroku)
-if (process.env.NODE_ENV === "production") {
-    app.use(express.static("client/build"));
-}
-// Add routes, both API and view
-app.use(routes);
 
-// Enable logger
-app.use(logger('dev'));
+app.use(apiRoutes);
 
-// Keeping Track of Users' Login Status
-// app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
-// app.use(passport.initialize());
-// app.use(passport.session());
+var PORT = process.env.PORT || 8080;
 
-// Start the API server
+app.use(express.static(__dirname + '/public'));
 
-db.sequelize.sync().then(function () {
-    app.listen(PORT, function () {
-        // Log (server-side) when our server has started
-        console.log("Sequelize Server listening on: http://localhost:" + PORT);
-    });
+
+// Socket Stuff
+io.sockets.on('connection', function (socket) {
+  connections.push(socket);
+  console.log("Connected: %s sockets connected", connections.length);
 });
+
+
+socket.on("disconnect", function (data) {
+  users.splice(users.indexOf(socket.username), 1);
+  updateUsernames();
+  connections.splice(connections.indexOf(socket, 1));
+  console.log("Disconnected %s sockets connected", connections.length);
+
+});
+
+socket.on('new user', function (data, callback) {
+  callback(true);
+  socket.username = data;
+  users.push(socket.username);
+  updateUsernames();
+});
+
+let updateUsernames = () =>{
+      io.sockets.emit('get users', users);
+};
+
+
+
+db.sequelize.sync({ force: false }).then(function () {
+    app.listen(PORT, function() {
+      console.log("Server listening on: http://localhost:" + PORT);
+    });
+  });
