@@ -52,7 +52,7 @@ router.route("/:id")
             dbUser.Messages.forEach(dbMessage => {
                 sentMessages.push({ message: dbMessage.message, RecipientId: dbMessage.RecipientId });
             });
-            ret.json({
+            res.json({
                 name: name,
                 id: id,
                 email: email,
