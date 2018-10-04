@@ -7,20 +7,20 @@ import Container from "./components/container/index";
 import { Login, Signup } from "./components/passportpages"
 
 class App extends Component {
-
-  state = {
-    userId: '',
-    timestamp: 'no timestamp yet',
-  };
-
-  constructor(props) {
-    super(props);
-    // API.subscribeToTimer((err, timestamp) => {
-    //   this.setState({
-    //     timestamp
-    //   })
-    // });
-  }
+// not sure if this needs to be here or the container
+  // state = {
+  //   userId: '',
+  //   name: '',
+  //   email: '',
+  //   skills: {
+  //     beginnerSkills: [],
+  //     intermediateSkills: [],
+  //     advancedSkills: []
+  //   },
+  //   image: '',
+  //   location: '',
+  //   rooms: []
+  // };
 
   handleInputChange = ({ target }) => {
     const { value, name } = target;
@@ -41,16 +41,12 @@ class App extends Component {
   //       </Router>
   //     </div>
 
-
-
-  // class App extends Component {
-
   render() {
     return (
       <Router>
         <div>
           <Route exact path="/" component={Signup} />
-          <Route exact path="/main" render={ props => <Container {...props} />} />
+          <Route exact path="/main" render={props => <Container {...props} />} />
         </div>
       </Router>
     );

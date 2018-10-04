@@ -9,9 +9,12 @@ class MainSearch extends React.Component {
 
     render() {
         return (
-            
-                <Input className="mainSearch" validate placeholder='Enter Subject' />
-            
+            <form>
+                <Input list="searchList" className="mainSearch" validate placeholder='Enter Subject' />
+                <datalist id="searchList">
+                    <option value="fite me irl"/>
+                </datalist>
+            </form>
         )
     }
 };

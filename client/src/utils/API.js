@@ -9,5 +9,8 @@ export default {
   },
   newMessage: function(message) {
     return axios.post("/api/message", message)
+  },
+  getRooms: function(userId) {
+    return axios.get(`/search/${userId}`)
   }
 };
