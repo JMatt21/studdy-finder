@@ -13,7 +13,7 @@ class Container extends React.Component {
     render() {
         return (
             <div>
-                <TopNavBar />
+                <TopNavBar {...this.props} />
                 <div className="grid-wrapper">
                     <div className="grid-container">
                         <div>

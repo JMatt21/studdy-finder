@@ -50,7 +50,7 @@ class App extends Component {
       <Router>
         <div>
           <Route exact path="/" component={Signup} />
-          <Route exact path="/main" component={Container} />
+          <Route exact path="/main" render={ props => <Container {...props} />} />
         </div>
       </Router>
     );

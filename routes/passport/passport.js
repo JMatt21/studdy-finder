@@ -28,7 +28,7 @@ router.post("/api/signup", function (req, res) {
     const { email, password } = req.body;
     console.log(req.body);
     db.Users.create({
-        name: 'test',
+        // name: 'test',
         email: email,
         password: password
     }).then(ret => {
