@@ -1,0 +1,77 @@
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+      let options = [];
+      $.getJSON( "suggest.json", function( data ) {
+        $.each( data, function( key, val ) {
+          options.push(key);
+        });
+      });
+      function search() {
+        window.location = "./search_engine.php?term=" + $("#search_input").val();
+      }
+
+
+      function suggest(word) {
+        $("#search_input").val(word);
+        $("#suggestion_box").html("");
+      }
+      $(document).ready( function() { 
+        $("#search_input").keyup(function() {
+          $("#suggestion_box").html("");
+          if($(this).val() == "") {
+            //no suggestion?
+            return;
+          }
+          for(let i=0;i<options.length;i++) { 
+            if( options[i].toLowerCase().includes($(this).val().toLowerCase()) ) {
+              $("#suggestion_box").append( '<div class="suggestion" onclick="suggest(' + "'" + options[i] + "'" + ');">' + options[i] + '</div>');
+            }
+          }
+        });
+      });
+    </script>
+    <style>
+      #query_box {
+        vertical-align: top;
+        border: 2px solid orange;
+      }
+      #prompt_box {
+        width: 200px;
+        border: 2px solid green;
+        display: inline-block;
+        vertical-align: top;
+      }
+      #search_box {
+        border: 2px solid red;
+        width: 200px;
+        display: inline-block;
+      }
+      #search_input {
+        width: 100%;
+      }
+      #button_box {
+        border: 2px solid cyan;
+        display: inline-block;
+        vertical-align: top;
+      }
+      #suggestion_box {
+        border: 2px solid blue;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="query_box">
+      <div id="prompt_box">Please type your query: </div>
+      <div id="search_box">
+        <input type="text" id="search_input">
+        <div id="suggestion_box">
+        </div>
+      </div>
+      <div id="button_box">
+        <button onclick="search();">Search!</button>
+      </div>
+    </div>
+  </body>
+</html>
