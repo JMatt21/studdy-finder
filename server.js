@@ -20,16 +20,18 @@ app.use(bodyParser.json());
 if (process.env.NODE_ENV === "production") {
     app.use(express.static("client/build"));
 }
-// Add routes, both API and view
-app.use(routes);
 
 // Enable logger
-app.use(logger('dev'));
+// app.use(logger('dev'));
 
 // Keeping Track of Users' Login Status
 app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
+
+
+// Add routes, both API and view
+app.use(routes);
 
 // SocketIO connections
 io.on('connection', (client) => { //  the server is expecting some parameter(s)

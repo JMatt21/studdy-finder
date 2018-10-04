@@ -4,6 +4,7 @@ import './App.css';
 import Room from "./Room";
 import API from './utils/SocketAPI';
 import Container from "./components/container/index";
+import { Login, Signup } from "./components/passportpages"
 
 class App extends Component {
 
@@ -14,11 +15,11 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-    API.subscribeToTimer((err, timestamp) => {
-      this.setState({
-        timestamp
-      })
-    });
+    // API.subscribeToTimer((err, timestamp) => {
+    //   this.setState({
+    //     timestamp
+    //   })
+    // });
   }
 
   handleInputChange = ({ target }) => {
@@ -42,13 +43,16 @@ class App extends Component {
 
 
 
-// class App extends Component {
+  // class App extends Component {
 
   render() {
     return (
-
-      <Container />
-
+      <Router>
+        <div>
+          <Route exact path="/" component={Signup} />
+          <Route exact path="/main" component={Container} />
+        </div>
+      </Router>
     );
   }
 }

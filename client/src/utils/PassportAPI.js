@@ -4,11 +4,11 @@ export default {
     getUserInfo: function () {
         return axios.get("/api/user_data");
     },
-    signUp: function () {
-        return axios.get("/api/signup");
+    signUp: function (userData) {
+        return axios.post("/api/signup", userData);
     },
-    logIn: function () {
-        return axios.get("/api/login");
+    logIn: function (userData) {
+        return axios.post("/api/login");
     },
     logOut: function () {
         return axios.get("/logout");
