@@ -7,13 +7,16 @@ import MessageCard from "../messageCard/index";
 
 class MessageBoard extends React.Component {
 
-    render() {
+    render(props) {
         return (
             <div className="messageBoardWrapper">
             <div className="spacer"></div>
                 <h5 className="messageBoardHeader ubuntu">Message Center</h5>
                 <div className="alert">3</div>
-                <MessageCard/>
+                <MessageCard
+                user={this.props.user}
+                data={this.props.data}
+                />
             </div>
         )
     }

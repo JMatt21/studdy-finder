@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import './App.css';
 import Room from "./Room";
 import API from './utils/SocketAPI';
-import Container from "./components/container/index";
+import Main from "./components/main/index";
 import { Login, Signup } from "./components/passportpages"
+
+
+
+let loggedIn = false;
 
 class App extends Component {
 // not sure if this needs to be here or the container
@@ -29,6 +33,7 @@ class App extends Component {
     })
   }
 
+<<<<<<< HEAD
   // render() {
   //   return (
   //     <div className="App">
@@ -41,12 +46,26 @@ class App extends Component {
   //       </Router>
   //     </div>
 
+=======
+>>>>>>> fdb07d69f7e0da8e44c309ed6c888276f7e6cb22
   render() {
     return (
       <Router>
         <div>
+<<<<<<< HEAD
           <Route exact path="/" component={Signup} />
           <Route exact path="/main" render={props => <Container {...props} />} />
+=======
+          <Route exact path="/" render={() => (           
+              loggedIn ? <Redirect to="/Main" /> : <Redirect to="/SignUp" />
+          )} />
+          <Route exact path="/SignUp" component={Signup} />
+          <Route exact path="/Main" render={props => <Main {...props} />} />
+          <Route exact path="/Settings" component={Main} />
+          <Route exact path="/UserProfile/:username" component={Main} />
+          <Route exact path="/Messages/:userIdOne/:userIdTwo" component={Main} />
+
+>>>>>>> fdb07d69f7e0da8e44c309ed6c888276f7e6cb22
         </div>
       </Router>
     );

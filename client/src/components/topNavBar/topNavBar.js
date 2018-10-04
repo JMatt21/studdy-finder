@@ -1,14 +1,18 @@
 import React from "react";
 import "./topNavBar.css";
 import { Navbar, NavItem } from 'react-materialize';
-import SettingsIcon from "../settingsIcon/index";
+import SettingsIcon from "../icons/settingsIcon/index";
+import LogoutIcon from "../icons/logoutIcon/index";
+import MessageIconTopNav from "../icons/messageIconTopNav/index";
 //passport api to logout
 import passport from "../../utils/PassportAPI"
 import { Redirect } from 'react-router-dom'
 
+let userName = "Chance";
+
 class TopNavBar extends React.Component {
     state = {
-        email: ''
+        email: `  Welcome, ${userName}!`
     }
     logout = () => {
         passport.logOut()
@@ -26,18 +30,13 @@ class TopNavBar extends React.Component {
     }
     render() {
         return (
-            <Navbar brand={[<h4 className="righteous">
+            <Navbar brand={[<h4 href="/" className="righteous">
                 StudyDuos
-                {this.state.email}
-            {/* DuoStudy */}
-                {/* StudySearch */}
-                {/* StudyBacon */}
             </h4>]} right>
-                <NavItem href="/login"><img className="navMessageIcon" src={require("./chaticon.png")} /></NavItem>
-                <NavItem href="/settings"><SettingsIcon /></NavItem>
-                <NavItem onClick={this.logout}><img className="logoutIcon" src={require("./exit.png")} /></NavItem>
-                {/* <NavItem onClick={() => console.log('test click')}>Getting started</NavItem>
-                <NavItem href='components.html'>Components</NavItem> */}
+                {/* <NavItem>{this.state.email}</NavItem> */}
+                <NavItem href="/messageDropdown"> <MessageIconTopNav/> </NavItem>
+                <NavItem href="/settings"> <SettingsIcon/> </NavItem>
+                <NavItem onClick={this.logout}> <LogoutIcon/> </NavItem>
             </Navbar>
         )
     }

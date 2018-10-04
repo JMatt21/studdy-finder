@@ -1,11 +1,11 @@
 .settingsIconWrapper{
-    height: 50px;
+    height: 63px;
     width: 50px;
 }
 
 .settingsIcon{
     height: 50px;
     width: 50px;
-    padding: 5px;
+    padding: 10px;
     margin-top: 10px;
 }

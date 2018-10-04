@@ -1,60 +1,40 @@
 import React from "react";
 import "./searchResults.css";
-import CarouselTable from "../carouselTable/index";
+import { Card, CardTitle, Table } from "react-materialize";
 
 
 
 
 class SearchResults extends React.Component {
 
-    render() {
-        return (
-            <div>
-            <div className="resultsWrapper">
-                <div>
-                    <h5 className="resultsName righteous">UserName A.</h5>
-                    <img className="resultsImage" src="https://cdn.pixabay.com/photo/2016/04/01/10/11/avatar-1299805_960_720.png" />
-                    <button className="resultsButton btn">Message</button>
-                </div>
-                <div className="resultsSection">
-                    <CarouselTable className="resultsTable" />
-                    <CarouselTable className="resultsTable" />
-                </div>
-            </div>
+    render(props) {
 
+        const displaySearchResults = this.props.searchData.map(function (element, index) {
+            return (
+                <div key={index} className="searchResult">
+                    <Card horizontal header={<img className="searchResultImage" src={element.image}/>} actions={[<a className="ubuntu btn resultButton" href='/'>Message</a>]}>
+                        <p className="nearby">Distance: {element.distance} miles</p>
+                        <h5 className="righteous">{element.firstName} {element.lastName}</h5>
+                        <Table>
+                        <tbody>
+                            {element.subjects.map((subject, i) => {
+                                return (
+                                    <tr>
+                                        <td className="carouselTd">{subject}</td>
+                                    </tr>
+                                )
+
+                            })}
+                        </tbody>
+                        </Table>
+                    </Card>
+                </div>
+            )
+        });
+
+        return (
             <div className="resultsWrapper">
-                <div>
-                    <h5 className="resultsName righteous">UserName B.</h5>
-                    <img className="resultsImage" src="https://cdn.pixabay.com/photo/2016/04/01/10/11/avatar-1299805_960_720.png" />
-                    <button className="resultsButton btn">Message</button>
-                </div>
-                <div className="resultsSection">
-                    <CarouselTable className="resultsTable" />
-                    <CarouselTable className="resultsTable" />
-                </div>
-            </div>
-            <div className="resultsWrapper">
-                <div>
-                    <h5 className="resultsName righteous">UserName C.</h5>
-                    <img className="resultsImage" src="https://cdn.pixabay.com/photo/2016/04/01/10/11/avatar-1299805_960_720.png" />
-                    <button className="resultsButton btn">Message</button>
-                </div>
-                <div className="resultsSection">
-                    <CarouselTable className="resultsTable" />
-                    <CarouselTable className="resultsTable" />
-                </div>
-            </div>
-            <div className="resultsWrapper">
-                <div>
-                    <h5 className="resultsName righteous">UserName D.</h5>
-                    <img className="resultsImage" src="https://cdn.pixabay.com/photo/2016/04/01/10/11/avatar-1299805_960_720.png" />
-                    <button className="resultsButton btn">Message</button>
-                </div>
-                <div className="resultsSection">
-                    <CarouselTable className="resultsTable" />
-                    <CarouselTable className="resultsTable" />
-                </div>
-            </div>
+                {displaySearchResults}
             </div>
         )
     }

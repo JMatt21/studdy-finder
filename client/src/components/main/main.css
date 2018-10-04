@@ -11,19 +11,19 @@
   max-width: 1440px;
   grid-template-columns: .1fr 4fr 1.09fr;
   grid-template-rows: 1fr 1.1fr;
-  /* grid-gap: 150px 150px; */
+
 }
 .sectionWrapper{
     height: 100%;
     width: 100%;
-    /* background-color: #CDCDCD; */
+
 }
 
 .sideWrapper{
     height: 100%;
     width: 100%;
     text-align: center;
-    /* background-color: #000000b0; */
+
 }
 
 @media screen and (max-width: 1261px) {
@@ -36,7 +36,7 @@
         max-width: 1440px;
         grid-template-columns: .1fr 3fr 1.5fr;
         grid-template-rows: 1fr 1.1fr;
-        /* grid-gap: 150px 150px; */
+
       }
 }
 
@@ -49,7 +49,7 @@
         width: 99vw;
         grid-template-columns: .01fr 1fr .02fr;
         grid-template-rows: 1fr 1.1fr;
-        /* grid-gap: 150px 150px; */
+  
       }
       .sideWrapper{
         display: none;

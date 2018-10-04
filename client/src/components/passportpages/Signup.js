@@ -64,7 +64,7 @@ export class Signup extends React.Component {
                                 <button type="submit" onClick={this.handleFormSubmission} className="btn btn-default">Sign Up</button>
                             </form>
                             <br />
-                            <p>Or log in <a href="/login">here</a></p>
+                            <p>Or log in <a href="/main">here</a></p>
                         </div>
                     </div>
                 </div>

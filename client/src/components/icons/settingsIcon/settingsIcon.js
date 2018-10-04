@@ -9,7 +9,7 @@ class SettingsIcon extends React.Component {
     render() {
         return (
             <div className="settingsIconWrapper">
-            <img className="settingsIcon" src={icon}/>
+            <img className="settingsIcon" src={icon} alt="img"/>
             </div>
         )
     }
