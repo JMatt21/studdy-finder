@@ -4,7 +4,8 @@ import './App.css';
 import Room from "./Room";
 import API from './utils/SocketAPI';
 import Main from "./components/main/index";
-import { Login, Signup } from "./components/passportpages"
+import { Login, Signup } from "./components/passportpages";
+import Messages from "./components/messagingPage";
 
 
 
@@ -44,7 +45,7 @@ class App extends Component {
           <Route exact path="/Main" render={props => <Main {...props} />} />
           <Route exact path="/Settings" component={Main} />
           <Route exact path="/UserProfile/:username" component={Main} />
-          <Route exact path="/Messages/:userIdOne/:userIdTwo" component={Main} />
+          <Route exact path="/Messages" component={Messages} />
 
         </div>
       </Router>

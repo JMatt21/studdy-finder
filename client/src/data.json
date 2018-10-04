@@ -1,21 +1,4 @@
-import React from "react";
-import "./main.css";
-import TopNavBar from "../topNavBar/index";
-import MainSearch from "../mainSearch/index";
-import MainCarousel from "../carousel/index";
-import MessageBoard from "../messageBoard/index";
-
-const testUser = {
-    firstName: "Chance",
-    lastName: "Musselman",
-    subjects: ["Javascript", "React.js", "Angular.js", "MongoDB", "mySQL", "Node.js", "CSS3", "HTML"],
-    distanceLimit: 15,
-    distance: 0,
-    image: "",
-    message: true
-}
-
-let data = [
+[
     {
     "firstName": "Geoff",
     "lastName": "Hoffman",
@@ -79,61 +62,5 @@ let data = [
     "image": "https://images.pexels.com/photos/936593/pexels-photo-936593.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
     "message": true
 }
-];
+]
 
-class Main extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            user: testUser,
-            data: data,
-            carouselArray: data.filter(function (element, index) {
-                if (element.distance <= testUser.distanceLimit) {
-                    return element;
-                }
-            })
-
-        };
-    }
-
-
-    render() {
-        return (
-            <div>
-
-                <TopNavBar
-                    {...this.props}
-                />
-                <div className="grid-wrapper">
-                    <div className="grid-container">
-                        <div>
-                            <div className="sideWrapper">
-                            </div>
-                        </div>
-                        <div>
-                            <div className="sectionWrapper">
-                                <MainCarousel
-                                    carouselArray={this.state.carouselArray}
-                                />
-                                <MainSearch
-                                    user={this.state.user}
-                                    data={this.state.data}
-                                />
-                            </div>
-                        </div>
-                        <div>
-                            <div className="sideWrapper">
-                                <MessageBoard/>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        )
-    }
-};
-
-export default Main;
-
-// sideWrapper
