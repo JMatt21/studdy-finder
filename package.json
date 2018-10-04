@@ -1,25 +1,47 @@
 {
-  "name": "thegoods",
-  "version": "0.1.0",
-  "private": true,
+  "name": "studdy-finder",
+  "version": "8.11.3",
+  "description": "",
+  "main": "server.js",
   "dependencies": {
-    "react": "^16.5.2",
-    "react-dom": "^16.5.2",
-    "react-scripts": "2.0.4"
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3",
+    "express-session": "^1.15.6",
+    "if-env": "^1.0.4",
+    "morgan": "^1.9.1",
+    "mysql2": "^1.6.1",
+    "passport": "^0.4.0",
+    "passport-google-oauth20": "^1.0.0",
+    "passport-local": "^1.0.0",
+    "socket.io": "^2.1.1",
+    "react-materialize": "^2.4.6",
+    "sequelize": "^4.39.0"
+  },
+  "devDependencies": {
+    "concurrently": "^3.5.0",
+    "nodemon": "^1.11.0"
+  },
+  "engines": {
+    "yarn": "1.9.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "node server.js",
+    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+    "client": "cd client && npm run start",
+    "install": "cd client && yarn install",
+    "build": "cd client && npm run build",
+    "heroku-postbuild": "npm run build"
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JMatt21/studdy-finder.git"
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JMatt21/studdy-finder/issues"
+  },
+  "homepage": "https://github.com/JMatt21/studdy-finder#readme"
 }
