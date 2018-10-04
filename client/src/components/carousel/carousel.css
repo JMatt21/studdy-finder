@@ -12,19 +12,18 @@
     background-color: #000000b0;
     color:white;
     height: 100%;
+    overflow: hidden;
 }
 .card-image{
-    height: 250px;
+    margin: auto 0;
     padding: 10px;
+    /* background: black; */
 }
 .card-content{
     height: 10px;
     overflow-y: scroll;
 }
 
-img{
-    height: 100%;
-}
 
 td{
     font-family: 'Ubuntu', sans-serif;
@@ -33,7 +32,7 @@ td{
 @media screen and (max-width: 601px) {
     /* SMALL */
     .carousel-item {
-        width: 300px !important;
+        width: 350px !important;
         /* left: 49px !important; */
     }
 }

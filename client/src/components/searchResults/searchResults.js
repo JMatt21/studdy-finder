@@ -13,7 +13,7 @@ class SearchResults extends React.Component {
             <div className="resultsWrapper">
                 <div>
                     <h5 className="resultsName righteous">UserName A.</h5>
-                    <img className="resultsImage" src="https://cdn.pixabay.com/photo/2016/04/01/10/11/avatar-1299805_960_720.png" />
+                    <img className="resultsImage" src="https://cdn.pixabay.com/photo/2016/04/01/10/11/avatar-1299805_960_720.png" alt="img"/>
                     <button className="resultsButton btn">Message</button>
                 </div>
                 <div className="resultsSection">
@@ -25,7 +25,7 @@ class SearchResults extends React.Component {
             <div className="resultsWrapper">
                 <div>
                     <h5 className="resultsName righteous">UserName B.</h5>
-                    <img className="resultsImage" src="https://cdn.pixabay.com/photo/2016/04/01/10/11/avatar-1299805_960_720.png" />
+                    <img className="resultsImage" src="https://cdn.pixabay.com/photo/2016/04/01/10/11/avatar-1299805_960_720.png" alt="img"/>
                     <button className="resultsButton btn">Message</button>
                 </div>
                 <div className="resultsSection">
@@ -36,7 +36,7 @@ class SearchResults extends React.Component {
             <div className="resultsWrapper">
                 <div>
                     <h5 className="resultsName righteous">UserName C.</h5>
-                    <img className="resultsImage" src="https://cdn.pixabay.com/photo/2016/04/01/10/11/avatar-1299805_960_720.png" />
+                    <img className="resultsImage" src="https://cdn.pixabay.com/photo/2016/04/01/10/11/avatar-1299805_960_720.png" alt="img"/>
                     <button className="resultsButton btn">Message</button>
                 </div>
                 <div className="resultsSection">
@@ -47,7 +47,7 @@ class SearchResults extends React.Component {
             <div className="resultsWrapper">
                 <div>
                     <h5 className="resultsName righteous">UserName D.</h5>
-                    <img className="resultsImage" src="https://cdn.pixabay.com/photo/2016/04/01/10/11/avatar-1299805_960_720.png" />
+                    <img className="resultsImage" src="https://cdn.pixabay.com/photo/2016/04/01/10/11/avatar-1299805_960_720.png" alt="img"/>
                     <button className="resultsButton btn">Message</button>
                 </div>
                 <div className="resultsSection">

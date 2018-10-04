@@ -17,11 +17,9 @@ class TopNavBar extends React.Component {
             {/* StudySearch */}
             {/* StudyBacon */}
             </h4>]} right>
-            <NavItem href="/login"><img className="navMessageIcon" src={require("./chaticon.png")}/></NavItem>
+            <NavItem href="/login"><img className="navMessageIcon" src={require("./chaticon.png")} alt="img"/></NavItem>
             <NavItem href="/settings"><SettingsIcon/></NavItem>
-                <NavItem href="/login"><img className="logoutIcon" src={require("./exit.png")}/></NavItem>
-                {/* <NavItem onClick={() => console.log('test click')}>Getting started</NavItem>
-                <NavItem href='components.html'>Components</NavItem> */}
+                <NavItem href="/login"><img className="logoutIcon" src={require("./exit.png")} alt="img"/></NavItem>
             </Navbar>
         )
     }

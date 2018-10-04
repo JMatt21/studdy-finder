@@ -1,6 +1,6 @@
 import React from "react";
 import "./mainSearch.css";
-import { Row, Input } from 'react-materialize';
+import { Input } from 'react-materialize';
 
 
 
