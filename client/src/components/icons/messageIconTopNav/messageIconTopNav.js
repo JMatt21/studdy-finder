@@ -16,5 +16,3 @@ class MessageIconTopNav extends React.Component {
 };
 
 export default MessageIconTopNav;
-
-// sideWrapper

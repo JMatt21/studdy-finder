@@ -41,10 +41,10 @@ class App extends Component {
               loggedIn ? <Redirect to="/Main" /> : <Redirect to="/SignUp" />
           )} />
           <Route exact path="/SignUp" component={Signup} />
-          <Route exact path="/main" render={props => <Main {...props} />} />
-          <Route exact path="/settings" component={Main} />
-          <Route exact path="/profile/:username" component={Main} />
-          <Route exact path="/messages/:userIdOne/:userIdTwo" component={Main} />
+          <Route exact path="/Main" render={props => <Main {...props} />} />
+          <Route exact path="/Settings" component={Main} />
+          <Route exact path="/UserProfile/:username" component={Main} />
+          <Route exact path="/Messages/:userIdOne/:userIdTwo" component={Main} />
 
         </div>
       </Router>

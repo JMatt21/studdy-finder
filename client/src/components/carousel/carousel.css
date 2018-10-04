@@ -8,6 +8,9 @@
     top: -10px !important;
 }
 
+.nearby{
+    color: greenyellow !important;
+}
 .card{
     background-color: #000000b0;
     color:white;
@@ -24,15 +27,35 @@
     overflow-y: scroll;
 }
 
+tr{
+    border-bottom: 1px solid rgba(0, 128, 128, 0.5);
+}
 
 td{
     font-family: 'Ubuntu', sans-serif;
 }
 
+.carouselTd{
+    text-align: center;
+    height: 50px;
+    padding: 0px;
+    font-size: 20px;
+}
+
+.carouselImage {
+    height: 100%;
+    width: 175px;
+    padding: 5px;
+}
+
+/* .matchLevelIcon{
+    height: 25px;
+    width: 25px !important;
+} */
+
 @media screen and (max-width: 601px) {
     /* SMALL */
     .carousel-item {
         width: 350px !important;
-        /* left: 49px !important; */
     }
 }
