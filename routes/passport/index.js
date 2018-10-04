@@ -1,7 +1,7 @@
 const router = require("express").Router();
-const usersRoute = require("./users.js");
+const passportRoutes = require("./passport.js");
 
 // Routes
-router.use("/users", usersRoute);
+router.use(passportRoutes);
 
 module.exports = router;

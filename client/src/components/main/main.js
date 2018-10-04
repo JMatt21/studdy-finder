@@ -1,5 +1,5 @@
 import React from "react";
-import "./container.css";
+import "./main.css";
 import TopNavBar from "../topNavBar/index";
 import MainSearch from "../mainSearch/index";
 import MainCarousel from "../carousel/index";
@@ -52,21 +52,28 @@ const data = [
     }
 ]
 
+class Main extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            user: testUser,
+            data: data
 
-class Container extends React.Component {
-        constructor(props) {
-            super(props);
-            this.state = {
-                user: testUser, 
-                data: data
-                 
-            };
-          }
+        };
+
+        this.setState({
+            user: "test1",
+            data: "test2"
+          })
+    }
+
 
     render() {
         return (
             <div>
+
                 <TopNavBar
+                    {...this.props}
                     user={this.state.user}
                     data={this.state.data}
                 />
@@ -79,25 +86,25 @@ class Container extends React.Component {
                         <div>
                             <div className="sectionWrapper">
                                 <MainCarousel
-                                    user={this.state.user} 
+                                    user={this.state.user}
                                     data={this.state.data}
                                 />
-                                <MainSearch 
-                                user={this.state.user}
-                                data={this.state.data}
+                                <MainSearch
+                                    user={this.state.user}
+                                    data={this.state.data}
                                 />
                                 <SearchResults
-                                user={this.state.user}
-                                data={this.state.data}
+                                    user={this.state.user}
+                                    data={this.state.data}
                                 />
-                                
+
                             </div>
                         </div>
                         <div>
                             <div className="sideWrapper">
                                 <MessageBoard
-                                user={this.state.user}
-                                data={this.state.data}
+                                    user={this.state.user}
+                                    data={this.state.data}
                                 />
                             </div>
                         </div>
@@ -109,6 +116,6 @@ class Container extends React.Component {
     }
 };
 
-export default Container;
+export default Main;
 
 // sideWrapper

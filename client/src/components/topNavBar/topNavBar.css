@@ -2,28 +2,11 @@ nav{
     background: #000000b0;
 }
 .brand-logo{
-    left: 1% !important;
+    left: 55px !important;
 }
 
 .right{
     height: 100%;
-}
-
-.logoutIcon{
-    height: 50px;
-    width: 50px;
-    margin-top: 10px;
-    padding: 5px;
-}
-.navMessageIcon{
-    display: none;
-    /* visibility: hidden; */
-    height: 50px;
-    width: 50px;
-    margin-top: 10px;
-    padding: 5px;
-    /* background: white; */
-    border-radius: 15px;
 }
 
 .hide-on-med-and-down {
@@ -36,21 +19,13 @@ nav{
     display: none;
   }
 
-  @media screen and (max-width: 901px) {
-
-    .navMessageIcon{
-        display: inline-block;
-        visibility: visible;
-    }
-
-}
-
 
 @media only screen and (max-width: 992px) {
 nav,
 .brand-logo {
     transform: none !important;
     height: 63px !important;
+    left: 1% !important;
 }
 
 }
