@@ -1,43 +1,25 @@
 {
-  "name": "project3test",
-  "version": "1.0.0",
-  "description": "",
-<<<<<<< HEAD
-  "main": "apiroutes.js",
-=======
-  "main": "server.js",
+  "name": "thegoods",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
-    "dotenv": "^6.0.0",
-    "express": "^4.16.3",
-    "express-session": "^1.15.6",
-    "if-env": "^1.0.4",
-    "morgan": "^1.9.1",
-    "mysql2": "^1.6.1",
-    "passport": "^0.4.0",
-    "passport-google-oauth20": "^1.0.0",
-    "passport-local": "^1.0.0",
-    "react-materialize": "^2.4.6",
-    "sequelize": "^4.39.0"
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
+    "react-scripts": "2.0.4"
   },
-  "devDependencies": {
-    "concurrently": "^3.5.0",
-    "nodemon": "^1.11.0"
-  },
->>>>>>> 5d93c7d1fcdc03b93b771d139d28f65e5b5b58ac
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "body-parser": "^1.18.3",
-    "express": "^4.16.3",
-    "mysql2": "^1.6.1",
-    "path": "^0.12.7",
-    "request": "^2.88.0",
-    "require": "^2.4.20",
-    "sequelize": "^4.39.0",
-    "socket.io": "^2.1.1"
-  }
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
