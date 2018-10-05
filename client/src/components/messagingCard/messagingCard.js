@@ -14,15 +14,12 @@ class MessagesCard extends React.Component {
 
                     <div className="bubble">
                         <form id="messaging-form">
-                        <div className="input-field">
-                            <input type="text" value="Hunter" type="text">
-                            
-                            </input>
-
-                        </div>
+                            <div className="input-field">
+                                <input type="text" class="materialize-textarea" placeholder="Message"></input>
+                            </div>
                         </form>
                     </div>
-                    <input type="submit" class="btn btn-primary" value="Send" />
+                    <button className="circleButton">Send</button>
 
                 </div>
             </div>
