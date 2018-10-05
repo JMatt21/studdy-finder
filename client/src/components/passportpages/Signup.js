@@ -1,5 +1,5 @@
 import React from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import API from "../../utils/PassportAPI";
 
 export class Signup extends React.Component {
@@ -64,7 +64,7 @@ export class Signup extends React.Component {
                                 <button type="submit" onClick={this.handleFormSubmission} className="btn btn-default">Sign Up</button>
                             </form>
                             <br />
-                            <p>Or log in <a href="/main">here</a></p>
+                            <Link to="/login">or log in here c:</Link>
                         </div>
                     </div>
                 </div>

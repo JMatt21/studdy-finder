@@ -27,6 +27,13 @@ export default {
         socket.emit('join room', room);
     },
 
+    massJoinRoom: function(room) {
+        room.forEach(thisRoom => {
+            socket.emit('join room', thisRoom);
+            // console.log('Room',thisRoom)
+        });
+    },
+
     leaveRoom: function(room) {
         socket.emit('leave room', room);
     }

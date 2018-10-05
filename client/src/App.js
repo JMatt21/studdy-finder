@@ -43,6 +43,7 @@ class App extends Component {
               loggedIn ? <Redirect to="/Main" /> : <Redirect to="/SignUp" />
           )} />
           <Route exact path="/SignUp" component={Signup} />
+          <Route exact path="/login" component={Login} />
           <Route exact path="/Main" render={props => <Main {...props} />} />
           <Route exact path="/Settings" component={Main} />
           <Route exact path="/UserProfile/:username" component={Main} />

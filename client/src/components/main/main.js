@@ -5,8 +5,10 @@ import MainSearch from "../mainSearch/index";
 import MainCarousel from "../carousel/index";
 import MessageBoard from "../messageBoard/index";
 // apis
-import API from "../../utils/API"
-import passport from "../../utils/PassportAPI"
+import API from "../../utils/API";
+import passport from "../../utils/PassportAPI";
+import socket from "../../utils/SocketAPI";
+
 const testUser = {
     firstName: "Chance",
     lastName: "Musselman",
@@ -92,19 +94,18 @@ class Main extends React.Component {
     componentDidMount() {
         passport.getUserInfo()
             .then(({ data }) => {
-                console.log("Current State:");
-                this.setState({
-                    user: data
-                })
-                this.getUserRooms();
-            })
+                console.log("SETTING USER DATA", data)
+                this.setState({user: data});
+                this.getUserRooms(this.state.user.id);
+            }).catch(err => console.log(err));
     }
 
-    getUserRooms() {
-        API.getRooms(this.state.userId)
+    getUserRooms(id) {
+        API.getRooms(id)
             .then((data) => {
-                this.setState({ rooms: data.rooms })
-                console.log(this.state);
+                console.log(`ROOMS: ${data.data}`);
+                this.setState({ rooms: data.data })
+                socket.massJoinRoom(this.state.rooms);
             })
             .catch(err => console.log(err));
     }
@@ -115,7 +116,7 @@ class Main extends React.Component {
         const search = event.target.search.value;
         API.searchForUsers(search)
             .then(data => {
-                this.setState({ data: data.data}) 
+                this.setState({ data: data.data })
                 // console.log(data.data)
             })
             .catch(err => console.log(err));
@@ -136,7 +137,6 @@ class Main extends React.Component {
 
 
     render() {
-        console.log(this.state);
         return (
             <div>
                 <TopNavBar

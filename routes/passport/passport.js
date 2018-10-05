@@ -34,7 +34,7 @@ router.post("/api/signup", function (req, res) {
     }).then(ret => {
         res.redirect(307, "/api/login");     
     }).catch(function (err) {
-        res.json(err);
+        res.json(403, err);
     });
 });
 

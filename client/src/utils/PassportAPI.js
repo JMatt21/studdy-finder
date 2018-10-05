@@ -8,7 +8,7 @@ export default {
         return axios.post("/api/signup", userData);
     },
     logIn: function (userData) {
-        return axios.post("/api/login");
+        return axios.post("/api/login", userData);
     },
     logOut: function () {
         return axios.get("/logout");
