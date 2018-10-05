@@ -33,29 +33,12 @@ class App extends Component {
     })
   }
 
-<<<<<<< HEAD
-  // render() {
-  //   return (
-  //     <div className="App">
-  //       <p className="App-intro">
-  //         This is the timer value: {this.state.timestamp}
-  //       </p>
-  //       <input value={this.state.userId} placeholder="Set your user id" name="userId" onChange={this.handleInputChange} />
-  //       <Router>
-  //         <Route exact path="/room/:id" render={(props) =><Room {...props} userId={this.state.userId}/> }/>
-  //       </Router>
-  //     </div>
-
-=======
->>>>>>> fdb07d69f7e0da8e44c309ed6c888276f7e6cb22
   render() {
     return (
       <Router>
         <div>
-<<<<<<< HEAD
-          <Route exact path="/" component={Signup} />
-          <Route exact path="/main" render={props => <Container {...props} />} />
-=======
+          {/* <Route exact path="/" component={Signup} />
+          <Route exact path="/main" render={props => <Container {...props} />} /> */}
           <Route exact path="/" render={() => (           
               loggedIn ? <Redirect to="/Main" /> : <Redirect to="/SignUp" />
           )} />
@@ -65,7 +48,6 @@ class App extends Component {
           <Route exact path="/UserProfile/:username" component={Main} />
           <Route exact path="/Messages/:userIdOne/:userIdTwo" component={Main} />
 
->>>>>>> fdb07d69f7e0da8e44c309ed6c888276f7e6cb22
         </div>
       </Router>
     );

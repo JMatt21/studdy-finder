@@ -7,23 +7,32 @@ import SearchResults from "../searchResults/index";
 
 class MainSearch extends React.Component {
 
+    state = {
+        search: ''
+    }
+
+    handleInputChange = event => {
+        const { name, value } = event.target;
+        this.setState({
+            [name]: value
+        });
+    };
+    
     render() {
         return (
-<<<<<<< HEAD
-            <form>
-                <Input list="searchList" className="mainSearch" validate placeholder='Enter Subject' />
-                <datalist id="searchList">
-                    <option value="fite me irl"/>
-                </datalist>
-            </form>
-=======
             <div>
-                <Input className="mainSearch" validate placeholder='Enter Subject' />
+                <form onSubmit={this.props.onSubmit}>
+                    <Input onChange={this.handleInputChange}
+                    value={this.state.search} 
+                    name="search" 
+                    className="mainSearch" 
+                    validate placeholder='Enter Subject' />
+                </form>
                 <SearchResults searchData={this.props.data} />
             </div>
->>>>>>> fdb07d69f7e0da8e44c309ed6c888276f7e6cb22
         )
     }
 };
+// onSubmit={this.props.onSubmit}
 
 export default MainSearch;

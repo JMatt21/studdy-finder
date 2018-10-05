@@ -5,7 +5,6 @@ const op = seqeulize.Op;
 // Matches with /search/:tags
 router.route("/:tags")
     .get(function (req, res) {
-        console.log('getter tester')
         const searchTags = req.params.tags;
         db.Users.findAll({
             where: {

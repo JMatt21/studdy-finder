@@ -4,7 +4,9 @@ import TopNavBar from "../topNavBar/index";
 import MainSearch from "../mainSearch/index";
 import MainCarousel from "../carousel/index";
 import MessageBoard from "../messageBoard/index";
-
+// apis
+import API from "../../utils/API"
+import passport from "../../utils/PassportAPI"
 const testUser = {
     firstName: "Chance",
     lastName: "Musselman",
@@ -14,7 +16,6 @@ const testUser = {
     image: "",
     message: true
 }
-
 const data = [
     {
         firstName: "Geoff",
@@ -82,26 +83,62 @@ const data = [
 ]
 
 class Main extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            user: testUser,
-            data: data,
-            carouselArray: data.filter(function (element, index) {
-                if (element.distance <= testUser.distanceLimit) {
-                    return element;
-                }
+    state = {
+        user: {},
+        rooms: [],
+        data: []
+    };
+
+    componentDidMount() {
+        passport.getUserInfo()
+            .then(({ data }) => {
+                console.log("Current State:");
+                this.setState({
+                    user: data
+                })
+                this.getUserRooms();
             })
-
-        };
-
     }
+
+    getUserRooms() {
+        API.getRooms(this.state.userId)
+            .then((data) => {
+                this.setState({ rooms: data.rooms })
+                console.log(this.state);
+            })
+            .catch(err => console.log(err));
+    }
+
+    searchForUsers = event => {
+        event.preventDefault();
+        // console.log(event.target.search.value);
+        const search = event.target.search.value;
+        API.searchForUsers(search)
+            .then(data => {
+                this.setState({ data: data.data}) 
+                // console.log(data.data)
+            })
+            .catch(err => console.log(err));
+    }
+
+    // constructor(props) {
+    //     super(props);
+    //     this.state = {
+    //         user: testUser,
+    //         data: data,
+    //         carouselArray: data.filter(function (element, index) {
+    //             if (element.distance <= testUser.distanceLimit) {
+    //                 return element;
+    //             }
+    //         })
+    //     };
+    // }
 
 
     render() {
+        console.log(this.state);
         return (
             <div>
-
                 <TopNavBar
                     {...this.props}
                 />
@@ -113,10 +150,11 @@ class Main extends React.Component {
                         </div>
                         <div>
                             <div className="sectionWrapper">
-                                <MainCarousel
+                                {/* <MainCarousel
                                     carouselArray={this.state.carouselArray}
-                                />
+                                /> */}
                                 <MainSearch
+                                    onSubmit={this.searchForUsers}
                                     user={this.state.user}
                                     data={this.state.data}
                                 />

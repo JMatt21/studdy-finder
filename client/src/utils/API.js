@@ -11,6 +11,9 @@ export default {
     return axios.post("/api/message", message)
   },
   getRooms: function(userId) {
-    return axios.get(`/search/${userId}`)
+    return axios.get(`/api/users/rooms/${userId}`)
+  },
+  searchForUsers: function(search) {
+    return axios.get(`/search/${search}`)
   }
 };
