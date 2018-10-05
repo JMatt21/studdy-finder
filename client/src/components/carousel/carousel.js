@@ -14,11 +14,11 @@ class MainCarousel extends React.Component {
             return (
                 <div key="index">
                     <Card horizontal header={<img className="carouselImage" src={element.image} ></img>} actions={[<a className="ubuntu btn" href='/'>Message</a>]}>
-                        <p className="nearby">Nearby: {element.distance} miles</p>
-                        <h5 className="righteous">{element.firstName} {element.lastName}</h5>
+                        <p className="nearby">Nearby: {element.distance || "undefined"} miles</p>
+                        <h5 className="righteous">{element.name}</h5>
                         <Table>
                         <tbody>
-                            {element.subjects.map((subject, i) => {
+                            {element.beginnerSkills.map((subject, i) => {
                                 return (
                                     <tr key={i}>
                                         <td className="carouselTd">{subject}</td>

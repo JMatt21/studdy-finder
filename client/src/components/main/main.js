@@ -151,7 +151,7 @@ class Main extends React.Component {
                         <div>
                             <div className="sectionWrapper">
                                 {/* <MainCarousel
-                                    carouselArray={this.state.carouselArray}
+                                    carouselArray={this.state.data}
                                 /> */}
                                 <MainSearch
                                     onSubmit={this.searchForUsers}
