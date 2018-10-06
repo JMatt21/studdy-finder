@@ -5,7 +5,7 @@ import Room from "./Room";
 import API from './utils/SocketAPI';
 import Main from "./components/main/index";
 import { Login, Signup } from "./components/passportpages"
-import MessagingWrapper from './components/messagingWrapper/messagingWrapper';
+import messagingWrapper from './components/messagingWrapper';
 
 
 
@@ -34,6 +34,8 @@ class App extends Component {
     })
   }
 
+ 
+
   render() {
     return (
       <Router>
@@ -42,10 +44,14 @@ class App extends Component {
               loggedIn ? <Redirect to="/Main" /> : <Redirect to="/SignUp" />
           )} />
           <Route exact path="/SignUp" component={Signup} />
+
           <Route exact path="/Main" render={props => <Main {...props} />} />
           <Route exact path="/Settings" component={Main} />
+
           <Route exact path="/UserProfile/:username" component={Main} />
-          <Route exact path="/Messages" component={MessagingWrapper} />
+          
+          <Route exact path="/Messages"component={messagingWrapper} />
+
 
         </div>
       </Router>

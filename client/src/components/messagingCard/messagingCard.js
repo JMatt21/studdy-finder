@@ -5,6 +5,24 @@ import "./messagingCard.css";
 
 
 class MessagesCard extends React.Component {
+    state = {
+        userId: '',
+        timestamp: 'no timestamp yet',
+    };
+    
+    
+    handleInputChange = ({ target }) => {
+        const { value, name } = target;
+        this.setState({
+            [name]: value
+        })
+    }
+    
+    mSending = () => {
+    console.log("Bob Ross");
+    }
+
+
     render() {
         return (
             <div className="messsaging-wrapper" >
@@ -19,12 +37,15 @@ class MessagesCard extends React.Component {
                             </div>
                         </form>
                     </div>
-                    <button className="circleButton">Send</button>
-
+                    <button className="circleButton" onClick={this.mSending}>Send</button>
                 </div>
             </div>
         );
-    };
+
+    }
+
+
 }
+
 
 export default MessagesCard;

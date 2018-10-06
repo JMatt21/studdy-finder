@@ -11,20 +11,21 @@
   max-width: 1440px;
   grid-template-columns: .1fr 4fr 1.09fr;
   grid-template-rows: 1fr 1.1fr;
-
 }
 .sectionWrapper{
     height: 100%;
     width: 100%;
-
+    
 }
 
 .sideWrapper{
     height: 100%;
     width: 100%;
     text-align: center;
+    
 
 }
+
 
 @media screen and (max-width: 1261px) {
     /* LARGE */
