@@ -1,5 +1,6 @@
 .carousel{
     max-height: 300px !important;
+    user-select: none;
 }
 
 .carousel-item{
@@ -23,7 +24,7 @@
     /* background: black; */
 }
 .card-content{
-    height: 10px;
+    /* height: 10px; */
     overflow-y: scroll;
 }
 
@@ -57,5 +58,8 @@ td{
     /* SMALL */
     .carousel-item {
         width: 350px !important;
+    }
+    .carousel{
+        /* perspective: 100px; */
     }
 }

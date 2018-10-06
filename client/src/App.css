@@ -32,7 +32,8 @@ html{
   background: linear-gradient(to bottom, blue 0%, teal 0%, blueviolet 72%, teal 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#474747', endColorstr='#000000', GradientType=0 );
   color: white;
-  width: 100vw;
+  resize: both;
+  overflow-x: hidden;
 }
 
 .ubuntu{
@@ -46,7 +47,7 @@ html{
 
 /* width */
 ::-webkit-scrollbar {
-  /* width: 20px; */
+  width: 0px;
   background: none;
 }
 

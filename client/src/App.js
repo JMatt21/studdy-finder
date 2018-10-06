@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import './App.css';
-import Room from "./Room";
-import API from './utils/SocketAPI';
+// import Room from "./Room";
+// import API from './utils/SocketAPI';
 import Main from "./components/main/index";
-import { Login, Signup } from "./components/passportpages"
+import { Signup } from "./components/passportpages";
 
 
 
@@ -17,14 +17,14 @@ class App extends Component {
     timestamp: 'no timestamp yet',
   };
 
-  constructor(props) {
-    super(props);
+  // constructor(props) {
+    // super(props);
     // API.subscribeToTimer((err, timestamp) => {
     //   this.setState({
     //     timestamp
     //   })
     // });
-  }
+  // }
 
   handleInputChange = ({ target }) => {
     const { value, name } = target;

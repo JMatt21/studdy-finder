@@ -1,6 +1,6 @@
 import React from "react";
 import "./searchResults.css";
-import { Card, CardTitle, Table } from "react-materialize";
+import { Card, Table } from "react-materialize";
 
 
 
@@ -12,20 +12,21 @@ class SearchResults extends React.Component {
         const displaySearchResults = this.props.searchData.map(function (element, index) {
             return (
                 <div key={index} className="searchResult">
-                    <Card horizontal header={<img className="searchResultImage" src={element.image}/>} actions={[<a className="ubuntu btn resultButton" href='/'>Message</a>]}>
+                    <Card horizontal header={<img className="searchResultImage" src={element.image} alt="img" />}>
                         <p className="nearby">Distance: {element.distance} miles</p>
+                        <a className="ubuntu btn resultButton" href='/'>Message</a>
                         <h5 className="righteous">{element.firstName} {element.lastName}</h5>
                         <Table>
-                        <tbody>
-                            {element.subjects.map((subject, i) => {
-                                return (
-                                    <tr>
-                                        <td className="carouselTd">{subject}</td>
-                                    </tr>
-                                )
+                            <tbody>
+                                {element.subjects.map((subject, i) => {
+                                    return (
+                                        <tr key={i}>
+                                            <td className="carouselTd">{subject}</td>
+                                        </tr>
+                                    )
 
-                            })}
-                        </tbody>
+                                })}
+                            </tbody>
                         </Table>
                     </Card>
                 </div>

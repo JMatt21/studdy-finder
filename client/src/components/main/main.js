@@ -4,6 +4,10 @@ import TopNavBar from "../topNavBar/index";
 import MainSearch from "../mainSearch/index";
 import MainCarousel from "../carousel/index";
 import MessageBoard from "../messageBoard/index";
+// TODO: Browser ScrollBar
+// TODO: Setting Page
+// TODO: Login Page Styling
+// TODO: Dynamically add content from DATABASE
 
 const testUser = {
     firstName: "Chance",
@@ -81,6 +85,8 @@ const data = [
     }
 ]
 
+
+
 class Main extends React.Component {
     constructor(props) {
         super(props);
@@ -90,6 +96,8 @@ class Main extends React.Component {
             carouselArray: data.filter(function (element, index) {
                 if (element.distance <= testUser.distanceLimit) {
                     return element;
+                } else {
+                    return "nothing"
                 }
             })
 
@@ -132,7 +140,6 @@ class Main extends React.Component {
                         </div>
                     </div>
                 </div>
-
             </div>
         )
     }

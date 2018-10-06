@@ -1,5 +1,5 @@
 import React from "react";
-import { Redirect } from "react-router-dom";
+// import { Redirect } from "react-router-dom";
 import API from "../../utils/PassportAPI";
 
 export class Signup extends React.Component {
