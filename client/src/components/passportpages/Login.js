@@ -16,7 +16,6 @@ export class Login extends React.Component {
     };
 
     handleFormSubmission = event => {
-        console.log('what')
         event.preventDefault();
         if (this.state.email && this.state.password) {
             passport.logIn({
@@ -24,11 +23,10 @@ export class Login extends React.Component {
                 password: this.state.password
             })
                 .then(ret => {
-                    console.log(ret);
+                    this.props.setData(ret.data, 'user');
                     if(ret.status === 200){
-                        console.log("good to go")
+                        // IIRC a status of 401 or 403 if the user enters incorrect credentials.
                         this.props.history.push("/main");
-                        //This works as a redirect in the simplest form
                     }
                 })
                 .catch(err => console.log(err));
@@ -37,26 +35,26 @@ export class Login extends React.Component {
     
     render() {
         return (<div>
-            <nav class="navbar navbar-default">
-                <div class="container-fluid">
-                    <div class="navbar-header">
+            <nav className="navbar navbar-default">
+                <div className="container-fluid">
+                    <div className="navbar-header">
                     </div>
                 </div>
             </nav>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 col-md-offset-3">
+            <div className="container">
+                <div className="row">
+                    <div className="col-md-6 col-md-offset-3">
                         <h2>Login Form</h2>
-                        <form class="login">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Email address</label>
-                                <input onChange={this.handleInputChange} name="email" type="email" class="form-control" id="email-input" placeholder="Email" />
+                        <form className="login">
+                            <div className="form-group">
+                                <label htmlFor="exampleInputEmail1">Email address</label>
+                                <input onChange={this.handleInputChange} name="email" type="email" className="form-control" id="email-input" placeholder="Email" />
                             </div>
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">Password</label>
-                                <input onChange={this.handleInputChange} name="password" type="password" class="form-control" id="password-input" placeholder="Password" />
+                            <div className="form-group">
+                                <label htmlFor="exampleInputPassword1">Password</label>
+                                <input onChange={this.handleInputChange} name="password" type="password" className="form-control" id="password-input" placeholder="Password" />
                             </div>
-                            <button type="submit" onClick={this.handleFormSubmission} class="btn btn-default">Login</button>
+                            <button type="submit" onClick={this.handleFormSubmission} className="btn btn-default">Login</button>
                         </form>
                         <br />
                         <p>Or sign up <a href="/">here</a></p>

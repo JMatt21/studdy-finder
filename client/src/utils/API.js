@@ -15,5 +15,8 @@ export default {
   },
   searchForUsers: function(search) {
     return axios.get(`/search/${search}`)
-  }
+  },
+  getRooms: function(roomId) {
+    return axios.get(`/api/rooms/${roomId}`)
+  },
 };

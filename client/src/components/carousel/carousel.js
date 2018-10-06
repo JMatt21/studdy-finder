@@ -1,5 +1,6 @@
 import React from "react";
 import "./carousel.css";
+import {Link} from "react-router-dom";
 import { Carousel, Card, CardTitle, Table } from 'react-materialize';
 
 
@@ -8,13 +9,15 @@ class MainCarousel extends React.Component {
 
 
     render(props) {
-
-
         const displayNearbyCarousel = this.props.carouselArray.map(function (element, index) {
             return (
-                <div key="index">
-                    <Card horizontal header={<img className="carouselImage" src={element.image} ></img>} actions={[<a className="ubuntu btn" href='/'>Message</a>]}>
-                        <p className="nearby">Nearby: {element.distance || "undefined"} miles</p>
+                <div key={index}>
+                    <Card horizontal 
+                    header={<img className="carouselImage" 
+                    src={element.image} ></img>} 
+                    actions={[<Link className="ubuntu btn" 
+                    to='/dasdsadas'>Message</Link>]}>
+                        <p className="nearby">Nearby: {element.distance} miles</p>
                         <h5 className="righteous">{element.name}</h5>
                         <Table>
                         <tbody>

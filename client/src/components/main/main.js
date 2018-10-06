@@ -18,94 +18,120 @@ const testUser = {
     image: "",
     message: true
 }
-const data = [
+const test_data = [
     {
-        firstName: "Geoff",
-        lastName: "Hoffman",
-        subjects: ["Javascript", "React.js", "Angular.js", "Algorithms", "C++", "Mongo", "mySQL", "Node.js", "CSS3", "HTML"],
+        name: "Geoff",
+        beginnerSkills: ["Javascript", "React.js", "Angular.js", "Algorithms", "C++", "Mongo", "mySQL", "Node.js", "CSS3", "HTML"],
         distanceLimit: 15,
         distance: 20,
         image: "https://cdn.pixabay.com/photo/2016/11/08/16/03/manager-1808728_1280.jpg",
         message: false
     },
     {
-        firstName: "Ryan",
-        lastName: "Treant",
-        subjects: ["Java", ".NET", "Angular.js", "Calculus", "C++", "Mongo", "mySQL", "Node.js", "CSS3", "HTML"],
+        name: "Geoff",
+        beginnerSkills: ["Javascript", "React.js", "Angular.js", "Algorithms", "C++", "Mongo", "mySQL", "Node.js", "CSS3", "HTML"],
         distanceLimit: 15,
-        distance: 10,
-        image: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-        message: true
-    },
-    {
-        firstName: "Ron",
-        lastName: "Parker",
-        subjects: ["Javascript", "React.js", "Angular.js", "Algorithms", "C++", "Mongo", "mySQL", "Node.js", "CSS3", "HTML"],
-        distanceLimit: 15,
-        distance: 9,
-        image: "https://cdn.pixabay.com/photo/2018/03/31/16/23/african-american-3278519_1280.jpg",
-        message: true
-    },
-    {
-        firstName: "Tiffiny",
-        lastName: "Sralek",
-        subjects: ["Interior Design", "React.js", "Angular.js", "Algorithms", "C++", "Mongo", "mySQL", "Node.js", "CSS3", "HTML"],
-        distanceLimit: 15,
-        distance: 40,
-        image: "https://images.pexels.com/photos/1036620/pexels-photo-1036620.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-        message: true
-    },
-    {
-        firstName: "Joseph",
-        lastName: "Brakman",
-        subjects: ["Javascript", "React.js", "Angular.js", "Algorithms", "C++", "Mongo", "mySQL", "Node.js", "CSS3", "HTML"],
-        distanceLimit: 15,
-        distance: 5,
-        image: "https://images.pexels.com/photos/736716/pexels-photo-736716.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+        distance: 20,
+        image: "https://cdn.pixabay.com/photo/2016/11/08/16/03/manager-1808728_1280.jpg",
         message: false
     },
     {
-        firstName: "Erica",
-        lastName: "Dracony",
-        subjects: ["Javascript", "React.js", "Angular.js", "Algorithms", "Web Development", "Mongo", "mySQL", "Node.js", "CSS3", "HTML"],
+        name: "Geoff",
+        beginnerSkills: ["Javascript", "React.js", "Angular.js", "Algorithms", "C++", "Mongo", "mySQL", "Node.js", "CSS3", "HTML"],
         distanceLimit: 15,
-        distance: 15,
-        image: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+        distance: 20,
+        image: "https://cdn.pixabay.com/photo/2016/11/08/16/03/manager-1808728_1280.jpg",
         message: false
     },
     {
-        firstName: "Chris",
-        lastName: "Wong",
-        subjects: ["Javascript", "React.js", "Angular.js", "Algorithms", "Leadership", "Mongo", "mySQL", "Node.js", "CSS3", "HTML"],
-        distanceLimit: 45,
-        distance: 15,
-        image: "https://images.pexels.com/photos/936593/pexels-photo-936593.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-        message: true
-    }
+        name: "Geoff",
+        beginnerSkills: ["Javascript", "React.js", "Angular.js", "Algorithms", "C++", "Mongo", "mySQL", "Node.js", "CSS3", "HTML"],
+        distanceLimit: 15,
+        distance: 20,
+        image: "https://cdn.pixabay.com/photo/2016/11/08/16/03/manager-1808728_1280.jpg",
+        message: false
+    },
+    {
+        name: "Geoff",
+        beginnerSkills: ["Javascript", "React.js", "Angular.js", "Algorithms", "C++", "Mongo", "mySQL", "Node.js", "CSS3", "HTML"],
+        distanceLimit: 15,
+        distance: 20,
+        image: "https://cdn.pixabay.com/photo/2016/11/08/16/03/manager-1808728_1280.jpg",
+        message: false
+    },
+    // {
+    //     firstName: "Ryan",
+    //     lastName: "Treant",
+    //     subjects: ["Java", ".NET", "Angular.js", "Calculus", "C++", "Mongo", "mySQL", "Node.js", "CSS3", "HTML"],
+    //     distanceLimit: 15,
+    //     distance: 10,
+    //     image: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    //     message: true
+    // },
+    // {
+    //     firstName: "Ron",
+    //     lastName: "Parker",
+    //     subjects: ["Javascript", "React.js", "Angular.js", "Algorithms", "C++", "Mongo", "mySQL", "Node.js", "CSS3", "HTML"],
+    //     distanceLimit: 15,
+    //     distance: 9,
+    //     image: "https://cdn.pixabay.com/photo/2018/03/31/16/23/african-american-3278519_1280.jpg",
+    //     message: true
+    // },
+    // {
+    //     firstName: "Tiffiny",
+    //     lastName: "Sralek",
+    //     subjects: ["Interior Design", "React.js", "Angular.js", "Algorithms", "C++", "Mongo", "mySQL", "Node.js", "CSS3", "HTML"],
+    //     distanceLimit: 15,
+    //     distance: 40,
+    //     image: "https://images.pexels.com/photos/1036620/pexels-photo-1036620.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    //     message: true
+    // },
+    // {
+    //     firstName: "Joseph",
+    //     lastName: "Brakman",
+    //     subjects: ["Javascript", "React.js", "Angular.js", "Algorithms", "C++", "Mongo", "mySQL", "Node.js", "CSS3", "HTML"],
+    //     distanceLimit: 15,
+    //     distance: 5,
+    //     image: "https://images.pexels.com/photos/736716/pexels-photo-736716.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+    //     message: false
+    // },
+    // {
+    //     firstName: "Erica",
+    //     lastName: "Dracony",
+    //     subjects: ["Javascript", "React.js", "Angular.js", "Algorithms", "Web Development", "Mongo", "mySQL", "Node.js", "CSS3", "HTML"],
+    //     distanceLimit: 15,
+    //     distance: 15,
+    //     image: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+    //     message: false
+    // },
+    // {
+    //     firstName: "Chris",
+    //     lastName: "Wong",
+    //     subjects: ["Javascript", "React.js", "Angular.js", "Algorithms", "Leadership", "Mongo", "mySQL", "Node.js", "CSS3", "HTML"],
+    //     distanceLimit: 45,
+    //     distance: 15,
+    //     // image: "https://images.pexels.com/photos/936593/pexels-photo-936593.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+    //     message: true
+    // }
 ]
 
 class Main extends React.Component {
-    state = {
-        user: {},
-        rooms: [],
-        data: []
-    };
+    // state = {
+    //     user: {},
+    //     rooms: [],
+    //     data: [],
+    // };
 
     componentDidMount() {
-        passport.getUserInfo()
-            .then(({ data }) => {
-                console.log("SETTING USER DATA", data)
-                this.setState({user: data});
-                this.getUserRooms(this.state.user.id);
-            }).catch(err => console.log(err));
+        this.getUserRooms(this.props.appState.user.id);
     }
 
     getUserRooms(id) {
         API.getRooms(id)
             .then((data) => {
                 console.log(`ROOMS: ${data.data}`);
-                this.setState({ rooms: data.data })
-                socket.massJoinRoom(this.state.rooms);
+                this.props.setData(data.data, 'rooms');
+                socket.massJoinRoom(this.props.appState.rooms);
             })
             .catch(err => console.log(err));
     }
@@ -116,27 +142,16 @@ class Main extends React.Component {
         const search = event.target.search.value;
         API.searchForUsers(search)
             .then(data => {
-                this.setState({ data: data.data })
+                // this.setState({ data: data.data })
+                this.props.setData(data.data, 'data');
                 // console.log(data.data)
             })
             .catch(err => console.log(err));
     }
 
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {
-    //         user: testUser,
-    //         data: data,
-    //         carouselArray: data.filter(function (element, index) {
-    //             if (element.distance <= testUser.distanceLimit) {
-    //                 return element;
-    //             }
-    //         })
-    //     };
-    // }
-
-
     render() {
+        const {user, data} = this.props.appState;
+        // console.log("THE STATE TO MAIN: ", this.props.appState);
         return (
             <div>
                 <TopNavBar
@@ -150,21 +165,21 @@ class Main extends React.Component {
                         </div>
                         <div>
                             <div className="sectionWrapper">
-                                {/* <MainCarousel
-                                    carouselArray={this.state.data}
-                                /> */}
+                                <MainCarousel
+                                    carouselArray={test_data}
+                                />
                                 <MainSearch
                                     onSubmit={this.searchForUsers}
-                                    user={this.state.user}
-                                    data={this.state.data}
+                                    user={user}
+                                    data={data}
                                 />
                             </div>
                         </div>
                         <div>
                             <div className="sideWrapper">
                                 <MessageBoard
-                                    user={this.state.user}
-                                    data={this.state.data}
+                                    user={user}
+                                    data={data}
                                 />
                             </div>
                         </div>
