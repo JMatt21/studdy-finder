@@ -1,13 +1,14 @@
 import React from "react";
 import "./messagingCard.css";
 
+import UserMessages from '../userMessages/index'
+
 
 
 
 class MessagesCard extends React.Component {
     state = {
-        userId: '',
-        timestamp: 'no timestamp yet',
+        message: message
     };
     
     
@@ -19,7 +20,7 @@ class MessagesCard extends React.Component {
     }
     
     mSending = () => {
-    console.log("Bob Ross");
+        
     }
 
 
@@ -27,6 +28,7 @@ class MessagesCard extends React.Component {
         return (
             <div className="messsaging-wrapper" >
                 <div className="messaging-nav"></div>
+                <UserMessages/>
 
                 <div id="user-form-wrapper">
 

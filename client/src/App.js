@@ -40,16 +40,11 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <Route exact path="/" render={() => (           
-              loggedIn ? <Redirect to="/Main" /> : <Redirect to="/SignUp" />
-          )} />
+          <Route exact path="/" render={() => (loggedIn ? <Redirect to="/Main" /> : <Redirect to="/SignUp" />)} />
           <Route exact path="/SignUp" component={Signup} />
-
           <Route exact path="/Main" render={props => <Main {...props} />} />
           <Route exact path="/Settings" component={Main} />
-
           <Route exact path="/UserProfile/:username" component={Main} />
-          
           <Route exact path="/Messages"component={messagingWrapper} />
 
 
