@@ -7,5 +7,5 @@ router.route("/")
             res.json(dbRoom);
         });
     });
-
+    
 module.exports = router;

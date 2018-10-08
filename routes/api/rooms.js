@@ -12,5 +12,5 @@ router.route("/:roomid")
             res.json(dbRoom);
         });
     });
-
+    
 module.exports = router;
