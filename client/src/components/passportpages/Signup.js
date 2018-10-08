@@ -1,11 +1,12 @@
 import React from "react";
-import { Redirect } from "react-router-dom";
+import {Link } from "react-router-dom";
 import API from "../../utils/PassportAPI";
 
 export class Signup extends React.Component {
     state = {
         email: '',
-        password: ''
+        password: '',
+        errMessage: '',
     }
 
     handleInputChange = event => {
@@ -23,14 +24,23 @@ export class Signup extends React.Component {
                 password: this.state.password
             })
                 .then(ret => {
-                    console.log(ret);
+                    this.props.setData(ret.data, 'user');
                     if(ret.status === 200){
-                        console.log("good to go")
-                        this.props.history.push("/main");
-                        //This works as a redirect in the simplest form
+                        console.log('signup status')
+                        console.log(ret)
+                        this.props.history.push("/main");   
                     }
                 })
-                .catch(err => console.log(err));
+                .catch(err => {
+                    console.log(err.response.status)
+                    switch (err.response.status) {
+                        case 403: this.setState({ errMessage: 'Error: 403, email already registered.' });
+                            break;
+                        case 504: this.setState({ errMessage: 'Server Error: 504'});
+                            break;
+                        default: this.setState({ errMessage: `Unknown Error: ${err.response.status}`})
+                    }
+                });
         }
     };
 
@@ -57,14 +67,11 @@ export class Signup extends React.Component {
                                     <label htmlFor="exampleInputPassword1">Password</label>
                                     <input type="password" className="form-control" name="password" placeholder="Password" onChange={this.handleInputChange} />
                                 </div>
-                                <div style={{ "display": "none" }} id="alert" className="alert alert-danger" role="alert">
-                                    <span className="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                                    <span className="sr-only">Error:</span> <span className="msg"></span>
-                                </div>
+                                <p className="err-message">{this.state.errMessage}</p>
                                 <button type="submit" onClick={this.handleFormSubmission} className="btn btn-default">Sign Up</button>
                             </form>
                             <br />
-                            <p>Or log in <a href="/main">here</a></p>
+                            <Link to="/login">or log in here c:</Link>
                         </div>
                     </div>
                 </div>

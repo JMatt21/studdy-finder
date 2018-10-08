@@ -87,7 +87,7 @@ router.route("/:id")
 router.route("/rooms/:id")
     .get((req, res) => {
         const UserId = req.params.id;
-        console.log(req.params.id);
+        console.log(`GETTING ROOMS FOR ${req.params.id}`);
         db.Matches.findAll({
             where: {
                 id: UserId
@@ -100,6 +100,7 @@ router.route("/rooms/:id")
                     return `${room.MatchId}+${room.UserId}`
                 }
             })
+            console.log(`RETURNING ROOMS ${socketRooms} FOR ${req.params.id}`)
             res.json(socketRooms)
         })
     });
