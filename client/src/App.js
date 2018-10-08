@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import './App.css';
 import Room from "./Room";
 import API from './utils/SocketAPI';
-import Container from "./components/container/index";
+import Main from "./components/main/index";
 import { Login, Signup } from "./components/passportpages"
+import messagingWrapper from './components/messagingWrapper';
+
+
+
+let loggedIn = false;
 
 class App extends Component {
 
@@ -29,28 +34,20 @@ class App extends Component {
     })
   }
 
-  // render() {
-  //   return (
-  //     <div className="App">
-  //       <p className="App-intro">
-  //         This is the timer value: {this.state.timestamp}
-  //       </p>
-  //       <input value={this.state.userId} placeholder="Set your user id" name="userId" onChange={this.handleInputChange} />
-  //       <Router>
-  //         <Route exact path="/room/:id" render={(props) =><Room {...props} userId={this.state.userId}/> }/>
-  //       </Router>
-  //     </div>
-
-
-
-  // class App extends Component {
+ 
 
   render() {
     return (
       <Router>
         <div>
-          <Route exact path="/" component={Signup} />
-          <Route exact path="/main" render={ props => <Container {...props} />} />
+          <Route exact path="/" render={() => (loggedIn ? <Redirect to="/Main" /> : <Redirect to="/SignUp" />)} />
+          <Route exact path="/SignUp" component={Signup} />
+          <Route exact path="/Main" render={props => <Main {...props} />} />
+          <Route exact path="/Settings" component={Main} />
+          <Route exact path="/UserProfile/:username" component={Main} />
+          <Route exact path="/Messages"component={messagingWrapper} />
+
+
         </div>
       </Router>
     );

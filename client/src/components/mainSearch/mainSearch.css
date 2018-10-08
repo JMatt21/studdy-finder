@@ -2,3 +2,11 @@
     text-align: center;
     background: #000000b0 !important;
 }
+
+@media screen and (max-width: 601px) {
+
+.mainSearch{
+    width: 90.6% !important;
+} 
+
+}

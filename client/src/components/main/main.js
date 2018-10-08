@@ -1,6 +1,9 @@
 import React from "react";
-import "./messageBoard.css";
-import MessageCard from "../messageCard/index";
+import "./main.css";
+import TopNavBar from "../topNavBar/index";
+import MainSearch from "../mainSearch/index";
+import MainCarousel from "../carousel/index";
+import MessageBoard from "../messageBoard/index";
 
 const testUser = {
     firstName: "Chance",
@@ -78,22 +81,63 @@ const data = [
     }
 ]
 
+class Main extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            user: testUser,
+            data: data,
+            carouselArray: data.filter(function (element, index) {
+                if (element.distance <= testUser.distanceLimit) {
+                    return element;
+                }
+            })
 
-class MessageBoard extends React.Component {
+        };
 
-    render(props) {
+    }
+
+
+    render() {
         return (
-            <div className="messageBoardWrapper">
-            <div className="spacer"></div>
-                <h5 className="messageBoardHeader ubuntu">Message Center</h5>
-                <div className="alert">3</div>
-                <MessageCard
-                user={testUser}
-                data={data}
+            <div>
+
+                <TopNavBar
+                    {...this.props}
                 />
+                <div className="grid-wrapper">
+                    <div className="grid-container">
+                        <div>
+                            <div className="sideWrapper">
+                            </div>
+                        </div>
+                        <div>
+                            <div className="sectionWrapper">
+                                <MainCarousel
+                                    carouselArray={this.state.carouselArray}
+                                />
+                                <MainSearch
+                                    user={this.state.user}
+                                    data={this.state.data}
+                                />
+                            </div>
+                        </div>
+                        <div>
+                            <div className="sideWrapper">
+                                <MessageBoard
+                                    user={this.state.user}
+                                    data={this.state.data}
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         )
     }
 };
 
-export default MessageBoard;
+export default Main;
+
+// sideWrapper
