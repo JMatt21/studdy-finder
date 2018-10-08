@@ -2,7 +2,6 @@ import React from "react";
 import "./carousel.css";
 import {Link} from "react-router-dom";
 import { Carousel, Card, CardTitle, Table } from 'react-materialize';
-import {Link} from "react-router-dom";
 
 
 class MainCarousel extends React.Component {
@@ -16,8 +15,7 @@ class MainCarousel extends React.Component {
                     <Card horizontal 
                     header={<img className="carouselImage" 
                     src={element.image} ></img>} 
-                    actions={[<Link className="ubuntu btn" 
-                    to='/dasdsadas'>Message</Link>]}>
+                    actions={[<Link className="ubuntu btn" to='/Messages'>Message</Link>]}>
                         <p className="nearby">Nearby: {element.distance} miles</p>
                         <h5 className="righteous">{element.name}</h5>
                         <Table>

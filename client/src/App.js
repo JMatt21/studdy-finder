@@ -1,19 +1,17 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import './App.css';
-// import Room from "./Room";
 // import socket from './utils/SocketAPI';
 // import API from './utils/API';
 import Main from "./components/main/index";
 import { Login, Signup } from "./components/passportpages"
-import messagingWrapper from './components/messagingWrapper';
+import MessagingWrapper from './components/messagingWrapper';
 
 
 
 let loggedIn = false;
 
 class App extends Component {
-  // not sure if this needs to be here or main
   state = {
     user: {},
     rooms: [],
@@ -25,7 +23,7 @@ class App extends Component {
     this.setState({ [name]: data });
   };
 
- 
+
 
   render() {
     return (
@@ -35,15 +33,16 @@ class App extends Component {
             loggedIn ? <Redirect to="/Main" /> : <Redirect to="/SignUp" />
           )} />
           <Route exact path="/SignUp" component={Signup} />
-          <Route exact path="/login" 
+          <Route exact path="/login"
             render={props => <Login {...props} setData={this.setData} />} />
-
-          <Route exact path="/Main" 
+          <Route exact path="/Main"
             render={props => <Main {...props} appState={this.state} setData={this.setData} />} />
-            
           <Route exact path="/Settings" component={Main} />
           <Route exact path="/UserProfile/:username" component={Main} />
-          <Route exact path="/Messages"component={messagingWrapper} />
+          <Route exact path="/Messages"
+            render={props => <MessagingWrapper {...props} appState={this.state} />} />
+          <Route exact path="/Messages/:roomid"
+            render={props => <MessagingWrapper {...props} appState={this.state} />} />
 
 
         </div>

@@ -8,7 +8,7 @@ import MessagingCard from "../messagingCard/index";
 let MessagingWrapper = (props) => {
     return (
         <div>
-            <TopNavBar />
+            <TopNavBar {...props}/>
             <div className="grid-wrapper">
                 <div className="grid-container">
                     <div>
@@ -17,7 +17,7 @@ let MessagingWrapper = (props) => {
                     </div>
                     <div>
                         <div className="sectionWrapper">
-                            <MessagingCard />
+                            <MessagingCard {...props}/>
 
                         </div>
                     </div>

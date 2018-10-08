@@ -13,7 +13,7 @@ class SearchResults extends React.Component {
             return (
                 <div key={index} className="searchResult">
                     <Card horizontal header={
-                    <img className="searchResultImage" src={element.image || "https://via.placeholder.com/250x275"}alt={`${element.name || element.email}`}/>} actions={[<a className="ubuntu btn resultButton" href='/'>Message</a>]}>
+                    <img className="searchResultImage" src={element.image || "https://via.placeholder.com/250x275"}alt={`${element.name || element.email}`}/>} actions={[<Link className="ubuntu btn resultButton" to='/Messages'>Message</Link>]}>
                         <p className="nearby">Distance: {element.miles || "undefined"} </p>
                         <h5 className="righteous">{element.name || element.email}</h5>
                         <Table>
