@@ -8,19 +8,23 @@ import UserMessages from '../userMessages/index'
 
 class MessagesCard extends React.Component {
     state = {
-        message: message
+        message: ''
     };
-    
-    
-    handleInputChange = ({ target }) => {
-        const { value, name } = target;
+
+
+    mSending = (images) => {
+        images.preventDefault();
+
+
         this.setState({
-            [name]: value
-        })
-    }
-    
-    mSending = () => {
-        
+            images: images
+          });
+
+        return 
+        <div className="message-block">
+            <div className="user-message-other">{this.state.message}</div>
+            <div className="spacer"></div>
+        </div>
     }
 
 
@@ -28,7 +32,7 @@ class MessagesCard extends React.Component {
         return (
             <div className="messsaging-wrapper" >
                 <div className="messaging-nav"></div>
-                <UserMessages/>
+                <UserMessages />
 
                 <div id="user-form-wrapper">
 
@@ -39,7 +43,7 @@ class MessagesCard extends React.Component {
                             </div>
                         </form>
                     </div>
-                    <button className="circleButton" onClick={this.mSending}>Send</button>
+                    <button className="circleButton" value={this.state.message} onChange={this.state.mSending}>Send</button>
                 </div>
             </div>
         );
