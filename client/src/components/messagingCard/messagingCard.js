@@ -8,7 +8,7 @@ import UserMessages from '../userMessages/index'
 
 class MessagesCard extends React.Component {
     state = {
-        message: message
+        message: ''
     };
     
     
