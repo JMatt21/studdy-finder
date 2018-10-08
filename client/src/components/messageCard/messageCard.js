@@ -24,17 +24,10 @@ class MessageCard extends React.Component {
                                 </div>
                                 <div className="messageInfo">
                                     <ul>
-<<<<<<< HEAD
-                                        {element.subjects.map((subject, index) => {
-                                            return(<li key={index} className="messageLi">{subject}</li>)
-                                         
-                            })}
-=======
                                         {element.subjects.map((subject, i) => {
                                             return (<li key={i} className="messageLi">{subject}</li>)
 
                                         })}
->>>>>>> e6331d2da7fa623b848bdc5ca176b97b0cd60cca
                                     </ul>
                                 </div>
                             </div>
