@@ -21,13 +21,6 @@ class TopNavBar extends React.Component {
             });
     }
 
-    componentDidMount() {
-        passport.getUserInfo()
-            .then(({ data }) => {
-                this.setState({ email: data.email })
-            })
-            .catch(err => console.log(err));
-    }
     render() {
         return (
             <Navbar brand={<h4 href="/" className="righteous">

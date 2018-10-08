@@ -1,6 +1,7 @@
 import React from "react";
 import "./carousel.css";
-import { Carousel, Card, Table } from 'react-materialize';
+import {Link} from "react-router-dom";
+import { Carousel, Card, CardTitle, Table } from 'react-materialize';
 
 
 class MainCarousel extends React.Component {
@@ -8,25 +9,26 @@ class MainCarousel extends React.Component {
 
 
     render(props) {
-
-
         const displayNearbyCarousel = this.props.carouselArray.map(function (element, index) {
             return (
                 <div key={index}>
-                    <Card horizontal header={<img className="carouselImage" src={element.image} alt="img" />}>
+                    <Card horizontal 
+                    header={<img className="carouselImage" 
+                    src={element.image} ></img>} 
+                    actions={[<Link className="ubuntu btn" 
+                    to='/dasdsadas'>Message</Link>]}>
                         <p className="nearby">Nearby: {element.distance} miles</p>
-                        <a className="ubuntu btn" href='/'>Message</a>
-                        <h5 className="righteous">{element.firstName} {element.lastName}</h5>
+                        <h5 className="righteous">{element.name}</h5>
                         <Table>
-                            <tbody>
-                                {element.subjects.map((subject, i) => {
-                                    return (
-                                        <tr key={i}>
-                                            <td className="carouselTd">{subject}</td>
-                                        </tr>
-                                    )
-                                })}
-                            </tbody>
+                        <tbody>
+                            {element.beginnerSkills.map((subject, i) => {
+                                return (
+                                    <tr key={i}>
+                                        <td className="carouselTd">{subject}</td>
+                                    </tr>
+                                )
+                            })}
+                        </tbody>
                         </Table>
                     </Card>
                 </div>

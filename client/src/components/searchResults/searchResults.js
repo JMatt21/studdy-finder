@@ -6,27 +6,26 @@ import { Card, Table } from "react-materialize";
 
 
 class SearchResults extends React.Component {
-
     render(props) {
-
+        // const miles = (this.props.miles ? `this.props.miles miles` : `undefined`);
         const displaySearchResults = this.props.searchData.map(function (element, index) {
             return (
                 <div key={index} className="searchResult">
-                    <Card horizontal header={<img className="searchResultImage" src={element.image} alt="img" />}>
-                        <p className="nearby">Distance: {element.distance} miles</p>
-                        <a className="ubuntu btn resultButton" href='/'>Message</a>
-                        <h5 className="righteous">{element.firstName} {element.lastName}</h5>
+                    <Card horizontal header={
+                    <img className="searchResultImage" src={element.image || "https://via.placeholder.com/250x275"}alt={`${element.name || element.email}`}/>} actions={[<a className="ubuntu btn resultButton" href='/'>Message</a>]}>
+                        <p className="nearby">Distance: {element.miles || "undefined"} </p>
+                        <h5 className="righteous">{element.name || element.email}</h5>
                         <Table>
-                            <tbody>
-                                {element.subjects.map((subject, i) => {
-                                    return (
-                                        <tr key={i}>
-                                            <td className="carouselTd">{subject}</td>
-                                        </tr>
-                                    )
+                        <tbody>
+                            {element.beginnerSkills.map((subject, i) => {
+                                return (
+                                    <tr>
+                                        <td className="carouselTd">{subject}</td>
+                                    </tr>
+                                )
 
-                                })}
-                            </tbody>
+                            })}
+                        </tbody>
                         </Table>
                     </Card>
                 </div>

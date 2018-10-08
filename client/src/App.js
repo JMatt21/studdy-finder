@@ -2,46 +2,42 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import './App.css';
 // import Room from "./Room";
-// import API from './utils/SocketAPI';
+// import socket from './utils/SocketAPI';
+// import API from './utils/API';
 import Main from "./components/main/index";
-import { Signup } from "./components/passportpages";
+import { Signup, Login } from "./components/passportpages";
 
 
 
 let loggedIn = false;
 
 class App extends Component {
-
+  // not sure if this needs to be here or main
   state = {
-    userId: '',
-    timestamp: 'no timestamp yet',
+    user: {},
+    rooms: [],
+    data: [],
   };
 
-  // constructor(props) {
-    // super(props);
-    // API.subscribeToTimer((err, timestamp) => {
-    //   this.setState({
-    //     timestamp
-    //   })
-    // });
-  // }
-
-  handleInputChange = ({ target }) => {
-    const { value, name } = target;
-    this.setState({
-      [name]: value
-    })
-  }
+  setData = (data, name) => {
+    console.log("APP DATA SET")
+    this.setState({ [name]: data });
+  };
 
   render() {
     return (
       <Router>
         <div>
-          <Route exact path="/" render={() => (           
-              loggedIn ? <Redirect to="/Main" /> : <Redirect to="/SignUp" />
+          <Route exact path="/" render={() => (
+            loggedIn ? <Redirect to="/Main" /> : <Redirect to="/SignUp" />
           )} />
           <Route exact path="/SignUp" component={Signup} />
-          <Route exact path="/Main" render={props => <Main {...props} />} />
+          <Route exact path="/login" 
+            render={props => <Login {...props} setData={this.setData} />} />
+
+          <Route exact path="/Main" 
+            render={props => <Main {...props} appState={this.state} setData={this.setData} />} />
+            
           <Route exact path="/Settings" component={Main} />
           <Route exact path="/UserProfile/:username" component={Main} />
           <Route exact path="/Messages/:userIdOne/:userIdTwo" component={Main} />

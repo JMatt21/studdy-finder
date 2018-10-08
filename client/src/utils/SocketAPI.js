@@ -1,5 +1,5 @@
 import openSocket from 'socket.io-client';
-const socket = openSocket('http://localhost:3001');
+const socket = openSocket(process.env.PORT || 'http://localhost:3001');
 
 export default {
     subscribeToTimer: function (cb) {
@@ -25,6 +25,13 @@ export default {
 
     joinRoom: function(room) {
         socket.emit('join room', room);
+    },
+
+    massJoinRoom: function(room) {
+        room.forEach(thisRoom => {
+            socket.emit('join room', thisRoom);
+            // console.log('Room',thisRoom)
+        });
     },
 
     leaveRoom: function(room) {
