@@ -5,7 +5,8 @@ import './App.css';
 // import socket from './utils/SocketAPI';
 // import API from './utils/API';
 import Main from "./components/main/index";
-import { Signup, Login } from "./components/passportpages";
+import { Login, Signup } from "./components/passportpages"
+import messagingWrapper from './components/messagingWrapper';
 
 
 
@@ -24,6 +25,8 @@ class App extends Component {
     this.setState({ [name]: data });
   };
 
+ 
+
   render() {
     return (
       <Router>
@@ -40,7 +43,8 @@ class App extends Component {
             
           <Route exact path="/Settings" component={Main} />
           <Route exact path="/UserProfile/:username" component={Main} />
-          <Route exact path="/Messages/:userIdOne/:userIdTwo" component={Main} />
+          <Route exact path="/Messages"component={messagingWrapper} />
+
 
         </div>
       </Router>

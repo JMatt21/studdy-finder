@@ -44,8 +44,6 @@ html{
 }
 
 /*  */
-
-/* width */
 ::-webkit-scrollbar {
   width: 0px;
   background: none;
@@ -67,6 +65,7 @@ html{
 ::-webkit-scrollbar-thumb:hover {
   background: none; 
 }
+
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
