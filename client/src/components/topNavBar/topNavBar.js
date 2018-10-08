@@ -1,19 +1,17 @@
 import React from "react";
 import "./topNavBar.css";
 import { Navbar, NavItem } from 'react-materialize';
+import { Link } from "react-router-dom";
 import SettingsIcon from "../icons/settingsIcon/index";
 import LogoutIcon from "../icons/logoutIcon/index";
 import MessageIconTopNav from "../icons/messageIconTopNav/index";
 //passport api to logout
 import passport from "../../utils/PassportAPI"
-// import { Redirect } from 'react-router-dom'
 
 let userName = "Chance";
 
 class TopNavBar extends React.Component {
-    state = {
-        email: `  Welcome, ${userName}!`
-    }
+
     logout = () => {
         passport.logOut()
             .then( () => {

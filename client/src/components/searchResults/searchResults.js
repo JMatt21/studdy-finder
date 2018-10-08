@@ -12,10 +12,11 @@ class SearchResults extends React.Component {
         const displaySearchResults = this.props.searchData.map(function (element, index) {
             return (
                 <div key={index} className="searchResult">
-                    <Card horizontal header={<img className="searchResultImage" src={element.image} alt="img"/>}>
-                        <Link className="ubuntu btn" to='/dasdsadas'>Message</Link>
-                        <p className="nearby">Distance: {element.distance} miles</p>
-                        <h5 className="righteous">{element.firstName} {element.lastName}</h5>
+                    <Card horizontal header={
+                    <img className="searchResultImage" src={element.image || "https://via.placeholder.com/250x275"}alt={`${element.name || element.email}`}/>}>
+                    <Link className="ubuntu btn resultButton" to='/Messages'>Message</Link>
+                        <p className="nearby">Distance: {element.miles || "undefined"} </p>
+                        <h5 className="righteous">{element.name || element.email}</h5>
                         <Table>
                             <tbody>
                                 {element.beginnerSkills.map((subject, i) => {

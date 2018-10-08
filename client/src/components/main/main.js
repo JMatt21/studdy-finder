@@ -97,7 +97,7 @@ class Main extends React.Component {
     }
 
     getUserRooms(id) {
-        API.getRooms(id)
+        API.getUsersRooms(id)
             .then((data) => {
                 console.log(`ROOMS: ${data.data}`);
                 this.props.setData(data.data, 'rooms');
