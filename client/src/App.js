@@ -4,7 +4,7 @@ import './App.css';
 // import socket from './utils/SocketAPI';
 // import API from './utils/API';
 import Main from "./components/main/index";
-import { Login, Signup } from "./components/passportpages"
+import { Login, Signup } from "./components/passportpages";
 import MessagingWrapper from './components/messagingWrapper';
 
 
@@ -37,7 +37,8 @@ class App extends Component {
             render={props => <Login {...props} setData={this.setData} />} />
           <Route exact path="/Main"
             render={props => <Main {...props} appState={this.state} setData={this.setData} />} />
-          <Route exact path="/Settings" component={Main} />
+          <Route exact path="/Settings"
+            render={props => <Main {...props} appState={this.state} setData={this.setData} />} />
           <Route exact path="/UserProfile/:username" component={Main} />
           <Route exact path="/Messages"
             render={props => <MessagingWrapper {...props} appState={this.state} />} />
