@@ -52,7 +52,7 @@ router.route("/:id")
             dbUser.Messages.forEach(dbMessage => {
                 sentMessages.push({ message: dbMessage.message, RecipientId: dbMessage.RecipientId });
             });
-            ret.json({
+            res.json({
                 name: name,
                 id: id,
                 email: email,
@@ -87,10 +87,10 @@ router.route("/:id")
 router.route("/rooms/:id")
     .get((req, res) => {
         const UserId = req.params.id;
-        console.log(req.params.id);
+        console.log(`GETTING ROOMS FOR ${UserId}`);
         db.Matches.findAll({
             where: {
-                id: UserId
+                UserId: UserId
             }
         }).then(dbRooms => {
             let socketRooms = dbRooms.map(room => {
@@ -100,6 +100,7 @@ router.route("/rooms/:id")
                     return `${room.MatchId}+${room.UserId}`
                 }
             })
+            console.log(`RETURNING ROOMS ${socketRooms} FOR ${UserId}`)
             res.json(socketRooms)
         })
     });

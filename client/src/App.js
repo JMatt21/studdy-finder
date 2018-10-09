@@ -1,51 +1,49 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import './App.css';
-import Room from "./Room";
-import API from './utils/SocketAPI';
+// import socket from './utils/SocketAPI';
+// import API from './utils/API';
 import Main from "./components/main/index";
-import { Login, Signup } from "./components/passportpages"
-import messagingWrapper from './components/messagingWrapper';
+import { Login, Signup } from "./components/passportpages";
+import MessagingWrapper from './components/messagingWrapper';
 
 
 
 let loggedIn = false;
 
 class App extends Component {
-
   state = {
-    userId: '',
-    timestamp: 'no timestamp yet',
+    user: {},
+    rooms: [],
+    data: [],
   };
 
-  constructor(props) {
-    super(props);
-    // API.subscribeToTimer((err, timestamp) => {
-    //   this.setState({
-    //     timestamp
-    //   })
-    // });
-  }
+  setData = (data, name) => {
+    console.log("APP DATA SET")
+    this.setState({ [name]: data });
+  };
 
-  handleInputChange = ({ target }) => {
-    const { value, name } = target;
-    this.setState({
-      [name]: value
-    })
-  }
 
- 
 
   render() {
     return (
       <Router>
         <div>
-          <Route exact path="/" render={() => (loggedIn ? <Redirect to="/Main" /> : <Redirect to="/SignUp" />)} />
+          <Route exact path="/" render={() => (
+            loggedIn ? <Redirect to="/Main" /> : <Redirect to="/SignUp" />
+          )} />
           <Route exact path="/SignUp" component={Signup} />
-          <Route exact path="/Main" render={props => <Main {...props} />} />
-          <Route exact path="/Settings" component={Main} />
+          <Route exact path="/login"
+            render={props => <Login {...props} setData={this.setData} />} />
+          <Route exact path="/Main"
+            render={props => <Main {...props} appState={this.state} setData={this.setData} />} />
+          <Route exact path="/Settings"
+            render={props => <Main {...props} appState={this.state} setData={this.setData} />} />
           <Route exact path="/UserProfile/:username" component={Main} />
-          <Route exact path="/Messages"component={messagingWrapper} />
+          <Route exact path="/Messages"
+            render={props => <MessagingWrapper {...props} appState={this.state} />} />
+          <Route exact path="/Messages/:roomid"
+            render={props => <MessagingWrapper {...props} appState={this.state} />} />
 
 
         </div>

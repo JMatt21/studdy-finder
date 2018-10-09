@@ -9,5 +9,14 @@ export default {
   },
   newMessage: function(message) {
     return axios.post("/api/message", message)
-  }
+  },
+  getUsersRooms: function(userId) {
+    return axios.get(`/api/users/rooms/${userId}`)
+  },
+  searchForUsers: function(search) {
+    return axios.get(`/search/${search}`)
+  },
+  getRoomMessages: function(roomId) {
+    return axios.get(`/api/rooms/${roomId}`)
+  },
 };

@@ -7,14 +7,32 @@ import SearchResults from "../searchResults/index";
 
 class MainSearch extends React.Component {
 
+    state = {
+        search: ''
+    }
+
+    handleInputChange = event => {
+        const { name, value } = event.target;
+        this.setState({
+            [name]: value
+        });
+    };
+    
     render() {
         return (
             <div>
-                <Input className="mainSearch" validate placeholder='Enter Subject' />
+                <form onSubmit={this.props.onSubmit}>
+                    <Input onChange={this.handleInputChange}
+                    value={this.state.search} 
+                    name="search" 
+                    className="mainSearch" 
+                    validate placeholder='Enter Subject' />
+                </form>
                 <SearchResults searchData={this.props.data} />
             </div>
         )
     }
 };
+// onSubmit={this.props.onSubmit}
 
 export default MainSearch;
