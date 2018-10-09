@@ -116,12 +116,6 @@ const test_data = [
 ]
 
 class Main extends React.Component {
-    // state = {
-    //     user: {},
-    //     rooms: [],
-    //     data: [],
-    // };
-
     componentDidMount() {
         this.getUserRooms(this.props.appState.user.id);
     }
@@ -151,7 +145,7 @@ class Main extends React.Component {
 
     render() {
         const {user, data} = this.props.appState;
-        // console.log("THE STATE TO MAIN: ", this.props.appState);
+        const matchData = user.Matches || [];
         return (
             <div>
                 <TopNavBar
@@ -179,7 +173,7 @@ class Main extends React.Component {
                             <div className="sideWrapper">
                                 <MessageBoard
                                     user={user}
-                                    data={data}
+                                    data={matchData}
                                 />
                             </div>
                         </div>

@@ -21,9 +21,9 @@ class TopNavBar extends React.Component {
 
     render() {
         return (
-            <Navbar brand={[<h4 href="/" className="righteous">
+            <Navbar brand={[<Link to="/main" className="righteous">
                 StudyDuos
-            </h4>]} right>
+            </Link>]} right>
                 {/* <NavItem>{this.state.email}</NavItem> */}
                 <NavItem href="/messageDropdown"> <MessageIconTopNav/> </NavItem>
                 <NavItem href="/settings"> <SettingsIcon/> </NavItem>

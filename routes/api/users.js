@@ -10,59 +10,23 @@ router.route("/:id")
             where: {
                 id: id
             },
+            attributes: {
+                exclude: 'password'
+            },
             include: [
-                { // to get the user's message and to get who they sent it to
-                    model: db.Messages,
-                    include: [{
-                        model: db.Users,
-                        as: "Recipient"
-                    }],
-                },
                 { // to get user's match's 
                     model: db.Matches,
                     include: [{ // to connect them to another user
                         model: db.Users,
-                        include: [{ // to get messages of that user
-                            model: db.Messages,
-                            where: { // to get ONLY the messages sent to the 1st user
-                                RecipientId: id
-                            },
-                            // this required key means that if a match has sent them no messages,
-                            // they will still show up as a match
-                            required: false
-                        }],
+                        attributes: {
+                            exclude: 'password'
+                        },
                         as: "Match"
-                    }]
+                    }],
+                    
                 }]
         }).then(dbUser => {
-            const { name, id, email, beginnerSkills, intermediateSkills, advancedSkills } = dbUser;
-            const matches = [];
-            const sentMessages = [];
-            const recievedMessages = [];
-
-            dbUser.Matches.forEach(dbMatch => {
-                matches.push({ id: dbMatch.Match.id, name: dbMatch.Match.name });
-
-                if (dbMatch.Match.Messages.length > 0) {
-                    dbMatch.Match.Messages.forEach(dbMessage => {
-                        recievedMessages.push({ message: dbMessage.message, id: dbMatch.Match.id });
-                    });
-                }
-            });
-            dbUser.Messages.forEach(dbMessage => {
-                sentMessages.push({ message: dbMessage.message, RecipientId: dbMessage.RecipientId });
-            });
-            res.json({
-                name: name,
-                id: id,
-                email: email,
-                beginnerSkills: beginnerSkills,
-                intermediateSkills: intermediateSkills,
-                advancedSkills: advancedSkills,
-                matches: matches,
-                sentMessages: sentMessages,
-                recievedMessages: recievedMessages
-            })
+            res.json(dbUser)
         })
     })
     // To update user

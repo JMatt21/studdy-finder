@@ -81,15 +81,15 @@ const data = [
 
 class MessageBoard extends React.Component {
 
-    render(props) {
+    render() {
         return (
             <div className="messageBoardWrapper">
-            <div className="spacer"></div>
+                <div className="spacer"></div>
                 <h5 className="messageBoardHeader ubuntu">Message Center</h5>
                 <div className="alert">3</div>
                 <MessageCard
-                user={testUser}
-                data={data}
+                    user={testUser}
+                    data={this.props.data}
                 />
             </div>
         )
