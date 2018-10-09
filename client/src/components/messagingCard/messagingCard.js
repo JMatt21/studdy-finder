@@ -13,16 +13,15 @@ class MessagesCard extends React.Component {
 
     componentWillMount() {
         console.log("switching chatrooms")
-        this.getRoomMessages();
+        this.getRoomMessages(this.state.roomId);
         socket.getMessage(text => this.updateRoomMessages(text));
     }
 
-    componentWillReceiveProps() {
-        console.log("switching chatrooms2")
-        this.getRoomMessages();
-        socket.getMessage(text => this.updateRoomMessages(text));
+    componentWillReceiveProps(newRoute) {
+        console.log(this.state.roomId)
+        this.setState({roomId: newRoute.match.params.roomid})
+        this.getRoomMessages(newRoute.match.params.roomid);
     }
-    
 
     handleInputChange = ({ target }) => {
         const { value, name } = target;
@@ -36,8 +35,8 @@ class MessagesCard extends React.Component {
         socket.sendMessage(this.state.message, this.state.roomId, this.props.appState.user.id);
     }
 
-    getRoomMessages = () => {
-        API.getRoomMessages(this.state.roomId)
+    getRoomMessages = (id) => {
+        API.getRoomMessages(id)
             .then(data => this.setState({ roomMessages: data.data.Messages }))
             .catch(err => console.log(err))
     }
