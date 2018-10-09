@@ -8,23 +8,25 @@ import UserMessages from '../userMessages/index'
 
 class MessagesCard extends React.Component {
     state = {
-        message: ''
+        messages: []
     };
 
 
-    mSending = (images) => {
-        images.preventDefault();
+    mSending = (value) => {
+        value.preventDefault();
 
 
         this.setState({
-            images: images
-          });
+            message: value
+        });
 
-        return 
-        <div className="message-block">
-            <div className="user-message-other">{this.state.message}</div>
-            <div className="spacer"></div>
-        </div>
+        console.log(this.state.message);
+
+        // return 
+        // <div className="message-block">
+        //     <div className="user-message-other">{this.state.message}</div>
+        //     <div className="spacer"></div>
+        // </div>
     }
 
 
@@ -37,13 +39,13 @@ class MessagesCard extends React.Component {
                 <div id="user-form-wrapper">
 
                     <div className="bubble">
-                        <form id="messaging-form">
+                        <form id="messaging-form" >
                             <div className="input-field">
-                                <input type="text" class="materialize-textarea" placeholder="Message"></input>
+                                <input type="text" value={this.state.message} onChange={this.handleInputChange} class="materialize-textarea" placeholder="Message"></input>
                             </div>
                         </form>
                     </div>
-                    <button className="circleButton" value={this.state.message} onChange={this.state.mSending}>Send</button>
+                    <button className="circleButton" onChange={this.state.mSending} > Send</button>
                 </div>
             </div>
         );
