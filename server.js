@@ -53,13 +53,12 @@ io.on('connection', (client) => { //  the server is expecting some parameter(s)
         db.Messages.create({ message: message, RoomId: room, UserId: UserId })
             .then(dbMessage => {
                 io.to(room).emit('returned message', { message: dbMessage.message, UserId: dbMessage.UserId });
-                        // Whats emited here is a single object
+                // Whats emited here is a single object
                 console.log(`new message in room: ${dbMessage.RoomId}`);
             })
     });
 
     client.on("disconnect", () => {
-        client.leave('newroom')
         console.log('client left');
     })
 
@@ -72,7 +71,7 @@ io.on('connection', (client) => { //  the server is expecting some parameter(s)
         }).then(dbRoom => {
             if (dbRoom) {
                 console.log("user joined " + dbRoom.id);
-                let ret = dbRoom.Messages.map(dbMessage => { 
+                let ret = dbRoom.Messages.map(dbMessage => {
                     return { message: dbMessage.message, UserId: dbMessage.UserId }
                 })
                 client.emit('returned message', ret) // Whats emited here is an array of objects

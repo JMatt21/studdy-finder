@@ -12,22 +12,20 @@ class MainCarousel extends React.Component {
         const displayNearbyCarousel = this.props.carouselArray.map(function (element, index) {
             return (
                 <div key={index}>
-                    <Card horizontal 
-                    header={<img className="carouselImage" 
-                    src={element.image} ></img>} 
-                    actions={[<Link className="ubuntu btn" to='/Messages'>Message</Link>]}>
+                    <Card horizontal header={<img className="carouselImage" src={element.image} alt="img"></img>}>
+                        <Link className="ubuntu btn"to='/dasdsadas'>Message</Link>
                         <p className="nearby">Nearby: {element.distance} miles</p>
                         <h5 className="righteous">{element.name}</h5>
                         <Table>
-                        <tbody>
-                            {element.beginnerSkills.map((subject, i) => {
-                                return (
-                                    <tr key={i}>
-                                        <td className="carouselTd">{subject}</td>
-                                    </tr>
-                                )
-                            })}
-                        </tbody>
+                            <tbody>
+                                {element.beginnerSkills.map((subject, i) => {
+                                    return (
+                                        <tr key={i}>
+                                            <td className="carouselTd">{subject}</td>
+                                        </tr>
+                                    )
+                                })}
+                            </tbody>
                         </Table>
                     </Card>
                 </div>
