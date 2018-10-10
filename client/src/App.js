@@ -20,10 +20,16 @@ class App extends Component {
   };
 
   setData = (data, name) => {
-    console.log("APP DATA SET")
     this.setState({ [name]: data });
   };
 
+  resetData = () => {
+    this.setState({
+      user: {},
+      rooms: [],
+      data: []
+    })
+  }
 
 
   render() {
@@ -33,10 +39,13 @@ class App extends Component {
           <Route exact path="/" render={() => (
             loggedIn ? <Redirect to="/Main" /> : <Redirect to="/SignUp" />
           )} />
-          <Route exact path="/SignUp" component={Signup} />
+          <Route exact path="/signup"
+            render={props => <Signup {...props} setData={this.setData} />} />
           <Route exact path="/login"
             render={props => <Login {...props} setData={this.setData} />} />
           <Route exact path="/Main"
+            render={props => <Main {...props} appState={this.state} setData={this.setData} resetData={this.resetData}/>} />
+          <Route exact path="/Settings"
             render={props => <Main {...props} appState={this.state} setData={this.setData} />} />
           <Route exact path="/UserProfile/:username" component={Main} />
           <Route exact path="/Messages"

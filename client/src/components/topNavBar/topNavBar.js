@@ -8,26 +8,25 @@ import MessageIconTopNav from "../icons/messageIconTopNav/index";
 //passport api to logout
 import passport from "../../utils/PassportAPI"
 
-let userName = "Chance";
 
 class TopNavBar extends React.Component {
 
     logout = () => {
         passport.logOut()
-            .then( () => {
+            .then(() => {
                 this.props.history.push("/");
             });
+            this.props.resetData();
     }
 
     render() {
         return (
-            <Navbar brand={<h4 href="/" className="righteous">
+            <Navbar brand={[<Link to="/main" className="righteous">
                 StudyDuos
-            </h4>} right>
-                {/* <NavItem>{this.state.email}</NavItem> */}
-                <NavItem href="/messageDropdown"> <MessageIconTopNav/> </NavItem>
-                <NavItem href="/settings"> <SettingsIcon/> </NavItem>
-                <NavItem onClick={this.logout}> <LogoutIcon/> </NavItem>
+            </Link>]} right>
+                <NavItem> <MessageIconTopNav /> </NavItem>
+                <NavItem> <SettingsIcon /> </NavItem>
+                <NavItem onClick={this.logout}> <LogoutIcon /> </NavItem>
             </Navbar>
         )
     }

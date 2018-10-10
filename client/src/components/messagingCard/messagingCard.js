@@ -11,10 +11,18 @@ class MessagesCard extends React.Component {
         roomId: this.props.match.params.roomid
     };
 
-    componentDidMount() {
+    componentWillMount() {
+        console.log("switching chatrooms")
         this.getRoomMessages();
         socket.getMessage(text => this.updateRoomMessages(text));
     }
+
+    componentWillReceiveProps() {
+        console.log("switching chatrooms2")
+        this.getRoomMessages();
+        socket.getMessage(text => this.updateRoomMessages(text));
+    }
+    
 
     handleInputChange = ({ target }) => {
         const { value, name } = target;
@@ -35,9 +43,16 @@ class MessagesCard extends React.Component {
     }
 
     updateRoomMessages = message => {
-        console.log(message); //will log twice but not change the display unexpectedly so far
+        // console.log(message); //will log multiple times but not change the display unexpectedly so far
         this.setState({ roomMessages: this.state.roomMessages.concat(message) })
     }
+
+    firstMessageHandler = () => {
+        // API.matchUsers(user1, user2)
+        //     .then(data => { console.log(data)})
+        //     .catch(err => console.log(err));
+    }
+
     render() {
         return (
             <div className="messsaging-wrapper" >
