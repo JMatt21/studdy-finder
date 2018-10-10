@@ -1,6 +1,8 @@
 import React from "react";
 import TopNavBar from "../topNavBar/index";
+import { Link, Route } from "react-router-dom";
 import './settings.css';
+import {picture, interests} from '../settingsComponents/index';
 
 
 
@@ -22,12 +24,12 @@ class Settings extends React.Component {
                         <div className="settings-side-panel">
                             <div className="settings-list-grid">
                                 <div></div>
-                                <div className="settings-li sli1 x">Profile Picture</div>
-                                <div className="settings-li sli1 x">Interests</div>
-                                <div className="settings-li sli1 x">Distance</div>
-                                <div className="settings-li sli1 x">Email</div>
-                                <div className="settings-li sli2 x">Username and Password</div>
-                                
+                                <Link className="settings-li sli1 x link" to='/Settings/profile_picture'>Profile Picture</Link>
+                                <Link className="settings-li sli1 x link" to='/Settings/interests'>Interests</Link>
+                                <Link className="settings-li sli1 x link" to='/Settings/distance'>Distance</Link>
+                                <Link className="settings-li sli1 x link" to='/Settings/email'>Email</Link>
+                                <Link className="settings-li sli2 x link" to='/Settings/username_password'>Username and Password</Link>
+
 
                             </div>
                         </div>
@@ -35,7 +37,8 @@ class Settings extends React.Component {
                         <div></div>
 
                         <div className="settings-content">
-                            
+                        <Route exact path={'/Settings/profile_picture'} component={picture} />
+                        <Route exact path={'/Settings/interests'} component={interests} />
 
                         </div>
 

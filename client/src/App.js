@@ -38,14 +38,30 @@ class App extends Component {
             render={props => <Login {...props} setData={this.setData} />} />
           <Route exact path="/Main"
             render={props => <Main {...props} appState={this.state} setData={this.setData} />} />
-          <Route exact path="/Settings"
-            render={props => <Settings {...props} appState={this.state} setData={this.setData} />} />
           <Route exact path="/UserProfile/:username" component={Main} />
           <Route exact path="/Messages"
             render={props => <MessagingWrapper {...props} appState={this.state} />} />
           <Route exact path="/Messages/:roomid"
             render={props => <MessagingWrapper {...props} appState={this.state} />} />
 
+
+          <Route exact path="/Settings"
+            render={props => <Settings {...props} appState={this.state} setData={this.setData} />} />
+
+          <Route exact path="/Settings/profile_picture"
+            render={props => <Settings {...props} appState={this.state} setData={this.setData} />} />
+          
+          <Route exact path="/Settings/interests"
+            render={props => <Settings {...props} appState={this.state} setData={this.setData} />} />
+          
+          <Route exact path="/Settings/distance"
+            render={props => <Settings {...props} appState={this.state} setData={this.setData} />} />
+          
+          <Route exact path="/Settings/email"
+            render={props => <Settings {...props} appState={this.state} setData={this.setData} />} />
+          
+          <Route exact path="/Settings/username_password"
+            render={props => <Settings {...props} appState={this.state} setData={this.setData} />} />
 
         </div>
       </Router>
