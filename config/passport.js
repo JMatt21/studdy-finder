@@ -21,6 +21,9 @@ passport.use(new LocalStrategy(
           model: db.Matches,
           include: [{ // to connect them to another user
             model: db.Users,
+            attributes: {
+              exclude: 'password'
+            },
             as: "Match"
           }],
         }]
@@ -37,9 +40,15 @@ passport.use(new LocalStrategy(
           message: "Incorrect password."
         });
       } else {
+        let ret = dbUser;
         // If none of the above, return the user
-        console.log('all good')
-        return done(null, dbUser);
+        const temp = [];
+        dbUser.Matches.forEach(dbMatch => {
+          temp.push(dbMatch.Match)
+        })
+        ret.holymolywhydontyouwork = [1,2,3];
+        console.log(ret);
+        return done(null, ret);
       }
     });
   }

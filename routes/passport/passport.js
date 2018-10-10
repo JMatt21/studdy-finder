@@ -16,6 +16,7 @@ router.post("/api/login", passport.authenticate("local"), function (req, res) {
     console.log("re routing from api/signup")
     let ret = req.user;
     delete ret.dataValues.password;
+    console.log(ret);
     res.json(ret); // we can send things here in place of api/user_info
     // this means once a user logs in/ signs up we can send them their user info quickly
     // req.user is defined in passport.js in the config folder

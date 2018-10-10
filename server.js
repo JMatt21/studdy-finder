@@ -91,6 +91,11 @@ io.on('connection', (client) => { //  the server is expecting some parameter(s)
         console.log("user left " + room);
         client.leave(room);
     })
+
+    client.on("socket user", userId => {
+        console.log(`${userId} has come online!`)
+        client.join(`USER: ${userId}`);
+    })
 });
 
 // Start the Sequelize/Socket server
