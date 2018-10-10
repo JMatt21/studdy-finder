@@ -1,60 +1,42 @@
 import React from "react";
 import "./searchResults.css";
-import CarouselTable from "../carouselTable/index";
+import { Card, Table } from "react-materialize";
+import { Link } from "react-router-dom";
 
 
 
 
 class SearchResults extends React.Component {
+    render(props) {
+        // const miles = (this.props.miles ? `this.props.miles miles` : `undefined`);
+        const displaySearchResults = this.props.searchData.map(function (element, index) {
+            return (
+                <div key={index} className="searchResult">
+                    <Card horizontal header={
+                    <img className="searchResultImage" src={element.image || "https://via.placeholder.com/250x275"}alt={`${element.name || element.email}`}/>}>
+                    <Link className="ubuntu btn resultButton" to='/Messages'>Message</Link>
+                        <p className="nearby">Distance: {element.miles || "undefined"} </p>
+                        <h5 className="righteous">{element.name || element.email}</h5>
+                        <Table>
+                            <tbody>
+                                {element.beginnerSkills.map((subject, i) => {
+                                    return (
+                                        <tr>
+                                            <td className="carouselTd">{subject}</td>
+                                        </tr>
+                                    )
 
-    render() {
+                                })}
+                            </tbody>
+                        </Table>
+                    </Card>
+                </div>
+            )
+        });
+
         return (
-            <div>
             <div className="resultsWrapper">
-                <div>
-                    <h5 className="resultsName righteous">UserName A.</h5>
-                    <img className="resultsImage" src="https://cdn.pixabay.com/photo/2016/04/01/10/11/avatar-1299805_960_720.png" />
-                    <button className="resultsButton btn">Message</button>
-                </div>
-                <div className="resultsSection">
-                    <CarouselTable className="resultsTable" />
-                    <CarouselTable className="resultsTable" />
-                </div>
-            </div>
-
-            <div className="resultsWrapper">
-                <div>
-                    <h5 className="resultsName righteous">UserName B.</h5>
-                    <img className="resultsImage" src="https://cdn.pixabay.com/photo/2016/04/01/10/11/avatar-1299805_960_720.png" />
-                    <button className="resultsButton btn">Message</button>
-                </div>
-                <div className="resultsSection">
-                    <CarouselTable className="resultsTable" />
-                    <CarouselTable className="resultsTable" />
-                </div>
-            </div>
-            <div className="resultsWrapper">
-                <div>
-                    <h5 className="resultsName righteous">UserName C.</h5>
-                    <img className="resultsImage" src="https://cdn.pixabay.com/photo/2016/04/01/10/11/avatar-1299805_960_720.png" />
-                    <button className="resultsButton btn">Message</button>
-                </div>
-                <div className="resultsSection">
-                    <CarouselTable className="resultsTable" />
-                    <CarouselTable className="resultsTable" />
-                </div>
-            </div>
-            <div className="resultsWrapper">
-                <div>
-                    <h5 className="resultsName righteous">UserName D.</h5>
-                    <img className="resultsImage" src="https://cdn.pixabay.com/photo/2016/04/01/10/11/avatar-1299805_960_720.png" />
-                    <button className="resultsButton btn">Message</button>
-                </div>
-                <div className="resultsSection">
-                    <CarouselTable className="resultsTable" />
-                    <CarouselTable className="resultsTable" />
-                </div>
-            </div>
+                {displaySearchResults}
             </div>
         )
     }

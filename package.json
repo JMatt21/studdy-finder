@@ -1,6 +1,6 @@
 {
   "name": "studdy-finder",
-  "version": "1.0.0",
+  "version": "8.11.3",
   "description": "",
   "main": "server.js",
   "dependencies": {
@@ -14,11 +14,15 @@
     "passport-google-oauth20": "^1.0.0",
     "passport-local": "^1.0.0",
     "react-materialize": "^2.4.6",
-    "sequelize": "^4.39.0"
+    "sequelize": "^4.39.0",
+    "socket.io": "^2.1.1"
   },
   "devDependencies": {
     "concurrently": "^3.5.0",
     "nodemon": "^1.11.0"
+  },
+  "engines": {
+    "yarn": "1.9.4"
   },
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",

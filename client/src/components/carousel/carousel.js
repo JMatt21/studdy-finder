@@ -1,54 +1,47 @@
 import React from "react";
 import "./carousel.css";
+import {Link} from "react-router-dom";
 import { Carousel, Card, CardTitle, Table } from 'react-materialize';
-import MessageCard from "../messageCard/index";
-import CarouselTable from "../carouselTable/index";
-
-
 
 
 class MainCarousel extends React.Component {
 
-    render() {
+
+
+    render(props) {
+        const displayNearbyCarousel = this.props.carouselArray.map(function (element, index) {
+            return (
+                <div key={index}>
+                    <Card horizontal header={<img className="carouselImage" src={element.image} alt="img"></img>}>
+                        <Link className="ubuntu btn"to='/dasdsadas'>Message</Link>
+                        <p className="nearby">Nearby: {element.distance} miles</p>
+                        <h5 className="righteous">{element.name}</h5>
+                        <Table>
+                            <tbody>
+                                {element.beginnerSkills.map((subject, i) => {
+                                    return (
+                                        <tr key={i}>
+                                            <td className="carouselTd">{subject}</td>
+                                        </tr>
+                                    )
+                                })}
+                            </tbody>
+                        </Table>
+                    </Card>
+                </div>
+            )
+        });
+
         return (
+
             <Carousel options={{ fullWidth: false }}>
-                <div className='panelOne'>
-                    <Card horizontal header={<CardTitle image="https://cdn.pixabay.com/photo/2016/11/08/16/03/manager-1808728_1280.jpg" ><img src="" /></CardTitle>} actions={[<a className="ubuntu btn" href='#'>Message</a>]}>
-                        <h5 className="righteous">Geoff H.</h5>
-                        <CarouselTable />
-                    </Card>
-                </div>
-                <div className='panelTwo'>
-                    <Card horizontal header={<CardTitle image="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"></CardTitle>} actions={[<a className="ubuntu btn" href='#'>Message</a>]}>
-                        <h5 className="righteous">Ryan T.</h5>
-                        <CarouselTable />
-                    </Card>
-                </div>
-                <div className='panelThree'>
-                    <Card horizontal header={<CardTitle image="https://cdn.pixabay.com/photo/2018/03/31/16/23/african-american-3278519_1280.jpg"></CardTitle>} actions={[<a className="ubuntu btn" href='#'>Message</a>]}>
-                        <h5 className="righteous">Ron P.</h5>
-                        <CarouselTable />
-                    </Card>
-                </div>
-                <div className='panelFour'>
-                    <Card horizontal header={<CardTitle image="https://images.pexels.com/photos/1036620/pexels-photo-1036620.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"></CardTitle>} actions={[<a className="ubuntu btn" href='#'>Message</a>]}>
-                        <h5 className="righteous">Tiffiny S.</h5>
-                        <CarouselTable />
-                    </Card>
-                </div>
-                <div className='panelFive'>
-
-                    <Card horizontal header={<CardTitle image="https://images.pexels.com/photos/736716/pexels-photo-736716.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"></CardTitle>} actions={[<a className="ubuntu btn" href='#'>Message</a>]}>
-                        <h5 className="righteous">Joseph B.</h5>
-                        <CarouselTable />
-                    </Card>
-
-                </div>
+                {displayNearbyCarousel}
             </Carousel>
+
         )
     }
 };
 
-export default MainCarousel;
 
-// sideWrapper
+
+export default MainCarousel;

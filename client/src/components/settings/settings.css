@@ -1,0 +1,57 @@
+
+.grid-wrapper{
+    display: inline;
+    margin: 0 auto;
+}
+
+
+.settings-main-grid {
+  display: grid;
+  margin: auto;
+  height: 100vh;
+  width: 100vw;
+  max-width: 1440px;
+  grid-template-columns: 300px 10px auto;
+  grid-template-rows: 20px 1fr 90px;
+}
+
+.settings-side-panel{
+    background: #000000b0;
+
+}
+
+.settings-content{
+    background: rgba(255, 255, 255, 0.534);
+}
+
+.settings-list-grid{
+    display: grid;
+    margin: 0 auto;
+    height: 100%;
+    grid-template-columns: 1fr;
+    grid-template-rows: 30px 80px 80px 80px 80px 80px;
+    grid-row-gap: 10px;
+
+}
+
+.settings-li{
+    cursor: pointer;
+    border: 2px solid rgba(75, 75, 75, 0.137);
+    background: rgba(0, 0, 0, 0.226);
+    text-align: center;
+    font-family: 'Ubuntu';
+    font-weight: 600;
+    font-size: 30px;
+}
+
+.sli2{
+    font-size: 28px;
+    line-height: 38px;
+}
+
+.sli1{
+    font-size: 30px;
+    line-height: 76px;
+}
+
+

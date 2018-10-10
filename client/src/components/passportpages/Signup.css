@@ -1,0 +1,23 @@
+.signup-page-grid{
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 300px auto;
+}
+
+.side-bar-signup{
+    background: yellow;
+}
+
+.main-content-signup{
+    height: 100%;
+    display: grid;
+    grid-template-columns: auto 400px auto;
+   
+}
+
+h2{
+    font-size: 25px;
+}
+
+
+

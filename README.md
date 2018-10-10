@@ -1,1 +1,0 @@
-# studdy-finder
