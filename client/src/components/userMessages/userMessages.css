@@ -1,0 +1,33 @@
+.user-message-current{
+    margin-right: 30px;
+    background: white;
+    border-radius: 20px;
+    padding: 10px;
+    max-width: 500px;
+    float: right;
+}
+
+.user-message-other{
+    margin-left: 30px;
+    background: white;
+    border-radius: 20px;
+    padding: 10px;
+    max-width: 500px;
+    float: left;
+}
+
+.messages-wrapper{
+    overflow: scroll;
+    height: 92.5%;
+
+}
+
+.message-block{
+    width: 100%;
+    min-height: 60px;
+    margin: 20px 0 20px 0;
+}
+
+.spacer{
+    clear: both;
+}

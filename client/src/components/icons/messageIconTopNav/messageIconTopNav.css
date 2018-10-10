@@ -1,0 +1,21 @@
+.messageTopNavIconWrapper{
+    height: 63px;
+    width: 50px;
+    display: none;
+}
+
+.messageTopNavIcon{
+    height: 50px;
+    width: 50px;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+  @media screen and (max-width: 901px) {
+
+    .messageTopNavIconWrapper{
+        display: block;
+        visibility: visible;
+    }
+
+}

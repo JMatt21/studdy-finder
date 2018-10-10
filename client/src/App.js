@@ -1,35 +1,67 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import './App.css';
-import API from "./utils/API";
+// import socket from './utils/SocketAPI';
+import passport from './utils/PassportAPI';
+import Main from "./components/main/index";
+import { Login, Signup } from "./components/passportpages";
+import MessagingWrapper from './components/messagingWrapper';
+
+
+
+let loggedIn = false;
 
 class App extends Component {
   state = {
-    text: "test"
-  }
-  componentDidMount() {
-    API.getTest()
-      .then(res => {
-        this.setState({ text: res.data })
-      })
+    user: {},
+    rooms: [],
+    data: [],
+  };
+
+  componentWillMount() {
+    passport.getUserInfo()
+      .then(data => {
+        this.setData(data.data, 'user');
+      })  
       .catch(err => console.log(err));
-    // API.postTest()
-    //   .then(res => {
-    //     this.setState({ text: res.data })
-    //   })
-    //   .catch(err => console.log(err));
   }
+
+  setData = (data, name) => {
+    this.setState({ [name]: data });
+  };
+
+  resetData = () => {
+    this.setState({
+      user: {},
+      rooms: [],
+      data: []
+    })
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          {this.state.text}
-        </p>
-      </div>
+      <Router>
+        <div>
+          <Route exact path="/" render={() => (
+            <Redirect to="/login"/>
+          )} />
+          <Route exact path="/signup"
+            render={props => <Signup {...props} setData={this.setData} />} />
+          <Route exact path="/login"
+            render={props => <Login {...props} appState={this.state} setData={this.setData} />} />
+          <Route exact path="/Main"
+            render={props => <Main {...props} appState={this.state} setData={this.setData} resetData={this.resetData} />} />
+          <Route exact path="/Settings"
+            render={props => <Main {...props} appState={this.state} setData={this.setData} />} />
+          <Route exact path="/UserProfile/:username" component={Main} />
+          <Route exact path="/Messages"
+            render={props => <MessagingWrapper {...props} appState={this.state} />} />
+          <Route exact path="/Messages/:roomid"
+            render={props => <MessagingWrapper {...props} appState={this.state} />} />
+
+
+        </div>
+      </Router>
     );
   }
 }
