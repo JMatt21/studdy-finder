@@ -1,5 +1,6 @@
 import openSocket from 'socket.io-client';
-const socket = openSocket(process.env.PORT || 'http://localhost:3001');
+// const socket = openSocket('http://localhost:3001');
+const socket = openSocket('https://shrouded-beyond-13240.herokuapp.com'); 
 
 export default {
     socketUser: function (userId) {
