@@ -1,9 +1,21 @@
-.profile-picture-wrapper{
+.profile-picture-wrapper-1{
     display: grid;
     height: 100%;
     widows: 100%;
     grid-template-columns: 1fr 2fr 1fr;
-    grid-template-rows: 1fr 1fr;    
+    grid-template-rows: 1fr 1fr;  
+    transition: background-color 300ms ease-in-out;  
+}
+
+.profile-picture-wrapper-2{
+    display: grid;
+    height: 100%;
+    widows: 100%;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    /* background: rgba(255, 191, 226, 0.425); */
+    background: rgba(255, 0, 85, 0.158);
+    transition: background-color 300ms ease-in-out;  
 }
 
 .settings-profile-link{
@@ -26,6 +38,7 @@
     margin: 0 auto;
     width: 250px;
     height: 250px;
+
 }
 
 
