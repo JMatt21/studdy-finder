@@ -23,7 +23,7 @@ class MessageCard extends React.Component {
                     return (
                         <div key={index} className="cardWrapper ubuntu">
                             <div className="imageWrapper">
-                                <div className="messageName">{Match.name || ''}</div>
+                                <div className="messageName">{Match.name || Match.email}</div>
                                 <img className="messageImage" src={Match.image || "https://via.placeholder.com/250x275"} alt="img" />
                                 <Link to={`/messages/${roomName(this.props.user.id, Match.id)}`}>
                                 {/* <Link to={roomLink(this.props, this.props.user.id, Match.id)}> */}

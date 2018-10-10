@@ -8,7 +8,8 @@ class MessagesCard extends React.Component {
     state = {
         message: '',
         roomMessages: [],
-        roomId: this.props.match.params.roomid
+        roomId: this.props.match.params.roomid,
+        matchedStatus: false
     };
 
     componentWillMount() {
@@ -19,7 +20,7 @@ class MessagesCard extends React.Component {
 
     componentWillReceiveProps(newRoute) {
         console.log(this.state.roomId)
-        this.setState({roomId: newRoute.match.params.roomid})
+        this.setState({ roomId: newRoute.match.params.roomid })
         this.getRoomMessages(newRoute.match.params.roomid);
     }
 
@@ -32,12 +33,28 @@ class MessagesCard extends React.Component {
 
     mSending = event => {
         event.preventDefault();
-        socket.sendMessage(this.state.message, this.state.roomId, this.props.appState.user.id);
+        if (this.state.roomId.split("+").includes(this.props.appState.user.id.toString())) {
+            if (!this.state.matchedStatus) {
+                console.log("matching ")
+                const users = this.state.roomId.split("+");
+                this.userMatchHandler(users[0], users[1])
+            }
+            socket.sendMessage(this.state.message, this.state.roomId, this.props.appState.user.id);
+        } else console.log(this.state.roomId.split("+"), this.props.appState.user.id);
     }
 
     getRoomMessages = (id) => {
+        socket.joinRoom(id) // in case user is not in room
         API.getRoomMessages(id)
-            .then(data => this.setState({ roomMessages: data.data.Messages }))
+            .then(data => {
+                let matchedStatus = false;
+                if (data.data.Messages.length > 0)
+                    matchedStatus = true;
+                this.setState({
+                    roomMessages: data.data.Messages,
+                    matchedStatus: matchedStatus
+                })
+            })
             .catch(err => console.log(err))
     }
 
@@ -46,10 +63,10 @@ class MessagesCard extends React.Component {
         this.setState({ roomMessages: this.state.roomMessages.concat(message) })
     }
 
-    firstMessageHandler = () => {
-        // API.matchUsers(user1, user2)
-        //     .then(data => { console.log(data)})
-        //     .catch(err => console.log(err));
+    userMatchHandler = (user1, user2) => {
+        API.matchUsers(user1, user2)
+            .then(data => { console.log(data) })
+            .catch(err => console.log(err));
     }
 
     render() {
@@ -61,7 +78,7 @@ class MessagesCard extends React.Component {
                 <div className="messages-wrapper">
                     {this.state.roomMessages.map((message, i) => {
                         return (
-                            <div key ={i} className="message-block">
+                            <div key={i} className="message-block">
                                 {(message.UserId === this.props.appState.user.id ?
                                     <div className="user-message-current">{message.message}</div>
                                     : <div className="user-message-other">{message.message}</div>

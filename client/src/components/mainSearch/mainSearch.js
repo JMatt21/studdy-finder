@@ -28,7 +28,7 @@ class MainSearch extends React.Component {
                     className="mainSearch" 
                     validate placeholder='Enter Subject' />
                 </form>
-                <SearchResults searchData={this.props.data} />
+                <SearchResults searchData={this.props.data} user={this.props.user}/>
             </div>
         )
     }
