@@ -1,0 +1,24 @@
+.profile-picture-wrapper{
+    display: grid;
+    height: 100%;
+    widows: 100%;
+    grid-template-columns: 1fr 400px 1fr;
+    grid-template-rows: 1fr 1fr;    
+}
+
+.settings-profile-link{
+    margin: 0 auto;
+
+}
+
+
+
+.settings-profile-picture{
+    margin: 0 auto;
+}
+
+
+
+
+
+
