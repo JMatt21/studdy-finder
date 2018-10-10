@@ -23,7 +23,6 @@ router.route("/:id")
                         },
                         as: "Match"
                     }],
-
                 }]
         }).then(dbUser => {
             res.json(dbUser)

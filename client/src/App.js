@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import './App.css';
 // import socket from './utils/SocketAPI';
-// import API from './utils/API';
+import passport from './utils/PassportAPI';
 import Main from "./components/main/index";
 import { Login, Signup } from "./components/passportpages";
 import MessagingWrapper from './components/messagingWrapper';
@@ -19,6 +19,14 @@ class App extends Component {
     data: [],
   };
 
+  componentWillMount() {
+    passport.getUserInfo()
+      .then(data => {
+        this.setData(data.data, 'user');
+      })  
+      .catch(err => console.log(err));
+  }
+
   setData = (data, name) => {
     this.setState({ [name]: data });
   };
@@ -31,20 +39,19 @@ class App extends Component {
     })
   }
 
-
   render() {
     return (
       <Router>
         <div>
           <Route exact path="/" render={() => (
-            loggedIn ? <Redirect to="/Main" /> : <Redirect to="/SignUp" />
+            <Redirect to="/login"/>
           )} />
           <Route exact path="/signup"
             render={props => <Signup {...props} setData={this.setData} />} />
           <Route exact path="/login"
-            render={props => <Login {...props} setData={this.setData} />} />
+            render={props => <Login {...props} appState={this.state} setData={this.setData} />} />
           <Route exact path="/Main"
-            render={props => <Main {...props} appState={this.state} setData={this.setData} resetData={this.resetData}/>} />
+            render={props => <Main {...props} appState={this.state} setData={this.setData} resetData={this.resetData} />} />
           <Route exact path="/Settings"
             render={props => <Main {...props} appState={this.state} setData={this.setData} />} />
           <Route exact path="/UserProfile/:username" component={Main} />

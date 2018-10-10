@@ -21,27 +21,34 @@ passport.use(new LocalStrategy(
           model: db.Matches,
           include: [{ // to connect them to another user
             model: db.Users,
+            attributes: {
+              exclude: 'password'
+            },
             as: "Match"
           }],
         }]
     }).then(function (dbUser) {
       // If there's no user with the given email
       if (!dbUser) {
-        console.log('no email')
         return done(null, false, {
           message: "Incorrect email."
         });
       }
       // If there is a user with the given email, but the password the user gives us is incorrect
       else if (dbUser.dataValues.password !== (password)) {
-        console.log('wrong password')
         return done(null, false, {
           message: "Incorrect password."
         });
       } else {
+        let ret = dbUser;
         // If none of the above, return the user
-        console.log('all good')
-        return done(null, dbUser);
+        const temp = [];
+        dbUser.Matches.forEach(dbMatch => {
+          temp.push(dbMatch.Match)
+        })
+        ret.holymolywhydontyouwork = [1,2,3];
+        console.log(ret);
+        return done(null, ret);
       }
     });
   }
