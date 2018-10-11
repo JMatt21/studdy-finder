@@ -1,14 +1,54 @@
 import React from "react";
-import "./profilePicture.css";
+import "./interests.css";
 import head from '../../assets/head.jpg'
 import { Animated } from "react-animated-css";
 
-class ProfilePicture extends React.Component {
+class Interests extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
-      newClass: "profile-picture-wrapper-1"
+      textInput: '',
+      newClass: "settings-interests-wrapper-1",
+      interests: [],
+      shownInterests: []
     };
+
+
+  }
+
+  delete = (thang) => {
+    
+    let everyInterest = this.state.interests.map(function(i){
+      return i;
+  });
+  
+
+
+  }
+
+  handleInputChange = ({ target }) => {
+    const { value, name } = target;
+    this.setState({
+      [name]: value
+    })
+  }
+
+  push = (e) => {
+    e.preventDefault();
+
+    this.state.interests.push(this.state.textInput);
+
+    this.setState({
+      shownInterests: this.state.interests
+    });
+
+
+    if (this.state.newClass === "settings-interests-wrapper-2") {
+      this.setState({
+        newClass: "settings-interests-wrapper-1"
+      });
+    }
 
   }
 
@@ -16,9 +56,9 @@ class ProfilePicture extends React.Component {
   changeBackgroundInput = (e) => {
     e.preventDefault();
 
-    if (this.state.newClass === "profile-picture-wrapper-1") {
+    if (this.state.newClass === "settings-interests-wrapper-1") {
       this.setState({
-        newClass: "profile-picture-wrapper-2"
+        newClass: "settings-interests-wrapper-2"
       });
 
     }
@@ -26,66 +66,66 @@ class ProfilePicture extends React.Component {
 
   changeBackground = (e) => {
     e.preventDefault();
-
-    if (this.state.newClass === "profile-picture-wrapper-2") {
+    if (this.state.newClass === "settings-interests-wrapper-2") {
       this.setState({
-        newClass: "profile-picture-wrapper-1"
+        newClass: "settings-interests-wrapper-1"
       });
-
     }
-
   }
 
 
 
   render() {
-
-
-
-
-
     return (
       <div onClick={this.changeBackground} className={this.state.newClass}>
-
         <div></div>
+        <div className="settings-form-wrapper">
+          <div></div>
 
-        <div className="settings-profile-picture-wrapper">
-          <div className="settings-profile-picture">
-            <img src={head} width="250px" height="250px" />
-          </div>
-          <Animated animationIn="fadeIn">
-            <h4 className="display-text-settings-profile-picture bounceIn">Enter A link To Your New Profile Picture Here</h4>
-            <p className="display-text-settings-profile-picture">
-              (We recommond that your profile picture is 250px x 250px to ensure proper sizing)</p>
-          </Animated>
-
-        </div>
-
-
-        <div></div>
-        <div></div>
-
-
-
-        <div className="settings-profile-link">
-          <form className="settings-link-form-wrapper">
-            <div className="bubble">
+          <form className="interests-form-wrapper">
+            <div className="interests-bubble">
               <div id="messaging-form">
                 <div className="input-field">
-                  <input onClick={this.changeBackgroundInput}
+                  <input
+                    onClick={this.changeBackgroundInput}
                     type="text"
                     className="materialize-textarea"
-                    name="message"
-                    placeholder="Enter A New Link Here" />
+                    name="textInput"
+                    placeholder="Your Interests..."
+                    value={this.state.textInput}
+                    onChange={this.handleInputChange}
+                  />
                 </div>
               </div>
             </div>
-            <button className="circleButton" onClick={this.changeBackground}>Submit</button>
+            <button className="circleButton x" onClick={this.push}>Submit</button>
           </form>
+
+          <div></div>
 
         </div>
 
         <div></div>
+        <div></div>
+
+        <Animated animationIn="fadeIn">
+          <div className="interests-buttons-wrapper">
+            {this.state.shownInterests.map((items, i) => {
+              return (
+                <div key={i} className="interests-buttons">
+                  <div className="interests-button-style x" id="style-x" onClick={() => this.delete(items)}>x</div>
+                  <div className="interests-button-style x">{items}</div>
+                </div>
+              );
+            })}
+
+          </div>
+
+
+        </Animated>
+
+        <div></div>
+
 
       </div>
 
@@ -96,4 +136,4 @@ class ProfilePicture extends React.Component {
 
 
 
-export default ProfilePicture;
+export default Interests;
