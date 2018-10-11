@@ -21,17 +21,13 @@ class Interests extends React.Component {
     let index = this.state.shownInterests.indexOf(thang);
     let arr = this.state.shownInterests;
     
-    arr.forEach(i => {
+      arr.splice(index, 1);
 
-      arr.splice(index, 1)
-      
-      if (i === thang) {
         this.setState({
           shownInterests: arr
         })
       }
-    });
-  }
+  
 
 
   handleInputChange = ({ target }) => {
@@ -115,7 +111,7 @@ class Interests extends React.Component {
         <div></div>
         <div></div>
 
-        <Animated animationIn="fadeIn">
+        <Animated animationIn="zoomInUp">
           <div className="interests-buttons-wrapper">
             {this.state.shownInterests.map((items, i) => {
               return (
