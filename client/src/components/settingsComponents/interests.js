@@ -7,6 +7,8 @@ class Interests extends React.Component {
   constructor(props) {
     super(props);
 
+    this.changeInterests = this.changeInterests.bind(this);
+
     this.state = {
       textInput: '',
       newClass: "settings-interests-wrapper-1",
@@ -17,15 +19,26 @@ class Interests extends React.Component {
 
   }
 
-  delete = (thang) => {
-    
-    let everyInterest = this.state.interests.map(function(i){
-      return i;
-  });
-  
-
-
+  changeInterests = (index) => {
+    this.setState({
+      interests: this.state.interests.splice(index, 1)
+    })
   }
+
+  delete = (thang) => {
+    let index = -1;
+
+    this.state.interests.forEach(i => {
+
+      index++;
+
+      if (i === thang) {
+        this.changeInterests(index);
+
+      }
+    });
+  }
+
 
   handleInputChange = ({ target }) => {
     const { value, name } = target;
