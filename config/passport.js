@@ -39,16 +39,16 @@ passport.use(new LocalStrategy(
         return done(null, false, {
           message: "Incorrect password."
         });
+        // If none of the above, return the user
       } else {
         let ret = dbUser;
-        // If none of the above, return the user
+
         const temp = [];
         dbUser.Matches.forEach(dbMatch => {
           temp.push(dbMatch.Match)
         })
-        ret.holymolywhydontyouwork = [1,2,3];
         console.log(ret);
-        return done(null, ret);
+        return done(null, { user: ret, simpleMatchData: [1, 2, 3] });
       }
     });
   }
