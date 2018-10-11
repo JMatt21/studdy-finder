@@ -1,0 +1,114 @@
+.profile-picture-wrapper-1{
+    display: grid;
+    height: 100%;
+    widows: 100%;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: 1fr 0.5fr;  
+    transition: background-color 300ms ease-in-out;  
+}
+
+.profile-picture-wrapper-2{
+    display: grid;
+    height: 100%;
+    widows: 100%;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    /* background: rgba(255, 191, 226, 0.425); */
+    background: rgba(255, 0, 85, 0.158);
+    transition: background-color 300ms ease-in-out;  
+}
+
+.settings-profile-link{
+    margin: 0 auto;
+    width: 100%;
+
+}
+
+.display-text-settings-profile-picture{
+    text-align: center;
+}
+
+
+.settings-profile-picture-wrapper{
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+.settings-profile-picture{
+    margin: 0 auto;
+    width: 250px;
+    height: 250px;
+
+}
+
+
+.bubble{
+    background: white;
+    border-radius: 15px;
+    width: 95%;
+
+}
+
+.settings-link-form-wrapper{
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 92% 8%;
+}
+
+
+#messaging-form{
+    width: 95%;
+    margin-top: -15px;
+    color: black;
+}
+
+
+.circleButton{
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    margin-top: 3px;
+    text-align: center;
+    font-size: 9px;
+    color: white;
+    background: #7330D6;
+
+}
+
+.circleButton:focus{
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    margin-top: 3px;
+    text-align: center;
+    font-size: 9px;
+    color: white;
+    background: #7330D6;
+
+}
+
+.input-field input{
+    border-bottom: rgba(0, 255, 21, 0.925) !important;
+    border: 0px !important;
+    padding: 0px !important;
+    height: 20px !important;
+    margin: 15px 0 15px 0 !important;
+}
+
+.input-field input[type=text]:focus {
+    border-bottom: 0px solid rgba(0, 0, 0, 0) !important;
+    box-shadow: 0px 0 0 rgba(0, 0, 0, 0) !important;
+
+  }
+
+  .input-field input[type=text].valid {
+    border-bottom: 0px solid rgba(0, 0, 0, 0) !important;
+    box-shadow: 0 0px 0 0 rgba(0, 0, 0, 0) !important;
+  }
+
+
+
+
+
+
+
