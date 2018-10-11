@@ -1,5 +1,5 @@
 import React from "react";
-import "./settingsComponents.css";
+// import "./settingsComponents.css";
 
 const distance = () => (
   <div>

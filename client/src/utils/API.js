@@ -19,7 +19,4 @@ export default {
   getRoomMessages: function(roomId) {
     return axios.get(`/api/rooms/${roomId}`)
   },
-  matchUsers: function(user1Id, user2Id){
-    return axios.post(`/api/users/match`, {user1Id: user1Id, user2Id: user2Id})
-  }
 };

@@ -86,13 +86,17 @@ const test_data = [
 
 
 class Main extends React.Component {
+    // state = {
+    //     user: {},
+    //     rooms: [],
+    //     data: [],
+    // };
+
     componentDidMount() {
-        if (this.props.appState.user.id)
-            this.getUserRooms(this.props.appState.user.id);
+        this.getUserRooms(this.props.appState.user.id);
     }
 
     getUserRooms(id) {
-        socket.socketUser(id);
         API.getUsersRooms(id)
             .then((data) => {
                 console.log(`ROOMS: ${data.data}`);
@@ -116,8 +120,8 @@ class Main extends React.Component {
     }
 
     render() {
-        const { user, data } = this.props.appState;
-        const matchData = user.Matches || [];
+        const {user, data} = this.props.appState;
+        // console.log("THE STATE TO MAIN: ", this.props.appState);
         return (
             <div>
                 <TopNavBar
@@ -132,7 +136,7 @@ class Main extends React.Component {
                         <div>
                             <div className="sectionWrapper">
                                 <MainCarousel
-                                    carouselArray={data}
+                                    carouselArray={test_data}
                                 />
                                 <MainSearch
                                     onSubmit={this.searchForUsers}
@@ -145,7 +149,7 @@ class Main extends React.Component {
                             <div className="sideWrapper">
                                 <MessageBoard
                                     user={user}
-                                    data={matchData}
+                                    data={data}
                                 />
                             </div>
                         </div>

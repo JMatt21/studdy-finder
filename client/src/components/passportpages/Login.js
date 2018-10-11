@@ -8,13 +8,6 @@ export class Login extends React.Component {
         password: ''
     }
 
-    componentWillReceiveProps(props) {
-        // The parameter is all the props being pass through
-        console.log("APPSTATE WAS UPDATED")
-        if(props.appState.user.id){
-            this.props.history.push("/main")
-        }
-    }
     handleInputChange = event => {
         const { name, value } = event.target;
         this.setState({

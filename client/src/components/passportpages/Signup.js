@@ -32,7 +32,7 @@ export class Signup extends React.Component {
                     }
                 })
                 .catch(err => {
-                    console.log(err.response)
+                    console.log(err.response.status)
                     switch (err.response.status) {
                         case 403: this.setState({ errMessage: 'Error: 403, email already registered.' });
                             break;
