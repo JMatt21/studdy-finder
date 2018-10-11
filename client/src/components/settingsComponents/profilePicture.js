@@ -45,6 +45,7 @@ class ProfilePicture extends React.Component {
 
 
     return (
+      <Animated animationIn="fadeIn">
       <div onClick={this.changeBackground} className={this.state.newClass}>
 
         <div></div>
@@ -53,11 +54,11 @@ class ProfilePicture extends React.Component {
           <div className="settings-profile-picture">
             <img src={head} width="250px" height="250px" />
           </div>
-          <Animated animationIn="fadeIn">
-            <h4 className="display-text-settings-profile-picture bounceIn">Enter A link To Your New Profile Picture Here</h4>
+         
+            <h4 className="display-text-settings-profile-picture">Enter A link To Your New Profile Picture Here</h4>
             <p className="display-text-settings-profile-picture">
-              (We recommond that your profile picture is 250px x 250px to ensure proper sizing)</p>
-          </Animated>
+              We recommond that your profile picture is 250px x 250px to ensure proper sizing</p>
+         
 
         </div>
 
@@ -88,7 +89,7 @@ class ProfilePicture extends React.Component {
         <div></div>
 
       </div>
-
+      </Animated>
 
     );
   }

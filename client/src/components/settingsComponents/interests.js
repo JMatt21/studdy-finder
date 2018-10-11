@@ -1,6 +1,5 @@
 import React from "react";
 import "./interests.css";
-import head from '../../assets/head.jpg'
 import { Animated } from "react-animated-css";
 
 class Interests extends React.Component {
@@ -20,14 +19,14 @@ class Interests extends React.Component {
   delete = (thang) => {
     let index = this.state.shownInterests.indexOf(thang);
     let arr = this.state.shownInterests;
-    
-      arr.splice(index, 1);
 
-        this.setState({
-          shownInterests: arr
-        })
-      }
-  
+    arr.splice(index, 1);
+
+    this.setState({
+      shownInterests: arr
+    })
+  }
+
 
 
   handleInputChange = ({ target }) => {
@@ -39,12 +38,16 @@ class Interests extends React.Component {
 
   push = (e) => {
     e.preventDefault();
+    if (this.state.textInput === "") {
+      window.Materialize.toast('Please Enter A Value', 2000);
+    } else {
+      this.state.shownInterests.push(this.state.textInput);
 
-    this.state.shownInterests.push(this.state.textInput);
+      this.setState({
+        shownInterests: this.state.shownInterests
+      });
 
-    this.setState({
-      shownInterests: this.state.shownInterests
-    });
+    }
 
 
     if (this.state.newClass === "settings-interests-wrapper-2") {
@@ -82,6 +85,7 @@ class Interests extends React.Component {
     return (
       <div onClick={this.changeBackground} className={this.state.newClass}>
         <div></div>
+        <Animated animationIn="fadeIn">
         <div className="settings-form-wrapper">
           <div></div>
 
@@ -107,16 +111,16 @@ class Interests extends React.Component {
           <div></div>
 
         </div>
+        </Animated>
 
         <div></div>
         <div></div>
-
         <Animated animationIn="zoomInUp">
           <div className="interests-buttons-wrapper">
             {this.state.shownInterests.map((items, i) => {
               return (
                 <div key={i} className="interests-buttons">
-                  <div className="interests-button-style x" id="style-x" onClick={() => this.delete(items)}>x</div>
+                    <div className="interests-button-style x" id="style-x" onClick={() => this.delete(items)}>x</div>
                   <div className="interests-button-style x">{items}</div>
                 </div>
               );

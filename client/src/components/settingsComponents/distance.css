@@ -1,0 +1,93 @@
+.settings-distance-wrapper-1{
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-columns: 30px 1fr 30px;
+    grid-template-rows: .2fr 2fr 2.2fr; 
+    transition: all 200ms ease-in-out;
+}
+
+.settings-distance-wrapper-2{
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-columns: 30px 1fr 30px;
+    grid-template-rows: .2fr 2fr 2.2fr; 
+    background: rgba(70, 0, 58, 0.274);
+    transition: all 200ms ease-in-out;
+}
+
+.settings-distance-text{
+    text-align: center;
+}
+
+.settings-distance-slider-grid{
+    display: grid;
+    grid-template-columns: 2fr minmax(250px, 5fr) 2fr;
+    grid-template-rows: .2fr 1fr; 
+    margin-top: 30px;
+}
+
+.settings-distance-range-value{
+    text-align: center;
+    font-size: 18px;
+    font-weight: bolder;
+    color: purple;
+}
+
+.settings-distance-bubble-wrapper{
+    margin: 0 auto;
+}
+
+.settings-distance-bubble{
+    background: rgba(70, 0, 58, 0.432);
+    transition: all 150ms ease-in-out;
+    text-align: center;
+    font-size: 30px;
+}
+
+#bubble-size-1{
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+    line-height: 100px;
+}
+
+#bubble-size-2{
+    width: 200px;
+    height: 200px;
+    border-radius: 300px;
+    line-height: 200px;
+}
+
+#bubble-size-3{
+    width: 200px;
+    height: 200px;
+    border-radius: 300px;
+    line-height: 200px;
+    background: rgba(255, 255, 255, 0);
+}
+
+
+input[type=range]+.thumb {
+    position: absolute !important;
+    color: rgba(255, 255, 255, 0) !important;
+    font-size: 0px !important;
+    top: 10px;
+    left: 0;
+    border: none;
+    height: 0;
+    width: 0;
+    border-radius: 50%;
+    background-color: #ffffff00 !important;
+    margin-left: 7px;
+    -webkit-transform-origin: 0% 0% !important;
+    transform-origin: 0% 0% !important;
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+.value{
+    color: rgba(255, 255, 255, 0) !important;
+    font-size: 0px !important;
+}

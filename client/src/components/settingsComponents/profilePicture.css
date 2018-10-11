@@ -3,7 +3,7 @@
     height: 100%;
     widows: 100%;
     grid-template-columns: 1fr 2fr 1fr;
-    grid-template-rows: 1fr 1fr;  
+    grid-template-rows: 1fr 0.5fr;  
     transition: background-color 300ms ease-in-out;  
 }
 

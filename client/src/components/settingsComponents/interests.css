@@ -2,8 +2,8 @@
     display: grid;
     height: 100%;
     width: 100%;
-    grid-template-columns: 30px auto 30px;
-    grid-template-rows: 1fr 1fr; 
+    grid-template-columns: 30px 1fr 30px;
+    grid-template-rows: .2fr 1fr; 
     transition: background-color 200ms ease-in-out; 
 }
 
@@ -11,7 +11,7 @@
     display: grid;
     height: 100%;
     width: 100%;
-    grid-template-columns: 30px auto 30px;
+    grid-template-columns: 30px 1fr 30px;
     grid-template-rows: 1fr 1fr; 
     background: rgba(98, 0, 255, 0.192);
     transition: background-color 200ms ease-in-out;  
