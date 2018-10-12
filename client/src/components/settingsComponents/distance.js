@@ -8,12 +8,11 @@ class Distance extends React.Component {
     super(props);
 
     this.state = {
-      sliderInput: 5,
+      sliderInput: '5',
       bubbleSize: 'bubble-size-1',
       wrapperBackground: 'settings-distance-wrapper-1'
 
     };
-
 
   }
 
@@ -23,25 +22,33 @@ class Distance extends React.Component {
       [name]: value
     })
 
-    this.bubbleSizeHandler();
+    console.log(value);
+    this.bubbleSizeHandler(value);
   }
 
-  bubbleSizeHandler = () => {
-    if (this.state.sliderInput < 19) {
-      console.log('1');
+  bubbleSizeHandler = (value) => {
+    console.log(value);
+    if (value < 9) {
       this.setState({
-        bubbleSize: 'bubble-size-1',
+        bubbleSize: 'bubble-size-1'
+      });
+    } else if (value > 9 && value < 19) {
+      this.setState({
+        bubbleSize: 'bubble-size-2'
+      });
+    } else if (value > 19 && value < 21) {
+      this.setState({
+        bubbleSize: 'bubble-size-3'
+      });
+    } else if (value > 26 && value < 31) {
+      this.setState({
+        bubbleSize: 'bubble-size-4',
         wrapperBackground: 'settings-distance-wrapper-1'
       });
-    } else if (this.state.sliderInput == 30) {
+    } else if (value > 31 && value < 36) {
       this.setState({
-        bubbleSize: 'bubble-size-3',
+        bubbleSize: 'bubble-size-5',
         wrapperBackground: 'settings-distance-wrapper-2'
-      });
-    } else {
-      this.setState({
-        bubbleSize: 'bubble-size-2',
-        wrapperBackground: 'settings-distance-wrapper-1'
       });
     }
   }
@@ -90,25 +97,25 @@ class Distance extends React.Component {
         <div></div>
         <div></div>
 
-          <div className="settings-distance-bubble-wrapper">
-         <Animated animationIn="fadeIn">
+        <div className="settings-distance-bubble-wrapper">
+          <Animated animationIn="fadeIn">
             <div className="settings-distance-bubble" id={this.state.bubbleSize}>You
             </div>
-         </Animated>
-         
-          </div>
+          </Animated>
+
+        </div>
 
 
-          <div></div>
+        <div></div>
 
 
 
 
       </div>
-        );
-      }
-    }
-    
-    
-    
+    );
+  }
+}
+
+
+
 export default Distance;
