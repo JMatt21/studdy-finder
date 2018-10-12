@@ -14,10 +14,8 @@ router.post("/api/login", passport.authenticate("local"), function (req, res) {
     // this route is required since it handles the authentication
     // react will handle the redirect but it does need the info from the server about the new user
     console.log("re routing from api/signup")
-    let ret = req.user;
-    // delete ret.dataValues.password;
-    console.log(ret);
-    res.json(ret); // we can send things here in place of api/user_info
+    console.log(req.user);
+    res.json(req.user); // we can send things here in place of api/user_info
     // this means once a user logs in/ signs up we can send them their user info quickly
     // req.user is defined in passport.js in the config folder
 });
@@ -76,7 +74,14 @@ router.get("/api/user_data", function (req, res) {
                 }]
         })
             .then(dbUser => {
-                res.json(dbUser)
+                let ret = dbUser.toJSON();
+                // deleting unecessary keys from ret
+                delete ret.password;
+                delete ret.advancedSkills;
+                delete ret.intermediateSkills
+                // setting Matches to be the actual users instead of 'matches' 
+                ret.Matches = dbUser.Matches.map(dbMatch => dbMatch.Match);
+                res.json(ret);
             })
     }
 });

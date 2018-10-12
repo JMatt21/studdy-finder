@@ -8,12 +8,12 @@ class MessagesCard extends React.Component {
     state = {
         message: '',
         roomMessages: [],
-        roomId: this.props.match.params.roomid,
+        roomId: this.props.match.params.roomid || '',
         matchedStatus: false
     };
 
     componentWillMount() {
-        console.log("switching chatrooms")
+        this.redirectIncorrectRoom(this.props.appState.user.id || 0);
         this.getRoomMessages(this.state.roomId);
         socket.getMessage(text => this.updateRoomMessages(text));
     }
@@ -31,6 +31,12 @@ class MessagesCard extends React.Component {
         })
     }
 
+    redirectIncorrectRoom = userId => {
+        if (!this.state.roomId.split("+").includes(userId.toString())) {
+            this.props.history.push("/messages");
+        }
+    }
+
     mSending = event => {
         event.preventDefault();
         if (this.state.roomId.split("+").includes(this.props.appState.user.id.toString())) {
@@ -38,6 +44,7 @@ class MessagesCard extends React.Component {
                 console.log("matching ")
                 const users = this.state.roomId.split("+");
                 this.userMatchHandler(users[0], users[1])
+                this.setState({matchedStatus: true})
             }
             socket.sendMessage(this.state.message, this.state.roomId, this.props.appState.user.id);
         } else console.log(this.state.roomId.split("+"), this.props.appState.user.id);
@@ -64,6 +71,7 @@ class MessagesCard extends React.Component {
     }
 
     userMatchHandler = (user1, user2) => {
+        socket.matchUsers(user1, user2);
         API.matchUsers(user1, user2)
             .then(data => { console.log(data) })
             .catch(err => console.log(err));

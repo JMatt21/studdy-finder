@@ -29,23 +29,17 @@ router.route("/:id")
         })
     })
 // To update user
-// .post(function (req, res) {
-//     const userId = req.params.id;
-//     db.update({
-//         where: { id: userId }
-//     }, req.body.user)
-//         .then(dbUser => {
-//             const { name, id, email, beginnerSkills, intermediateSkills, advancedSkills } = dbUser;
-//             res.json({
-//                 name: name,
-//                 id: id,
-//                 email: email,
-//                 beginnerSkills: beginnerSkills,
-//                 intermediateSkills: intermediateSkills,
-//                 advancedSkills: advancedSkills,
-//             })
-//         });
-// });
+router.route("/update/:id")
+    .post(function (req, res) {
+        const userId = req.params.id;
+        const updateInfo = req.body;
+        db.Users.update(updateInfo, {
+            where: { id: userId }
+        })
+            .then(dbUser => {
+                res.json(dbUser)
+            });
+    });
 // Matches with /api/users/rooms/:id
 router.route("/rooms/:id")
     .get((req, res) => {

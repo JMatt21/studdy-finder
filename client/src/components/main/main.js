@@ -87,8 +87,9 @@ const test_data = [
 
 class Main extends React.Component {
     componentDidMount() {
-        if (this.props.appState.user.id)
+        if (this.props.appState.user.id){
             this.getUserRooms(this.props.appState.user.id);
+        }
     }
 
     getUserRooms(id) {

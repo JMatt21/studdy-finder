@@ -16,13 +16,16 @@ passport.use(new LocalStrategy(
       where: {
         email: email
       },
+      attributes: {
+        exclude: ['advancedSkills', 'intermediateSkills']
+      },
       include: [
         { // to get user's match's 
           model: db.Matches,
           include: [{ // to connect them to another user
             model: db.Users,
             attributes: {
-              exclude: 'password'
+              exclude: ['password', 'advancedSkills', 'intermediateSkills']
             },
             as: "Match"
           }],
@@ -30,25 +33,29 @@ passport.use(new LocalStrategy(
     }).then(function (dbUser) {
       // If there's no user with the given email
       if (!dbUser) {
+        console.log("WRONG EMAIL")
         return done(null, false, {
           message: "Incorrect email."
         });
       }
       // If there is a user with the given email, but the password the user gives us is incorrect
       else if (dbUser.dataValues.password !== (password)) {
+        console.log("WRONG PASSWORD")
         return done(null, false, {
           message: "Incorrect password."
         });
         // If none of the above, return the user
       } else {
-        let ret = dbUser;
-
-        const temp = [];
-        dbUser.Matches.forEach(dbMatch => {
-          temp.push(dbMatch.Match)
-        })
-        console.log(ret);
-        return done(null, { user: ret, simpleMatchData: [1, 2, 3] });
+        // We want to edit the data that comes back from Sequelize so
+        // we will set a temporary variable, 'ret', as the JSON form of dbUser
+        let ret = dbUser.toJSON();
+        // deleting unecessary keys from ret
+        delete ret.password;
+        delete ret.advancedSkills;
+        delete ret.intermediateSkills
+        // setting Matches to be the actual users instead of 'matches' 
+        ret.Matches = dbUser.Matches.map(dbMatch => dbMatch.Match);
+        return done(null, ret);
       }
     });
   }

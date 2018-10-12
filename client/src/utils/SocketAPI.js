@@ -29,6 +29,20 @@ export default {
 
     leaveRoom: function(room) {
         socket.emit('leave room', room);
+    },
+
+    leaveAllRooms: function() {
+        socket.emit('logout')
+    },
+
+    matchUsers: function(user1Id, user2Id) {
+        socket.emit('new match', user1Id, user2Id)
+    },
+
+    listenToMatches: function(cb) {
+        socket.on('update new match', (newMatch) => {
+            cb(newMatch);
+        });
     }
 
 }

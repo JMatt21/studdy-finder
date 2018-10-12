@@ -1,20 +1,29 @@
 import React from "react";
 import "./interests.css";
 import { Animated } from "react-animated-css";
+// api
+import API from "../../utils/API";
 
 class Interests extends React.Component {
-  constructor(props) {
-    super(props);
 
-    this.state = {
-      textInput: '',
-      newClass: "settings-interests-wrapper-1",
-      shownInterests: []
-    };
+  state = {
+    textInput: '',
+    newClass: "settings-interests-wrapper-1",
+    shownInterests: []
+  };
 
-
+  componentDidMount() {
+    this.setState({
+      shownInterests: this.props.appState.user.beginnerSkills || [], 
+    })
   }
 
+  updateUserSkills = () => {
+    let temp = this.props.appState.user;
+    temp.beginnerSkills = this.state.shownInterests;
+    this.props.setData(temp, 'user');
+    API.updateUser({beginnerSkills: this.state.shownInterests}, this.props.appState.user.id)
+  }
 
   delete = (thang) => {
     let index = this.state.shownInterests.indexOf(thang);
@@ -26,8 +35,6 @@ class Interests extends React.Component {
       shownInterests: arr
     })
   }
-
-
 
   handleInputChange = ({ target }) => {
     const { value, name } = target;
@@ -46,6 +53,8 @@ class Interests extends React.Component {
       this.setState({
         shownInterests: this.state.shownInterests
       });
+
+      this.updateUserSkills();
 
     }
 
@@ -86,31 +95,31 @@ class Interests extends React.Component {
       <div onClick={this.changeBackground} className={this.state.newClass}>
         <div></div>
         <Animated animationIn="fadeIn">
-        <div className="settings-form-wrapper">
-          <div></div>
+          <div className="settings-form-wrapper">
+            <div></div>
 
-          <form className="interests-form-wrapper">
-            <div className="interests-bubble">
-              <div id="messaging-form">
-                <div className="input-field">
-                  <input
-                    onClick={this.changeBackgroundInput}
-                    type="text"
-                    className="materialize-textarea"
-                    name="textInput"
-                    placeholder="Your Interests..."
-                    value={this.state.textInput}
-                    onChange={this.handleInputChange}
-                  />
+            <form className="interests-form-wrapper">
+              <div className="interests-bubble">
+                <div id="messaging-form">
+                  <div className="input-field">
+                    <input
+                      onClick={this.changeBackgroundInput}
+                      type="text"
+                      className="materialize-textarea"
+                      name="textInput"
+                      placeholder="Your Interests..."
+                      value={this.state.textInput}
+                      onChange={this.handleInputChange}
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
-            <button className="circleButton x" onClick={this.push}>Submit</button>
-          </form>
+              <button className="circleButton x" onClick={this.push}>Submit</button>
+            </form>
 
-          <div></div>
+            <div></div>
 
-        </div>
+          </div>
         </Animated>
 
         <div></div>
@@ -120,7 +129,7 @@ class Interests extends React.Component {
             {this.state.shownInterests.map((items, i) => {
               return (
                 <div key={i} className="interests-buttons">
-                    <div className="interests-button-style x" id="style-x" onClick={() => this.delete(items)}>x</div>
+                  <div className="interests-button-style x" id="style-x" onClick={() => this.delete(items)}>x</div>
                   <div className="interests-button-style x">{items}</div>
                 </div>
               );

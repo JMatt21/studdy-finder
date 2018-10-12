@@ -16,7 +16,7 @@ class TopNavBar extends React.Component {
             .then(() => {
                 this.props.history.push("/");
             });
-            this.props.resetData();
+        this.props.resetData();
     }
 
     render() {
@@ -24,8 +24,8 @@ class TopNavBar extends React.Component {
             <Navbar brand={[<Link to="/main" className="righteous">
                 StudyDuos
             </Link>]} right>
-                <NavItem> <MessageIconTopNav /> </NavItem>
-                <NavItem> <SettingsIcon /> </NavItem>
+                <NavItem> <Link to="/messages"><MessageIconTopNav /></Link> </NavItem>
+                <NavItem> <Link to="/settings"><SettingsIcon /></Link> </NavItem>
                 <NavItem onClick={this.logout}> <LogoutIcon /> </NavItem>
             </Navbar>
         )

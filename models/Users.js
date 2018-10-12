@@ -35,7 +35,7 @@ module.exports = function (sequelize, DataTypes) {
         if (currentSkills) {
           return currentSkills.split(';');
         } else {
-          return null;
+          return [];
         }
       },
       set(val) {
@@ -76,7 +76,7 @@ module.exports = function (sequelize, DataTypes) {
       onDelete: "CASCADE"
     });
     Users.hasMany(models.Matches, {
-      onDelete: "CASCADE"
+      onDelete: "CASCADE",
     });
   }
   return Users;
