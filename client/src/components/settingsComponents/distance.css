@@ -4,7 +4,7 @@
     height: 100%;
     grid-template-columns: 30px 1fr 30px;
     grid-template-rows: .2fr 2fr 2.2fr; 
-    transition: all 200ms ease-in-out;
+    transition: all 250ms ease-in-out;
 }
 
 .settings-distance-wrapper-2{
@@ -14,7 +14,7 @@
     grid-template-columns: 30px 1fr 30px;
     grid-template-rows: .2fr 2fr 2.2fr; 
     background: rgba(70, 0, 58, 0.274);
-    transition: all 200ms ease-in-out;
+    transition: all 250ms ease-in-out;
 }
 
 .settings-distance-text{

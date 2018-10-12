@@ -1,10 +1,31 @@
 import React from "react";
-// import "./settingsComponents.css";
+import "./email.css";
+import { Animated } from "react-animated-css";
 
-const email = () => (
-  <div>
-    Hunter
-  </div>
-);
+class Email extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
 
-export default email;
+    };
+
+  }
+
+
+
+  render() {
+
+    return (
+
+      <div>
+
+      </div>
+
+
+    );
+  }
+}
+
+
+
+export default Email;
