@@ -20,13 +20,13 @@ class MainSearch extends React.Component {
     
     render() {
         return (
-            <div>
+            <div className="search-wrapper">
                 <form onSubmit={this.props.onSubmit}>
                     <Input onChange={this.handleInputChange}
                     value={this.state.search} 
-                    name="search" 
-                    className="mainSearch" 
-                    validate placeholder='Enter Subject' />
+                    name="search"
+                    className="main-search-input"
+                    validate placeholder='Enter Subject'/>
                 </form>
                 <SearchResults searchData={this.props.data} />
             </div>

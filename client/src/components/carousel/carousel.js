@@ -9,7 +9,7 @@ class MainCarousel extends React.Component {
     render(props) {
         const displayNearbyCarousel = this.props.carouselArray.map((element, index) => {
             return (
-                
+
                 <Card horizontal header={<img className="carousel-image" src={element.image} alt="img"></img>}>
                     <div className="carousel-content">
 
@@ -18,14 +18,12 @@ class MainCarousel extends React.Component {
                             {element.beginnerSkills.map((subject, i) => {
                                 return (
                                     <tr key={i} className="carousel-table-row">
-                                        <td className="carouselTd">{subject}</td>
+                                        <td className="carouselTd">{subject}    </td>
                                     </tr>
                                 )
                             })}
                         </tbody>
                         <div className="carousel-msg-btn btn">Message</div>
-
-
                     </div>
                 </Card>
 
@@ -37,11 +35,6 @@ class MainCarousel extends React.Component {
 
             <Carousel options={{ fullWidth: false }}>
                 {displayNearbyCarousel}
-                {/* <div>1</div>
-                <div>2</div>
-                <div>3</div>
-                <div>4</div>
-                <div>5</div> */}
             </Carousel>
 
         )

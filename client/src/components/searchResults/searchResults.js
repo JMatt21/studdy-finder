@@ -1,5 +1,5 @@
 import React from "react";
-import "./searchResults.css";
+// import "./searchResults.css";
 import { Card, Table } from "react-materialize";
 import { Link } from "react-router-dom";
 
@@ -17,7 +17,7 @@ class SearchResults extends React.Component {
                     <Link className="ubuntu btn resultButton" to='/Messages'>Message</Link>
                         <p className="nearby">Distance: {element.miles || "undefined"} </p>
                         <h5 className="righteous">{element.name || element.email}</h5>
-                        <Table>
+                        {/* <Table>
                             <tbody>
                                 {element.beginnerSkills.map((subject, i) => {
                                     return (
@@ -28,7 +28,7 @@ class SearchResults extends React.Component {
 
                                 })}
                             </tbody>
-                        </Table>
+                        </Table> */}
                     </Card>
                 </div>
             )
