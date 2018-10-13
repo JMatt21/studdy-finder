@@ -10,7 +10,7 @@ import Settings from './components/settings/index';
 
 
 
-let loggedIn = false;
+let loggedIn = true;
 
 class App extends Component {
   state = {
@@ -29,7 +29,7 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div>
+        <div className="all-content-wrapper">
           <Route exact path="/" render={() => (
             loggedIn ? <Redirect to="/Main" /> : <Redirect to="/SignUp" />
           )} />

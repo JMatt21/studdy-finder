@@ -1,65 +1,55 @@
-.carousel{
-    max-height: 300px !important;
-    user-select: none;
+
+.carousel {
+    perspective: 90%;
 }
 
-.carousel-item{
-    height: 250px !important;
-    width: 400px !important;
-    top: -10px !important;
+.carousel-item {
+    background: #000000b0;
+    height: 400px !important;
+    width: 300px !important;
+} 
+
+.carousel-card {
+    display: grid !important;
+    grid-template-columns: 100%;
+    grid-template-rows: 80% 20% ;
 }
 
-.nearby{
-    color: greenyellow !important;
-}
-.card{
-    background-color: #000000b0;
-    color:white;
-    height: 100%;
-    overflow: hidden;
-}
-.card-image{
-    margin: auto 0;
-    padding: 10px;
-    /* background: black; */
-}
-.card-content{
-    /* height: 10px; */
-    overflow-y: scroll;
-}
-
-tr{
-    border-bottom: 1px solid rgba(0, 128, 128, 0.5);
-}
-
-td{
-    font-family: 'Ubuntu', sans-serif;
-}
-
-.carouselTd{
-    text-align: center;
-    height: 50px;
-    padding: 0px;
-    font-size: 20px;
-}
-
-.carouselImage {
-    height: 100%;
-    width: 175px;
+.carousel-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 300px;
     padding: 5px;
+    
+}
+.card,
+.card-content {
+    padding: 0px !important;
 }
 
-/* .matchLevelIcon{
-    height: 25px;
-    width: 25px !important;
-} */
-
-@media screen and (max-width: 601px) {
-    /* SMALL */
-    .carousel-item {
-        width: 350px !important;
-    }
-    .carousel{
-        /* perspective: 100px; */
-    }
+.carousel-content {
+    height: 400px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
 }
+
+.name-and-distance {
+    margin-top: 6px;
+    background: #000000b2;
+    padding: 0px 5px;
+    border-radius: 10px;
+    color: lawngreen;
+}
+
+.carousel-msg-btn {
+    position: absolute;
+    bottom: 90px;
+}
+
+
+

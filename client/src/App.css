@@ -1,27 +1,7 @@
-.App {
-  text-align: center;
+*{
+  margin: 0;
+  padding: 0;
 }
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
 html{
   background: blue;
   background: -moz-linear-gradient(top, blue 0%, teal 0%, blueviolet 72%, teal 100%);
@@ -32,18 +12,19 @@ html{
   background: linear-gradient(to bottom, blue 0%, teal 0%, blueviolet 72%, teal 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#474747', endColorstr='#000000', GradientType=0 );
   color: white;
-  resize: both;
-  overflow-x: hidden;
+  height: 100%;
 }
 
+/* FONT CLASSES BELOW */
 .ubuntu{
   font-family: 'Ubuntu', sans-serif;
 }
 .righteous{
   font-family: 'Righteous', cursive;
 }
+/* FONT CLASSES ABOVE */
 
-/*  */
+/* FOR HIDDEN SCROLL BAR BELOW */
 ::-webkit-scrollbar {
   width: 0px;
   background: none;
@@ -51,8 +32,6 @@ html{
 
 /* Track */
 ::-webkit-scrollbar-track {
-  /* box-shadow: inset 0 0 5px grey; 
-  border-radius: 10px; */
   background: none;
 }
 
@@ -65,7 +44,10 @@ html{
 ::-webkit-scrollbar-thumb:hover {
   background: none; 
 }
+/* FOR HIDDEN SCROLL BAR ABOVE */
 
+
+/* HUNTER CSS */
 .link
 {
    color: rgb(255, 255, 255);
@@ -80,10 +62,5 @@ html{
     user-select: none; 
     outline: none;
   }
-
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
+/* HUNTER CSS */
 

@@ -9,15 +9,7 @@ import API from "../../utils/API";
 // import passport from "../../utils/PassportAPI";
 import socket from "../../utils/SocketAPI";
 
-// const testUser = {
-//     firstName: "Chance",
-//     lastName: "Musselman",
-//     beginnerSkills: ["Javascript", "React.js", "Angular.js", "MongoDB", "mySQL", "Node.js", "CSS3", "HTML"],
-//     distanceLimit: 15,
-//     distance: 0,
-//     image: "",
-//     message: true
-// }
+
 const test_data = [
     {
         name: "Geoff",
@@ -120,41 +112,35 @@ class Main extends React.Component {
     }
 
     render() {
-        const {user, data} = this.props.appState;
+        const { user, data } = this.props.appState;
         // console.log("THE STATE TO MAIN: ", this.props.appState);
+
         return (
             <div>
-                <TopNavBar
-                    {...this.props}
-                />
-                <div className="grid-wrapper">
-                    <div className="grid-container">
-                        <div>
-                            <div className="sideWrapper">
-                            </div>
-                        </div>
-                        <div>
-                            <div className="sectionWrapper">
-                                <MainCarousel
-                                    carouselArray={test_data}
-                                />
-                                <MainSearch
-                                    onSubmit={this.searchForUsers}
-                                    user={user}
-                                    data={data}
-                                />
-                            </div>
-                        </div>
-                        <div>
-                            <div className="sideWrapper">
-                                <MessageBoard
-                                    user={user}
-                                    data={data}
-                                />
-                            </div>
-                        </div>
-                    </div>
+            <TopNavBar/>
+            <div class="grid-container">
+                <div class="nav-area">
                 </div>
+                <div class="left-area">
+                    {/* Currently Just Empty Space */}
+                </div>
+                <div class="center-area">
+                    <MainCarousel
+                        carouselArray={test_data}
+                    />
+                    <MainSearch
+                        onSubmit={this.searchForUsers}
+                        user={user}
+                        data={data}
+                    />
+                </div>
+                <div class="right-area">
+                    <MessageBoard
+                        user={user}
+                        data={data}
+                    />
+                </div>
+            </div>
             </div>
         )
     }
