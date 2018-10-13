@@ -99,7 +99,7 @@ class Distance extends React.Component {
 
         <div className="settings-distance-bubble-wrapper">
           <Animated animationIn="fadeIn">
-            <div className="settings-distance-bubble" id={this.state.bubbleSize}>You
+            <div className="settings-distance-bubble x" id={this.state.bubbleSize}>You
             </div>
           </Animated>
 

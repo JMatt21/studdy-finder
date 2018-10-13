@@ -68,7 +68,7 @@ class Interests extends React.Component {
       });
 
     }
-  }
+}
 
   changeBackground = (e) => {
     e.preventDefault();
@@ -86,31 +86,31 @@ class Interests extends React.Component {
       <div onClick={this.changeBackground} className={this.state.newClass}>
         <div></div>
         <Animated animationIn="fadeIn">
-        <div className="settings-form-wrapper">
-          <div></div>
+          <div className="settings-form-wrapper">
+            <div></div>
 
-          <form className="interests-form-wrapper">
-            <div className="interests-bubble">
-              <div id="messaging-form">
-                <div className="input-field">
-                  <input
-                    onClick={this.changeBackgroundInput}
-                    type="text"
-                    className="materialize-textarea"
-                    name="textInput"
-                    placeholder="Your Interests..."
-                    value={this.state.textInput}
-                    onChange={this.handleInputChange}
-                  />
+            <form className="interests-form-wrapper">
+              <div className="interests-bubble">
+                <div id="messaging-form">
+                  <div className="input-field">
+                    <input
+                      onClick={this.changeBackgroundInput}
+                      type="text"
+                      className="materialize-textarea"
+                      name="textInput"
+                      placeholder="Your Interests..."
+                      value={this.state.textInput}
+                      onChange={this.handleInputChange}
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
-            <button className="circleButton x" onClick={this.push}>Submit</button>
-          </form>
+              <button className="circleButton x" onClick={this.push}>Submit</button>
+            </form>
 
-          <div></div>
+            <div></div>
 
-        </div>
+          </div>
         </Animated>
 
         <div></div>
@@ -120,7 +120,7 @@ class Interests extends React.Component {
             {this.state.shownInterests.map((items, i) => {
               return (
                 <div key={i} className="interests-buttons">
-                    <div className="interests-button-style x" id="style-x" onClick={() => this.delete(items)}>x</div>
+                  <div className="interests-button-style x" id="style-x" onClick={() => this.delete(items)}>x</div>
                   <div className="interests-button-style x">{items}</div>
                 </div>
               );
