@@ -1,6 +1,7 @@
 
 .carousel {
     perspective: 90%;
+    user-select: none;
 }
 
 .carousel-item {

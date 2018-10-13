@@ -17,18 +17,20 @@ class MainSearch extends React.Component {
             [name]: value
         });
     };
-    
+
     render() {
         return (
-            <div className="search-wrapper">
-                <form onSubmit={this.props.onSubmit}>
-                    <Input onChange={this.handleInputChange}
-                    value={this.state.search} 
-                    name="search"
-                    className="main-search-input"
-                    validate placeholder='Enter Subject'/>
-                </form>
-                <SearchResults searchData={this.props.data} />
+            <div>
+                <div className="search-wrapper">
+                    <form onSubmit={this.props.onSubmit}>
+                        <Input onChange={this.handleInputChange}
+                            value={this.state.search}
+                            name="search"
+                            className="main-search-input"
+                            validate placeholder='Enter Subject'/>
+                    </form>
+                </div>
+                <SearchResults searchData={this.props.data}/>
             </div>
         )
     }

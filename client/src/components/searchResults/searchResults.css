@@ -1,12 +1,14 @@
-.resultsWrapper{
+.results-wrapper{
     margin: 0 auto;
-    width: 85%;
+    
+    width: 100%;
 }
 
-.searchResult{
+.search-result{
     height: 275px !important;
+    background-color: darkred !important;
 }
-
+/* 
 .searchResultImage{
     height: 100%;
     width: 250px;
@@ -39,4 +41,4 @@
         
     }       
 
-}
+} */

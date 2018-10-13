@@ -13,11 +13,11 @@ class SearchResults extends React.Component {
             return (
                 <div key={index} className="searchResult">
                     <Card horizontal header={
-                    <img className="searchResultImage" src={element.image || "https://via.placeholder.com/250x275"}alt={`${element.name || element.email}`}/>}>
-                    <Link className="ubuntu btn resultButton" to='/Messages'>Message</Link>
+                    <img className="searchResultImage" height="300px" src={element.image || "https://via.placeholder.com/250x275"}alt={`${element.name || element.email}`}/>}>
+                    {/* <Link className="ubuntu btn resultButton" to='/Messages'>Message</Link>
                         <p className="nearby">Distance: {element.miles || "undefined"} </p>
                         <h5 className="righteous">{element.name || element.email}</h5>
-                        {/* <Table>
+                        <Table>
                             <tbody>
                                 {element.beginnerSkills.map((subject, i) => {
                                     return (
@@ -30,6 +30,7 @@ class SearchResults extends React.Component {
                             </tbody>
                         </Table> */}
                     </Card>
+                    {/* <div className="search-result">1</div> */}
                 </div>
             )
         });

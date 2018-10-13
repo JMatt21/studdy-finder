@@ -23,11 +23,12 @@ class TopNavBar extends React.Component {
         return (
 
             <nav>
-                <h4><a href="/" className="righteous title">StudyDuo</a></h4>
+                <Link to="/main"><h4 className="righteous title">StudyDuo</h4></Link>
                 <ul>
+                    {/* Still need to do Message Drop Down Menu for "MessageIcon Below" */}
                 <li><a href="/messagedropdown"><MessageIconTopNav/></a></li>
-                <li><a href="/settings"><SettingsIcon/></a></li>
-                <li><a onClick={this.logout}><LogoutIcon/></a></li>
+                <li><Link to="/settings"><SettingsIcon/></Link></li>
+                <li><Link to="/" onClick={this.logout}><LogoutIcon/></Link></li>
                 </ul>
             </nav>
         )

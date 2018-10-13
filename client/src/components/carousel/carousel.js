@@ -23,7 +23,7 @@ class MainCarousel extends React.Component {
                                 )
                             })}
                         </tbody>
-                        <div className="carousel-msg-btn btn">Message</div>
+                        <Link to="/messages" className="carousel-msg-btn btn">Message</Link>
                     </div>
                 </Card>
 
