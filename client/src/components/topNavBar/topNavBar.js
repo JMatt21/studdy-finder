@@ -23,7 +23,7 @@ class TopNavBar extends React.Component {
         return (
 
             <nav>
-                <h4><a href="/" className="righteous title">StudyDuos</a></h4>
+                <h4><a href="/" className="righteous title">StudyDuo</a></h4>
                 <ul>
                 <li><a href="/messagedropdown"><MessageIconTopNav/></a></li>
                 <li><a href="/settings"><SettingsIcon/></a></li>

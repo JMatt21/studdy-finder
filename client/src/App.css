@@ -12,7 +12,8 @@ html{
   background: linear-gradient(to bottom, blue 0%, teal 0%, blueviolet 72%, teal 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#474747', endColorstr='#000000', GradientType=0 );
   color: white;
-  height: 100%;
+  height: 100vh;
+  width: 100vw;
 }
 
 /* FONT CLASSES BELOW */

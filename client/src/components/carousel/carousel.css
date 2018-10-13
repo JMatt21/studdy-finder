@@ -30,7 +30,7 @@
 }
 
 .carousel-content {
-    height: 400px;
+    height: 395px;
     width: 300px;
     display: flex;
     flex-direction: column;
@@ -49,6 +49,26 @@
 .carousel-msg-btn {
     position: absolute;
     bottom: 90px;
+}
+
+.carousel-table {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 103px;
+    overflow-y: scroll;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.carousel-table-row{
+    display: inherit;
+    width: 50%;
+    height: 33%;
+    justify-content: center;
+    box-shadow: 0 4px 2px -2px rgba(0, 128, 128, 0.5);
 }
 
 

@@ -9,32 +9,22 @@ class MainCarousel extends React.Component {
     render(props) {
         const displayNearbyCarousel = this.props.carouselArray.map((element, index) => {
             return (
-                // <div className="carousel-" key={index}>
-                //     <Card horizontal header={<img className="carouselImage" src={element.image} alt="img"></img>}>
-                //         <Link className="ubuntu btn"to='/dasdsadas'>Message</Link>
-                //         <p className="nearby">Nearby: {element.distance} miles</p>
-                //         <h5 className="righteous">{element.name}</h5>
-                // <Table>
-                //     <tbody>
-                //         {element.beginnerSkills.map((subject, i) => {
-                //             return (
-                //                 <tr key={i}>
-                //                     <td className="carouselTd">{subject}</td>
-                //                 </tr>
-                //             )
-                //         })}
-                //     </tbody>
-                // </Table>
-                //     </Card>
-                // </div>
-
-
+                
                 <Card horizontal header={<img className="carousel-image" src={element.image} alt="img"></img>}>
                     <div className="carousel-content">
-                        
-                            <div className="name-and-distance">{` ${element.firstName} ${element.lastName} is ${element.distance} miles away.`}</div>
-                            <div className="carousel-msg-btn btn">Message</div>
-                        
+
+                        <div className="name-and-distance">{` ${element.firstName} ${element.lastName} is ${element.distance} miles away.`}</div>
+                        <tbody className="carousel-table">
+                            {element.beginnerSkills.map((subject, i) => {
+                                return (
+                                    <tr key={i} className="carousel-table-row">
+                                        <td className="carouselTd">{subject}</td>
+                                    </tr>
+                                )
+                            })}
+                        </tbody>
+                        <div className="carousel-msg-btn btn">Message</div>
+
 
                     </div>
                 </Card>
