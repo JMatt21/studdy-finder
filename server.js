@@ -43,10 +43,19 @@ io.on('connection', (client) => { //  the server is expecting some parameter(s)
         }, interval);
     });
 
-    client.on('test', (message, room) => { // so when the server gets a message from the client
-        client.xd = room; // since client is a js object, we can add specific things to it
-        console.log(`client says ${message}`);
-        client.emit('testCase', `suck a fart outta my ass in room ${client.xd}`); // it sends a message back
+    client.on('update user', (user1, user2) => { //user1 sends stuff to user2
+        io.to(`USER: ${user2}`).emit('returned message', { message: dbMessage.message, UserId: dbMessage.UserId });
+    });
+
+    client.on('new match', (user1Id, user2Id) => {
+        console.log("RESPONDING TO USERS")
+        return Promise.all([
+            db.Users.findOne({where: {id: user1Id}, attributes: {exclude: 'password'}}),
+            db.Users.findOne({where: {id: user2Id}, attributes: {exclude: 'password'}})
+        ]).then(results => {
+            io.to(`USER: ${results[0].id}`).emit('update new match', results[1]);
+            io.to(`USER: ${results[1].id}`).emit('update new match', results[0]);
+        })
     });
 
     client.on('send message', (message, room, UserId) => {
@@ -90,6 +99,11 @@ io.on('connection', (client) => { //  the server is expecting some parameter(s)
     client.on("leave room", room => {
         console.log("user left " + room);
         client.leave(room);
+    })
+
+    client.on("logout", () => {
+        console.log("client left all rooms.")
+        client.leaveAll();
     })
 
     client.on("socket user", userId => {

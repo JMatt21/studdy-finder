@@ -5,7 +5,7 @@ export default {
     return axios.get("/api/users/" + id);
   },
   updateUser: function (newUserInfo, id) {
-    return axios.post("/api/users/" + id, newUserInfo);
+    return axios.post("/api/users/update/" + id, newUserInfo);
   },
   newMessage: function(message) {
     return axios.post("/api/message", message)

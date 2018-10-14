@@ -1,7 +1,7 @@
 // export * from "./profilePicture";
 // export * from "./interests";
-export {default as picture} from './profilePicture';
-export {default as interests} from './interests';
-export {default as distance} from './distance';
-export {default as email} from './email';
-export {default as username_password} from './username_password';
+export {default as Picture} from './profilePicture';
+export {default as Interests} from './interests';
+export {default as Distance} from './distance';
+export {default as Email} from './email';
+export {default as Username_password} from './username_password';

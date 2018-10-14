@@ -28,7 +28,7 @@ class SearchResults extends React.Component {
                             <tbody>
                                 {element.beginnerSkills.map((subject, i) => {
                                     return (
-                                        <tr>
+                                        <tr key={i}>
                                             <td className="carouselTd">{subject}</td>
                                         </tr>
                                     )
