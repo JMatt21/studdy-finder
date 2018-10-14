@@ -22,7 +22,7 @@ class SearchResults extends React.Component {
                         <Link className="ubuntu btn resultButton"
                             to={`/messages/${roomName(this.props.user.id, element.id)}`}>
                             Message</Link>
-                        <p className="nearby">Distance: {element.miles || "undefined"} </p>
+                        <p className="nearby">Distance: {`${element.distance} miles` || "undefined"} </p>
                         <h5 className="righteous">{element.name || element.email}</h5>
                         <Table>
                             <tbody>
