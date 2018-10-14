@@ -16,16 +16,21 @@ passport.use(new LocalStrategy(
       where: {
         email: email
       },
-      attributes: {
-        exclude: ['advancedSkills', 'intermediateSkills']
-      },
+      // as: 'User',
+      // attributes: {
+      //   include: [[db.sequelize.fn('lower', db.sequelize.col('user.id')), 'test']]
+      // },
       include: [
         { // to get user's match's 
           model: db.Matches,
           include: [{ // to connect them to another user
             model: db.Users,
             attributes: {
-              exclude: ['password', 'advancedSkills', 'intermediateSkills']
+              exclude: ['password'],
+              include: [[db.sequelize.literal(
+                '( 3959 * acos( cos( radians(Users.latitude) ) * cos( radians( `Matches->Match`.`latitude` ) ) * cos( radians( `Matches->Match`.`longitude` ) - radians(Users.longitude) ) + sin( radians(Users.latitude) ) * sin( radians( `Matches->Match`.`latitude` ) ) ) )'), 'distance']]
+              // include: [[db.sequelize.literal(
+              //   '`Matches->Match`.`email`'), 'distance']]
             },
             as: "Match"
           }],
