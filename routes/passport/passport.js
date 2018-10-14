@@ -16,6 +16,7 @@ router.post("/api/login", passport.authenticate("local"), function (req, res) {
     console.log("re routing from api/signup")
     let ret = req.user;
     delete ret.dataValues.password;
+    console.log(ret);
     res.json(ret); // we can send things here in place of api/user_info
     // this means once a user logs in/ signs up we can send them their user info quickly
     // req.user is defined in passport.js in the config folder
@@ -32,7 +33,7 @@ router.post("/api/signup", function (req, res) {
         email: email,
         password: password
     }).then(ret => {
-        res.redirect(307, "/api/login");     
+        res.redirect(307, "/api/login");
     }).catch(function (err) {
         console.log('-----------------')
         console.log(err);
@@ -57,10 +58,26 @@ router.get("/api/user_data", function (req, res) {
     else {
         // Otherwise send back the user's email and id
         // Sending back a password, even a hashed password, isn't a good idea
-        res.json({
-            email: req.user.email,
-            id: req.user.id
-        });
+        // The data is actually stored in a cookie on the client so anything that
+        // would get updated wouldn't change that cookie for the client until they re-log
+        // so we will get their id and send back the dbUser associated 
+        db.Users.findOne({
+            where: { id: req.user.id },
+            include: [
+                { // to get user's match's 
+                    model: db.Matches,
+                    include: [{ // to connect them to another user
+                        model: db.Users,
+                        attributes: {
+                            exclude: 'password'
+                        },
+                        as: "Match"
+                    }],
+                }]
+        })
+            .then(dbUser => {
+                res.json(dbUser)
+            })
     }
 });
 

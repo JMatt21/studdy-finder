@@ -6,6 +6,7 @@ import MessagingCard from "../messagingCard/index";
 
 
 let MessagingWrapper = (props) => {
+    const matchData = props.appState.user.Matches || [];
     return (
         <div>
             <TopNavBar {...props}/>
@@ -24,7 +25,8 @@ let MessagingWrapper = (props) => {
                     <div>
                         <div className="sideWrapper">
                             <MessageBoard
-
+                                data={matchData}
+                                user={props.appState.user}
                             />
                         </div>
                     </div>
