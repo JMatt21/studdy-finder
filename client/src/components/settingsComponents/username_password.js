@@ -6,52 +6,85 @@ class Username_password extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      newClass: "settings-email-wrapper",
+      newClass: "username-color-1",
+      color: "",
       currentUsername: "BobRossLover62"
     };
 
   }
 
+  colorSorter = () => {
+    let colorArr = [1, 2, 3, 4, 5, 6];
+    let colorNum = colorArr[Math.floor(Math.random() * colorArr.length)].toString();
+    return colorNum
+  }
 
 
-  changeBackground = (e) => {
+
+  changeBackgroundInput = (e) => {
     e.preventDefault();
 
-    let bground = this.state.newClass;
-    if (bground === "settings-email-wrapper-2" || bground === "settings-email-wrapper-3" || bground === "settings-email-wrapper-4") {
+    let funcColor = this.colorSorter();
+
+    if (funcColor === this.state.color) {
+      this.colorSorter();
+      funcColor = this.colorSorter();
+      console.log("The same shit");
       this.setState({
-        newClass: "settings-email-wrapper"
+        newClass: "username-color-" + funcColor
+      });
+
+    } else {
+
+      console.log("Not the same shit");
+      this.state.color = funcColor;
+      this.setState({
+        newClass: "username-color-" + this.state.color
       });
     }
+
+
   }
 
 
 
   render() {
 
+    const wrapperClass = `${this.state.newClass} settings-username-password-wrapper`;
+
     return (
 
-      <div className="settings-username-password-wrapper">
-        <div>1</div>
-        <div>2</div>
-        <div>3</div>
-        <div>4</div>
-        <div>5</div>
+      <div className={wrapperClass}>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
 
-        <div>
-          <h3>Update Your Username</h3>
-          <p>Current Username: {this.state.currentUsername}</p>
-        </div>
+        <Animated animationIn="fadeIn">
+          <div>
+            <h3 className="settings-username-text">Update Your Username</h3>
+            <p className="settings-username-text">Current Username:
+          <p className="settings-username-text-2">{this.state.currentUsername}</p>
+            </p>
+          </div>
+        </Animated>
 
-        <div>
-          <h3>Update Your Password</h3>
-        </div>
+        <Animated animationIn="fadeIn">
+          <div>
+            <h3 className="settings-username-text">Update Your Password</h3>
+          </div>
+        </Animated>
 
-        <div>8</div>
-        <div>9</div>
+        <div></div>
+        <div></div>
 
-        <div>
+
+        <Animated animationIn="fadeIn">
           <form className="username-form-wrapper">
+            <div></div>
+            <div></div>
+            <div></div>
             <div></div>
             <div className="username-bubble">
               <div id="messaging-form">
@@ -61,7 +94,7 @@ class Username_password extends React.Component {
                     className="materialize-textarea"
                     name="textInput"
                     placeholder="Enter Your New Username"
-                    onClick={this.changeBackgroundInput3}
+                    onClick={this.changeBackgroundInput}
                   />
                 </div>
               </div>
@@ -78,22 +111,96 @@ class Username_password extends React.Component {
                     className="materialize-textarea"
                     name="textInput"
                     placeholder="Confirm Your New Username"
-                    onClick={this.changeBackgroundInput3}
+                    onClick={this.changeBackgroundInput}
                   />
                 </div>
               </div>
             </div>
 
           </form>
+        </Animated>
+
+
+        <Animated animationIn="fadeIn">
+          <form className="password-form-wrapper">
+            <div></div>
+            <div className="username-bubble">
+              <div id="messaging-form">
+                <div className="input-field">
+                  <input
+                    type="text"
+                    className="materialize-textarea"
+                    name="textInput"
+                    placeholder="Enter Your Old Password"
+                    onClick={this.changeBackgroundInput}
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div></div>
+            <div></div>
+
+            <div className="username-bubble">
+              <div id="messaging-form">
+                <div className="input-field">
+                  <input
+                    type="text"
+                    className="materialize-textarea"
+                    name="textInput"
+                    placeholder="Enter Your New Password"
+                    onClick={this.changeBackgroundInput}
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div></div>
+            <div></div>
+
+            <div className="username-bubble">
+              <div id="messaging-form">
+                <div className="input-field">
+                  <input
+                    type="text"
+                    className="materialize-textarea"
+                    name="textInput"
+                    placeholder="Confirm Your New Password"
+                    onClick={this.changeBackgroundInput}
+                  />
+                </div>
+              </div>
+            </div>
+
+          </form>
+        </Animated>
 
 
 
+        <div></div>
+        <div></div>
+
+        <div>
+          <div className="settings-email-squareButton">
+            <div></div>
+            <Animated animationIn="fadeIn">
+              <button onClick={this.changeBackground} className="squareButton">Submit</button>
+            </Animated>
+          </div>
         </div>
 
 
-        <div>11</div>
-        <div>12</div>
-        <div>13</div>
+        <div>
+          <div className="settings-email-squareButton">
+            <div></div>
+            <Animated animationIn="fadeIn">
+              <button onClick={this.changeBackground} className="squareButton">Submit</button>
+            </Animated>
+          </div>
+        </div>
+
+
+        <div></div>
 
 
 
