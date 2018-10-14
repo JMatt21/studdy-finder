@@ -5,6 +5,7 @@ const op = seqeulize.Op;
 // Matches with /search/:tags
 router.route("/:tags")
     .get(function (req, res) {
+        const {latitude, longitude, distance} = req.body;
         const searchTags = req.params.tags;
         db.Users.findAll({
             where: {
@@ -12,7 +13,14 @@ router.route("/:tags")
                     [op.like]: `%${searchTags}%`
                 }
             },
-            attributes: { exclude: 'password' },
+            attributes: {
+                exclude: 'password',
+                include: [[db.sequelize.literal(
+                    `( 3959 * acos( cos( radians(${latitude}) ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians(${longitude}) ) + sin( radians(${latitude}) ) * sin( radians( latitude ) ) ) )`), 'distance']]
+            },
+            // having: {
+            //     distance: {$gte: 0}
+            // },
             limit: 5
         }).then(dbUsers => {
             res.json(dbUsers);

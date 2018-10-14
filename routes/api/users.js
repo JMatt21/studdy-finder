@@ -19,7 +19,8 @@ router.route("/:id")
                     include: [{ // to connect them to another user
                         model: db.Users,
                         attributes: {
-                            exclude: 'password'
+                            exclude: 'password',
+                            // include: [[db.sequelize.literal('( 3959 * acos( cos( radians(37) ) * cos( radians( lat ) ) * cos( radians( lng ) - radians(-122) ) + sin( radians(37) ) * sin( radians( lat ) ) ) )'), 'distance']]
                         },
                         as: "Match"
                     }],
