@@ -28,7 +28,6 @@ class Username_password extends React.Component {
 
     if (funcColor === this.state.color) {
       funcColor = this.colorSorter();
-      console.log("The same shit");
       this.setState({
         newClass: "username-color-" + funcColor
       });
