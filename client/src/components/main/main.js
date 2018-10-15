@@ -133,6 +133,7 @@ class Main extends React.Component {
                         {/* Currently Just Empty Space "future feature space?" */}
                     </div>
                     <div class="center-area">
+                        <h5 className="nearby-search-title">Nearby Search</h5>
                         <MainCarousel
                             carouselArray={test_data} //populating with dummy data at the moment
                         />
