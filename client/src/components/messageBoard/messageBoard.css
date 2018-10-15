@@ -1,4 +1,4 @@
-.messageBoardWrapper{
+.message-board-wrapper{
     position: sticky;
     top: 70px;
     height: 90vh;
@@ -7,7 +7,7 @@
     width: 300px;
     margin: 0 auto;
 }
-.messageBoardHeader{
+.message-board-header{
     /* width: 93%; */
     text-align: center;
     padding: 5px 0 20px 0;
