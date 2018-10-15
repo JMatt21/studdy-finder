@@ -1,5 +1,6 @@
 import React from "react";
-import {Link } from "react-router-dom";
+import "./passportPages.css";
+import { Link } from "react-router-dom";
 import API from "../../utils/PassportAPI";
 
 export class Signup extends React.Component {
@@ -25,10 +26,10 @@ export class Signup extends React.Component {
             })
                 .then(ret => {
                     this.props.setData(ret.data, 'user');
-                    if(ret.status === 200){
+                    if (ret.status === 200) {
                         console.log('signup status')
                         console.log(ret)
-                        this.props.history.push("/main");   
+                        this.props.history.push("/main");
                     }
                 })
                 .catch(err => {
@@ -36,9 +37,9 @@ export class Signup extends React.Component {
                     switch (err.response.status) {
                         case 403: this.setState({ errMessage: 'Error: 403, email already registered.' });
                             break;
-                        case 504: this.setState({ errMessage: 'Server Error: 504'});
+                        case 504: this.setState({ errMessage: 'Server Error: 504' });
                             break;
-                        default: this.setState({ errMessage: `Unknown Error: ${err.response.status}`})
+                        default: this.setState({ errMessage: `Unknown Error: ${err.response.status}` })
                     }
                 });
         }
@@ -54,24 +55,31 @@ export class Signup extends React.Component {
                         </div>
                     </div>
                 </nav>
-                <div className="container">
-                    <div className="row">
-                        <div className="col-md-6 col-md-offset-3">
-                            <h2>Sign Up Form</h2>
-                            <form className="signup">
-                                <div className="form-group">
-                                    <label htmlFor="exampleInputEmail1">Email address</label>
-                                    <input onChange={this.handleInputChange} type="email" className="form-control" name="email" placeholder="Email" />
+                <div className="passport-grid-container">
+                    <div className="nav-passport-area">
+
+                    </div>
+                    <div className="main-passport-display">
+                        <div className="container">
+                            <div className="row">
+                                <div className="col-md-6 col-md-offset-3">
+                                    <h2>Sign Up Form</h2>
+                                    <form className="signup">
+                                        <div className="form-group">
+                                            <label htmlFor="exampleInputEmail1">Email address</label>
+                                            <input onChange={this.handleInputChange} type="email" className="form-control" name="email" placeholder="Email" />
+                                        </div>
+                                        <div className="form-group">
+                                            <label htmlFor="exampleInputPassword1">Password</label>
+                                            <input type="password" className="form-control" name="password" placeholder="Password" onChange={this.handleInputChange} />
+                                        </div>
+                                        <p className="err-message">{this.state.errMessage}</p>
+                                        <button type="submit" onClick={this.handleFormSubmission} className="btn btn-default">Sign Up</button>
+                                    </form>
+                                    <br />
+                                    <Link to="/login">or log in here c:</Link>
                                 </div>
-                                <div className="form-group">
-                                    <label htmlFor="exampleInputPassword1">Password</label>
-                                    <input type="password" className="form-control" name="password" placeholder="Password" onChange={this.handleInputChange} />
-                                </div>
-                                <p className="err-message">{this.state.errMessage}</p>
-                                <button type="submit" onClick={this.handleFormSubmission} className="btn btn-default">Sign Up</button>
-                            </form>
-                            <br />
-                            <Link to="/login">or log in here c:</Link>
+                            </div>
                         </div>
                     </div>
                 </div>

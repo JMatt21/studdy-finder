@@ -49,7 +49,7 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div>
+        <div className="all-content-wrapper">
           <Route exact path="/" render={() => (
             <Redirect to="/login" />
           )} />

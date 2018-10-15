@@ -1,31 +1,28 @@
 nav{
-    background: #000000b0;
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000000b0;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
 }
-.brand-logo{
-    left: 55px !important;
+.title{
+    margin-left: 3vw;
 }
 
-.right{
-    height: 100%;
+.side-nav {
+    /* background: #000000b0 !important; */
+    color: black;
 }
 
-.hide-on-med-and-down {
-    display: block !important;
-  }
-  #nav-mobile {
-    display: none;
-  }
-  .button-collapse {
-    display: none;
-  }
-
-
-@media only screen and (max-width: 992px) {
-nav,
-.brand-logo {
-    transform: none !important;
-    height: 63px !important;
-    left: 1% !important;
-}
+@media only screen and (max-width: 424px) {
+    
+    nav {
+        height: 125px;
+        flex-direction: column;
+        justify-content: center;
+        margin-left: 0;
+    }
 
 }

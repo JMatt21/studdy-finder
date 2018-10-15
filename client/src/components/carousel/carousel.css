@@ -1,65 +1,83 @@
-.carousel{
-    max-height: 300px !important;
+.carousel {
+    perspective: 90%;
     user-select: none;
-}
-
-.carousel-item{
-    height: 250px !important;
-    width: 400px !important;
-    top: -10px !important;
-}
-
-.nearby{
-    color: greenyellow !important;
-}
-.card{
-    background-color: #000000b0;
-    color:white;
-    height: 100%;
-    overflow: hidden;
-}
-.card-image{
-    margin: auto 0;
-    padding: 10px;
-    /* background: black; */
-}
-.card-content{
-    /* height: 10px; */
-    overflow-y: scroll;
-}
-
-tr{
-    border-bottom: 1px solid rgba(0, 128, 128, 0.5);
-}
-
-td{
     font-family: 'Ubuntu', sans-serif;
 }
 
-.carouselTd{
-    text-align: center;
-    height: 50px;
-    padding: 0px;
-    font-size: 20px;
+.carousel-item {
+    background: #000000b0;
+    height: 400px !important; /* Override Materialize */
+    width: 300px !important; /* Override Materialize */
+} 
+
+.carousel-card {
+    display: grid; /* Override Materialize */
+    grid-template-columns: 100%;
+    grid-template-rows: 80% 20%;
 }
 
-.carouselImage {
-    height: 100%;
-    width: 175px;
+.carousel-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 300px;
     padding: 5px;
+    
+}
+.card,
+.card-content {
+    padding: 0px !important; /* Override Materialize */
 }
 
-/* .matchLevelIcon{
-    height: 25px;
-    width: 25px !important;
-} */
+.carousel-content {
+    height: 395px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
 
-@media screen and (max-width: 601px) {
-    /* SMALL */
-    .carousel-item {
-        width: 350px !important;
-    }
-    .carousel{
-        /* perspective: 100px; */
-    }
+.name-and-distance {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.3);
+}
+.carousel-name{
+    padding: 0px 10px;
+    font-size: 30px;
+}
+.carousel-distance {
+    padding: 0px 10px; 
+    color: lawngreen;
+}
+
+
+.carousel-msg-btn {
+    position: absolute;
+    bottom: 90px;
+}
+
+.carousel-table {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 96px;
+    overflow-y: scroll;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.carousel-table-row{
+    display: inherit;
+    font-size: 16px;
+    width: 50%;
+    justify-content: center;
+    box-shadow: 0 4px 2px -2px rgba(0, 128, 128, 0.5);
 }

@@ -16,33 +16,55 @@ class SearchResults extends React.Component {
         // const miles = (this.props.miles ? `this.props.miles miles` : `undefined`);
         const displaySearchResults = this.props.searchData.map((element, index) => {
             return (
-                <div key={index} className="searchResult">
-                    <Card horizontal header={
-                        <img className="searchResultImage" src={element.image || "https://via.placeholder.com/250x275"} alt={`${element.name || element.email}`} />}>
-                        <Link className="ubuntu btn resultButton"
-                            to={`/messages/${roomName(this.props.user.id, element.id)}`}>
-                            Message</Link>
-                        <p className="nearby">Distance: {`${element.distance} miles` || "undefined"} </p>
-                        <h5 className="righteous">{element.name || element.email}</h5>
-                        <Table>
-                            <tbody>
-                                {element.beginnerSkills.map((subject, i) => {
-                                    return (
-                                        <tr key={i}>
-                                            <td className="carouselTd">{subject}</td>
-                                        </tr>
-                                    )
+                // <div key={index} className="searchResult">
+                //     <Card horizontal className="c-test" header={
+                //         <img className="searchResultImage" src={element.image || "https://via.placeholder.com/250x275"} alt={`${element.name || element.email}`} />}>
+                //         <a className="ubuntu btn resultButton"
+                //             //to={`/messages/${roomName(this.props.user.id, element.id)}`}
+                //             >
+                //             Message</a>
+                //         <p className="nearby">Distance: {`${element.distance} miles` || "undefined"} </p>
+                //         <h5 className="righteous">{element.name || element.email}</h5>
 
-                                })}
-                            </tbody>
-                        </Table>
-                    </Card>
-                </div>
+                //             <tbody>
+                //                 {element.beginnerSkills.map((subject, i) => {
+                //                     return (
+                //                         <tr key={i}>
+                //                             <td className="search-resultsTd">{subject}</td>
+                //                         </tr>
+                //                     )
+
+                //                 })}
+                //             </tbody>
+
+                //     </Card>
+                // </div>
+                //OLD SEARCH RESULTS JSX ABOVE
+
+                <Card className="search-result" key={index} horizontal header={<img className="search-results-image" src={element.image} alt="user_image"></img>}>
+                    <div className="search-results-content">
+                        <div className="name-and-distance">
+                            <div className="search-results-name righteous">{`${element.name}`}</div>
+                            <div className="search-results-distance">{`${element.distance} miles away`}</div>
+                        </div>
+                        <tbody className="search-results-table">
+                            {element.beginnerSkills.map((subject, i) => {
+                                return (
+                                    <tr key={i} className="search-results-tr">
+                                        <td className="search-results-td">{subject}    </td>
+                                    </tr>
+                                )
+                            })}
+                        </tbody>
+                        <Link to="/messages" className="search-results-msg-btn btn">Message</Link>
+                    </div>
+                </Card>
+
             )
         });
 
         return (
-            <div className="resultsWrapper">
+            <div className="search-results-wrapper">
                 {displaySearchResults}
             </div>
         )

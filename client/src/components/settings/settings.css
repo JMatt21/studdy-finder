@@ -12,7 +12,7 @@
   width: 100vw;
   max-width: 1440px;
   grid-template-columns: 300px 10px auto;
-  grid-template-rows: 20px 1fr 90px;
+  grid-template-rows: 75px 1fr 90px;
 }
 
 .settings-side-panel{
@@ -52,6 +52,15 @@
 .sli1{
     font-size: 30px;
     line-height: 76px;
+}
+
+@media only screen and (max-width: 424px) {
+    /* Mobile */
+
+.settings-main-grid {
+    grid-template-rows: 130px 1fr 90px !important; /* pushes content down below navbar at mobile view */
+}
+
 }
 
 
