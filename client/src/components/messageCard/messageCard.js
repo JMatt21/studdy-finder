@@ -18,7 +18,7 @@ class MessageCard extends React.Component {
     render() {
         return (
             <div>
-                {this.props.test.map((Match, index) => {
+                {this.props.data.map((Match, index) => {
                     // if ({Match}.message) {
                     return (
                         <div key={index} className="card-wrapper">

@@ -8,10 +8,6 @@ import { Login, Signup } from "./components/passportpages";
 import MessagingWrapper from './components/messagingWrapper';
 import Settings from './components/settings/index';
 
-
-
-let loggedIn = false;
-
 class App extends Component {
   state = {
     user: {},

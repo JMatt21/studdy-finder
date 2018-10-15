@@ -105,9 +105,9 @@ class Main extends React.Component {
 
     searchForUsers = event => {
         event.preventDefault();
-        // console.log(event.target.search.value);
         const search = event.target.search.value;
-        API.searchForUsers(search)
+        const {latitude, longitude} = this.props.appState.user;
+        API.searchForUsers(search, latitude, longitude, 10000) // temp distance
             .then(data => {
                 // this.setState({ data: data.data })
                 this.props.setData(data.data, 'data');

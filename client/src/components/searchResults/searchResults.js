@@ -51,12 +51,12 @@ class SearchResults extends React.Component {
                             {element.beginnerSkills.map((subject, i) => {
                                 return (
                                     <tr key={i} className="search-results-tr">
-                                        <td className="search-results-td">{subject}    </td>
+                                        <td className="search-results-td">{subject}</td>
                                     </tr>
                                 )
                             })}
                         </tbody>
-                        <Link to="/messages" className="search-results-msg-btn btn">Message</Link>
+                        <Link to={`/messages/${roomName(this.props.user.id, element.id)}`} className="search-results-msg-btn btn">Message</Link>
                     </div>
                 </Card>
 
