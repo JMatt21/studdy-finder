@@ -4,8 +4,8 @@ const seqeulize = require('sequelize');
 const op = seqeulize.Op;
 // Matches with /search/:tags
 router.route("/:tags")
-    .get(function (req, res) {
-        const {latitude, longitude, distance} = req.body;
+    .post(function (req, res) {
+        const {lat, long, distance} = req.body;
         const searchTags = req.params.tags;
         db.Users.findAll({
             where: {
@@ -16,11 +16,12 @@ router.route("/:tags")
             attributes: {
                 exclude: 'password',
                 include: [[db.sequelize.literal(
-                    `( 3959 * acos( cos( radians(${latitude}) ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians(${longitude}) ) + sin( radians(${latitude}) ) * sin( radians( latitude ) ) ) )`), 'distance']]
+                    `( 3959 * acos( cos( radians(${lat}) ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians(${long}) ) + sin( radians(${lat}) ) * sin( radians( latitude ) ) ) )`), 'distance']]
             },
-            // having: {
-            //     distance: {$gte: 0}
-            // },
+            having: {
+                distance: {[op.lte]: distance || 9999999999999999999999}
+                // Math.min() for infinity doesn't work well with MySQL so we will use a big number
+            },
             limit: 5
         }).then(dbUsers => {
             res.json(dbUsers);
