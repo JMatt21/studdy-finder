@@ -59,6 +59,8 @@ class App extends Component {
             render={props => <Login {...props} appState={this.state} setData={this.setData} />} />
           <Route exact path="/Main"
             render={props => <Main {...props} appState={this.state} setData={this.setData} resetData={this.resetData} />} />
+          <Route exact path="/Settings"
+            render={props => <Settings {...props} appState={this.state} setData={this.setData} />} />
           <Route exact path="/UserProfile/:username" component={Main} />
 
           <Route exact path="/Messages"

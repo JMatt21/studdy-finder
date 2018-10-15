@@ -12,8 +12,7 @@
     height: 100%;
     widows: 100%;
     grid-template-columns: 1fr 2fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    /* background: rgba(255, 191, 226, 0.425); */
+    grid-template-rows: 1fr 0.5fr; 
     background: rgba(255, 0, 85, 0.158);
     transition: background-color 300ms ease-in-out;  
 }
