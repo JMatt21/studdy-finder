@@ -25,7 +25,8 @@ class MessageCard extends React.Component {
                             <div className="image-wrapper">
                                 <div className="message-name">{Match.name || Match.email}</div>
                                 <img className="message-image" src={Match.image || "https://via.placeholder.com/250x275"} alt="img" />
-                                <Link to={`/messages/${roomName(this.props.user.id, Match.id)}`}>
+                                {/* <Link to={`/messages/${roomName(this.props.user.id, Match.id)}`}> */}
+                                <Link to="/messages">
                                     {/* <Link to={roomLink(this.props, this.props.user.id, Match.id)}> */}
                                     <div className="message-button"><img className="message-icon" src={icon} alt="img" /></div>
                                 </Link>

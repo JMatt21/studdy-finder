@@ -123,6 +123,7 @@ class Main extends React.Component {
             <div>
                 <TopNavBar
                     {...this.props}
+                    test={test_data}
                 />
                 <div class="grid-container">
                     <div class="nav-area">

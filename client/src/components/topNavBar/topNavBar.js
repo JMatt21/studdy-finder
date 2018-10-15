@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import SettingsIcon from "../icons/settingsIcon/index";
 import LogoutIcon from "../icons/logoutIcon/index";
 import MessageIconTopNav from "../icons/messageIconTopNav/index";
+import MessageBoard from "../messageBoard/index";
 //passport api to logout
 import passport from "../../utils/PassportAPI"
 
@@ -19,7 +20,7 @@ class TopNavBar extends React.Component {
         this.props.resetData();
     }
 
-    render() {
+    render(props) {
         return (
             <nav>
                 <Link to="/main"><h4 className="righteous title">StudyDuo</h4></Link>
@@ -30,7 +31,7 @@ class TopNavBar extends React.Component {
                             trigger={<a><MessageIconTopNav /></a>}
                             options={{ closeOnClick: true, edge: "right", draggable: true }}
                         >
-                        <h1>Message Center</h1>
+                        <MessageBoard test={this.props.test}/>
                             {/* <SideNavItem userView
                                 user={{
                                     background: 'img/office.jpg',
