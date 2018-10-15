@@ -47,6 +47,7 @@ class SearchResults extends React.Component {
                             <div className="search-results-name righteous">{`${element.name}`}</div>
                             <div className="search-results-distance">{`${element.distance} miles away`}</div>
                         </div>
+                        <table>
                         <tbody className="search-results-table">
                             {element.beginnerSkills.map((subject, i) => {
                                 return (
@@ -56,6 +57,7 @@ class SearchResults extends React.Component {
                                 )
                             })}
                         </tbody>
+                        </table>
                         <Link to="/messages" className="search-results-msg-btn btn">Message</Link>
                     </div>
                 </Card>

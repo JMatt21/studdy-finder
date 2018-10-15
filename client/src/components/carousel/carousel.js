@@ -41,15 +41,17 @@ class MainCarousel extends React.Component {
 
                         <Link to="/messages" className="carousel-msg-btn btn">Message</Link>
                     </div>
-                    <tbody className="carousel-table">
-                        {element.beginnerSkills.map((subject, i) => {
-                            return (
-                                <tr key={i} className="carousel-table-row">
-                                    <td className="carouselTd">{subject}    </td>
-                                </tr>
-                            )
-                        })}
-                    </tbody>
+                    <table>
+                        <tbody className="carousel-table">
+                            {element.beginnerSkills.map((subject, i) => {
+                                return (
+                                    <tr key={i} className="carousel-table-row">
+                                        <td className="carouselTd">{subject}    </td>
+                                    </tr>
+                                )
+                            })}
+                        </tbody>
+                    </table>
                 </Card>
             )
         });
