@@ -21,13 +21,15 @@ class TopNavBar extends React.Component {
 
     render() {
         return (
-            <Navbar brand={[<Link to="/main" className="righteous">
-                StudyDuos
-            </Link>]} right>
-                <NavItem> <Link to="/messages"><MessageIconTopNav /></Link> </NavItem>
-                <NavItem> <Link to="/settings"><SettingsIcon /></Link> </NavItem>
-                <NavItem onClick={this.logout}> <LogoutIcon /> </NavItem>
-            </Navbar>
+            <nav>
+                <Link to="/main"><h4 className="righteous title">StudyDuo</h4></Link>
+                <ul>
+                    {/* Still need to do Message Drop Down Menu for "MessageIcon Below" */}
+                    <li><a href="/messagedropdown"><MessageIconTopNav /></a></li>
+                    <li><Link to="/settings"><SettingsIcon /></Link></li>
+                    <li><a onClick={this.logout}><LogoutIcon /></a></li>
+                </ul>
+            </nav>
         )
     }
 };

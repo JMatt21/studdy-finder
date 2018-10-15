@@ -1,22 +1,26 @@
-.cardWrapper{
-    border-bottom: 1px solid rgba(0, 128, 128, 0.50);
+.card-wrapper{
+    /* border-bottom: 1px solid rgba(0, 128, 128, 0.50); */
+    box-shadow: 0 4px 2px -2px rgba(0, 128, 128, 0.5);
+    padding-bottom: 15px;
+    font-family: 'Ubuntu', sans-serif;
 }
-.imageWrapper{
+.image-wrapper{
     width: 80%;
     margin: 0px auto;
 }
-.messageImage{
+.message-image{
     float:left;
     width: 60%;
     height:175px;
     border-radius:50px;
     max-width: 250px;
 }
-.messageName{
+.message-name{
     margin: 5px auto;
     font-size: 26px;
+    font-family: 'Righteous', cursive;
 }
-.messageLi{
+.message-li{
     font-size: 16px;
     display: inline-block;
     margin: 3px 3px;
@@ -25,12 +29,12 @@
     border-radius: 15px;
     padding: 0px 6px;
 }
-.messageButton{
+.message-button{
     float: left;
     height: 100px;
     width: 40%;
 }
-.messageIcon{
+.message-icon{
     height: 60px;
     width: 60px;
     margin: 15px 20px 0 20px;

@@ -10,7 +10,7 @@ import API from "../../utils/API";
 import socket from "../../utils/SocketAPI";
 
 // const testUser = {
-//     firstName: "Chance",
+//     name: "Chance",
 //     lastName: "Musselman",
 //     beginnerSkills: ["Javascript", "React.js", "Angular.js", "MongoDB", "mySQL", "Node.js", "CSS3", "HTML"],
 //     distanceLimit: 15,
@@ -28,7 +28,7 @@ const test_data = [
         message: false
     },
     {
-        firstName: "Ryan",
+        name: "Ryan",
         lastName: "Treant",
         beginnerSkills: ["Java", ".NET", "Angular.js", "Calculus", "C++", "Mongo", "mySQL", "Node.js", "CSS3", "HTML"],
         distanceLimit: 15,
@@ -37,7 +37,7 @@ const test_data = [
         message: true
     },
     {
-        firstName: "Ron",
+        name: "Ron",
         lastName: "Parker",
         beginnerSkills: ["Javascript", "React.js", "Angular.js", "Algorithms", "C++", "Mongo", "mySQL", "Node.js", "CSS3", "HTML"],
         distanceLimit: 15,
@@ -46,7 +46,7 @@ const test_data = [
         message: true
     },
     {
-        firstName: "Tiffiny",
+        name: "Tiffany",
         lastName: "Sralek",
         beginnerSkills: ["Interior Design", "React.js", "Angular.js", "Algorithms", "C++", "Mongo", "mySQL", "Node.js", "CSS3", "HTML"],
         distanceLimit: 15,
@@ -55,7 +55,7 @@ const test_data = [
         message: true
     },
     {
-        firstName: "Joseph",
+        name: "Joseph",
         lastName: "Brakman",
         beginnerSkills: ["Javascript", "React.js", "Angular.js", "Algorithms", "C++", "Mongo", "mySQL", "Node.js", "CSS3", "HTML"],
         distanceLimit: 15,
@@ -64,7 +64,7 @@ const test_data = [
         message: false
     },
     {
-        firstName: "Erica",
+        name: "Erica",
         lastName: "Dracony",
         beginnerSkills: ["Javascript", "React.js", "Angular.js", "Algorithms", "Web Development", "Mongo", "mySQL", "Node.js", "CSS3", "HTML"],
         distanceLimit: 15,
@@ -73,7 +73,7 @@ const test_data = [
         message: false
     },
     {
-        firstName: "Chris",
+        name: "Chris",
         lastName: "Wong",
         beginnerSkills: ["Javascript", "React.js", "Angular.js", "Algorithms", "Leadership", "Mongo", "mySQL", "Node.js", "CSS3", "HTML"],
         distanceLimit: 45,
@@ -87,7 +87,7 @@ const test_data = [
 
 class Main extends React.Component {
     componentDidMount() {
-        if (this.props.appState.user.id){
+        if (this.props.appState.user.id) {
             this.getUserRooms(this.props.appState.user.id);
         }
     }
@@ -124,32 +124,32 @@ class Main extends React.Component {
                 <TopNavBar
                     {...this.props}
                 />
-                <div className="grid-wrapper">
-                    <div className="grid-container">
-                        <div>
-                            <div className="sideWrapper">
-                            </div>
-                        </div>
-                        <div>
-                            <div className="sectionWrapper">
-                                <MainCarousel
-                                    carouselArray={data}
-                                />
-                                <MainSearch
-                                    onSubmit={this.searchForUsers}
-                                    user={user}
-                                    data={data}
-                                />
-                            </div>
-                        </div>
-                        <div>
-                            <div className="sideWrapper">
-                                <MessageBoard
-                                    user={user}
-                                    data={matchData}
-                                />
-                            </div>
-                        </div>
+                <div class="grid-container">
+                    <div class="nav-area">
+                    {/* TopNavBar Rendered Outside grid-container & overtop nav-area */}
+                    </div>
+                    <div class="left-area">
+                        {/* Currently Just Empty Space "future feature space?" */}
+                    </div>
+                    <div class="center-area">
+                        <MainCarousel
+                            carouselArray={test_data} //populating with dummy data at the moment
+                        />
+                        <MainSearch
+                            onSubmit={this.searchForUsers}
+                            user={user}
+                            data={data}
+
+                            test={test_data} //populating with dummy data at the moment
+                        />
+                    </div>
+                    <div class="right-area">
+                        <MessageBoard
+                            user={user}
+                            data={matchData}
+
+                            test={test_data} //populating with dummy data at the moment
+                        />
                     </div>
                 </div>
             </div>

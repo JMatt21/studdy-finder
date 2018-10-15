@@ -86,7 +86,7 @@ class MessageBoard extends React.Component {
             <div className="messageBoardWrapper">
                 <div className="spacer"></div>
                 <h5 className="messageBoardHeader ubuntu">Message Center</h5>
-                <div className="alert">3</div>
+                {/* <div className="alert">3</div> */}
                 <MessageCard
                     {...this.props}
                     user={this.props.user}
