@@ -66,12 +66,12 @@ class ProfilePicture extends React.Component {
 
           <div className="settings-profile-picture-wrapper">
             <div className="settings-profile-picture">
-              <img src={this.state.imageLink || head} width="250px" height="250px" />
+              <img src={this.state.imageLink || head} alt="img" width="250px" height="250px" />
             </div>
 
             <h4 className="display-text-settings-profile-picture">Enter A link To Your New Profile Picture Here</h4>
             <p className="display-text-settings-profile-picture">
-              We recommond that your profile picture is 250px x 250px to ensure proper sizing</p>
+              We recommend that your profile picture is 250px x 250px to ensure proper sizing</p>
 
 
           </div>

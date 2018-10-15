@@ -5,12 +5,12 @@ import "./messageCard.css";
 
 let icon = require("./chaticon.png");
 
-function roomName(id1, id2) {
-    if (id1 > id2)
-        return `${id2}+${id1}`
-    else
-        return `${id1}+${id2}`
-}
+// function roomName(id1, id2) {
+//     if (id1 > id2)
+//         return `${id2}+${id1}`
+//     else
+//         return `${id1}+${id2}`
+// }
 
 
 class MessageCard extends React.Component {

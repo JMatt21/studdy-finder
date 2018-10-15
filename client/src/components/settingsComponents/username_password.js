@@ -1,10 +1,10 @@
 import React from "react";
 // import "./settingsComponents.css";
 
-const username_password = () => (
+const UsernamePassword = () => (
   <div>
     Hunter
   </div>
 );
 
-export default username_password;
+export default UsernamePassword;

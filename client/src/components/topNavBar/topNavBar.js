@@ -1,6 +1,6 @@
 import React from "react";
 import "./topNavBar.css";
-import { SideNav, SideNavItem } from 'react-materialize';
+import { SideNav } from 'react-materialize';
 import { Link } from "react-router-dom";
 import SettingsIcon from "../icons/settingsIcon/index";
 import LogoutIcon from "../icons/logoutIcon/index";

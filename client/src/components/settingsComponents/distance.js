@@ -1,7 +1,7 @@
 import React from "react";
 import "./distance.css";
 import { Animated } from "react-animated-css";
-import { Toast } from 'react-materialize'
+// import { Toast } from 'react-materialize'
 
 class Distance extends React.Component {
   constructor(props) {
@@ -33,7 +33,7 @@ class Distance extends React.Component {
         bubbleSize: 'bubble-size-1',
         wrapperBackground: 'settings-distance-wrapper-1'
       });
-    } else if (this.state.sliderInput == 30) {
+    } else if (this.state.sliderInput === 30) {
       this.setState({
         bubbleSize: 'bubble-size-3',
         wrapperBackground: 'settings-distance-wrapper-2'

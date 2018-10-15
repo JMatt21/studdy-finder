@@ -1,7 +1,7 @@
 import React from "react";
 import "./carousel.css";
 import { Link } from "react-router-dom";
-import { Carousel, Card, CardTitle, Table } from 'react-materialize';
+import { Carousel, Card } from 'react-materialize';
 
 
 class MainCarousel extends React.Component {
