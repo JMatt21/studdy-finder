@@ -123,15 +123,17 @@ class Main extends React.Component {
             <div>
                 <TopNavBar
                     {...this.props}
+                    test={test_data}
                 />
-                <div class="grid-container">
-                    <div class="nav-area">
+                <div className="grid-container">
+                    <div className="nav-area">
                     {/* TopNavBar Rendered Outside grid-container & overtop nav-area */}
                     </div>
-                    <div class="left-area">
+                    <div className="left-area">
                         {/* Currently Just Empty Space "future feature space?" */}
                     </div>
-                    <div class="center-area">
+                    <div className="center-area">
+                        <h5 className="nearby-search-title">Nearby Search</h5>
                         <MainCarousel
                             carouselArray={test_data} //populating with dummy data at the moment
                         />
@@ -143,7 +145,7 @@ class Main extends React.Component {
                             test={test_data} //populating with dummy data at the moment
                         />
                     </div>
-                    <div class="right-area">
+                    <div className="right-area">
                         <MessageBoard
                             user={user}
                             data={matchData}

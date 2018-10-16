@@ -2,6 +2,7 @@
     perspective: 90%;
     user-select: none;
     font-family: 'Ubuntu', sans-serif;
+    margin-bottom: 25px !important;
 }
 
 .carousel-item {

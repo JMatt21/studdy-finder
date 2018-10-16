@@ -2,7 +2,7 @@ import React from "react";
 import TopNavBar from "../topNavBar/index";
 import { Link, Route } from "react-router-dom";
 import './settings.css';
-import { Picture, Interests, Distance, Email, Username_password } from '../settingsComponents/index';
+import { Picture, Interests, Distance, Email, UsernamePassword } from '../settingsComponents/index';
 
 class Settings extends React.Component {
 
@@ -43,7 +43,7 @@ class Settings extends React.Component {
                             <Route exact path={`${this.props.match.url}/email`}
                                 render={() => <Email {...this.props} />} />
                             <Route exact path={`${this.props.match.url}/username_password`}
-                                render={() => <Username_password {...this.props} />} />
+                                render={() => <UsernamePassword {...this.props} />} />
                         </div>
                     </div>
                 </div>
