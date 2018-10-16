@@ -147,11 +147,7 @@ class Main extends React.Component {
                     <div className="right-area">
                         <MessageBoard
                             user={user}
-<<<<<<< HEAD
                             data={matchData}
-=======
-                            data={[]}
->>>>>>> 1622b0d9be2988f2af9615b0edfeceff90d1eb92
                             test={test_data} //populating with dummy data at the moment
                         />
                     </div>
