@@ -1,7 +1,7 @@
 .message-board-wrapper{
     position: sticky;
     top: 70px;
-    height: 90vh;
+    max-height: 92vh;
     background-color: #000000b0;
     overflow-y: scroll;
     width: 300px;
@@ -17,13 +17,6 @@
     font-size: 30px;
     font-family: 'Righteous', cursive;
 }
-/* .alert{
-    box-shadow: 0px 0px 5px 5px teal;
-    width: 30px;
-    margin: -22px auto 22px auto;
-    border-radius: 23px;
-    background: #7330D6;
-} */
 .spacer{
     height:5px;
     width: 100%;

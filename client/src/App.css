@@ -18,6 +18,10 @@ html{
   font-family: 'Ubuntu', sans-serif !important;
 }
 
+td {
+  text-align: center !important;
+}
+
 /* FONT CLASSES BELOW */
 .ubuntu{
   font-family: 'Ubuntu', sans-serif;

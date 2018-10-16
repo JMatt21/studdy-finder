@@ -23,7 +23,7 @@ class TopNavBar extends React.Component {
     render(props) {
         return (
             <nav>
-                <Link to="/main"><h4 className="righteous title">StudyDuo</h4></Link>
+                <Link to="/main"><h4 className="righteous title">Study-Duo</h4></Link>
                 <ul>
                     {/* Still need to do Message Drop Down Menu for "MessageIcon Below" */}
                     <li>

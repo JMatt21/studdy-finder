@@ -12,10 +12,15 @@ nav{
 }
 
 .side-nav {
-    height: 100%;
+    height: auto;
     top: 70px;
     background: rgba(0, 0, 0, 0.4) !important;
     color: white;
+    display: flex;
+    align-items: flex-start;
+}
+.side-nav-message-board {
+    height: 100% !important;
 }
 
 @media only screen and (max-width: 424px) {
@@ -25,6 +30,9 @@ nav{
         flex-direction: column;
         justify-content: center;
         margin-left: 0;
+    }
+    .side-nav {
+        top: 125px;
     }
 
 }
