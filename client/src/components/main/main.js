@@ -123,7 +123,7 @@ class Main extends React.Component {
             <div>
                 <TopNavBar
                     {...this.props}
-                    test={test_data}
+                    test={test_data} /* Needs Same Data as Message Board (Matches w/ messages)*/
                 />
                 <div className="grid-container">
                     <div className="nav-area">
@@ -133,12 +133,12 @@ class Main extends React.Component {
                         {/* Currently Just Empty Space "future feature space?" */}
                     </div>
                     <div className="center-area">
-                        <h5 className="nearby-search-title">Nearby Search</h5>
+                        <h5 className="nearby-search-title">Nearby Users</h5>
                         <MainCarousel
-                            carouselArray={test_data} //populating with dummy data at the moment
+                            carouselArray={test_data} //populating with dummy data at the moment /* Needs Location Filtered Results (closest users)*/
                         />
                         <MainSearch
-                            onSubmit={this.searchForUsers}
+                            onSubmit={this.searchForUsers} /* Returns Any Users who's has a matching subject to the Users search input*/
                             user={user}
                             data={data}
 
@@ -149,8 +149,7 @@ class Main extends React.Component {
                         <MessageBoard
                             user={user}
                             data={matchData}
-
-                            test={test_data} //populating with dummy data at the moment
+                            test={test_data} //populating with dummy data at the moment /* Needs Data of (Matches w/ messages)*/
                         />
                     </div>
                 </div>
