@@ -77,7 +77,7 @@ class Interests extends React.Component {
       });
 
     }
-  }
+}
 
   changeBackground = (e) => {
     e.preventDefault();

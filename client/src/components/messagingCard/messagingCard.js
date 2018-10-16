@@ -99,7 +99,7 @@ class MessagesCard extends React.Component {
 
                 <div id="user-form-wrapper">
                     <form>
-                        <div className="bubble">
+                        <div className="bubble-1">
                             <div id="messaging-form">
                                 <div className="input-field">
                                     <input type="text"
@@ -112,8 +112,9 @@ class MessagesCard extends React.Component {
                                 </div>
                             </div>
                         </div>
-                        <button className="circleButton" onClick={this.mSending}>Send</button>
+
                     </form>
+                    <button className="circleButton" onClick={this.mSending}>Send</button>
                 </div>
             </div>
         );
