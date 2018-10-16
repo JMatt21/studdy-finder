@@ -1,42 +1,40 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Users\hhhun\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js start
+  /usr/local/bin/node /usr/local/bin/yarn add animated.css
 
 PATH: 
-  C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\hhhun\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client;C:\Program Files\Intel\iCLS Client;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\nodejs;C:\WINDOWS\System32\OpenSSH;C:\Program Files\Microsoft VS Code\bin;C:\Program Files\Git\cmd;C:\Program Files\Java\jdk1.8.0_181\bin;C:\Users\hhhun\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Heroku\bin;C:\Users\hhhun\AppData\Roaming\npm;C:\Program Files\Git\;C:\Program Files\Git\usr\bin;C:\Program Files\MongoDB\Server\4.0\bin
+  /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
 
 Yarn version: 
   1.9.4
 
 Node version: 
-  8.11.1
+  8.11.3
 
 Platform: 
-  win32 x64
+  darwin x64
 
 Trace: 
-  SyntaxError: C:\Users\hhhun\Documents\code\Homework\project3\studdy-finder\package.json: Unexpected token < in JSON at position 2
-      at JSON.parse (<anonymous>)
-      at C:\Users\hhhun\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:1130:59
-      at Generator.next (<anonymous>)
-      at step (C:\Users\hhhun\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:92:30)
-      at C:\Users\hhhun\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:103:13
-      at <anonymous>
+  Error: https://registry.yarnpkg.com/animated.css: Not found
+      at Request.params.callback [as _callback] (/usr/local/lib/node_modules/yarn/lib/cli.js:64202:18)
+      at Request.self.callback (/usr/local/lib/node_modules/yarn/lib/cli.js:137468:22)
+      at emitTwo (events.js:126:13)
+      at Request.emit (events.js:214:7)
+      at Request.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:138440:10)
+      at emitOne (events.js:116:13)
+      at Request.emit (events.js:211:7)
+      at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:138362:12)
+      at Object.onceWrapper (events.js:313:30)
+      at emitNone (events.js:111:20)
 
 npm manifest: 
   {
-  <<<<<<< HEAD
-    "name": "project3test",
-    "version": "1.0.0",
-  =======
     "name": "studdy-finder",
     "version": "8.11.3",
-  >>>>>>> fdb07d69f7e0da8e44c309ed6c888276f7e6cb22
     "description": "",
-  <<<<<<< HEAD
-    "main": "apiroutes.js",
-  =======
     "main": "server.js",
     "dependencies": {
+      "animate.css": "^3.7.0",
+      "bounce.js": "^0.8.2",
       "dotenv": "^6.0.0",
       "express": "^4.16.3",
       "express-session": "^1.15.6",
@@ -46,37 +44,37 @@ npm manifest:
       "passport": "^0.4.0",
       "passport-google-oauth20": "^1.0.0",
       "passport-local": "^1.0.0",
-      "socket.io": "^2.1.1",
       "react-materialize": "^2.4.6",
-      "sequelize": "^4.39.0"
+      "sequelize": "^4.39.0",
+      "socket.io": "^2.1.1"
     },
     "devDependencies": {
       "concurrently": "^3.5.0",
       "nodemon": "^1.11.0"
     },
-  <<<<<<< HEAD
-  >>>>>>> 5d93c7d1fcdc03b93b771d139d28f65e5b5b58ac
-  =======
     "engines": {
       "yarn": "1.9.4"
     },
-  >>>>>>> fdb07d69f7e0da8e44c309ed6c888276f7e6cb22
     "scripts": {
-      "test": "echo \"Error: no test specified\" && exit 1",
-      "start": "node server.js"
+      "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+      "start:prod": "node server.js",
+      "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+      "client": "cd client && npm run start",
+      "install": "cd client && yarn install",
+      "build": "cd client && npm run build",
+      "heroku-postbuild": "npm run build"
     },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/JMatt21/studdy-finder.git"
+    },
+    "keywords": [],
     "author": "",
     "license": "ISC",
-    "dependencies": {
-      "body-parser": "^1.18.3",
-      "express": "^4.16.3",
-      "mysql2": "^1.6.1",
-      "path": "^0.12.7",
-      "request": "^2.88.0",
-      "require": "^2.4.20",
-      "sequelize": "^4.39.0",
-      "socket.io": "^2.1.1"
-    }
+    "bugs": {
+      "url": "https://github.com/JMatt21/studdy-finder/issues"
+    },
+    "homepage": "https://github.com/JMatt21/studdy-finder#readme"
   }
 
 yarn manifest: 
@@ -109,6 +107,10 @@ Lockfile:
   after@0.8.2:
     version "0.8.2"
     resolved "https://registry.yarnpkg.com/after/-/after-0.8.2.tgz#fedb394f9f0e02aa9768e702bda23b505fae7e1f"
+  
+  animate.css@^3.7.0:
+    version "3.7.0"
+    resolved "https://registry.yarnpkg.com/animate.css/-/animate.css-3.7.0.tgz#5de25d1ee5fba11ba6a1e2c4fa568f512eb7d4da"
   
   ansi-align@^2.0.0:
     version "2.0.0"
@@ -286,6 +288,10 @@ Lockfile:
       raw-body "2.3.2"
       type-is "~1.6.15"
   
+  bounce.js@^0.8.2:
+    version "0.8.2"
+    resolved "https://registry.yarnpkg.com/bounce.js/-/bounce.js-0.8.2.tgz#3e9ebce253e72b42f4178b5c81db48538d674a83"
+  
   boxen@^1.2.1:
     version "1.3.0"
     resolved "https://registry.yarnpkg.com/boxen/-/boxen-1.3.0.tgz#55c6c39a8ba58d9c61ad22cd877532deb665a20b"
@@ -404,6 +410,10 @@ Lockfile:
       define-property "^0.2.5"
       isobject "^3.0.0"
       static-extend "^0.1.1"
+  
+  classnames@^2.2.5:
+    version "2.2.6"
+    resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.6.tgz#43935bffdd291f326dad0a205309b38d00f650ce"
   
   cli-boxes@^1.0.0:
     version "1.0.0"
@@ -1262,6 +1272,10 @@ Lockfile:
     version "3.0.1"
     resolved "https://registry.yarnpkg.com/isobject/-/isobject-3.0.1.tgz#4e431e92b11a9731636aa1f9c8d1ccbcfdab78df"
   
+  "js-tokens@^3.0.0 || ^4.0.0":
+    version "4.0.0"
+    resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"
+  
   json-parse-better-errors@^1.0.1:
     version "1.0.2"
     resolved "https://registry.yarnpkg.com/json-parse-better-errors/-/json-parse-better-errors-1.0.2.tgz#bb867cfb3450e69107c131d1c514bab3dc8bcaa9"
@@ -1316,6 +1330,12 @@ Lockfile:
   long@^4.0.0:
     version "4.0.0"
     resolved "https://registry.yarnpkg.com/long/-/long-4.0.0.tgz#9a7b71cfb7d361a194ea555241c92f7468d5bf28"
+  
+  loose-envify@^1.1.0, loose-envify@^1.3.1:
+    version "1.4.0"
+    resolved "https://registry.yarnpkg.com/loose-envify/-/loose-envify-1.4.0.tgz#71ee51fa7be4caec1a63839f7e682d8132d30caf"
+    dependencies:
+      js-tokens "^3.0.0 || ^4.0.0"
   
   lowercase-keys@^1.0.0:
     version "1.0.1"
@@ -1809,6 +1829,13 @@ Lockfile:
     version "2.0.0"
     resolved "https://registry.yarnpkg.com/process-nextick-args/-/process-nextick-args-2.0.0.tgz#a37d732f4271b4ab1ad070d35508e8290788ffaa"
   
+  prop-types@^15.6.2:
+    version "15.6.2"
+    resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.2.tgz#05d5ca77b4453e985d60fc7ff8c859094a497102"
+    dependencies:
+      loose-envify "^1.3.1"
+      object-assign "^4.1.1"
+  
   proxy-addr@~2.0.3:
     version "2.0.4"
     resolved "https://registry.yarnpkg.com/proxy-addr/-/proxy-addr-2.0.4.tgz#ecfc733bf22ff8c6f407fa275327b9ab67e48b93"
@@ -1861,6 +1888,32 @@ Lockfile:
       ini "~1.3.0"
       minimist "^1.2.0"
       strip-json-comments "~2.0.1"
+  
+  react-dom@^16.2.0:
+    version "16.5.2"
+    resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.5.2.tgz#b69ee47aa20bab5327b2b9d7c1fe2a30f2cfa9d7"
+    dependencies:
+      loose-envify "^1.1.0"
+      object-assign "^4.1.1"
+      prop-types "^15.6.2"
+      schedule "^0.5.0"
+  
+  react-materialize@^2.4.6:
+    version "2.4.6"
+    resolved "https://registry.yarnpkg.com/react-materialize/-/react-materialize-2.4.6.tgz#5d9799ca05741fa0981b4247c8f39051bed65aea"
+    dependencies:
+      classnames "^2.2.5"
+      react "^16.2.0"
+      react-dom "^16.2.0"
+  
+  react@^16.2.0:
+    version "16.5.2"
+    resolved "https://registry.yarnpkg.com/react/-/react-16.5.2.tgz#19f6b444ed139baa45609eee6dc3d318b3895d42"
+    dependencies:
+      loose-envify "^1.1.0"
+      object-assign "^4.1.1"
+      prop-types "^15.6.2"
+      schedule "^0.5.0"
   
   read-pkg@^3.0.0:
     version "3.0.0"
@@ -1982,6 +2035,12 @@ Lockfile:
   sax@^1.2.4:
     version "1.2.4"
     resolved "https://registry.yarnpkg.com/sax/-/sax-1.2.4.tgz#2816234e2378bddc4e5354fab5caa895df7100d9"
+  
+  schedule@^0.5.0:
+    version "0.5.0"
+    resolved "https://registry.yarnpkg.com/schedule/-/schedule-0.5.0.tgz#c128fffa0b402488b08b55ae74bb9df55cc29cc8"
+    dependencies:
+      object-assign "^4.1.1"
   
   semver-diff@^2.0.0:
     version "2.1.0"

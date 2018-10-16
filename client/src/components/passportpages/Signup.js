@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import API from "../../utils/PassportAPI";
 import './Signup.css';
+import { Animated } from "react-animated-css";
 
 export class Signup extends React.Component {
     state = {
@@ -49,21 +50,40 @@ export class Signup extends React.Component {
         return (
             <div className="signup-page-grid">
                 <div className="side-bar-signup"></div>
-                <div className="main-content-signup">
-                    <form>
-                        <h2>Login to your account</h2>
-                        <div className="signup-form-email">
-                            <label htmlFor="exampleInputEmail1">Email address</label>
-                            <input type="text" value={this.state.email} onChange={this.handleInputChange} />
+                <form>
+                    {/* <Animated animationIn="fadeIn" animationOut="fadeOut" isVisible={true}> */}
+                        <div className="welcome">Hi, Welcome to Study Duo</div>
+                    {/* </Animated> */}
+                    <h2>Login to your account</h2>
+
+                    <div className="signup-form-email">
+                        <label
+                            className="exampleInputEmail1">Email address</label>
+                        <div className="input-field">
+                            <input
+                                type="text"
+                                value={this.state.email}
+                                onChange={this.handleInputChange} />
                         </div>
-                        <div className="signup-form-password">
-                            <label htmlFor="exampleInputPassword1">Password</label>
-                            <input type="password" value={this.state.password} onChange={this.handleInputChange} />
+                    </div>
+
+                    <div className="signup-form-password">
+                        <label className="exampleInputPassword1">Password</label>
+                        <div className="input-field">
+                            <input
+                                type="text"
+                                value={this.state.password}
+                                onChange={this.handleInputChange} />
                         </div>
-                        <p className="err-message">{this.state.errMessage}</p>
-                        <button type="submit" onClick={this.handleFormSubmission} className="btn btn-default">Sign Up</button>
-                    </form>
-                </div>
+                    </div>
+
+
+
+                    <p className="err-message">{this.state.errMessage}</p>
+                    <div id="button-box">
+                        <button type="submit" onClick={this.handleFormSubmission} className="btn-default">Sign Up</button>
+                    </div>
+                </form>
             </div>
         );
     }
