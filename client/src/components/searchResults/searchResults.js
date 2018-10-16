@@ -1,6 +1,6 @@
 import React from "react";
 import "./searchResults.css";
-import { Card, Table } from "react-materialize";
+import { Card } from "react-materialize";
 import { Link } from "react-router-dom";
 
 function roomName(id1, id2) {
@@ -47,6 +47,7 @@ class SearchResults extends React.Component {
                             <div className="search-results-name righteous">{`${element.name}`}</div>
                             <div className="search-results-distance">{`${element.distance} miles away`}</div>
                         </div>
+                        <table>
                         <tbody className="search-results-table">
                             {element.beginnerSkills.map((subject, i) => {
                                 return (
@@ -57,6 +58,7 @@ class SearchResults extends React.Component {
                             })}
                         </tbody>
                         <Link to={`/messages/${roomName(this.props.user.id, element.id)}`} className="search-results-msg-btn btn">Message</Link>
+                        </table>
                     </div>
                 </Card>
 

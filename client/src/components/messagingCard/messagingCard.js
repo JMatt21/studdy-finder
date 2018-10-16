@@ -1,6 +1,6 @@
 import React from "react";
 import "./messagingCard.css";
-import UserMessages from '../userMessages/index'
+// import UserMessages from '../userMessages/index'
 import API from "../../utils/API";
 import socket from "../../utils/SocketAPI";
 
