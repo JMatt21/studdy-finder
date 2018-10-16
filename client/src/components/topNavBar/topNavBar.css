@@ -12,8 +12,10 @@ nav{
 }
 
 .side-nav {
-    /* background: #000000b0 !important; */
-    color: black;
+    height: 100%;
+    top: 70px;
+    background: rgba(0, 0, 0, 0.4) !important;
+    color: white;
 }
 
 @media only screen and (max-width: 424px) {
