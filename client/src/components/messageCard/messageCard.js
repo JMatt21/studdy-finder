@@ -15,7 +15,6 @@ function roomName(id1, id2) {
 
 class MessageCard extends React.Component {
     render() {
-        console.log(this.props);
         return (
             <div>
                 {this.props.data.map((Match, index) => {

@@ -1,8 +1,9 @@
 import React from "react";
 import "./passportPages.css";
 import { Link } from "react-router-dom";
-// api
+// apis
 import passport from "../../utils/PassportAPI";
+import API from "../../utils/API";
 
 export class Login extends React.Component {
     state = {
@@ -14,6 +15,10 @@ export class Login extends React.Component {
         // The parameter is all the props being pass through
         console.log("APPSTATE WAS UPDATED")
         if (props.appState.user.id) {
+            API.searchForUsers(props.appState.user.beginnerSkills, props.appState.user.latitude, props.appState.user.longitude, 100000000)
+                .then(({ data }) => {
+                    this.props.setData(data, 'carousel');
+                })
             this.props.history.push("/main")
         }
     }
@@ -35,6 +40,10 @@ export class Login extends React.Component {
                     this.props.setData(ret.data, 'user');
                     if (ret.status === 200) {
                         // IIRC a status of 401 or 403 if the user enters incorrect credentials.
+                        API.searchForUsers(ret.data.beginnerSkills, ret.data.latitude, ret.data.longitude, 100000000)
+                            .then(({ data }) => {
+                                this.props.setData(data, 'carousel');
+                            })
                         this.props.history.push("/main");
                     }
                 })

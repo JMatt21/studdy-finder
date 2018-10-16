@@ -1,18 +1,23 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import './App.css';
-import socket from './utils/SocketAPI';
-import passport from './utils/PassportAPI';
+// components
 import Main from "./components/main/index";
 import { Login, Signup } from "./components/passportpages";
 import MessagingWrapper from './components/messagingWrapper';
 import Settings from './components/settings/index';
+// apis
+import socket from './utils/SocketAPI';
+import passport from './utils/PassportAPI';
+// filler
+import carouselFiller from "./assets/testFillerData/carouselFiller";
 
 class App extends Component {
   state = {
     user: {},
     rooms: [],
     data: [],
+    carousel: carouselFiller
   };
 
   componentWillMount() {

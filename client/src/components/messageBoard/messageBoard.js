@@ -6,7 +6,6 @@ import MessageCard from "../messageCard/index";
 class MessageBoard extends React.Component {
     
     render() {
-        console.log(this.props);
         return (
             <div className="message-board-wrapper">
                 <div className="spacer"></div>
