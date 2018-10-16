@@ -141,15 +141,13 @@ class Main extends React.Component {
                             onSubmit={this.searchForUsers}
                             user={user}
                             data={data}
-
                             test={test_data} //populating with dummy data at the moment
                         />
                     </div>
                     <div className="right-area">
                         <MessageBoard
                             user={user}
-                            data={matchData}
-
+                            data={[]}
                             test={test_data} //populating with dummy data at the moment
                         />
                     </div>

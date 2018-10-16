@@ -3,12 +3,12 @@ import "./searchResults.css";
 import { Card } from "react-materialize";
 import { Link } from "react-router-dom";
 
-// function roomName(id1, id2) {
-//     if (id1 > id2)
-//         return `${id2}+${id1}`
-//     else
-//         return `${id1}+${id2}`
-// }
+function roomName(id1, id2) {
+    if (id1 > id2)
+        return `${id2}+${id1}`
+    else
+        return `${id1}+${id2}`
+}
 
 
 class SearchResults extends React.Component {
