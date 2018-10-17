@@ -1,0 +1,21 @@
+  .passport-grid-container {
+    display: grid;
+    height: 100%;
+    grid-template-columns: 1fr;
+    grid-template-rows: 50px 1fr;
+    grid-gap: 1px 1px;
+    grid-template-areas: "nav-passport-area" "main-passport-display";
+  }
+  
+  .nav-passport-area { grid-area: nav-passport-area; }
+  
+  .main-passport-display { grid-area: main-passport-display; }
+
+  @media only screen and (max-width: 424px) {
+    /* Mobile */
+
+.passport-grid-container {
+    grid-template-rows: 130px 1fr !important; /* pushes content down below navbar at mobile view */
+}
+
+}

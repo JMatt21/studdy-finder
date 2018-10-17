@@ -7,45 +7,44 @@ router.route("/:id")
     .get(function (req, res) {
         let id = req.params.id;
         db.Users.findOne({
-            where: {
-                id: id
-            },
-            attributes: {
-                exclude: 'password'
-            },
+            where: { id: id },
             include: [
                 { // to get user's match's 
                     model: db.Matches,
                     include: [{ // to connect them to another user
                         model: db.Users,
                         attributes: {
-                            exclude: 'password'
+                            exclude: 'password',
+                            include: [[db.sequelize.literal(
+                                '( 3959 * acos( cos( radians(Users.latitude) ) * cos( radians( `Matches->Match`.`latitude` ) ) * cos( radians( `Matches->Match`.`longitude` ) - radians(Users.longitude) ) + sin( radians(Users.latitude) ) * sin( radians( `Matches->Match`.`latitude` ) ) ) )'), 'distance']]
                         },
                         as: "Match"
                     }],
                 }]
         }).then(dbUser => {
-            res.json(dbUser)
+            let ret = dbUser.toJSON();
+            // deleting unecessary keys from ret
+            delete ret.password;
+            delete ret.advancedSkills;
+            delete ret.intermediateSkills
+            // setting Matches to be the actual users instead of 'matches' 
+            ret.Matches = dbUser.Matches.map(dbMatch => dbMatch.Match);
+            res.json(ret);
+
         })
     })
 // To update user
-// .post(function (req, res) {
-//     const userId = req.params.id;
-//     db.update({
-//         where: { id: userId }
-//     }, req.body.user)
-//         .then(dbUser => {
-//             const { name, id, email, beginnerSkills, intermediateSkills, advancedSkills } = dbUser;
-//             res.json({
-//                 name: name,
-//                 id: id,
-//                 email: email,
-//                 beginnerSkills: beginnerSkills,
-//                 intermediateSkills: intermediateSkills,
-//                 advancedSkills: advancedSkills,
-//             })
-//         });
-// });
+router.route("/update/:id")
+    .post(function (req, res) {
+        const userId = req.params.id;
+        const updateInfo = req.body;
+        db.Users.update(updateInfo, {
+            where: { id: userId }
+        })
+            .then(dbUser => {
+                res.json(dbUser)
+            });
+    });
 // Matches with /api/users/rooms/:id
 router.route("/rooms/:id")
     .get((req, res) => {

@@ -9,14 +9,14 @@ module.exports = function (sequelize, DataTypes) {
     },
     password: {
       type: DataTypes.STRING,
-      allowNull: true,
+      allowNull: false,
       validate: {
         len: [1, 100]
       }
     },
     email: {
       type: DataTypes.STRING,
-      allowNull: true,
+      allowNull: false,
       unique: true,
       validate: {
         len: [1, 150]
@@ -28,6 +28,12 @@ module.exports = function (sequelize, DataTypes) {
     location: {
       type: DataTypes.STRING
     },
+    latitude: {
+      type: DataTypes.FLOAT(10, 6)
+    },
+    longitude: {
+      type: DataTypes.FLOAT(10, 6)
+    },
     beginnerSkills: {
       type: DataTypes.STRING,
       get() {
@@ -35,7 +41,7 @@ module.exports = function (sequelize, DataTypes) {
         if (currentSkills) {
           return currentSkills.split(';');
         } else {
-          return null;
+          return [];
         }
       },
       set(val) {
@@ -76,7 +82,7 @@ module.exports = function (sequelize, DataTypes) {
       onDelete: "CASCADE"
     });
     Users.hasMany(models.Matches, {
-      onDelete: "CASCADE"
+      onDelete: "CASCADE",
     });
   }
   return Users;
