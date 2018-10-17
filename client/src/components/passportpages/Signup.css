@@ -3,13 +3,75 @@
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: auto;
-    background: #F7F7F7;
-    /* grid-template-columns: 300px auto; */
+    background: linear-gradient(-45deg, #0f7286, #8031db , #990191ce);
+	background-size: 400% 400%;
+	-webkit-animation: Gradient 15s ease infinite;
+	-moz-animation: Gradient 15s ease infinite;
+	animation: Gradient 15s ease infinite;
 }
 
-/* .side-bar-signup{
-    background:#333333;
-} */
+@-webkit-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@-moz-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+h1,
+h6 {
+	font-family: 'Open Sans';
+	font-weight: 300;
+	text-align: center;
+	position: absolute;
+	top: 45%;
+	right: 0;
+	left: 0;
+}
+
+
+#entire-page{
+    width: 100vw;
+    height: 100vh;
+    background: blue;
+    background: blue;
+    background: -moz-linear-gradient(top, blue 0%, teal 0%, blueviolet 72%, teal 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, blue), color-stop(0%, blueviolet), color-stop(72%, blueviolet), color-stop(100%, teal));
+    background: -webkit-linear-gradient(top, blue 0%, teal 0%, blueviolet 72%, teal 100%);
+    background: -o-linear-gradient(top, blue 0%, teal 0%, blueviolet 72%, teal 100%);
+    background: -ms-linear-gradient(top, blue 0%, teal 0%, blueviolet 72%, teal 100%);
+    background: linear-gradient(to bottom, blue 0%, teal 0%, blueviolet 72%, teal 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#474747', endColorstr='#000000', GradientType=0 );
+}
+
 
 .main-content-signup{
     height: 100%;
@@ -23,14 +85,14 @@ h2{
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
     text-align: center;
-    color: #333333;
+    color: white;
 }
 
 .welcome{
     font-family: Righteous;
-    font-size: 15px;
+    font-size: 18px;
     text-align: center;
-    color: #333333;   
+    color: white;   
     -webkit-animation: animation 1000ms linear both;
     animation: animation 1000ms linear both;
 }
@@ -66,7 +128,7 @@ h2{
     100% { -webkit-transform: matrix3d(2, 0, 0, 0, 0, 2, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(2, 0, 0, 0, 0, 2, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 
   }
   
-  @keyframes animation { 
+  /* @keyframes animation { 
     0% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
     3.4% { -webkit-transform: matrix3d(1.316, 0, 0, 0, 0, 1.407, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.316, 0, 0, 0, 0, 1.407, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
     4.7% { -webkit-transform: matrix3d(1.45, 0, 0, 0, 0, 1.599, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.45, 0, 0, 0, 0, 1.599, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
@@ -93,10 +155,10 @@ h2{
     85.49% { -webkit-transform: matrix3d(1.999, 0, 0, 0, 0, 2, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.999, 0, 0, 0, 0, 2, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
     90.69% { -webkit-transform: matrix3d(1.999, 0, 0, 0, 0, 1.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.999, 0, 0, 0, 0, 1.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
     100% { -webkit-transform: matrix3d(2, 0, 0, 0, 0, 2, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(2, 0, 0, 0, 0, 2, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 
-  }
+  } */
 
 .signup-form-email{
-    background: rgb(255, 255, 255);
+    background: #2a0e45;
     border-radius: 15px;
     font-size: 15px;
     text-align: center;
@@ -104,24 +166,27 @@ h2{
     width: 400px;
     margin-right: auto;
     margin-left: auto;
+    height: 50px;
 }
 
 .signup-form-email input{
     border-bottom: rgba(0, 255, 21, 0) !important;
     border: 0px !important;
     padding: 0px !important;
-    height: 20px !important;
+    height: 5px !important;
     margin: 15px 0 15px 0 !important;
 }
 
 
 .signup-form-password{
-    background: rgb(255, 255, 255);
+    background: #2a0e45;
     border-radius: 15px;
     font-size: 15px;
     text-align: center;
     margin-bottom: 10px;
+    margin-top: 10px;
     width: 400px;
+    height: 50px;
     margin-right: auto;
     margin-left: auto;
 }
@@ -130,7 +195,7 @@ h2{
     border-bottom: rgba(0, 255, 21, 0) !important;
     border: 0px !important;
     padding: 0px !important;
-    height: 20px !important;
+    height: 5px !important;
     margin: 15px 0 15px 0 !important;
 }
 
@@ -149,20 +214,16 @@ input[type=text]:focus {
   }
   
   .btn-default {
-    color: #333333;
+    color: #2a0e45;
     margin: auto;
     font-family: righteous;
+    font-size: 17px;
+    margin-top: 15px;
+    border: solid 0px rgba(255, 255, 255, 0) !important; 
     border-radius: 15px;
-    width: 125px;
+    width: 140px;
     height: 30px;
-    background: rgba(183,222,237,1);
-    background: -moz-linear-gradient(left, rgba(183,222,237,1) 0%, rgba(113,206,239,1) 51%, rgba(137,16,222,1) 100%);
-    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(183,222,237,1)), color-stop(51%, rgba(113,206,239,1)), color-stop(100%, rgba(137,16,222,1)));
-    background: -webkit-linear-gradient(left, rgba(183,222,237,1) 0%, rgba(113,206,239,1) 51%, rgba(137,16,222,1) 100%);
-    background: -o-linear-gradient(left, rgba(183,222,237,1) 0%, rgba(113,206,239,1) 51%, rgba(137,16,222,1) 100%);
-    background: -ms-linear-gradient(left, rgba(183,222,237,1) 0%, rgba(113,206,239,1) 51%, rgba(137,16,222,1) 100%);
-    background: linear-gradient(to right, rgba(183,222,237,1) 0%, rgba(113,206,239,1) 51%, rgba(137,16,222,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b7deed', endColorstr='#8910de', GradientType=1 );
+    background: white;
     left:50%;
     transform:translate(-50%,-50%);
     position: absolute;
@@ -170,46 +231,54 @@ input[type=text]:focus {
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#007db9e8',GradientType=1 ); 
   }
 
+  .btn-default:focus {
+    color: #2a0e45;
+    margin: auto;
+    font-family: righteous;
+    font-size: 17px;
+    margin-top: 15px;
+    border: solid 0px rgba(255, 255, 255, 0) !important; 
+    border-radius: 15px;
+    width: 140px;
+    height: 30px;
+    background: white;
+    left:50%;
+    transform:translate(-50%,-50%);
+    position: absolute;
+    display: inline-block;
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#007db9e8',GradientType=1 ); 
+  }
 
-    @keyframes slide {
-        0% {transform:translateX(-100%);}
-        100% {transform:translateX(100%);}
-    }
+  #glow-hover {
+    /* border glow effect on hover */
+    text-shadow: -1px 1px 20px #ffc, 1px -1px 20px #fff;
+
+    -webkit-transition: text-shadow 250ms linear 0s;
+    -moz-transition: text-shadow 250ms linear 0s;
+    -o-transition: text-shadow 250ms linear 0s;
+    transition: text-shadow 250ms linear 0s;
+}
 
   .exampleInputPassword1{
         font-family: arial; 
         color: #d3d2cd;
-        padding: 50px;
+        padding: 30px;
         font-size: 16px;
         text-align: center;
-        margin-top: 25px;
         position: relative;
-        top: 30px;
+        top: 15px;
   }
 
   .exampleInputEmail1{
-      font-family: arial;
-      color: #d3d2cd;
-      font-size: 16px;
-      margin-top: 30px;
-      text-align: center;
-      position: relative;
-      top: 30px;
-  }
+    font-family: arial; 
+    color: #d3d2cd;
+    padding: 30px;
+    font-size: 16px;
+    text-align: center;
+    position: relative;
+    top: 15px;
+}
 
-   /* animation-duration: 3s;
-    animation-name: slidein; */
 
-    /* @keyframes slidein {
-    from {
-      margin-left: 100%;
-      width: 300%; 
-    }
-  
-    to {
-      margin-left: 0%;
-      width: 100%;
-    }
-  } */
 
 

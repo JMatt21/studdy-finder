@@ -48,6 +48,7 @@ export class Signup extends React.Component {
 
     render() {
         return (
+        <div id="entire-page">
             <div className="signup-page-grid">
                 <div className="side-bar-signup"></div>
                 <form>
@@ -81,10 +82,13 @@ export class Signup extends React.Component {
 
                     <p className="err-message">{this.state.errMessage}</p>
                     <div id="button-box">
-                        <button type="submit" onClick={this.handleFormSubmission} className="btn-default">Sign Up</button>
+                        <div id="glow-hover">
+                        <button type="submit" onClick={this.handleFormSubmission} className="btn-default">Sign In</button>
+                        </div>
                     </div>
                 </form>
             </div>
+        </div>
         );
     }
 }
