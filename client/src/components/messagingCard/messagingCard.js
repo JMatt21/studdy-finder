@@ -51,7 +51,7 @@ class MessagesCard extends React.Component {
     }
 
     getRoomMessages = (id) => {
-        // socket.joinRoom(id) // in case user is not in room
+        socket.joinRoom(id) // in case user is not in room
         API.getRoomMessages(id)
             .then(data => {
                 let matchedStatus = false;
