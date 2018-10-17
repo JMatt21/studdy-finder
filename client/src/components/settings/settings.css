@@ -1,4 +1,3 @@
-
 .grid-wrapper{
     display: inline;
     margin: 0 auto;
@@ -54,13 +53,35 @@
     line-height: 76px;
 }
 
+
+@media screen and (max-width: 730px) {
+    .settings-main-grid {
+        margin-top: 75px !important;
+        display: grid;
+        margin: auto;
+        height: 100vh;
+        width: 100vw;
+        max-width: 1440px;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+      }
+
+      .sli2{
+        font-size: 28px;
+        line-height: 70px;
+    }
+}
+
+
+
+
 @media only screen and (max-width: 424px) {
     /* Mobile */
 
 .settings-main-grid {
-    grid-template-rows: 130px 1fr 90px !important; /* pushes content down below navbar at mobile view */
+    margin-top: 0px !important;
+    grid-template-rows: 45px 1fr 90px !important; /* pushes content down below navbar at mobile view */
 }
 
 }
-
 

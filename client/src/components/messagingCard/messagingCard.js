@@ -99,7 +99,7 @@ class MessagesCard extends React.Component {
 
                 <div id="user-form-wrapper">
                     <form>
-                        <div className="bubble">
+                        <div className="bubble-1">
                             <div id="messaging-form">
                                 <div className="input-field">
                                     <input type="text"

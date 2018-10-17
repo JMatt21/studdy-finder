@@ -20,10 +20,10 @@ class TopNavBar extends React.Component {
         this.props.resetData();
     }
 
-    render(props) {
+    render() {
         return (
             <nav>
-                <Link to="/main"><h4 className="righteous title">StudyDuo</h4></Link>
+                <Link to="/main"><h4 className="righteous title">Study-Duo</h4></Link>
                 <ul>
                     {/* Still need to do Message Drop Down Menu for "MessageIcon Below" */}
                     <li>
@@ -31,7 +31,7 @@ class TopNavBar extends React.Component {
                             trigger={<a><MessageIconTopNav /></a>}
                             options={{ closeOnClick: true, edge: "right", draggable: true }}
                         >
-                        {/* <MessageBoard test={this.props.test}/> */}
+                            <MessageBoard user={this.props.user} data={this.props.data} />
                             {/* <SideNavItem userView
                                 user={{
                                     background: 'img/office.jpg',
@@ -39,8 +39,8 @@ class TopNavBar extends React.Component {
                                     name: 'John Doe',
                                     email: 'jdandturk@gmail.com'
                                 }}
-                            />
-                            <SideNavItem href='#!icon' icon='cloud'>First Link With Icon</SideNavItem>
+                            /> */}
+                            {/* <SideNavItem href='#!icon' icon='cloud'>First Link With Icon</SideNavItem>
                             <SideNavItem href='#!second'>Second Link</SideNavItem>
                             <SideNavItem divider />
                             <SideNavItem subheader>Subheader</SideNavItem>

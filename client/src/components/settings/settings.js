@@ -19,7 +19,7 @@ class Settings extends React.Component {
     render() {
         return (
             <div>
-                <TopNavBar {...this.props} />
+                <TopNavBar {...this.props} user={this.props.appState.user} data={this.props.appState.user.Matches} />
                 <div className="grid-wrapper">
 
                     <div className="settings-main-grid">

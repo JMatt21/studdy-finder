@@ -4,6 +4,7 @@ import TopNavBar from "../topNavBar/index";
 import MainSearch from "../mainSearch/index";
 import MainCarousel from "../carousel/index";
 import MessageBoard from "../messageBoard/index";
+import Settings from "../settings/index";
 
 // apis
 import API from "../../utils/API";
@@ -51,7 +52,8 @@ class Main extends React.Component {
             <div>
                 <TopNavBar
                     {...this.props}
-                    test={testData}
+                    data={matchData}
+                    user={user}
                 />
                 <div className="grid-container">
                     <div className="nav-area">
@@ -61,13 +63,13 @@ class Main extends React.Component {
                         {/* Currently Just Empty Space "future feature space?" */}
                     </div>
                     <div className="center-area">
-                        <h5 className="nearby-search-title">Nearby Search</h5>
+                        <h5 className="nearby-search-title">Nearby Users</h5>
                         <MainCarousel
                             user={user}
                             carouselArray={carousel} //populating with dummy data at the moment
                         />
                         <MainSearch
-                            onSubmit={this.searchForUsers}
+                            onSubmit={this.searchForUsers} /* Returns Any Users who's has a matching subject to the Users search input*/
                             user={user}
                             data={data}
                             test={testData} //populating with dummy data at the moment

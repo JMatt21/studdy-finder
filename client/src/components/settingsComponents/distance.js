@@ -32,7 +32,7 @@ class Distance extends React.Component {
       this.setState({
         bubbleSize: 'bubble-size-1'
       });
-    } else if (this.state.sliderInput === 30) {
+    } else if (value > 9 && value < 19) {
       this.setState({
         bubbleSize: 'bubble-size-2'
       });

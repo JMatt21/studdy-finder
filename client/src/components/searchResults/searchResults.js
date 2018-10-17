@@ -41,7 +41,7 @@ class SearchResults extends React.Component {
                 // </div>
                 //OLD SEARCH RESULTS JSX ABOVE
 
-                <Card className="search-result" key={index} horizontal header={<img className="search-results-image" src={element.image} alt="user_image"></img>}>
+                <Card className="search-result" key={index} header={<img className="search-results-image" src={element.image} alt="user_image"></img>}>
                     <div className="search-results-content">
                         <div className="name-and-distance">
                             <div className="search-results-name righteous">{`${element.name}`}</div>

@@ -29,7 +29,6 @@ class App extends Component {
     socket.listenToMatches((data) => {
       let temp = this.state.user;
       temp.Matches.push(data);
-      console.log('TEST', data);
       this.setState({ user: temp })
     })
   }
