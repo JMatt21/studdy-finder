@@ -1,6 +1,6 @@
 import openSocket from 'socket.io-client';
-// const socket = openSocket('http://localhost:3001');
-const socket = openSocket('https://shrouded-beyond-13240.herokuapp.com'); 
+const socket = openSocket('http://localhost:3001');
+// const socket = openSocket('https://shrouded-beyond-13240.herokuapp.com'); 
 
 export default {
     socketUser: function (userId) {
@@ -37,6 +37,7 @@ export default {
     },
 
     matchUsers: function(user1Id, user2Id) {
+        console.log('test1')
         socket.emit('new match', user1Id, user2Id)
     },
 

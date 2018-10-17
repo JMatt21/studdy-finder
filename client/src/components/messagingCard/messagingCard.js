@@ -19,7 +19,7 @@ class MessagesCard extends React.Component {
     }
 
     componentWillReceiveProps(newRoute) {
-        console.log(this.state.roomId)
+        // console.log(this.state.roomId)
         this.setState({ roomId: newRoute.match.params.roomid })
         this.getRoomMessages(newRoute.match.params.roomid);
     }
@@ -41,13 +41,13 @@ class MessagesCard extends React.Component {
         event.preventDefault();
         if (this.state.roomId.split("+").includes(this.props.appState.user.id.toString())) {
             if (!this.state.matchedStatus) {
-                console.log("matching ")
+                console.log("matching")
                 const users = this.state.roomId.split("+");
                 this.userMatchHandler(users[0], users[1])
                 this.setState({ matchedStatus: true })
             }
             socket.sendMessage(this.state.message, this.state.roomId, this.props.appState.user.id);
-        } else console.log(this.state.roomId.split("+"), this.props.appState.user.id);
+        } else console.log('no', this.state.roomId.split("+"), this.props.appState.user.id);
     }
 
     getRoomMessages = (id) => {
@@ -73,7 +73,7 @@ class MessagesCard extends React.Component {
     userMatchHandler = (user1, user2) => {
         socket.matchUsers(user1, user2);
         API.matchUsers(user1, user2)
-            .then(data => { console.log(data) })
+            .then(data => {})
             .catch(err => console.log(err));
     }
 

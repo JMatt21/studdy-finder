@@ -53,6 +53,7 @@ io.on('connection', (client) => { //  the server is expecting some parameter(s)
             db.Users.findOne({where: {id: user1Id}, attributes: {exclude: 'password'}}),
             db.Users.findOne({where: {id: user2Id}, attributes: {exclude: 'password'}})
         ]).then(results => {
+            console.log('Returning new matches')
             io.to(`USER: ${results[0].id}`).emit('update new match', results[1]);
             io.to(`USER: ${results[1].id}`).emit('update new match', results[0]);
         })
