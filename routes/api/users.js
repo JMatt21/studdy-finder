@@ -7,12 +7,7 @@ router.route("/:id")
     .get(function (req, res) {
         let id = req.params.id;
         db.Users.findOne({
-            where: {
-                id: id
-            },
-            attributes: {
-                exclude: 'password'
-            },
+            where: { id: id },
             include: [
                 { // to get user's match's 
                     model: db.Matches,
@@ -20,13 +15,22 @@ router.route("/:id")
                         model: db.Users,
                         attributes: {
                             exclude: 'password',
-                            // include: [[db.sequelize.literal('( 3959 * acos( cos( radians(37) ) * cos( radians( lat ) ) * cos( radians( lng ) - radians(-122) ) + sin( radians(37) ) * sin( radians( lat ) ) ) )'), 'distance']]
+                            include: [[db.sequelize.literal(
+                                '( 3959 * acos( cos( radians(Users.latitude) ) * cos( radians( `Matches->Match`.`latitude` ) ) * cos( radians( `Matches->Match`.`longitude` ) - radians(Users.longitude) ) + sin( radians(Users.latitude) ) * sin( radians( `Matches->Match`.`latitude` ) ) ) )'), 'distance']]
                         },
                         as: "Match"
                     }],
                 }]
         }).then(dbUser => {
-            res.json(dbUser)
+            let ret = dbUser.toJSON();
+            // deleting unecessary keys from ret
+            delete ret.password;
+            delete ret.advancedSkills;
+            delete ret.intermediateSkills
+            // setting Matches to be the actual users instead of 'matches' 
+            ret.Matches = dbUser.Matches.map(dbMatch => dbMatch.Match);
+            res.json(ret);
+
         })
     })
 // To update user

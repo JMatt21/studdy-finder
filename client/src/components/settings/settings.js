@@ -3,9 +3,19 @@ import TopNavBar from "../topNavBar/index";
 import { Link, Route } from "react-router-dom";
 import './settings.css';
 import { Picture, Interests, Distance, Email, UsernamePassword, Location } from '../settingsComponents/index';
+// apis
+import API from "../../utils/API";
 
 class Settings extends React.Component {
 
+    componentWillUnmount() {
+        console.log("SETTINGS UNMOUNTING");
+        // update app data with new user stuff
+        API.getUserInfo(this.props.appState.user.id)
+            .then(({ data }) => {
+                this.props.setData(data, 'user');
+            })
+    }
     render() {
         return (
             <div>

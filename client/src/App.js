@@ -43,7 +43,8 @@ class App extends Component {
     this.setState({
       user: {},
       rooms: [],
-      data: []
+      data: [],
+      carousel: carouselFiller
     })
   };
 

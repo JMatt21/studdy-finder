@@ -63,6 +63,7 @@ class Main extends React.Component {
                     <div className="center-area">
                         <h5 className="nearby-search-title">Nearby Search</h5>
                         <MainCarousel
+                            user={user}
                             carouselArray={carousel} //populating with dummy data at the moment
                         />
                         <MainSearch

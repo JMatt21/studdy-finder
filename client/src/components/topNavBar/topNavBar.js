@@ -48,7 +48,7 @@ class TopNavBar extends React.Component {
                         </SideNav>
 
                     </li>
-                    <li><Link to="/settings"><SettingsIcon /></Link></li>
+                    <li><Link to="/settings/profile_picture"><SettingsIcon /></Link></li>
                     <li><a onClick={this.logout}><LogoutIcon /></a></li>
                 </ul>
             </nav>

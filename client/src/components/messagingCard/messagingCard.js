@@ -44,14 +44,14 @@ class MessagesCard extends React.Component {
                 console.log("matching ")
                 const users = this.state.roomId.split("+");
                 this.userMatchHandler(users[0], users[1])
-                this.setState({matchedStatus: true})
+                this.setState({ matchedStatus: true })
             }
             socket.sendMessage(this.state.message, this.state.roomId, this.props.appState.user.id);
         } else console.log(this.state.roomId.split("+"), this.props.appState.user.id);
     }
 
     getRoomMessages = (id) => {
-        socket.joinRoom(id) // in case user is not in room
+        // socket.joinRoom(id) // in case user is not in room
         API.getRoomMessages(id)
             .then(data => {
                 let matchedStatus = false;
