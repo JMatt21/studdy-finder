@@ -1,7 +1,7 @@
 import React from "react";
-// api
+// apis
 import passport from "../../utils/PassportAPI";
-
+import API from "../../utils/API";
 export class Login extends React.Component {
     state = {
         email: '',
@@ -36,7 +36,7 @@ export class Login extends React.Component {
                     this.props.setData(ret.data, 'user');
                     if (ret.status === 200) {
                         // IIRC a status of 401 or 403 if the user enters incorrect credentials.
-                        API.searchForUsers(props.appState.user.beginnerSkills, props.appState.user.latitude, props.appState.user.longitude, 100000000)
+                        API.searchForUsers(ret.data.beginnerSkills, ret.data.latitude, ret.data.longitude, 100000000)
                             .then(({ data }) => {
                                 this.props.setData(data, 'carousel');
                             })
