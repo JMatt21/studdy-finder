@@ -1,6 +1,6 @@
 import React from "react";
 import "./messagingCard.css";
-// import UserMessages from '../userMessages/index'
+import UserMessages from '../userMessages'
 import API from "../../utils/API";
 import socket from "../../utils/SocketAPI";
 
@@ -81,24 +81,9 @@ class MessagesCard extends React.Component {
         return (
             <div className="messsaging-wrapper" >
                 <div className="messaging-nav"></div>
-                {/* <UserMessages /> */}
-
-                <div className="messages-wrapper">
-                    {this.state.roomMessages.map((message, i) => {
-                        return (
-                            <div key={i} className="message-block">
-                                {(message.UserId === this.props.appState.user.id ?
-                                    <div className="user-message-current">{message.message}</div>
-                                    : <div className="user-message-other">{message.message}</div>
-                                )}
-                                <div className="spacer" />
-                            </div>
-                        );
-                    })}
-                </div>
-
-                <div id="user-form-wrapper">
-                    <form>
+                <UserMessages messages={this.state.roomMessages} userId={this.props.appState.user.id} />
+                <form>
+                    <div id="user-form-wrapper">
                         <div className="bubble-1">
                             <div id="messaging-form">
                                 <div className="input-field">
@@ -113,8 +98,9 @@ class MessagesCard extends React.Component {
                             </div>
                         </div>
                         <button className="circleButton" onClick={this.mSending}>Send</button>
-                    </form>
-                </div>
+                    </div>
+                </form>
+
             </div>
         );
 

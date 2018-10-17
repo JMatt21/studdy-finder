@@ -1,138 +1,33 @@
-import React from "react";
+import React, { Component } from "react";
+import { render } from "react-dom";
 import './userMessages.css';
 
 
-const userMessages = (props) => (
-    <div className="messages-wrapper">
+class userMessages extends Component {
 
-        <div className="message-block">
-            <div className="user-message-other">Hello human</div>
-            <div className="spacer"></div>
-        </div>
+    componentDidUpdate() {
+        this.refs.container.scrollTop = this.refs.container.scrollHeight;
+    }
 
-        <div className="message-block">
-            <div className="user-message-current">
-                How is world domination going?
-                How is world domination going?
-                How is world domination going?
-                How is world domination going?
-                How is world domination going?
-                How is world domination going?
-                How is world domination going?
-                How is world domination going?
-                How is world domination going?
-                How is world domination going?
-                How is world domination going?
-                How is world domination going?
+    render() {
+        const { messages, userId } = this.props;
+        return (
+            <div ref={'container'} className="messages-wrapper">
+                {messages.map((message, i) => {
+                    return (
+                        <div key={i} className="message-block">
+                            {(message.UserId === userId ?
+                                <div className="user-message-current">{message.message}</div>
+                                : <div className="user-message-other">{message.message}</div>
+                            )}
+                            <div className="spacer" />
+                        </div>
+                    );
+                })}
 
-                </div>
-            <div className="spacer"></div>
-        </div>
-
-        <div className="message-block">
-            <div className="user-message-other">It is excellent human</div>
-            <div className="spacer"></div>
-        </div>
-
-        <div className="message-block">
-            <div className="user-message-other">I recently killed the president</div>
-            <div className="spacer"></div>
-        </div>
-
-        <div className="message-block">
-            <div className="user-message-current">Nice.</div>
-            <div className="spacer"></div>
-        </div>
-
-        <div className="message-block">
-            <div className="user-message-other">Hello human</div>
-            <div className="spacer"></div>
-        </div>
-
-        <div className="message-block">
-            <div className="user-message-current">
-                How is world domination going?
-                How is world domination going?
-                How is world domination going?
-                How is world domination going?
-                How is world domination going?
-                How is world domination going?
-                How is world domination going?
-                How is world domination going?
-                How is world domination going?
-                How is world domination going?
-                How is world domination going?
-                How is world domination going?
-
-                </div>
-            <div className="spacer"></div>
-        </div>
-
-        <div className="message-block">
-            <div className="user-message-other">It is excellent human</div>
-            <div className="spacer"></div>
-        </div>
-
-        <div className="message-block">
-            <div className="user-message-other">I recently killed the president</div>
-            <div className="spacer"></div>
-        </div>
-
-        <div className="message-block">
-            <div className="user-message-current">Nice.</div>
-            <div className="spacer"></div>
-        </div>
-
-        <div className="message-block">
-            <div className="user-message-other">Hello human</div>
-            <div className="spacer"></div>
-        </div>
-
-        <div className="message-block">
-            <div className="user-message-current">
-                How is world domination going?
-                How is world domination going?
-                How is world domination going?
-                How is world domination going?
-                How is world domination going?
-                How is world domination going?
-                How is world domination going?
-                How is world domination going?
-                How is world domination going?
-                How is world domination going?
-                How is world domination going?
-                How is world domination going?
-
-                </div>
-            <div className="spacer"></div>
-        </div>
-
-        <div className="message-block">
-            <div className="user-message-other">It is excellent human</div>
-            <div className="spacer"></div>
-        </div>
-
-        <div className="message-block">
-            <div className="user-message-other">I recently killed the president</div>
-            <div className="spacer"></div>
-        </div>
-
-        <div className="message-block">
-            <div className="user-message-current">Nice.</div>
-            <div className="spacer"></div>
-        </div>
-
-        <div className="message-block">
-            <div className="user-message-current">I'm proud of you b.</div>
-            <div className="spacer"></div>
-        </div>
-
-
-
-
-
-
-    </div>
-);
+            </div>
+        )
+    }
+};
 
 export default userMessages;
