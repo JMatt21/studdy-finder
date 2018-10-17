@@ -7,7 +7,17 @@ export class Login extends React.Component {
         email: '',
         password: ''
     }
-
+    componentWillReceiveProps(props) {
+        // The parameter is all the props being pass through
+        console.log("APPSTATE WAS UPDATED")
+        if (props.appState.user.id) {
+            API.searchForUsers(props.appState.user.beginnerSkills, props.appState.user.latitude, props.appState.user.longitude, 100000000)
+                .then(({ data }) => {
+                    this.props.setData(data, 'carousel');
+                })
+            this.props.history.push("/main")
+        }
+    } F
     handleInputChange = event => {
         const { name, value } = event.target;
         this.setState({
@@ -24,15 +34,19 @@ export class Login extends React.Component {
             })
                 .then(ret => {
                     this.props.setData(ret.data, 'user');
-                    if(ret.status === 200){
+                    if (ret.status === 200) {
                         // IIRC a status of 401 or 403 if the user enters incorrect credentials.
+                        API.searchForUsers(props.appState.user.beginnerSkills, props.appState.user.latitude, props.appState.user.longitude, 100000000)
+                            .then(({ data }) => {
+                                this.props.setData(data, 'carousel');
+                            })
                         this.props.history.push("/main");
                     }
                 })
                 .catch(err => console.log(err));
         }
     };
-    
+
     render() {
         return (<div>
             <nav className="navbar navbar-default">
