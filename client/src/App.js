@@ -23,7 +23,7 @@ class App extends Component {
     passport.getUserInfo()
       .then(data => {
         this.setData(data.data, 'user');
-      })  
+      })
       .catch(err => console.log(err));
   }
 
@@ -44,7 +44,7 @@ class App extends Component {
       <Router>
         <div>
           <Route exact path="/" render={() => (
-            <Redirect to="/login"/>
+            <Redirect to="/login" />
           )} />
           <Route exact path="/signup"
             render={props => <Signup {...props} setData={this.setData} />} />
@@ -62,18 +62,21 @@ class App extends Component {
           <Route exact path="/Settings"
             render={props => <Settings {...props} appState={this.state} setData={this.setData} />} />
 
+          <Route exact path="/Settings/welcome"
+            render={props => <Settings {...props} appState={this.state} setData={this.setData} />} />
+
           <Route exact path="/Settings/profile_picture"
             render={props => <Settings {...props} appState={this.state} setData={this.setData} />} />
-          
+
           <Route exact path="/Settings/interests"
             render={props => <Settings {...props} appState={this.state} setData={this.setData} />} />
-          
+
           <Route exact path="/Settings/distance"
             render={props => <Settings {...props} appState={this.state} setData={this.setData} />} />
-          
+
           <Route exact path="/Settings/email"
             render={props => <Settings {...props} appState={this.state} setData={this.setData} />} />
-          
+
           <Route exact path="/Settings/username_password"
             render={props => <Settings {...props} appState={this.state} setData={this.setData} />} />
 

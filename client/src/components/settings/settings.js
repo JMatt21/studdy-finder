@@ -2,7 +2,7 @@ import React from "react";
 import TopNavBar from "../topNavBar/index";
 import { Link, Route } from "react-router-dom";
 import './settings.css';
-import {picture, interests, distance, email, username_password} from '../settingsComponents/index';
+import {picture, interests, distance, email, username_password, welcome} from '../settingsComponents/index';
 
 
 
@@ -37,6 +37,7 @@ class Settings extends React.Component {
                         <div></div>
 
                         <div className="settings-content">
+                        <Route exact path={'/Settings/welcome'} component={welcome}/>
                         <Route exact path={'/Settings/profile_picture'} component={picture} />
                         <Route exact path={'/Settings/interests'} component={interests} />
                         <Route exact path={'/Settings/distance'} component={distance} />
