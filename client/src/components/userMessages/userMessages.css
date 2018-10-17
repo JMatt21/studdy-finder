@@ -17,9 +17,8 @@
 }
 
 .messages-wrapper{
-    overflow: scroll;
-    height: 92.5%;
-
+    overflow: auto;
+    height: 90%;
 }
 
 .message-block{

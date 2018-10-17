@@ -1,12 +1,11 @@
-.mainSearch{
+.main-search-input{
     text-align: center;
-    background: #000000b0 !important;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 16px !important;
 }
-
-@media screen and (max-width: 601px) {
-
-.mainSearch{
-    width: 93.5% !important;
-} 
-
+.search-wrapper {
+    margin: 0 auto;
+    background: #000000b0;
+    width: 95%;
+    border-radius: 20px;
 }

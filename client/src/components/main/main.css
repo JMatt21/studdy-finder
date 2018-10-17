@@ -1,64 +1,74 @@
-.grid-wrapper{
-    display: inline;
-    margin: 0 auto;
-}
-
+/* DEFINING GRID LAYOUT & AREAS BELOW */
 .grid-container {
-  display: grid;
-  margin: auto;
-  height: 100vh;
-  width: 98vw;
-  max-width: 1440px;
-  grid-template-columns: .1fr 4fr 1fr;
-  /* grid-template-rows: 1fr 1.1fr; */
-
-}
-.sectionWrapper{
-    height: 100%;
-    width: 100%;
-}
-
-.sideWrapper{
-    height: 100%;
-    width: 100%;
-    text-align: center;
-}
-
-
-@media screen and (max-width: 1261px) {
-    /* LARGE */
-    .grid-container {
-        display: grid;
-        margin: 0 auto;
-        height: 100vh;
-        width: 99vw;
-        max-width: 1440px;
-        grid-template-columns: .1fr 3fr 1.5fr;
-        grid-template-rows: 1fr 1.1fr;
-
-      }
-}
-
-@media screen and (max-width: 901px) {
-    /* MEDIUM */
-    .grid-container {
-        display: grid;
-        margin: 0 auto;
-        height: 100vh;
-        width: 99vw;
-        grid-template-columns: .01fr 1fr .02fr;
-        grid-template-rows: 1fr 1.1fr;
+    display: grid;
+    margin: 0px 0px;
+    grid-template-columns: 50px 4fr 1fr;
+    grid-template-rows: 65px 1fr !important;/*There is a conflict somewhere I can't find yet*/
+    grid-gap: 0px 0px;
+    grid-template-areas: "nav-gap nav-gap nav-gap" "left-area center-area right-area";
+    max-width: 1440px; /* Designed around screen range of [min-width:320px|max-width:1440px] */
+    margin: 0 auto;
+  }
   
-      }
-      .sideWrapper{
+  .nav-gap { grid-area: nav-gap; }
+  /* nav-gap = Essentially spacer to push all content down below navbar */
+  
+  /* .icon-area { grid-area: icon-area; } */
+  /* Unused at the Moment: Keeping in Case I need it. */
+  
+  .left-area { grid-area: left-area; }
+  /* Other than spacer, Unused at the moment: Keeping in Case I need it. */
+  
+  .center-area { grid-area: center-area; }
+  /* All Major Features appear in center-area */
+  
+  .right-area { grid-area: right-area; }
+  /* right-area will contain the message board */
+  
+  /* DEFINING GRID LAYOUT & AREAS ABOVE */
+  
+  .nearby-search-title {
+      margin: 10px auto 0px auto;
+      padding: 5px 0;
+      width: 200px;
+      text-align: center;
+      font-family: 'Ubuntu', sans-serif;
+      background: #000000b0;
+      border-radius: 15px;
+      
+  }
+  
+  
+  
+  /* REVIEW MEDIA QUERIES */
+  @media screen and (max-width: 1261px) {
+      /* LARGE */
+        
+  
+  }
+  
+  @media screen and (max-width: 940px) {
+  
+    .grid-container {
+        grid-template-columns: 0px 1fr 0px !important;/*There is a conflict somewhere I can't find yet*/
+    }
+    .right-area{
         display: none;
     }
-    .navMessageIcon{
-        display: block;
+       /* Hide Message Board When the screen get too small to have ALL CONTENT displayed */
+      /* There now a Message Button in the Navbar that acts as a minified Message Board Dropdown Menu */
+      
+  }
+  
+  @media screen and (max-width: 601px) {
+      /* SMALL */
+  }
+
+  @media only screen and (max-width: 424px) {
+        /* Mobile */
+
+    .grid-container {
+        grid-template-rows: 130px 1fr !important; /* pushes content down below navbar at mobile view */
     }
 
-}
-
-@media screen and (max-width: 601px) {
-    /* SMALL */
 }

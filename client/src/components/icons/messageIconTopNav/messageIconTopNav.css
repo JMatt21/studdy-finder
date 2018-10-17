@@ -11,7 +11,7 @@
     margin-top: 10px;
 }
 
-  @media screen and (max-width: 901px) {
+  @media screen and (max-width: 940px) {
 
     .messageTopNavIconWrapper{
         display: block;

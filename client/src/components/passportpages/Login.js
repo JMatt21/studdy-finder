@@ -1,6 +1,9 @@
 import React from "react";
-// api
+import "./passportPages.css";
+import { Link } from "react-router-dom";
+// apis
 import passport from "../../utils/PassportAPI";
+import API from "../../utils/API";
 
 export class Login extends React.Component {
     state = {
@@ -11,7 +14,11 @@ export class Login extends React.Component {
     componentWillReceiveProps(props) {
         // The parameter is all the props being pass through
         console.log("APPSTATE WAS UPDATED")
-        if(props.appState.user.id){
+        if (props.appState.user.id) {
+            API.searchForUsers(props.appState.user.beginnerSkills, props.appState.user.latitude, props.appState.user.longitude, 100000000)
+                .then(({ data }) => {
+                    this.props.setData(data, 'carousel');
+                })
             this.props.history.push("/main")
         }
     }
@@ -31,45 +38,57 @@ export class Login extends React.Component {
             })
                 .then(ret => {
                     this.props.setData(ret.data, 'user');
-                    if(ret.status === 200){
+                    if (ret.status === 200) {
                         // IIRC a status of 401 or 403 if the user enters incorrect credentials.
+                        API.searchForUsers(ret.data.beginnerSkills, ret.data.latitude, ret.data.longitude, 100000000)
+                            .then(({ data }) => {
+                                this.props.setData(data, 'carousel');
+                            })
                         this.props.history.push("/main");
                     }
                 })
                 .catch(err => console.log(err));
         }
     };
-    
-    render() {
-        return (<div>
-            <nav className="navbar navbar-default">
-                <div className="container-fluid">
-                    <div className="navbar-header">
-                    </div>
-                </div>
-            </nav>
-            <div className="container">
-                <div className="row">
-                    <div className="col-md-6 col-md-offset-3">
-                        <h2>Login Form</h2>
-                        <form className="login">
-                            <div className="form-group">
-                                <label htmlFor="exampleInputEmail1">Email address</label>
-                                <input onChange={this.handleInputChange} name="email" type="email" className="form-control" id="email-input" placeholder="Email" />
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="exampleInputPassword1">Password</label>
-                                <input onChange={this.handleInputChange} name="password" type="password" className="form-control" id="password-input" placeholder="Password" />
-                            </div>
-                            <button type="submit" onClick={this.handleFormSubmission} className="btn btn-default">Login</button>
-                        </form>
-                        <br />
-                        <p>Or sign up <a href="/">here</a></p>
-                        <a href='/auth/login'><button>Google login</button></a>
 
+    render() {
+        return (
+            <div>
+                <nav className="navbar navbar-default">
+                    <div className="container-fluid">
+                        <div className="navbar-header">
+                        </div>
+                    </div>
+                </nav>
+                <div className="passport-grid-container">
+                    <div className="nav-passport-area">
+
+                    </div>
+                    <div className="main-passport-display">
+                        <div className="container">
+                            <div className="row">
+                                <div className="col-md-6 col-md-offset-3">
+                                    <h2>Login Form</h2>
+                                    <form className="login">
+                                        <div className="form-group">
+                                            <label htmlFor="exampleInputEmail1">Email address</label>
+                                            <input onChange={this.handleInputChange} name="email" type="email" className="form-control" id="email-input" placeholder="Email" />
+                                        </div>
+                                        <div className="form-group">
+                                            <label htmlFor="exampleInputPassword1">Password</label>
+                                            <input onChange={this.handleInputChange} name="password" type="password" className="form-control" id="password-input" placeholder="Password" />
+                                        </div>
+                                        <button type="submit" onClick={this.handleFormSubmission} className="btn btn-default">Login</button>
+                                    </form>
+                                    <br />
+                                    <Link to="/signup"><p>Or sign up</p></Link>
+
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>)
+        )
     }
 };
