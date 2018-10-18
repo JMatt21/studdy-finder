@@ -4,12 +4,9 @@ import { Link } from "react-router-dom";
 // apis
 import passport from "../../utils/PassportAPI";
 import API from "../../utils/API";
-<<<<<<< HEAD
-=======
 import { Animated } from "react-animated-css";
 
 const logo = require("./studyIcon.png");
->>>>>>> f51ac7b5a9c8cdc968dd4f118697b92d23fc0058
 
 export class Login extends React.Component {
     state = {
@@ -21,11 +18,7 @@ export class Login extends React.Component {
         // The parameter is all the props being pass through
         console.log("APPSTATE WAS UPDATED")
         if (props.appState.user.id) {
-<<<<<<< HEAD
             API.searchForUsers(props.appState.user.beginnerSkills, props.appState.user.latitude, props.appState.user.longitude, 100000000, props.appState.user.id)
-=======
-            API.searchForUsers(props.appState.user.beginnerSkills, props.appState.user.latitude, props.appState.user.longitude, 100000000)
->>>>>>> f51ac7b5a9c8cdc968dd4f118697b92d23fc0058
                 .then(({ data }) => {
                     this.props.setData(data, 'carousel');
                 })
@@ -50,11 +43,7 @@ export class Login extends React.Component {
                     this.props.setData(ret.data, 'user');
                     if (ret.status === 200) {
                         // IIRC a status of 401 or 403 if the user enters incorrect credentials.
-<<<<<<< HEAD
                         API.searchForUsers(ret.data.beginnerSkills, ret.data.latitude, ret.data.longitude, 100000000, ret.data.id)
-=======
-                        API.searchForUsers(ret.data.beginnerSkills, ret.data.latitude, ret.data.longitude, 100000000)
->>>>>>> f51ac7b5a9c8cdc968dd4f118697b92d23fc0058
                             .then(({ data }) => {
                                 this.props.setData(data, 'carousel');
                             })

@@ -24,13 +24,8 @@ class TopNavBar extends React.Component {
         return (
             <nav>
                 <Link to="/main"><h4 className="righteous title">Study-Duo</h4></Link>
-<<<<<<< HEAD
-                <ul>
-                    <li>
-=======
                 <ul className="navbar-item-wrapper">
                     <li className="navbar-item">
->>>>>>> f51ac7b5a9c8cdc968dd4f118697b92d23fc0058
                         <SideNav
                             trigger={<a><MessageIconTopNav /></a>}
                             options={{ closeOnClick: true, edge: "right", draggable: false }}
@@ -39,13 +34,8 @@ class TopNavBar extends React.Component {
                         </SideNav>
 
                     </li>
-<<<<<<< HEAD
-                    <li><Link to="/settings/profile_picture"><SettingsIcon /></Link></li>
-                    <li><a onClick={this.logout}><LogoutIcon /></a></li>
-=======
                     <li className="navbar-item"><Link to="/settings/profile_picture"><SettingsIcon /></Link></li>
                     <li className="navbar-item"><a onClick={this.logout}><LogoutIcon /></a></li>
->>>>>>> f51ac7b5a9c8cdc968dd4f118697b92d23fc0058
                 </ul>
             </nav>
         )

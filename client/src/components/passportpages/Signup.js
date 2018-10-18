@@ -1,15 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import API from "../../utils/PassportAPI";
-<<<<<<< HEAD
-import './Signup.css';
-import { Animated } from "react-animated-css";
-=======
 import './passportPages.css';
 import { Animated } from "react-animated-css";
 
 const logo = require("./studyIcon.png");
->>>>>>> f51ac7b5a9c8cdc968dd4f118697b92d23fc0058
 
 export class Signup extends React.Component {
     state = {
@@ -55,39 +50,6 @@ export class Signup extends React.Component {
 
     render() {
         return (
-<<<<<<< HEAD
-            <div className="signup-page-grid">
-                <div className="side-bar-signup"></div>
-                <form>
-                    {/* <Animated animationIn="fadeIn" animationOut="fadeOut" isVisible={true}> */}
-                    <div className="welcome">Hi, Welcome to Study Duo</div>
-                    {/* </Animated> */}
-                    <h2>Login to your account</h2>
-
-                    <div className="signup-form">
-                        <input
-                            type="email"
-                            name="email"
-                            value={this.state.email}
-                            onChange={this.handleInputChange}
-                        />
-                    </div>
-
-                    <div className="signup-form">
-                        <input
-                            type="password"
-                            name="password"
-                            value={this.state.password}
-                            onChange={this.handleInputChange}
-                        />
-                    </div>
-
-                    <p className="err-message">{this.state.errMessage}</p>
-                    <div id="button-box">
-                        <button type="submit" onClick={this.handleFormSubmission} className="btn-default">Sign Up</button>
-                    </div>
-                </form>
-=======
             <div className="limiter">
                 <div className="container-login100">
                 <Animated animationIn="zoomInDown">
@@ -142,7 +104,6 @@ export class Signup extends React.Component {
                     </div>
                     </Animated>
                 </div>
->>>>>>> f51ac7b5a9c8cdc968dd4f118697b92d23fc0058
             </div>
         );
     }

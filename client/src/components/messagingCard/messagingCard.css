@@ -105,8 +105,6 @@
         grid-template-columns: 85% 8%;
     }
 }
-<<<<<<< HEAD
-=======
 
 @media screen and (max-width: 426px) {
     /* Mobile */
@@ -114,4 +112,3 @@
         height: 568px;    }
 
 }
->>>>>>> f51ac7b5a9c8cdc968dd4f118697b92d23fc0058
