@@ -13,8 +13,8 @@ export default {
   getUsersRooms: function (userId) {
     return axios.get(`/api/users/rooms/${userId}`)
   },
-  searchForUsers: function (searchTags, lat, long, distance) {
-    return axios.post(`/search`, { lat: lat, long: long, distance: distance, searchTags: searchTags })
+  searchForUsers: function (searchTags, lat, long, distance, userId) {
+    return axios.post(`/search`, { lat: lat, long: long, distance: distance, searchTags: searchTags, userId: userId })
   },
   getRoomMessages: function (roomId) {
     return axios.get(`/api/rooms/${roomId}`)

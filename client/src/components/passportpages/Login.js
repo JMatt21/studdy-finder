@@ -15,7 +15,7 @@ export class Login extends React.Component {
         // The parameter is all the props being pass through
         console.log("APPSTATE WAS UPDATED")
         if (props.appState.user.id) {
-            API.searchForUsers(props.appState.user.beginnerSkills, props.appState.user.latitude, props.appState.user.longitude, 100000000)
+            API.searchForUsers(props.appState.user.beginnerSkills, props.appState.user.latitude, props.appState.user.longitude, 100000000, props.appState.user.id)
                 .then(({ data }) => {
                     this.props.setData(data, 'carousel');
                 })
@@ -40,7 +40,7 @@ export class Login extends React.Component {
                     this.props.setData(ret.data, 'user');
                     if (ret.status === 200) {
                         // IIRC a status of 401 or 403 if the user enters incorrect credentials.
-                        API.searchForUsers(ret.data.beginnerSkills, ret.data.latitude, ret.data.longitude, 100000000)
+                        API.searchForUsers(ret.data.beginnerSkills, ret.data.latitude, ret.data.longitude, 100000000, ret.data.id)
                             .then(({ data }) => {
                                 this.props.setData(data, 'carousel');
                             })
