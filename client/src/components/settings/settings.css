@@ -11,7 +11,7 @@
   width: 100vw;
   max-width: 1440px;
   grid-template-columns: 300px 10px auto;
-  grid-template-rows: 75px 1fr 90px;
+  grid-template-rows: 1px 1fr 90px;
 }
 
 .settings-side-panel{
@@ -56,7 +56,7 @@
 
 @media screen and (max-width: 730px) {
     .settings-main-grid {
-        margin-top: 75px !important;
+        /* margin-top: 75px !important; */
         display: grid;
         margin: auto;
         height: 100vh;
@@ -80,7 +80,7 @@
 
 .settings-main-grid {
     margin-top: 0px !important;
-    grid-template-rows: 45px 1fr 90px !important; /* pushes content down below navbar at mobile view */
+    grid-template-rows: 0px 1fr 10px !important; /* pushes content down below navbar at mobile view */
 }
 
 }

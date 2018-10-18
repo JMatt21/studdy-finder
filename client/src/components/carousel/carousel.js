@@ -18,7 +18,7 @@ class MainCarousel extends React.Component {
                     <div className="carousel-content">
                         <div className="name-and-distance">
                             <div className="carousel-name righteous">{`${element.name}`}</div>
-                            <div className="carousel-distance">{`${element.distance} miles away`}</div>
+                            <div className="carousel-distance">{`${Math.round(element.distance)} miles away`}</div>
                         </div>
                         <Link to={`/messages/${roomName(this.props.user.id, element.id)}`} className="carousel-msg-btn btn">Message</Link>
                     </div>

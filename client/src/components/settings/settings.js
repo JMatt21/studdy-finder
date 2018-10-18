@@ -11,6 +11,7 @@ class Settings extends React.Component {
     componentWillUnmount() {
         console.log("SETTINGS UNMOUNTING");
         // update app data with new user stuff
+<<<<<<< HEAD
         const {id, beginnerSkills, latitude, longitude} = this.props.appState.user;
         API.getUserInfo(id)
             .then(({ data }) => {
@@ -20,6 +21,12 @@ class Settings extends React.Component {
             .then(({ data }) => {
                 this.props.setData(data, 'carousel');
             })
+=======
+        API.getUserInfo(this.props.appState.user.id)
+            .then(({ data }) => {
+                this.props.setData(data, 'user');
+            })
+>>>>>>> f51ac7b5a9c8cdc968dd4f118697b92d23fc0058
     }
     render() {
         return (

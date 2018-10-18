@@ -55,7 +55,7 @@ class Main extends React.Component {
                     data={matchData}
                     user={user}
                 />
-                <div className="grid-container">
+                <div className="main-grid-container">
                     <div className="nav-area">
                         {/* TopNavBar Rendered Outside grid-container & overtop nav-area */}
                     </div>
@@ -72,14 +72,14 @@ class Main extends React.Component {
                             onSubmit={this.searchForUsers} /* Returns Any Users who's has a matching subject to the Users search input*/
                             user={user}
                             data={data}
-                            test={testData} //populating with dummy data at the moment
+                            testData={testData} //populating with dummy data at the moment
                         />
                     </div>
                     <div className="right-area">
                         <MessageBoard
                             user={user}
                             data={matchData}
-                            test={testData} //populating with dummy data at the moment
+                            testData={testData} //populating with dummy data at the moment
                         />
                     </div>
                 </div>

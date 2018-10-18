@@ -1,8 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import API from "../../utils/PassportAPI";
+<<<<<<< HEAD
 import './Signup.css';
 import { Animated } from "react-animated-css";
+=======
+import './passportPages.css';
+import { Animated } from "react-animated-css";
+
+const logo = require("./studyIcon.png");
+>>>>>>> f51ac7b5a9c8cdc968dd4f118697b92d23fc0058
 
 export class Signup extends React.Component {
     state = {
@@ -48,6 +55,7 @@ export class Signup extends React.Component {
 
     render() {
         return (
+<<<<<<< HEAD
             <div className="signup-page-grid">
                 <div className="side-bar-signup"></div>
                 <form>
@@ -79,6 +87,62 @@ export class Signup extends React.Component {
                         <button type="submit" onClick={this.handleFormSubmission} className="btn-default">Sign Up</button>
                     </div>
                 </form>
+=======
+            <div className="limiter">
+                <div className="container-login100">
+                <Animated animationIn="zoomInDown">
+                    <div className="wrap-login100">
+                        <form className="login100-form validate-form">
+
+                            <h4 className="lsTitle login100-form-title p-b-34 p-t-27">
+                                Study-Duo
+                            </h4>
+
+                            <span className="login100-form-logo">
+                                <img className="zmdi zmdi-landscape" src={logo} alt="logo"></img>
+                            </span>
+
+                            <span className="login100-form-title p-b-34 p-t-27">
+                                Sign Up
+                        </span>
+
+                            <div className="wrap-input100 validate-input" data-validate="Enter username">
+                                <input className="input100"
+                                    type="email"
+                                    name="email"
+                                    value={this.state.email}
+                                    onChange={this.handleInputChange}
+                                    placeholder="Email" />
+                            </div>
+
+                            <div className="wrap-input100 validate-input" data-validate="Enter password">
+                                <input className="input100"
+                                    type="password"
+                                    name="password"
+                                    value={this.state.password}
+                                    onChange={this.handleInputChange}
+                                    placeholder="Password" />
+                            </div>
+                            <div className="login-signup-wrapper">
+
+                                <div className="container-login100-form-btn">
+                                    <button className="login100-form-btn" type="submit" onClick={this.handleFormSubmission}>
+                                        Sign Up
+                            </button>
+                                </div>
+
+                                <div className="container-login100-form-btn">
+                                    <Link to="/login" className="login100-form-btn">
+                                        Log In
+                            </Link>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                    </Animated>
+                </div>
+>>>>>>> f51ac7b5a9c8cdc968dd4f118697b92d23fc0058
             </div>
         );
     }
