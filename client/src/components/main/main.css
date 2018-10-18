@@ -3,7 +3,7 @@
     display: grid;
     margin: 0px 0px;
     grid-template-columns: 50px 4fr 1fr;
-    grid-template-rows: 65px 1fr !important;/*There is a conflict somewhere I can't find yet*/
+    grid-template-rows: 0px 1fr !important;/*There is a conflict somewhere I can't find yet*/
     grid-gap: 0px 0px;
     grid-template-areas: "nav-gap nav-gap nav-gap" "left-area center-area right-area";
     max-width: 1440px; /* Designed around screen range of [min-width:320px|max-width:1440px] */
@@ -68,7 +68,7 @@
         /* Mobile */
 
     .main-grid-container {
-        grid-template-rows: 130px 1fr !important; /* pushes content down below navbar at mobile view */
+        grid-template-rows: 0px 1fr !important; /* pushes content down below navbar at mobile view */
     }
 
 }

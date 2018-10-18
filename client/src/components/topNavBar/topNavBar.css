@@ -3,8 +3,9 @@ nav{
     justify-content: space-between;
     align-items: center;
     background-color: #000000b0;
-    position: fixed;
-    top: 0;
+    position: -webkit-sticky;
+    /* position: sticky; */
+    top: 0px;
     z-index: 1000;
 }
 .title{
@@ -26,9 +27,9 @@ nav{
 @media only screen and (max-width: 424px) {
     
     nav {
-        height: 125px;
+        height: 100px;
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start;
         margin-left: 0;
     }
     .side-nav {
@@ -38,4 +39,8 @@ nav{
         height: 150px;   
     }
 
+    .title{
+        margin: 0px 0px 20px 0px !important;
+        height: 15px;
+    }
 }

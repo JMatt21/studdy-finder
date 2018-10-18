@@ -13,6 +13,8 @@
     height: 87vh;
     background: rgba(255, 255, 255, 0.493);
     color: black;
+    border: 10px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
 }
 
 .messaging-nav{
@@ -107,7 +109,6 @@
 @media screen and (max-width: 426px) {
     /* Mobile */
     .messaging-wrapper{
-        height: 500px;
-    }
+        height: 568px;    }
 
 }
