@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 // apis
 import passport from "../../utils/PassportAPI";
 import API from "../../utils/API";
+import { Animated } from "react-animated-css";
 
 const logo = require("./studyIcon.png");
 
@@ -58,6 +59,7 @@ export class Login extends React.Component {
 
             <div className="limiter">
                 <div className="container-login100">
+                <Animated animationIn="zoomInUp">
                     <div className="wrap-login100">
                         <form className="login100-form validate-form">
 
@@ -97,13 +99,14 @@ export class Login extends React.Component {
                             </button>
                                 </div>
                                 <div className="container-login100-form-btn">
-                                    <Link to="/signup" className="login100-form-btn">
+                                <Link to="/signup" className="login100-form-btn">
                                         Sign Up
-                            </Link>
+                                </Link>
                                 </div>
                             </div>
                         </form>
                     </div>
+                    </Animated>
                 </div>
             </div>
         )
