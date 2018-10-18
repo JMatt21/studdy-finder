@@ -1,6 +1,6 @@
 .search-results-wrapper{
-    display: inline-flex;
-    flex-direction: row;
+    display: flex;
+    /* flex-direction: row; */
     flex-wrap: wrap;
     justify-content: space-around;
     font-family: 'Ubuntu', sans-serif;
@@ -51,6 +51,7 @@
 .search-results-msg-btn {
     position: absolute;
     bottom: 175px;
+    left: 77.5px;
 }
 
 .search-results-table {

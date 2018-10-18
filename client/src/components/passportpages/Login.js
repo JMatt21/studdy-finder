@@ -1,8 +1,11 @@
 import React from "react";
 import "./passportPages.css";
 import { Link } from "react-router-dom";
-// api
+// apis
 import passport from "../../utils/PassportAPI";
+import API from "../../utils/API";
+
+const logo = require("./studyIcon.png");
 
 export class Login extends React.Component {
     state = {
@@ -14,6 +17,10 @@ export class Login extends React.Component {
         // The parameter is all the props being pass through
         console.log("APPSTATE WAS UPDATED")
         if (props.appState.user.id) {
+            API.searchForUsers(props.appState.user.beginnerSkills, props.appState.user.latitude, props.appState.user.longitude, 100000000)
+                .then(({ data }) => {
+                    this.props.setData(data, 'carousel');
+                })
             this.props.history.push("/main")
         }
     }
@@ -35,6 +42,10 @@ export class Login extends React.Component {
                     this.props.setData(ret.data, 'user');
                     if (ret.status === 200) {
                         // IIRC a status of 401 or 403 if the user enters incorrect credentials.
+                        API.searchForUsers(ret.data.beginnerSkills, ret.data.latitude, ret.data.longitude, 100000000)
+                            .then(({ data }) => {
+                                this.props.setData(data, 'carousel');
+                            })
                         this.props.history.push("/main");
                     }
                 })
@@ -44,39 +55,54 @@ export class Login extends React.Component {
 
     render() {
         return (
-            <div>
-                <nav className="navbar navbar-default">
-                    <div className="container-fluid">
-                        <div className="navbar-header">
-                        </div>
-                    </div>
-                </nav>
-                <div className="passport-grid-container">
-                    <div className="nav-passport-area">
 
-                    </div>
-                    <div className="main-passport-display">
-                        <div className="container">
-                            <div className="row">
-                                <div className="col-md-6 col-md-offset-3">
-                                    <h2>Login Form</h2>
-                                    <form className="login">
-                                        <div className="form-group">
-                                            <label htmlFor="exampleInputEmail1">Email address</label>
-                                            <input onChange={this.handleInputChange} name="email" type="email" className="form-control" id="email-input" placeholder="Email" />
-                                        </div>
-                                        <div className="form-group">
-                                            <label htmlFor="exampleInputPassword1">Password</label>
-                                            <input onChange={this.handleInputChange} name="password" type="password" className="form-control" id="password-input" placeholder="Password" />
-                                        </div>
-                                        <button type="submit" onClick={this.handleFormSubmission} className="btn btn-default">Login</button>
-                                    </form>
-                                    <br />
-                                    <Link to="/signup"><p>Or sign up</p></Link>
+            <div className="limiter">
+                <div className="container-login100">
+                    <div className="wrap-login100">
+                        <form className="login100-form validate-form">
 
+                            <h4 className="lsTitle login100-form-title p-b-34 p-t-27">
+                                Study-Duo
+                        </h4>
+
+                            <span className="login100-form-logo">
+                                <img className="zmdi zmdi-landscape" src={logo} alt="logo"></img>
+                            </span>
+
+                            <span className="login100-form-title p-b-34 p-t-27">
+                                Log In
+                        </span>
+
+                            <div className="wrap-input100 validate-input" data-validate="Enter username">
+                                <input className="input100"
+                                    type="email"
+                                    name="email"
+                                    value={this.state.email}
+                                    onChange={this.handleInputChange}
+                                    placeholder="Email" />
+                            </div>
+
+                            <div className="wrap-input100 validate-input" data-validate="Enter password">
+                                <input className="input100"
+                                    type="password"
+                                    name="password"
+                                    value={this.state.password}
+                                    onChange={this.handleInputChange}
+                                    placeholder="Password" />
+                            </div>
+                            <div className="login-signup-wrapper">
+                                <div className="container-login100-form-btn">
+                                    <button className="login100-form-btn" type="submit" onClick={this.handleFormSubmission}>
+                                        Log In
+                            </button>
+                                </div>
+                                <div className="container-login100-form-btn">
+                                    <Link to="/signup" className="login100-form-btn">
+                                        Sign Up
+                            </Link>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>

@@ -34,5 +34,8 @@ nav{
     .side-nav {
         top: 130px;
     }
+    .push-up-side-message-board {
+        height: 150px;   
+    }
 
 }

@@ -1,6 +1,6 @@
 import React from "react";
 import "./messagingCard.css";
-// import UserMessages from '../userMessages/index'
+import UserMessages from '../userMessages'
 import API from "../../utils/API";
 import socket from "../../utils/SocketAPI";
 
@@ -44,14 +44,14 @@ class MessagesCard extends React.Component {
                 console.log("matching ")
                 const users = this.state.roomId.split("+");
                 this.userMatchHandler(users[0], users[1])
-                this.setState({matchedStatus: true})
+                this.setState({ matchedStatus: true })
             }
             socket.sendMessage(this.state.message, this.state.roomId, this.props.appState.user.id);
         } else console.log(this.state.roomId.split("+"), this.props.appState.user.id);
     }
 
     getRoomMessages = (id) => {
-        socket.joinRoom(id) // in case user is not in room
+        // socket.joinRoom(id) // in case user is not in room
         API.getRoomMessages(id)
             .then(data => {
                 let matchedStatus = false;
@@ -79,26 +79,11 @@ class MessagesCard extends React.Component {
 
     render() {
         return (
-            <div className="messsaging-wrapper" >
+            <div className="messaging-wrapper" >
                 <div className="messaging-nav"></div>
-                {/* <UserMessages /> */}
-
-                <div className="messages-wrapper">
-                    {this.state.roomMessages.map((message, i) => {
-                        return (
-                            <div key={i} className="message-block">
-                                {(message.UserId === this.props.appState.user.id ?
-                                    <div className="user-message-current">{message.message}</div>
-                                    : <div className="user-message-other">{message.message}</div>
-                                )}
-                                <div className="spacer" />
-                            </div>
-                        );
-                    })}
-                </div>
-
-                <div id="user-form-wrapper">
-                    <form>
+                <UserMessages messages={this.state.roomMessages} userId={this.props.appState.user.id} />
+                <form>
+                    <div id="user-form-wrapper">
                         <div className="bubble-1">
                             <div id="messaging-form">
                                 <div className="input-field">
@@ -112,10 +97,10 @@ class MessagesCard extends React.Component {
                                 </div>
                             </div>
                         </div>
+                        <button className="circleButton" onClick={this.mSending}>Send</button>
+                    </div>
+                </form>
 
-                    </form>
-                    <button className="circleButton" onClick={this.mSending}>Send</button>
-                </div>
             </div>
         );
 

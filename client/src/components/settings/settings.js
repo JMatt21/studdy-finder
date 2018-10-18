@@ -2,14 +2,24 @@ import React from "react";
 import TopNavBar from "../topNavBar/index";
 import { Link, Route } from "react-router-dom";
 import './settings.css';
-import { Picture, Interests, Distance, Email, UsernamePassword } from '../settingsComponents/index';
+import { Picture, Interests, Distance, Email, UsernamePassword, Location } from '../settingsComponents/index';
+// apis
+import API from "../../utils/API";
 
 class Settings extends React.Component {
 
+    componentWillUnmount() {
+        console.log("SETTINGS UNMOUNTING");
+        // update app data with new user stuff
+        API.getUserInfo(this.props.appState.user.id)
+            .then(({ data }) => {
+                this.props.setData(data, 'user');
+            })
+    }
     render() {
         return (
             <div>
-                <TopNavBar {...this.props} />
+                <TopNavBar {...this.props} user={this.props.appState.user} data={this.props.appState.user.Matches} />
                 <div className="grid-wrapper">
 
                     <div className="settings-main-grid">
@@ -26,6 +36,7 @@ class Settings extends React.Component {
                                 <Link className="settings-li sli1 x link" to='/Settings/distance'>Distance</Link>
                                 <Link className="settings-li sli1 x link" to='/Settings/email'>Email</Link>
                                 <Link className="settings-li sli2 x link" to='/Settings/username_password'>Username and Password</Link>
+                                <Link className="settings-li sli2 x link" to='/Settings/location'>Location</Link>
 
 
                             </div>
@@ -44,6 +55,8 @@ class Settings extends React.Component {
                                 render={() => <Email {...this.props} />} />
                             <Route exact path={`${this.props.match.url}/username_password`}
                                 render={() => <UsernamePassword {...this.props} />} />
+                            <Route exact path={`${this.props.match.url}/location`}
+                                render={() => <Location {...this.props} />} />
                         </div>
                     </div>
                 </div>

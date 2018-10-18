@@ -3,8 +3,6 @@ import "./mainSearch.css";
 import { Input } from 'react-materialize';
 import SearchResults from "../searchResults/index";
 
-
-
 class MainSearch extends React.Component {
 
     state = {
@@ -30,11 +28,10 @@ class MainSearch extends React.Component {
                             validate placeholder='Search A Subject. Find A Study Partner!' />
                     </form>
                 </div>
-                <SearchResults searchData={this.props.test} />
+                <SearchResults user={this.props.user} searchData={this.props.data} />
             </div>
         )
     }
 };
-// onSubmit={this.props.onSubmit}
 
 export default MainSearch;

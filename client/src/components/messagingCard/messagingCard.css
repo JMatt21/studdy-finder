@@ -4,7 +4,7 @@
     clear: both;
   }
 
-.messsaging-wrapper{
+.messaging-wrapper{
     margin: 0 auto;
     position: sticky;
     margin-top: 10px;
@@ -104,7 +104,10 @@
     }
 }
 
-  
+@media screen and (max-width: 426px) {
+    /* Mobile */
+    .messaging-wrapper{
+        height: 500px;
+    }
 
-
-
+}

@@ -20,35 +20,21 @@ class TopNavBar extends React.Component {
         this.props.resetData();
     }
 
-    render(props) {
+    render() {
         return (
             <nav>
                 <Link to="/main"><h4 className="righteous title">Study-Duo</h4></Link>
                 <ul>
-                    {/* Still need to do Message Drop Down Menu for "MessageIcon Below" */}
                     <li>
                         <SideNav
                             trigger={<a><MessageIconTopNav /></a>}
-                            options={{ closeOnClick: true, edge: "right", draggable: true }}
+                            options={{ closeOnClick: true, edge: "right", draggable: false }}
                         >
-                        <MessageBoard test={this.props.test}/>
-                            {/* <SideNavItem userView
-                                user={{
-                                    background: 'img/office.jpg',
-                                    image: 'img/yuna.jpg',
-                                    name: 'John Doe',
-                                    email: 'jdandturk@gmail.com'
-                                }}
-                            />
-                            <SideNavItem href='#!icon' icon='cloud'>First Link With Icon</SideNavItem>
-                            <SideNavItem href='#!second'>Second Link</SideNavItem>
-                            <SideNavItem divider />
-                            <SideNavItem subheader>Subheader</SideNavItem>
-                            <SideNavItem waves href='#!third'>Third Link With Waves</SideNavItem> */}
+                            <MessageBoard user={this.props.user} data={this.props.data} />
                         </SideNav>
 
                     </li>
-                    <li><Link to="/settings"><SettingsIcon /></Link></li>
+                    <li><Link to="/settings/profile_picture"><SettingsIcon /></Link></li>
                     <li><a onClick={this.logout}><LogoutIcon /></a></li>
                 </ul>
             </nav>

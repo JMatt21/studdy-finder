@@ -33,7 +33,8 @@ class Interests extends React.Component {
 
     this.setState({
       shownInterests: arr
-    })
+    });
+    this.updateUserSkills();
   }
 
   handleInputChange = ({ target }) => {

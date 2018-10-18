@@ -30,9 +30,7 @@ class ProfilePicture extends React.Component {
     }
   }
 
-  changeBackground = (e) => {
-    // e.preventDefault();
-
+  changeBackground = () => {
     if (this.state.newClass === "profile-picture-wrapper-2") {
       this.setState({
         newClass: "profile-picture-wrapper-1"
@@ -66,20 +64,20 @@ class ProfilePicture extends React.Component {
         <Animated animationIn="fadeIn">
           <div className="settings-profile-picture-wrapper">
             <div className="settings-profile-picture">
-              <img src={head} width="250px" height="250px" />
+              <img src={this.state.imageLink || head} alt="img" width="250px" height="250px" />
             </div>
 
             <h4 className="display-text-settings-profile-picture">Enter A link To Your New Profile Picture Here</h4>
             <p className="display-text-settings-profile-picture">
-              We recommond that your profile picture is 250px x 250px to ensure proper sizing</p>
+              We recommend that your profile picture is 250px x 250px to ensure proper sizing</p>
 
 
           </div>
         </Animated>
 
 
-          <div></div>
-          <div></div>
+        <div></div>
+        <div></div>
 
         <Animated animationIn="fadeIn">
           <div className="settings-profile-link">
@@ -90,17 +88,19 @@ class ProfilePicture extends React.Component {
                     <input onClick={this.changeBackgroundInput}
                       type="text"
                       className="materialize-textarea"
-                      name="message"
-                      placeholder="Enter A New Link Here" />
+                      name="imageInput"
+                      placeholder="Enter An Image New Link Here"
+                      value={this.state.imageInput}
+                      onChange={this.handleInputChange} />
                   </div>
                 </div>
               </div>
-              <button className="circleButton" onClick={this.changeBackground}>Submit</button>
+              <button className="circleButton" onClick={this.handleFormSubmission}>Submit</button>
             </form>
           </div>
         </Animated>
 
-          <div></div>
+        <div></div>
 
       </div>
 

@@ -1,5 +1,5 @@
 /* DEFINING GRID LAYOUT & AREAS BELOW */
-.grid-container {
+.main-grid-container {
     display: grid;
     margin: 0px 0px;
     grid-template-columns: 50px 4fr 1fr;
@@ -49,7 +49,7 @@
   
   @media screen and (max-width: 940px) {
   
-    .grid-container {
+    .main-grid-container {
         grid-template-columns: 0px 1fr 0px !important;/*There is a conflict somewhere I can't find yet*/
     }
     .right-area{
@@ -67,7 +67,7 @@
   @media only screen and (max-width: 424px) {
         /* Mobile */
 
-    .grid-container {
+    .main-grid-container {
         grid-template-rows: 130px 1fr !important; /* pushes content down below navbar at mobile view */
     }
 

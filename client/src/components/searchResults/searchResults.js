@@ -2,19 +2,21 @@ import React from "react";
 import "./searchResults.css";
 import { Card } from "react-materialize";
 import { Link } from "react-router-dom";
+// import {testData} from "../../assets/testFillerData/testData";
 
-// function roomName(id1, id2) {
-//     if (id1 > id2)
-//         return `${id2}+${id1}`
-//     else
-//         return `${id1}+${id2}`
-// }
+function roomName(id1, id2) {
+    if (id1 > id2)
+        return `${id2}+${id1}`
+    else
+        return `${id1}+${id2}`
+}
 
 
 class SearchResults extends React.Component {
     render() {
         // const miles = (this.props.miles ? `this.props.miles miles` : `undefined`);
         const displaySearchResults = this.props.searchData.map((element, index) => {
+            // const displaySearchResults = testData.map((element, index) => {
             return (
                 // <div key={index} className="searchResult">
                 //     <Card horizontal className="c-test" header={
@@ -45,20 +47,20 @@ class SearchResults extends React.Component {
                     <div className="search-results-content">
                         <div className="name-and-distance">
                             <div className="search-results-name righteous">{`${element.name}`}</div>
-                            <div className="search-results-distance">{`${element.distance} miles away`}</div>
+                            <div className="search-results-distance">{`${Math.round(element.distance)} miles away`}</div>
                         </div>
                         <table>
                         <tbody className="search-results-table">
                             {element.beginnerSkills.map((subject, i) => {
                                 return (
                                     <tr key={i} className="search-results-tr">
-                                        <td className="search-results-td">{subject}    </td>
+                                        <td className="search-results-td">{subject}</td>
                                     </tr>
                                 )
                             })}
                         </tbody>
+                        <Link to={`/messages/${roomName(this.props.user.id, element.id)}`} className="search-results-msg-btn btn">Message</Link>
                         </table>
-                        <Link to="/messages" className="search-results-msg-btn btn">Message</Link>
                     </div>
                 </Card>
 

@@ -9,7 +9,7 @@ let MessagingWrapper = (props) => {
     const matchData = props.appState.user.Matches || [];
     return (
         <div>
-            <TopNavBar {...props}/>
+            <TopNavBar {...props} user={props.appState.user} data={props.appState.user.Matches || []}/>
             <div className="grid-wrapper">
                 <div className="grid-container">
                     <div>

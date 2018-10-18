@@ -4,15 +4,15 @@ import TopNavBar from "../topNavBar/index";
 import MainSearch from "../mainSearch/index";
 import MainCarousel from "../carousel/index";
 import MessageBoard from "../messageBoard/index";
-
 import Settings from "../settings/index";
-import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 
 // apis
 import API from "../../utils/API";
 // import passport from "../../utils/PassportAPI";
 import socket from "../../utils/SocketAPI";
 
+// testdata
+import { testData } from "../../assets/testFillerData/testData";
 
 class Main extends React.Component {
     componentDidMount() {
@@ -34,9 +34,9 @@ class Main extends React.Component {
 
     searchForUsers = event => {
         event.preventDefault();
-        // console.log(event.target.search.value);
-        const search = event.target.search.value;
-        API.searchForUsers(search)
+        const search = event.target.search.value.split(" ");
+        const { latitude, longitude } = this.props.appState.user;
+        API.searchForUsers(search, latitude, longitude, 10000) // temp distance
             .then(data => {
                 // this.setState({ data: data.data })
                 this.props.setData(data.data, 'data');
@@ -46,17 +46,18 @@ class Main extends React.Component {
     }
 
     render() {
-        const { user, data } = this.props.appState;
+        const { user, data, carousel } = this.props.appState;
         const matchData = user.Matches || [];
         return (
             <div>
                 <TopNavBar
                     {...this.props}
-                    test={this.props.test} /* Needs Same Data as Message Board (Matches w/ messages)*/
+                    data={matchData}
+                    user={user}
                 />
-                <div className="grid-container">
+                <div className="main-grid-container">
                     <div className="nav-area">
-                    {/* TopNavBar Rendered Outside grid-container & overtop nav-area */}
+                        {/* TopNavBar Rendered Outside grid-container & overtop nav-area */}
                     </div>
                     <div className="left-area">
                         {/* Currently Just Empty Space "future feature space?" */}
@@ -64,27 +65,24 @@ class Main extends React.Component {
                     <div className="center-area">
                         <h5 className="nearby-search-title">Nearby Users</h5>
                         <MainCarousel
-                            carouselArray={this.props.test} //populating with dummy data at the moment /* Needs Location Filtered Results (closest users)*/
+                            user={user}
+                            carouselArray={carousel} //populating with dummy data at the moment
                         />
                         <MainSearch
                             onSubmit={this.searchForUsers} /* Returns Any Users who's has a matching subject to the Users search input*/
                             user={user}
                             data={data}
-
-                            test={this.props.test} //populating with dummy data at the moment
+                            testData={testData} //populating with dummy data at the moment
                         />
                     </div>
                     <div className="right-area">
                         <MessageBoard
                             user={user}
                             data={matchData}
-                            test={this.props.test} //populating with dummy data at the moment /* Needs Data of (Matches w/ messages)*/
+                            testData={testData} //populating with dummy data at the moment
                         />
                     </div>
                 </div>
-
-                <Route path="/Settings"
-            render={props => <Settings {...props} appState={this.state} setData={this.setData} resetData={this.resetData} test={this.props.test} />} />
             </div>
         )
     }

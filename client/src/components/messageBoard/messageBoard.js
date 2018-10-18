@@ -4,7 +4,7 @@ import MessageCard from "../messageCard/index";
 
 
 class MessageBoard extends React.Component {
-
+    
     render() {
         return (
             <div className="message-board-wrapper">
@@ -15,7 +15,9 @@ class MessageBoard extends React.Component {
                     {...this.props}
                     user={this.props.user}
                     data={this.props.data}
+                    test={this.props.testData}
                 />
+                <div className="push-up-side-message-board"></div>
             </div>
         )
     }
