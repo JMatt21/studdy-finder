@@ -18,6 +18,7 @@ export class Login extends React.Component {
         // The parameter is all the props being pass through
         console.log("APPSTATE WAS UPDATED")
         if (props.appState.user.id) {
+            
             API.searchForUsers(props.appState.user.beginnerSkills, props.appState.user.latitude, props.appState.user.longitude, 100000000, props.appState.user.id)
                 .then(({ data }) => {
                     this.props.setData(data, 'carousel');

@@ -17,7 +17,13 @@ import { testData } from "../../assets/testFillerData/testData";
 class Main extends React.Component {
     componentDidMount() {
         if (this.props.appState.user.id) {
+            const { id, beginnerSkills, latitude, longitude } = this.props.appState.user;
             this.getUserRooms(this.props.appState.user.id);
+            API.searchForUsers(beginnerSkills, latitude, longitude, 10000000, id)
+            .then(({ data }) => {
+                this.props.setData(data, 'carousel');
+                console.log(data);
+            })
         }
     }
 

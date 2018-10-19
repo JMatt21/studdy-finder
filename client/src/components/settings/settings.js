@@ -8,23 +8,38 @@ import API from "../../utils/API";
 
 class Settings extends React.Component {
 
+    componentDidMount() {
+        this.getUserLocation();
+    }
+
+    getUserLocation() {
+        navigator.geolocation.getCurrentPosition(pos => {
+            const { latitude, longitude } = pos.coords;
+            let temp = this.props.appState.user;
+            temp.latitude = latitude;
+            temp.longitude = longitude;
+            this.props.setData(temp, 'user');
+            API.updateUser({ latitude: latitude, longitude: longitude }, this.props.appState.user.id)
+        })
+    }
     componentWillUnmount() {
         console.log("SETTINGS UNMOUNTING");
         // update app data with new user stuff
-        const {id, beginnerSkills, latitude, longitude} = this.props.appState.user;
+        const { id, beginnerSkills, latitude, longitude } = this.props.appState.user;
         API.getUserInfo(id)
             .then(({ data }) => {
                 this.props.setData(data, 'user');
             })
-        API.searchForUsers(beginnerSkills, latitude, longitude, 10000000, id)
-            .then(({ data }) => {
-                this.props.setData(data, 'carousel');
-            })
+        // API.searchForUsers(beginnerSkills, latitude, longitude, 10000000, id)
+        //     .then(({ data }) => {
+        //         this.props.setData(data, 'carousel');
+        //         console.log(data);
+        //     })
     }
     render() {
         return (
             <div>
-                <TopNavBar {...this.props} user={this.props.appState.user} data={this.props.appState.user.Matches} />
+                <TopNavBar {...this.props} user={this.props.appState.user} data={this.props.appState.user.Matches || []} />
                 <div className="grid-wrapper">
 
                     <div className="settings-main-grid">
