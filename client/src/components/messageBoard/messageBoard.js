@@ -15,8 +15,9 @@ class MessageBoard extends React.Component {
                     {...this.props}
                     user={this.props.user}
                     data={this.props.data}
-                    test={this.props.test}
+                    test={this.props.testData}
                 />
+                <div className="push-up-side-message-board"></div>
             </div>
         )
     }

@@ -11,7 +11,9 @@ class Username_password extends React.Component {
     currentUsername: this.props.appState.user.name || "undefined",
     newUsername: '',
     newUserNameConfirm: '',
-
+    oldPassword: '',
+    newPassword: '',
+    newPasswordConfirm: ''
   };
 
   colorSorter = () => {
@@ -73,6 +75,19 @@ class Username_password extends React.Component {
     }
   }
 
+  submitNewPassword = event => {
+    event.preventDefault();
+    this.setState({
+      oldPassword: '',
+      newPassword: '',
+      newPasswordConfirm: ''
+    });
+    const { oldPassword, newPassword, newPasswordConfirm } = this.state;
+    if (newPassword === newPasswordConfirm)
+      API.validateAndUpdatePassword(this.props.appState.user.id, oldPassword, newPasswordConfirm)
+        .then(data => console.log(data))
+        .catch(err => console.log(err));
+  }
   render() {
 
     const wrapperClass = `${this.state.newClass} settings-username-password-wrapper`;
@@ -159,7 +174,9 @@ class Username_password extends React.Component {
                   <input
                     type="text"
                     className="materialize-textarea"
-                    name="textInput"
+                    name="oldPassword"
+                    value={this.state.oldPassword}
+                    onChange={this.handleInputChange}
                     placeholder="Enter Your Old Password"
                     onClick={this.changeBackgroundInput}
                   />
@@ -176,7 +193,9 @@ class Username_password extends React.Component {
                   <input
                     type="text"
                     className="materialize-textarea"
-                    name="textInput"
+                    name="newPassword"
+                    value={this.state.newPassword}
+                    onChange={this.handleInputChange}
                     placeholder="Enter Your New Password"
                     onClick={this.changeBackgroundInput}
                   />
@@ -193,7 +212,9 @@ class Username_password extends React.Component {
                   <input
                     type="text"
                     className="materialize-textarea"
-                    name="textInput"
+                    name="newPasswordConfirm"
+                    value={this.state.newPasswordConfirm}
+                    onChange={this.handleInputChange}
                     placeholder="Confirm Your New Password"
                     onClick={this.changeBackgroundInput}
                   />
@@ -223,7 +244,7 @@ class Username_password extends React.Component {
           <div className="settings-email-squareButton">
             <div></div>
             <Animated animationIn="fadeIn">
-              <button onClick={this.changeBackground} className="squareButton">Submit</button>
+              <button onClick={this.submitNewPassword} className="squareButton">Submit</button>
             </Animated>
           </div>
         </div>

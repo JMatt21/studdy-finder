@@ -6,3 +6,4 @@ export {default as Distance} from './distance';
 export {default as Email} from './email';
 export {default as UsernamePassword} from './username_password';
 export {default as Location} from './Location';
+export {default as Welcome} from './welcome';

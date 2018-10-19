@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./messageCard.css";
-
+import {testData} from "../../assets/testFillerData/testData";
 
 // let icon = require("./chaticon.png");
 
@@ -17,6 +17,7 @@ class MessageCard extends React.Component {
     render() {
         return (
             <div>
+                {/* {this.props.data.map((Match, index) => { */}
                 {this.props.data.map((Match, index) => {
                     return (
                         // <div key={index} className="card-wrapper">

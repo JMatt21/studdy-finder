@@ -1,40 +1,61 @@
 import React from "react";
 import "./email.css";
 import { Animated } from "react-animated-css";
+// api
+import API from "../../utils/API";
 
 class Email extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       newClass: "settings-email-wrapper",
-      currentEmail: "bobRoss@gmail.com"
+      currentEmail: this.props.appState.user.email || undefined,
+      newEmail: '',
+      newEmailConfirm: ''
     };
-
   }
 
+  handleInputChange = ({ target }) => {
+    const { value, name } = target;
+    this.setState({
+      [name]: value
+    })
+  }
 
+  handleFormSubmission = event => {
+    event.preventDefault();
+    const { newEmail, newEmailConfirm } = this.state;
+    if ((newEmail !== '' && newEmailConfirm !== '') && (newEmail === newEmailConfirm)) {
+      this.changeBackground();
+      this.updateUserEmail();
+    }
+  }
+  updateUserEmail = () => {
+    API.updateUser({ email: this.state.newEmailConfirm }, this.props.appState.user.id)
+      .then(({ data }) => {
+        let temp = this.props.appState.user;
+        temp.email = this.state.newEmailConfirm;
+        this.props.setData(temp, 'user');
+      }).catch(err => console.log(err));
+  }
 
   changeBackgroundInput3 = (e) => {
     e.preventDefault();
-
     this.setState({
       newClass: "settings-email-wrapper-3"
     });
-
   }
 
   changeBackgroundInput4 = (e) => {
     e.preventDefault();
-
     this.setState({
       newClass: "settings-email-wrapper-4"
     });
-
   }
 
 
   changeBackground = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
 
     let bground = this.state.newClass;
     if (bground === "settings-email-wrapper-2" || bground === "settings-email-wrapper-3" || bground === "settings-email-wrapper-4") {
@@ -66,71 +87,76 @@ class Email extends React.Component {
         <div></div>
         <div></div>
 
-        <div className="settings-email-form-wrapper">
-          <div></div>
+        <form>
+          <div className="settings-email-form-wrapper">
+            <div></div>
 
-
-          <div>
-            <Animated animationIn="fadeIn">
-              <form className="email-form-wrapper">
-                <div className="email-bubble">
-                  <div id="messaging-form">
-                    <div className="input-field">
-                      <input
-                        type="text"
-                        className="materialize-textarea"
-                        name="textInput"
-                        placeholder="Enter Your New Email"
-                        onClick={this.changeBackgroundInput3}
-                      />
+            <div>
+              <Animated animationIn="fadeIn">
+                <div className="email-form-wrapper">
+                  <div className="email-bubble">
+                    <div id="messaging-form">
+                      <div className="input-field">
+                        <input
+                          type="email"
+                          className="materialize-textarea"
+                          name="newEmail"
+                          value={this.state.newEmail}
+                          onChange={this.handleInputChange}
+                          placeholder="Enter Your New Email"
+                          onClick={this.changeBackgroundInput3}
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
-              </form>
-            </Animated>
+              </Animated>
+            </div>
+
+            <div></div>
+            <div></div>
+
+            <div>
+              <Animated animationIn="fadeIn">
+                <div className="email-form-wrapper">
+                  <div className="email-bubble">
+                    <div id="messaging-form">
+                      <div className="input-field">
+                        <input
+                          type="text"
+                          className="materialize-textarea"
+                          name="newEmailConfirm"
+                          value={this.state.newEmailConfirm}
+                          onChange={this.handleInputChange}
+                          placeholder="Confirm Your New Email"
+                          onClick={this.changeBackgroundInput4}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Animated>
+            </div>
+
+            <div></div>
+
           </div>
 
           <div></div>
           <div></div>
 
-          <div>
+          <div className="settings-email-squareButton">
+            <div></div>
             <Animated animationIn="fadeIn">
-              <form className="email-form-wrapper">
-                <div className="email-bubble">
-                  <div id="messaging-form">
-                    <div className="input-field">
-                      <input
-                        type="text"
-                        className="materialize-textarea"
-                        name="textInput"
-                        placeholder="Confirm Your New Email"
-                        onClick={this.changeBackgroundInput4}
-                      />
-                    </div>
-                  </div>
-                </div>
-              </form>
+              <button onClick={this.handleFormSubmission} className="squareButton">Submit</button>
             </Animated>
           </div>
-
-          <div></div>
-
-
-        </div>
-
-        <div></div>
-        <div></div>
-
-        <div className="settings-email-squareButton">
-          <div></div>
-          <Animated animationIn="fadeIn">
-            <button onClick={this.changeBackground} className="squareButton">Submit</button>
-          </Animated>
-        </div>
+        </form>
 
 
 
       </div>
+
 
 
     );

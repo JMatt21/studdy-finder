@@ -5,7 +5,7 @@ const op = seqeulize.Op;
 // Matches with /search/:tags
 router.route("/")
     .post(function (req, res) {
-        const { lat, long, distance, searchTags } = req.body;
+        const { userId, lat, long, distance, searchTags } = req.body;
         const searchFor = searchTags.map(tag =>
             (
                 { beginnerSkills: { [op.like]: `%${tag}%` } }
@@ -13,7 +13,10 @@ router.route("/")
         )
         db.Users.findAll({
             where: {
-                [op.or]: searchFor
+                [op.or]: searchFor,
+                // [op.ne]: {id: userId || 0} ,
+                id: { [op.ne]: userId || 0 }
+                // if no userid is provided, exlude id 0 which means it will search for everyone
             },
             attributes: {
                 exclude: 'password',

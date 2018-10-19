@@ -158,7 +158,11 @@ input[type=text]:focus {
 
   .exampleInputPassword1{
         font-family: arial; 
+<<<<<<< HEAD
         color: #d3d2cd;
+=======
+        color: #d3d2cd73;
+>>>>>>> f51ac7b5a9c8cdc968dd4f118697b92d23fc0058
         padding: 50px;
         font-size: 16px;
         text-align: center;
