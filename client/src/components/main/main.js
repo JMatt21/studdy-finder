@@ -17,7 +17,13 @@ import { testData } from "../../assets/testFillerData/testData";
 class Main extends React.Component {
     componentDidMount() {
         if (this.props.appState.user.id) {
+            const { id, beginnerSkills, latitude, longitude } = this.props.appState.user;
             this.getUserRooms(this.props.appState.user.id);
+            API.searchForUsers(beginnerSkills, latitude, longitude, 10000000, id)
+            .then(({ data }) => {
+                this.props.setData(data, 'carousel');
+                console.log(data);
+            })
         }
     }
 
@@ -35,8 +41,8 @@ class Main extends React.Component {
     searchForUsers = event => {
         event.preventDefault();
         const search = event.target.search.value.split(" ");
-        const { latitude, longitude } = this.props.appState.user;
-        API.searchForUsers(search, latitude, longitude, 10000) // temp distance
+        const { latitude, longitude, id } = this.props.appState.user;
+        API.searchForUsers(search, latitude, longitude, 10000, id) // temp distance
             .then(data => {
                 // this.setState({ data: data.data })
                 this.props.setData(data.data, 'data');
@@ -55,7 +61,7 @@ class Main extends React.Component {
                     data={matchData}
                     user={user}
                 />
-                <div className="grid-container">
+                <div className="main-grid-container">
                     <div className="nav-area">
                         {/* TopNavBar Rendered Outside grid-container & overtop nav-area */}
                     </div>
@@ -72,14 +78,14 @@ class Main extends React.Component {
                             onSubmit={this.searchForUsers} /* Returns Any Users who's has a matching subject to the Users search input*/
                             user={user}
                             data={data}
-                            test={testData} //populating with dummy data at the moment
+                            testData={testData} //populating with dummy data at the moment
                         />
                     </div>
                     <div className="right-area">
                         <MessageBoard
                             user={user}
                             data={matchData}
-                            test={testData} //populating with dummy data at the moment
+                            testData={testData} //populating with dummy data at the moment
                         />
                     </div>
                 </div>

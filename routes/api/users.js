@@ -26,7 +26,7 @@ router.route("/:id")
             // deleting unecessary keys from ret
             delete ret.password;
             delete ret.advancedSkills;
-            delete ret.intermediateSkills
+            delete ret.intermediateSkills;
             // setting Matches to be the actual users instead of 'matches' 
             ret.Matches = dbUser.Matches.map(dbMatch => dbMatch.Match);
             res.json(ret);
@@ -41,8 +41,10 @@ router.route("/update/:id")
         db.Users.update(updateInfo, {
             where: { id: userId }
         })
-            .then(dbUser => {
-                res.json(dbUser)
+            .then(() => {
+                res.json(true)
+            }).catch(err => {
+                res.json(err);
             });
     });
 // Matches with /api/users/rooms/:id
@@ -102,5 +104,19 @@ router.route("/match")
                 res.json(err);
             })
         }
+    })
+router.route("/validate_password")
+    .post((req, res) => {
+        const { userId, oldPassword, newPassword } = req.body;
+        db.Users.findOne({ where: { id: userId } })
+            .then(dbUser => {
+                if (dbUser.dataValues.password === oldPassword) {
+                    db.Users.update({ password: newPassword }, { where: { id: userId } })
+                        .then(() => res.json(true))
+                        .catch(err => res.json(err));
+                } else {
+                    res.json(false);
+                }
+            })
     })
 module.exports = router;

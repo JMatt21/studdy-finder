@@ -1,9 +1,9 @@
 /* DEFINING GRID LAYOUT & AREAS BELOW */
-.grid-container {
+.main-grid-container {
     display: grid;
     margin: 0px 0px;
     grid-template-columns: 50px 4fr 1fr;
-    grid-template-rows: 65px 1fr !important;/*There is a conflict somewhere I can't find yet*/
+    grid-template-rows: 0px 1fr !important;/*There is a conflict somewhere I can't find yet*/
     grid-gap: 0px 0px;
     grid-template-areas: "nav-gap nav-gap nav-gap" "left-area center-area right-area";
     max-width: 1440px; /* Designed around screen range of [min-width:320px|max-width:1440px] */
@@ -49,7 +49,7 @@
   
   @media screen and (max-width: 940px) {
   
-    .grid-container {
+    .main-grid-container {
         grid-template-columns: 0px 1fr 0px !important;/*There is a conflict somewhere I can't find yet*/
     }
     .right-area{
@@ -67,8 +67,8 @@
   @media only screen and (max-width: 424px) {
         /* Mobile */
 
-    .grid-container {
-        grid-template-rows: 130px 1fr !important; /* pushes content down below navbar at mobile view */
+    .main-grid-container {
+        grid-template-rows: 0px 1fr !important; /* pushes content down below navbar at mobile view */
     }
 
 }

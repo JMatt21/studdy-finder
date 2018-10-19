@@ -79,7 +79,7 @@ class MessagesCard extends React.Component {
 
     render() {
         return (
-            <div className="messsaging-wrapper" >
+            <div className="messaging-wrapper" >
                 <div className="messaging-nav"></div>
                 <UserMessages messages={this.state.roomMessages} userId={this.props.appState.user.id} />
                 <form>
