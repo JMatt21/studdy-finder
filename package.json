@@ -18,8 +18,7 @@
     "react-geocode": "^0.1.2",
     "react-materialize": "^2.4.6",
     "sequelize": "^4.39.0",
-    "socket.io": "^2.1.1",
-    "concurrently": "^3.5.0"
+    "socket.io": "^2.1.1"
   },
   "devDependencies": {
     "concurrently": "^3.5.0",
