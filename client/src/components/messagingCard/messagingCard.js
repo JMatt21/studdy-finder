@@ -104,7 +104,6 @@ class MessagesCard extends React.Component {
                                 </div>
                             </div>
                         </div>
-
                     </form>
                     <button className="circleButton" onClick={this.mSending}>Send</button>
                 </div>
