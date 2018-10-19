@@ -32,7 +32,7 @@ export class Signup extends React.Component {
                     if (ret.status === 200) {
                         console.log('signup status')
                         console.log(ret)
-                        this.props.history.push("/settings");
+                        this.props.history.push("/settings/welcome");
                     }
                 })
                 .catch(err => {

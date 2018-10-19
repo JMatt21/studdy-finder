@@ -2,7 +2,7 @@ import React from "react";
 import TopNavBar from "../topNavBar/index";
 import { Link, Route } from "react-router-dom";
 import './settings.css';
-import { Picture, Interests, Distance, Email, UsernamePassword, Location } from '../settingsComponents/index';
+import { Picture, Interests, Distance, Email, UsernamePassword, Location, Welcome } from '../settingsComponents/index';
 // apis
 import API from "../../utils/API";
 
@@ -56,7 +56,7 @@ class Settings extends React.Component {
                                 <Link className="settings-li sli1 x link" to='/Settings/distance'>Distance</Link>
                                 <Link className="settings-li sli1 x link" to='/Settings/email'>Email</Link>
                                 <Link className="settings-li sli2 x link" to='/Settings/username_password'>Username and Password</Link>
-                                <Link className="settings-li sli2 x link" to='/Settings/location'>Location</Link>
+                                {/* <Link className="settings-li sli2 x link" to='/Settings/location'>Location</Link> */}
 
 
                             </div>
@@ -75,8 +75,10 @@ class Settings extends React.Component {
                                 render={() => <Email {...this.props} />} />
                             <Route exact path={`${this.props.match.url}/username_password`}
                                 render={() => <UsernamePassword {...this.props} />} />
-                            <Route exact path={`${this.props.match.url}/location`}
-                                render={() => <Location {...this.props} />} />
+                            {/* <Route exact path={`${this.props.match.url}/location`} */}
+                                {/* render={() => <Location {...this.props} />} /> */}
+                            <Route exact path={`${this.props.match.url}/welcome`}
+                                render={() => <Welcome {...this.props} />} />
                         </div>
                     </div>
                 </div>
