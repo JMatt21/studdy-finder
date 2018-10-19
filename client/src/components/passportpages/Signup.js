@@ -52,8 +52,8 @@ export class Signup extends React.Component {
         return (
             <div className="limiter">
                 <div className="container-login100">
-                <Animated animationIn="zoomInDown">
                     <div className="wrap-login100">
+                    <Animated animationIn="zoomInDown">
                         <form className="login100-form validate-form">
 
                             <h4 className="lsTitle login100-form-title p-b-34 p-t-27">
@@ -101,8 +101,8 @@ export class Signup extends React.Component {
 
                             </div>
                         </form>
+                        </Animated>
                     </div>
-                    </Animated>
                 </div>
             </div>
         );
