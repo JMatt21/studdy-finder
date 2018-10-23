@@ -83,7 +83,7 @@ class ProfilePicture extends React.Component {
           <div className="settings-profile-link">
             <form className="settings-link-form-wrapper">
               <div className="bubble">
-                <div id="messaging-form">
+                <div id="profile-messaging-form">
                   <div className="input-field">
                     <input onClick={this.changeBackgroundInput}
                       type="text"
