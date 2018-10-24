@@ -4,7 +4,7 @@ const filler = {
     image: "",
 }
 const fillerArray = [];
-for (let i = 0; i < 5; i++){
+for (let i = 0; i < 100; i++){
     fillerArray[i] = filler
 }
 

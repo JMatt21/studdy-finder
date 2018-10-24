@@ -39,7 +39,7 @@ class MainCarousel extends React.Component {
 
         return (
 
-            <Carousel options={{ fullWidth: false }}>
+            <Carousel options={{ fullWidth: false, noWrap: true }}>
                 {displayNearbyCarousel}
             </Carousel>
 

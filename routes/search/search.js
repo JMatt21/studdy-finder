@@ -31,7 +31,7 @@ router.route("/")
                 ]
 
             },
-            limit: 5
+            // limit: 5
         }).then(dbUsers => {
             res.json(dbUsers);
         });
