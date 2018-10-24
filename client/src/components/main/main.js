@@ -38,6 +38,9 @@ class Main extends React.Component {
         }
     }
 
+    componentWillUnmount() {
+        this.props.setData([], 'data');
+    }
     componentDidCatch() {
         console.log("Whoops! Something broke. Redirecting...")
         this.props.setData(carouselFiller, 'carousel');

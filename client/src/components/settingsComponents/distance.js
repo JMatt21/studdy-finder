@@ -8,7 +8,7 @@ class Distance extends React.Component {
     super(props);
 
     this.state = {
-      sliderInput: '5',
+      sliderInput: this.props.appState.distance,
       bubbleSize: 'bubble-size-1',
       wrapperBackground: 'settings-distance-wrapper-1'
 
@@ -18,6 +18,9 @@ class Distance extends React.Component {
 
   handleInputChange = ({ target }) => {
     const { value, name } = target;
+    const distance = (value > 30 ? 999999 : value);
+    this.props.setData(parseInt(distance), 'distance');
+    
     this.setState({
       [name]: value
     })

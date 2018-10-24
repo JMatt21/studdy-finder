@@ -38,6 +38,7 @@ class MessagesCard extends React.Component {
     }
 
     mSending = event => {
+        const newMessage = this.state.message;
         event.preventDefault();
         if (this.state.roomId.split("+").includes(this.props.appState.user.id.toString())) {
             if (!this.state.matchedStatus) {
@@ -46,8 +47,9 @@ class MessagesCard extends React.Component {
                 this.userMatchHandler(users[0], users[1])
                 this.setState({ matchedStatus: true })
             }
-            socket.sendMessage(this.state.message, this.state.roomId, this.props.appState.user.id);
+            socket.sendMessage(newMessage, this.state.roomId, this.props.appState.user.id);
         } else console.log('no', this.state.roomId.split("+"), this.props.appState.user.id);
+        this.setState({message: ''});
     }
 
     getRoomMessages = (id) => {

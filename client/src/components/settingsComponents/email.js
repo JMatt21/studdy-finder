@@ -27,16 +27,26 @@ class Email extends React.Component {
     const { newEmail, newEmailConfirm } = this.state;
     if ((newEmail !== '' && newEmailConfirm !== '') && (newEmail === newEmailConfirm)) {
       this.changeBackground();
-      this.updateUserEmail();
-      window.Materialize.toast('Your new email has been updated!', 3000);
+      this.updateUserEmail(newEmail);
+    } else {
+      window.Materialize.toast("Please enter matching emails.", 3000);
     }
+    this.setState({ newEmail: '', newEmailConfirm: '' });
   }
-  updateUserEmail = () => {
-    API.updateUser({ email: this.state.newEmailConfirm }, this.props.appState.user.id)
+  updateUserEmail = (newEmail) => {
+    API.updateUser({ email: newEmail }, this.props.appState.user.id)
       .then(({ data }) => {
-        let temp = this.props.appState.user;
-        temp.email = this.state.newEmailConfirm;
-        this.props.setData(temp, 'user');
+        console.log(data);
+        if (data) {
+          let temp = this.props.appState.user;
+          temp.email = newEmail;
+          this.props.setData(temp, 'user');
+          this.setState({currentEmail: newEmail});
+          window.Materialize.toast('Email has been updated!', 3000);
+        }
+        else {
+          window.Materialize.toast('Server error. Please try again later', 3000);
+        }
       }).catch(err => console.log(err));
   }
 

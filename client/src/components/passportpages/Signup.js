@@ -10,7 +10,6 @@ export class Signup extends React.Component {
     state = {
         email: '',
         password: '',
-        errMessage: '',
     }
 
     handleInputChange = event => {
@@ -38,11 +37,11 @@ export class Signup extends React.Component {
                 .catch(err => {
                     console.log(err.response.status)
                     switch (err.response.status) {
-                        case 403: this.setState({ errMessage: 'Error: 403, email already registered.' });
+                        case 403: window.Materialize.toast('That email is already registered.', 3000);
                             break;
-                        case 504: this.setState({ errMessage: 'Server Error: 504' });
+                        case 504: window.Materialize.toast('Server Error: 504', 3000);
                             break;
-                        default: this.setState({ errMessage: `Unknown Error: ${err.response.status}` })
+                        default: window.Materialize.toast(`Unknown Error: ${err.response.status}`, 3000);
                     }
                 });
         }

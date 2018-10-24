@@ -17,6 +17,7 @@ class App extends Component {
     user: {},
     rooms: [],
     data: [],
+    distance: 5,
     carousel: carouselFiller
   };
 
@@ -44,6 +45,7 @@ class App extends Component {
       user: {},
       rooms: [],
       data: [],
+      distance: 5,
       carousel: carouselFiller
     })
   };

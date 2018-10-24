@@ -49,7 +49,16 @@ export class Login extends React.Component {
                         this.props.history.push("/main");
                     }
                 })
-                .catch(err => console.log(err));
+                .catch(err => {
+                    console.log(err.response.status)
+                    switch (err.response.status) {
+                        case 401: window.Materialize.toast('Wrong Email/Password', 3000);
+                            break;
+                        case 504: window.Materialize.toast('Server Error: 504', 3000);
+                            break;
+                        default: window.Materialize.toast(`Unknown Error: ${err.response}`, 3000);
+                    }
+                });
         }
     };
 

@@ -79,6 +79,12 @@ class Username_password extends React.Component {
 
       API.updateUser({ name: this.state.newUserNameConfirm }, this.props.appState.user.id);
       window.Materialize.toast('Your new username has been updated!', 3000);
+    } else {
+      window.Materialize.toast('Please enter matching usernames.', 3000);
+      this.setState({
+        newUsername: '',
+        newUserNameConfirm: ''
+      });
     }
   }
 
@@ -91,11 +97,20 @@ class Username_password extends React.Component {
       newPasswordConfirm: ''
     });
     const { oldPassword, newPassword, newPasswordConfirm } = this.state;
-    if (newPassword === newPasswordConfirm)
-      window.Materialize.toast('Your new password has been updated!', 3000);
-    API.validateAndUpdatePassword(this.props.appState.user.id, oldPassword, newPasswordConfirm)
-      .then(data => console.log(data))
-      .catch(err => console.log(err));
+    if (newPassword === newPasswordConfirm) {
+      API.validateAndUpdatePassword(this.props.appState.user.id, oldPassword, newPasswordConfirm)
+        .then(({ data }) => {
+          console.log(data);
+          if (data) {
+            window.Materialize.toast('Your new password has been updated!', 3000);
+          } else {
+            window.Materialize.toast('Your old password is incorrect.', 3000);
+          }
+        })
+        .catch(err => console.log(err));
+    } else {
+      window.Materialize.toast("New passwords don't match.", 3000);
+    }
   }
   render() {
 

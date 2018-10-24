@@ -56,7 +56,7 @@ class Interests extends React.Component {
       });
 
       this.updateUserSkills();
-
+      this.setState({textInput: ''});
     }
 
 
