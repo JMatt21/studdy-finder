@@ -17,6 +17,7 @@ class ProfilePicture extends React.Component {
     temp.image = this.state.imageInput;
     this.props.setData(temp, 'user');
     API.updateUser({ image: this.state.imageInput }, this.props.appState.user.id)
+    window.Materialize.toast('Your user photo has been updated!', 3000);
   }
 
   changeBackgroundInput = (e) => {
@@ -83,13 +84,13 @@ class ProfilePicture extends React.Component {
           <div className="settings-profile-link">
             <form className="settings-link-form-wrapper">
               <div className="bubble">
-                <div id="messaging-form">
+                <div id="profile-messaging-form">
                   <div className="input-field">
                     <input onClick={this.changeBackgroundInput}
                       type="text"
                       className="materialize-textarea"
                       name="imageInput"
-                      placeholder="Enter An Image New Link Here"
+                      placeholder="Enter A New Image Link"
                       value={this.state.imageInput}
                       onChange={this.handleInputChange} />
                   </div>

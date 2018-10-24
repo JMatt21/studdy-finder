@@ -45,6 +45,7 @@
     background: white;
     border-radius: 15px;
     width: 95%;
+    
 
 }
 
@@ -54,10 +55,17 @@
     grid-template-columns: 92% 8%;
 }
 
+#profile-messaging-form{
+    margin: 0 auto;
+    width: 100%;
+    padding-left: 20px;
+    margin-top: -15px;
+    color: black;
+}
+
 
 #messaging-form{
     width: 95%;
-    margin-top: -15px;
     color: black;
 }
 
