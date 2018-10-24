@@ -5,6 +5,7 @@ import './settings.css';
 import { Picture, Interests, Distance, Email, UsernamePassword, Location, Welcome } from '../settingsComponents/index';
 // apis
 import API from "../../utils/API";
+import { Sidenav } from "react-materialize";
 
 class Settings extends React.Component {
 

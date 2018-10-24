@@ -85,3 +85,19 @@
 
 }
 
+
+@media screen and (max-width: 335px) {
+      .sli2{
+        font-size: 18px;
+        line-height: 70px;
+    }
+}
+
+
+@media screen and (max-width: 268px) {
+    .sli2{
+      font-size: inherit;
+      line-height: 70px;
+  }
+}
+
