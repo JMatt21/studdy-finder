@@ -13,18 +13,35 @@ import socket from "../../utils/SocketAPI";
 
 // testdata
 import { testData } from "../../assets/testFillerData/testData";
-
+// carousel filler
+import carouselFiller from "../../assets/testFillerData/carouselFiller"
 class Main extends React.Component {
+    state = {
+        noCarouselData: true
+    }
     componentDidMount() {
         if (this.props.appState.user.id) {
             const { id, beginnerSkills, latitude, longitude } = this.props.appState.user;
             this.getUserRooms(this.props.appState.user.id);
             API.searchForUsers(beginnerSkills, latitude, longitude, 10000000, id)
-            .then(({ data }) => {
-                this.props.setData(data, 'carousel');
-                console.log(data);
-            })
+                .then(({ data }) => {
+                    if (data.length > 0) {
+                        this.props.setData(data, 'carousel');
+                        this.setState({ noCarouselData: false })
+                        console.log(data);
+                    }
+                    else {
+                        this.props.setData(carouselFiller, 'carousel');
+                        this.setState({ noCarouselData: true })
+                    }
+                })
         }
+    }
+
+    componentDidCatch() {
+        console.log("Whoops! Something broke. Redirecting...")
+        this.props.setData(carouselFiller, 'carousel');
+        this.props.history.push("/settings/interests");
     }
 
     getUserRooms(id) {
@@ -70,22 +87,24 @@ class Main extends React.Component {
                     </div>
                     <div className="center-area">
                         <h5 className="nearby-search-title">Nearby Users</h5>
-                        <MainCarousel
+                        {(!this.state.noCarouselData ? <MainCarousel
                             user={user}
-                            carouselArray={carousel} //populating with dummy data at the moment
-                        />
+                            carouselArray={carousel}
+                        /> : <p>No Possible Users Nearby :c</p>
+                        )}
+                        
                         <MainSearch
                             onSubmit={this.searchForUsers} /* Returns Any Users who's has a matching subject to the Users search input*/
                             user={user}
                             data={data}
-                            testData={testData} //populating with dummy data at the moment
+                            testData={testData}
                         />
                     </div>
                     <div className="right-area">
                         <MessageBoard
                             user={user}
                             data={matchData}
-                            testData={testData} //populating with dummy data at the moment
+                            testData={testData}
                         />
                     </div>
                 </div>

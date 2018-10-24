@@ -31,6 +31,7 @@ router.route("/")
                 ]
 
             },
+            order: db.sequelize.literal(`distance`),
             limit: 5
         }).then(dbUsers => {
             res.json(dbUsers);

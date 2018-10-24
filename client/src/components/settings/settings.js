@@ -30,11 +30,6 @@ class Settings extends React.Component {
             .then(({ data }) => {
                 this.props.setData(data, 'user');
             })
-        // API.searchForUsers(beginnerSkills, latitude, longitude, 10000000, id)
-        //     .then(({ data }) => {
-        //         this.props.setData(data, 'carousel');
-        //         console.log(data);
-        //     })
     }
     render() {
         return (
