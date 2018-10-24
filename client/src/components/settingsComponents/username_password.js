@@ -23,7 +23,7 @@ class Username_password extends React.Component {
   }
 
   changeBackgroundInput = (e) => {
-    if(e){
+    if (e) {
       e.preventDefault();
     }
 
@@ -47,7 +47,7 @@ class Username_password extends React.Component {
   }
 
   changeBackground = (e) => {
-    if(e){
+    if (e) {
       e.preventDefault();
     }
 
@@ -77,7 +77,8 @@ class Username_password extends React.Component {
         newUserNameConfirm: ''
       });
 
-      API.updateUser({ name: this.state.newUserNameConfirm }, this.props.appState.user.id)
+      API.updateUser({ name: this.state.newUserNameConfirm }, this.props.appState.user.id);
+      window.Materialize.toast('Your new username has been updated!', 3000);
     }
   }
 
@@ -91,9 +92,10 @@ class Username_password extends React.Component {
     });
     const { oldPassword, newPassword, newPasswordConfirm } = this.state;
     if (newPassword === newPasswordConfirm)
-      API.validateAndUpdatePassword(this.props.appState.user.id, oldPassword, newPasswordConfirm)
-        .then(data => console.log(data))
-        .catch(err => console.log(err));
+      window.Materialize.toast('Your new password has been updated!', 3000);
+    API.validateAndUpdatePassword(this.props.appState.user.id, oldPassword, newPasswordConfirm)
+      .then(data => console.log(data))
+      .catch(err => console.log(err));
   }
   render() {
 
@@ -183,7 +185,7 @@ class Username_password extends React.Component {
             <div></div>
             <div></div>
             <form className="password-input-wrapper">
-              
+
               <div className="username-bubble">
                 <div id="messaging-form">
                   <div className="input-field">

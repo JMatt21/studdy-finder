@@ -28,6 +28,7 @@ class Email extends React.Component {
     if ((newEmail !== '' && newEmailConfirm !== '') && (newEmail === newEmailConfirm)) {
       this.changeBackground();
       this.updateUserEmail();
+      window.Materialize.toast('Your new email has been updated!', 3000);
     }
   }
   updateUserEmail = () => {
