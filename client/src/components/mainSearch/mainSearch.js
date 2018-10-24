@@ -1,12 +1,14 @@
 import React from "react";
 import "./mainSearch.css";
 import { Input } from 'react-materialize';
+import { Animated } from "react-animated-css";
 import SearchResults from "../searchResults/index";
 
 class MainSearch extends React.Component {
 
     state = {
-        search: ''
+        search: '',
+        initialSearch: true
     }
 
     handleInputChange = event => {
@@ -19,7 +21,8 @@ class MainSearch extends React.Component {
     clearInput = (e) => {
         e.preventDefault()
         this.setState({
-            search: ''
+            search: '',
+            initialSearch: false
         })
         document.getElementById('the-search').blur()
     }
@@ -35,11 +38,14 @@ class MainSearch extends React.Component {
                                 name="search"
                                 className="main-search-input"
                                 id="the-search"
-                                validate placeholder='Search A Subject. Find A Study Partner!' />
+                                validate placeholder='Enter Interests. Find a Study Partner!' />
                         </form>
                     </form>
                 </div>
-                <SearchResults user={this.props.user} searchData={this.props.data} />
+                {/* <SearchResults user={this.props.user} searchData={this.props.data} /> */}
+                {(this.props.data.length < 1 && this.state.initialSearch === false ? <Animated animationIn="bounceIn"><div className="no-search-results"><p>Sorry! No Results Found.<br />Try another Interest of yours!</p></div></Animated> : <SearchResults user={this.props.user} searchData={this.props.data} />
+                    
+                )}
             </div>
         )
     }

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./messageCard.css";
-import {testData} from "../../assets/testFillerData/testData";
+// import {testData} from "../../assets/testFillerData/testData";
 
 // let icon = require("./chaticon.png");
 

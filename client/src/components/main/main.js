@@ -4,7 +4,7 @@ import TopNavBar from "../topNavBar/index";
 import MainSearch from "../mainSearch/index";
 import MainCarousel from "../carousel/index";
 import MessageBoard from "../messageBoard/index";
-import Settings from "../settings/index";
+// import Settings from "../settings/index";
 
 // apis
 import API from "../../utils/API";

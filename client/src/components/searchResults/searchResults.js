@@ -19,8 +19,8 @@ class SearchResults extends React.Component {
         const displaySearchResults = this.props.searchData.map((element, index) => {
             // const displaySearchResults = testData.map((element, index) => {
             return (
-                <Animated animationIn="fadeInUp">
-                <Card className="search-result" key={index} header={<img className="search-results-image" src={element.image} alt="user_image"></img>}>
+                <Animated animationIn="fadeInUp" key={index}>
+                <Card className="search-result" header={<img className="search-results-image" src={element.image} alt="user_image"></img>}>
                     <div className="search-results-content">
                         <div className="name-and-distance">
                             <div className="search-results-name righteous">{`${element.name}`}</div>
