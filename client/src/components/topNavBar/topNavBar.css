@@ -15,10 +15,12 @@ nav{
 .side-nav {
     height: auto;
     top: 70px;
-    background: rgba(0, 0, 0, 0.4) !important;
+    background: black !important;
     color: white;
     display: flex;
     align-items: flex-start;
+    /* border: 30px solid black; */
+    border-radius: 10px;
 }
 .side-nav-message-board {
     height: 100% !important;
@@ -33,7 +35,7 @@ nav{
         margin-left: 0;
     }
     .side-nav {
-        top: 130px;
+        top: 105px;
     }
     .push-up-side-message-board {
         height: 150px;   
