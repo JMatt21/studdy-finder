@@ -23,7 +23,7 @@ class Main extends React.Component {
         if (this.props.appState.user.id) {
             const { id, beginnerSkills, latitude, longitude } = this.props.appState.user;
             this.getUserRooms(this.props.appState.user.id);
-            API.searchForUsers(beginnerSkills, latitude, longitude, 10000000, id)
+            API.searchForUsers(beginnerSkills, latitude, longitude, 30, id)
                 .then(({ data }) => {
                     if (data.length > 0) {
                         this.props.setData(data, 'carousel');
@@ -62,7 +62,7 @@ class Main extends React.Component {
         event.preventDefault();
         const search = event.target.search.value.split(" ");
         const { latitude, longitude, id } = this.props.appState.user;
-        API.searchForUsers(search, latitude, longitude, 10000, id) 
+        API.searchForUsers(search, latitude, longitude, this.props.appState.distance, id) 
             .then(data => {
                 
                 this.props.setData(data.data, 'data');

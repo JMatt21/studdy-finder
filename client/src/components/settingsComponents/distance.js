@@ -6,7 +6,7 @@ import { Animated } from "react-animated-css";
 class Distance extends React.Component {
   constructor(props) {
     super(props);
-
+    // const distance = (this.props.appState.distance > 30 ? 'Anywhere' : this.props.appState.distance);
     this.state = {
       sliderInput: this.props.appState.distance,
       bubbleSize: 'bubble-size-1',
@@ -20,7 +20,7 @@ class Distance extends React.Component {
     const { value, name } = target;
     const distance = (value > 30 ? 999999 : value);
     this.props.setData(parseInt(distance), 'distance');
-    
+
     this.setState({
       [name]: value
     })
@@ -75,7 +75,7 @@ class Distance extends React.Component {
           <div className="settings-distance-slider-grid">
             <div></div>
 
-            {(this.state.sliderInput === '35' ?
+            {(this.state.sliderInput > 30 ?
               <div className="settings-distance-range-value">Anywhere</div>
               : <div className="settings-distance-range-value">{this.state.sliderInput} Miles</div>
             )}
