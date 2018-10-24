@@ -23,7 +23,9 @@ class Username_password extends React.Component {
   }
 
   changeBackgroundInput = (e) => {
-    e.preventDefault();
+    if(e){
+      e.preventDefault();
+    }
 
     let funcColor = this.colorSorter();
 
@@ -45,7 +47,10 @@ class Username_password extends React.Component {
   }
 
   changeBackground = (e) => {
-    e.preventDefault();
+    if(e){
+      e.preventDefault();
+    }
+
 
     this.setState({
       newClass: "username-color-1"
@@ -61,6 +66,7 @@ class Username_password extends React.Component {
   }
 
   submitNewUserName = () => {
+    this.changeBackground();
     if ((this.state.newUsername !== '' && this.state.newUserNameConfirm !== '') && this.state.newUsername === this.state.newUserNameConfirm) {
       let temp = this.props.appState.user;
       temp.name = this.state.newUserNameConfirm;
@@ -76,6 +82,7 @@ class Username_password extends React.Component {
   }
 
   submitNewPassword = event => {
+    this.changeBackground();
     event.preventDefault();
     this.setState({
       oldPassword: '',
@@ -95,166 +102,151 @@ class Username_password extends React.Component {
     return (
 
       <div className={wrapperClass}>
+
         <div></div>
         <div></div>
         <div></div>
         <div></div>
         <div></div>
 
+
         <Animated animationIn="fadeIn">
-          <div>
-            <h3 className="settings-username-text">Update Your Username</h3>
-            <p className="settings-username-text">Current Username:
-          <p className="settings-username-text-2">{this.state.currentUsername}</p>
-            </p>
+          <div className="username-form-wrapper">
+            <div></div>
+            <div>
+              <h3 className="settings-username-text">Update Your Username</h3>
+              <p className="settings-username-text">Current Username:
+            <p className="settings-username-text-2">{this.state.currentUsername}</p>
+              </p>
+            </div>
+
+            <div></div>
+            <div></div>
+
+            <div>
+              <form className="username-input-wrapper">
+                <div className="username-bubble">
+                  <div id="messaging-form">
+                    <div className="input-field">
+                      <input
+                        type="text"
+                        className="materialize-textarea"
+                        name="newUsername"
+                        placeholder="Enter Your New Username"
+                        onClick={this.changeBackgroundInput}
+                        onChange={this.handleInputChange}
+                        value={this.state.newUsername}
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div className="username-bubble">
+                  <div id="messaging-form">
+                    <div className="input-field">
+                      <input
+                        type="text"
+                        className="materialize-textarea"
+                        name="newUserNameConfirm"
+                        placeholder="Confirm Your New Username"
+                        onClick={this.changeBackgroundInput}
+                        onChange={this.handleInputChange}
+                        value={this.state.newUserNameConfirm}
+                      />
+                    </div>
+                  </div>
+                </div>
+
+              </form>
+            </div>
+
+            <div></div>
+            <div></div>
+            <div>
+              <div className="settings-email-squareButton">
+                <div></div>
+
+                <button onClick={this.submitNewUserName} className="squareButton">Submit</button>
+
+              </div>
+            </div>
           </div>
         </Animated>
 
         <Animated animationIn="fadeIn">
-          <div>
-            <h3 className="settings-username-text">Update Your Password</h3>
-          </div>
-        </Animated>
-
-        <div></div>
-        <div></div>
-
-
-        <Animated animationIn="fadeIn">
-          <form className="username-form-wrapper">
+          <div className="password-form-wrapper">
             <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div className="username-bubble">
-              <div id="messaging-form">
-                <div className="input-field">
-                  <input
-                    type="text"
-                    className="materialize-textarea"
-                    name="newUsername"
-                    placeholder="Enter Your New Username"
-                    onClick={this.changeBackgroundInput}
-                    onChange={this.handleInputChange}
-                    value={this.state.newUsername}
-                  />
-                </div>
-              </div>
+            <div>
+              <h3 className="settings-username-text">Update Your Password</h3>
             </div>
 
             <div></div>
             <div></div>
-
-            <div className="username-bubble">
-              <div id="messaging-form">
-                <div className="input-field">
-                  <input
-                    type="text"
-                    className="materialize-textarea"
-                    name="newUserNameConfirm"
-                    placeholder="Confirm Your New Username"
-                    onClick={this.changeBackgroundInput}
-                    onChange={this.handleInputChange}
-                    value={this.state.newUserNameConfirm}
-                  />
+            <form className="password-input-wrapper">
+              
+              <div className="username-bubble">
+                <div id="messaging-form">
+                  <div className="input-field">
+                    <input
+                      type="text"
+                      className="materialize-textarea"
+                      name="oldPassword"
+                      value={this.state.oldPassword}
+                      onChange={this.handleInputChange}
+                      placeholder="Enter Your Old Password"
+                      onClick={this.changeBackgroundInput}
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
 
-          </form>
-        </Animated>
-
-
-        <Animated animationIn="fadeIn">
-          <form className="password-form-wrapper">
-            <div></div>
-            <div className="username-bubble">
-              <div id="messaging-form">
-                <div className="input-field">
-                  <input
-                    type="text"
-                    className="materialize-textarea"
-                    name="oldPassword"
-                    value={this.state.oldPassword}
-                    onChange={this.handleInputChange}
-                    placeholder="Enter Your Old Password"
-                    onClick={this.changeBackgroundInput}
-                  />
+              <div className="username-bubble">
+                <div id="messaging-form">
+                  <div className="input-field">
+                    <input
+                      type="text"
+                      className="materialize-textarea"
+                      name="newPassword"
+                      value={this.state.newPassword}
+                      onChange={this.handleInputChange}
+                      placeholder="Enter Your New Password"
+                      onClick={this.changeBackgroundInput}
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <div></div>
-            <div></div>
-
-            <div className="username-bubble">
-              <div id="messaging-form">
-                <div className="input-field">
-                  <input
-                    type="text"
-                    className="materialize-textarea"
-                    name="newPassword"
-                    value={this.state.newPassword}
-                    onChange={this.handleInputChange}
-                    placeholder="Enter Your New Password"
-                    onClick={this.changeBackgroundInput}
-                  />
+              <div className="username-bubble">
+                <div id="messaging-form">
+                  <div className="input-field">
+                    <input
+                      type="text"
+                      className="materialize-textarea"
+                      name="newPasswordConfirm"
+                      value={this.state.newPasswordConfirm}
+                      onChange={this.handleInputChange}
+                      placeholder="Confirm Your New Password"
+                      onClick={this.changeBackgroundInput}
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
+
+            </form>
 
             <div></div>
             <div></div>
-
-            <div className="username-bubble">
-              <div id="messaging-form">
-                <div className="input-field">
-                  <input
-                    type="text"
-                    className="materialize-textarea"
-                    name="newPasswordConfirm"
-                    value={this.state.newPasswordConfirm}
-                    onChange={this.handleInputChange}
-                    placeholder="Confirm Your New Password"
-                    onClick={this.changeBackgroundInput}
-                  />
-                </div>
-              </div>
-            </div>
-
-          </form>
-        </Animated>
-
-
-
-        <div></div>
-        <div></div>
-
-        <div>
-          <div className="settings-email-squareButton">
-            <div></div>
-            <Animated animationIn="fadeIn">
-              <button onClick={this.submitNewUserName} className="squareButton">Submit</button>
-            </Animated>
-          </div>
-        </div>
-
-
-        <div>
-          <div className="settings-email-squareButton">
-            <div></div>
-            <Animated animationIn="fadeIn">
+            <div className="settings-email-squareButton">
+              <div></div>
               <button onClick={this.submitNewPassword} className="squareButton">Submit</button>
-            </Animated>
+            </div>
           </div>
-        </div>
-
-
-        <div></div>
+        </Animated>
 
 
 
       </div >
+
 
 
     );
