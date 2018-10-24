@@ -5,6 +5,7 @@ import './settings.css';
 import { Picture, Interests, Distance, Email, UsernamePassword, Location, Welcome } from '../settingsComponents/index';
 // apis
 import API from "../../utils/API";
+import { Sidenav } from "react-materialize";
 
 class Settings extends React.Component {
 
@@ -30,11 +31,6 @@ class Settings extends React.Component {
             .then(({ data }) => {
                 this.props.setData(data, 'user');
             })
-        // API.searchForUsers(beginnerSkills, latitude, longitude, 10000000, id)
-        //     .then(({ data }) => {
-        //         this.props.setData(data, 'carousel');
-        //         console.log(data);
-        //     })
     }
     render() {
         return (

@@ -108,7 +108,7 @@ class Interests extends React.Component {
                       type="text"
                       className="materialize-textarea"
                       name="textInput"
-                      placeholder="Your Interests..."
+                      placeholder="Enter Your New Interests"
                       value={this.state.textInput}
                       onChange={this.handleInputChange}
                     />

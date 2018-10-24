@@ -5,6 +5,7 @@
     max-height: 92vh;
     background-color: #000000b0;
     overflow-y: scroll;
+    overflow-x: hidden;
     width: 300px;
     margin: 0 auto;
     border-radius: 10px;

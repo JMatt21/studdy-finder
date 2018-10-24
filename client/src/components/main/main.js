@@ -13,14 +13,12 @@ import socket from "../../utils/SocketAPI";
 
 // testdata
 import { testData } from "../../assets/testFillerData/testData";
-
+// carousel filler
+import carouselFiller from "../../assets/testFillerData/carouselFiller"
 class Main extends React.Component {
-
     state = {
         noCarouselData: true
-        
     }
-
     componentDidMount() {
         if (this.props.appState.user.id) {
             const { id, beginnerSkills, latitude, longitude } = this.props.appState.user;
@@ -33,11 +31,17 @@ class Main extends React.Component {
                         console.log(data);
                     }
                     else {
-                        this.props.setData(testData, 'carousel');
+                        this.props.setData(carouselFiller, 'carousel');
                         this.setState({ noCarouselData: true })
                     }
                 })
         }
+    }
+
+    componentDidCatch() {
+        console.log("Whoops! Something broke. Redirecting...")
+        this.props.setData(carouselFiller, 'carousel');
+        this.props.history.push("/settings/interests");
     }
 
     getUserRooms(id) {
@@ -90,14 +94,14 @@ class Main extends React.Component {
                             onSubmit={this.searchForUsers} /* Returns Any Users who's has a matching subject to the Users search input*/
                             user={user}
                             data={data}
-                            testData={testData} //populating with dummy data at the moment
+                            testData={testData}
                         />
                     </div>
                     <div className="right-area">
                         <MessageBoard
                             user={user}
                             data={matchData}
-                            testData={testData} //populating with dummy data at the moment
+                            testData={testData}
                         />
                     </div>
                 </div>
