@@ -59,25 +59,25 @@ class Welcome extends React.Component {
                     <div className="settings-welcome-pointers-wrapper">
                         <div></div>
                         <div></div>
-                        <div className={this.state.index == 1 ? 'arrow-class' : ''}></div>
+                        <div className={this.state.index === 1 ? 'arrow-class' : ''}></div>
 
-                        <div className="settings-nav-text">{this.state.index == 1 ? this.state.settingsOptions[this.state.index] : ''}</div>
+                        <div className="settings-nav-text">{this.state.index === 1 ? this.state.settingsOptions[this.state.index] : ''}</div>
 
-                        <div className={this.state.index == 2 ? 'arrow-class' : ''}></div>
+                        <div className={this.state.index === 2 ? 'arrow-class' : ''}></div>
 
-                        <div className="settings-nav-text">{this.state.index == 2 ? this.state.settingsOptions[this.state.index] : ''}</div>
+                        <div className="settings-nav-text">{this.state.index === 2 ? this.state.settingsOptions[this.state.index] : ''}</div>
 
-                        <div className={this.state.index == 3 ? 'arrow-class' : ''}></div>
+                        <div className={this.state.index === 3 ? 'arrow-class' : ''}></div>
 
-                        <div className="settings-nav-text">{this.state.index == 3 ? this.state.settingsOptions[this.state.index] : ''}</div>
+                        <div className="settings-nav-text">{this.state.index === 3 ? this.state.settingsOptions[this.state.index] : ''}</div>
 
-                        <div className={this.state.index == 4 ? 'arrow-class' : ''}></div>
+                        <div className={this.state.index === 4 ? 'arrow-class' : ''}></div>
 
-                        <div className="settings-nav-text">{this.state.index == 4 ? this.state.settingsOptions[this.state.index] : ''}</div>
+                        <div className="settings-nav-text">{this.state.index === 4 ? this.state.settingsOptions[this.state.index] : ''}</div>
 
-                        <div className={this.state.index == 5 ? 'arrow-class' : ''}></div>
+                        <div className={this.state.index === 5 ? 'arrow-class' : ''}></div>
 
-                        <div className="settings-nav-text">{this.state.index == 5 ? this.state.settingsOptions[this.state.index] : ''}</div>
+                        <div className="settings-nav-text">{this.state.index === 5 ? this.state.settingsOptions[this.state.index] : ''}</div>
                     </div>
                 </Animated>
 

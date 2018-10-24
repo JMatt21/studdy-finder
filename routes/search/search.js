@@ -21,7 +21,7 @@ router.route("/")
             attributes: {
                 exclude: 'password',
                 include: [[db.sequelize.literal(
-                    `( 3959 * acos( cos( radians(${lat}) ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians(${long}) ) + sin( radians(${lat}) ) * sin( radians( latitude ) ) ) )`), 'distance']]
+                    `( 3959 * acos( cos( radians(${lat}) ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians(${long}) ) + sin( radians(${lat}) ) * sin( radians( latitude ) ) ) )`), 'distance']],
             },
             having: {
                 [op.or]: [
@@ -31,7 +31,7 @@ router.route("/")
                 ]
 
             },
-            // limit: 5
+            order: db.sequelize.literal(`distance`)
         }).then(dbUsers => {
             res.json(dbUsers);
         });

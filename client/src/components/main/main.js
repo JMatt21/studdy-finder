@@ -15,15 +15,28 @@ import socket from "../../utils/SocketAPI";
 import { testData } from "../../assets/testFillerData/testData";
 
 class Main extends React.Component {
+
+    state = {
+        noCarouselData: true
+        
+    }
+
     componentDidMount() {
         if (this.props.appState.user.id) {
             const { id, beginnerSkills, latitude, longitude } = this.props.appState.user;
             this.getUserRooms(this.props.appState.user.id);
             API.searchForUsers(beginnerSkills, latitude, longitude, 10000000, id)
-            .then(({ data }) => {
-                this.props.setData(data, 'carousel');
-                console.log(data);
-            })
+                .then(({ data }) => {
+                    if (data.length > 0) {
+                        this.props.setData(data, 'carousel');
+                        this.setState({ noCarouselData: false })
+                        console.log(data);
+                    }
+                    else {
+                        this.props.setData(testData, 'carousel');
+                        this.setState({ noCarouselData: true })
+                    }
+                })
         }
     }
 
@@ -42,11 +55,11 @@ class Main extends React.Component {
         event.preventDefault();
         const search = event.target.search.value.split(" ");
         const { latitude, longitude, id } = this.props.appState.user;
-        API.searchForUsers(search, latitude, longitude, 10000, id) // temp distance
+        API.searchForUsers(search, latitude, longitude, 10000, id) 
             .then(data => {
-                // this.setState({ data: data.data })
+                
                 this.props.setData(data.data, 'data');
-                // console.log(data.data)
+               
             })
             .catch(err => console.log(err));
     }
@@ -70,10 +83,9 @@ class Main extends React.Component {
                     </div>
                     <div className="center-area">
                         <h5 className="nearby-search-title">Nearby Users</h5>
-                        <MainCarousel
-                            user={user}
-                            carouselArray={carousel} //populating with dummy data at the moment
-                        />
+                            {(!this.state.noCarouselData ? <MainCarousel user={user} carouselArray={carousel}/> : 
+                            <div className="no-nearby-matches"><p className="no-nearby-text">Sorry :(<br/>No Nearby Matches Found<br/><br/>Try Adding more Interests!</p></div>
+)}
                         <MainSearch
                             onSubmit={this.searchForUsers} /* Returns Any Users who's has a matching subject to the Users search input*/
                             user={user}

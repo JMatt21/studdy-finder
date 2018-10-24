@@ -2,6 +2,7 @@ import React from "react";
 import "./searchResults.css";
 import { Card } from "react-materialize";
 import { Link } from "react-router-dom";
+import { Animated } from "react-animated-css";
 // import {testData} from "../../assets/testFillerData/testData";
 
 function roomName(id1, id2) {
@@ -18,31 +19,7 @@ class SearchResults extends React.Component {
         const displaySearchResults = this.props.searchData.map((element, index) => {
             // const displaySearchResults = testData.map((element, index) => {
             return (
-                // <div key={index} className="searchResult">
-                //     <Card horizontal className="c-test" header={
-                //         <img className="searchResultImage" src={element.image || "https://via.placeholder.com/250x275"} alt={`${element.name || element.email}`} />}>
-                //         <a className="ubuntu btn resultButton"
-                //             //to={`/messages/${roomName(this.props.user.id, element.id)}`}
-                //             >
-                //             Message</a>
-                //         <p className="nearby">Distance: {`${element.distance} miles` || "undefined"} </p>
-                //         <h5 className="righteous">{element.name || element.email}</h5>
-
-                //             <tbody>
-                //                 {element.beginnerSkills.map((subject, i) => {
-                //                     return (
-                //                         <tr key={i}>
-                //                             <td className="search-resultsTd">{subject}</td>
-                //                         </tr>
-                //                     )
-
-                //                 })}
-                //             </tbody>
-
-                //     </Card>
-                // </div>
-                //OLD SEARCH RESULTS JSX ABOVE
-
+                <Animated animationIn="fadeInUp">
                 <Card className="search-result" key={index} header={<img className="search-results-image" src={element.image} alt="user_image"></img>}>
                     <div className="search-results-content">
                         <div className="name-and-distance">
@@ -63,14 +40,20 @@ class SearchResults extends React.Component {
                         </table>
                     </div>
                 </Card>
-
+                </Animated>
             )
         });
 
+        let scrollToView = () => {
+            document.getElementById('the-search').scrollIntoView({block: 'start', behavior: 'smooth'});
+        }
+
         return (
-            <div className="search-results-wrapper">
+            // <Animated animationIn="fadeInUp">
+            <div onLoad={scrollToView} id="the-results"  className="search-results-wrapper">
                 {displaySearchResults}
             </div>
+            //</Animated>
         )
     }
 };

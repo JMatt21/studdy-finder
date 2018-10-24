@@ -2,6 +2,7 @@ import React from "react";
 import "./carousel.css";
 import { Link } from "react-router-dom";
 import { Carousel, Card } from 'react-materialize';
+import { Animated } from "react-animated-css";
 
 function roomName(id1, id2) {
     if (id1 > id2)
@@ -38,11 +39,11 @@ class MainCarousel extends React.Component {
         });
 
         return (
-
+            <Animated animationIn="fadeInRight">
             <Carousel options={{ fullWidth: false, noWrap: true }}>
                 {displayNearbyCarousel}
             </Carousel>
-
+            </Animated>
         )
     }
 };

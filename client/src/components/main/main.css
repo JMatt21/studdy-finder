@@ -37,6 +37,22 @@
       border-radius: 15px;
       
   }
+  .no-nearby-matches{
+    font-family: 'Ubuntu', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 25px auto;
+    height: 200px;
+    background: #000000b0;
+    width: 200px;
+    border-radius: 200px;
+    box-shadow: 0px 0px 10px 1px red;
+  }
+  .no-nearby-text {
+      padding: 10px;
+  }
   
   
   

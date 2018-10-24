@@ -16,16 +16,27 @@ class MainSearch extends React.Component {
         });
     };
 
+    clearInput = (e) => {
+        e.preventDefault()
+        this.setState({
+            search: ''
+        })
+        document.getElementById('the-search').blur()
+    }
+
     render() {
         return (
             <div>
                 <div className="search-wrapper">
                     <form onSubmit={this.props.onSubmit}>
-                        <Input onChange={this.handleInputChange}
-                            value={this.state.search}
-                            name="search"
-                            className="main-search-input"
-                            validate placeholder='Search A Subject. Find A Study Partner!' />
+                        <form onSubmit={this.clearInput}>
+                            <Input onChange={this.handleInputChange}
+                                value={this.state.search}
+                                name="search"
+                                className="main-search-input"
+                                id="the-search"
+                                validate placeholder='Search A Subject. Find A Study Partner!' />
+                        </form>
                     </form>
                 </div>
                 <SearchResults user={this.props.user} searchData={this.props.data} />
